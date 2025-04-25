@@ -1,0 +1,97 @@
+site_name: OpenFPV
+site_description: Інструкції, технічні характеристики та налаштування камер OpenIPC - Runcam VRX, WifiLink, адаптивний лінк і не лише. Все для FPV польотів українською.
+site_url: https://openfpv.com.ua/
+use_directory_urls: true
+
+repo_name: GitHub
+repo_url: 
+
+extra_css:
+  - css/overrides.css
+
+extra_javascript:
+  - https://www.googletagmanager.com/gtag/js?id=G-WFWC26NZLB
+  - js/ga.js
+  - js/feedback.js
+
+theme:
+  name: material
+  language: uk
+  logo: images/logo.png
+  favicon: images/logo1.png
+
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Світла тема
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Темна тема
+
+plugins:
+  - search:
+      lang:
+        - uk
+        - en
+      separator: '[\s\-]+'
+
+nav:
+  - Головна:
+      - Про проєкт: index.md
+      - Оновлення: update.md
+  - Перші кроки:
+      - Швидкий старт: quick-start.md
+      - Перед першим польотом:
+          - Налаштування дрона: drone.md
+          - Налаштування приймача (VRX): groundstation.md
+          - Збірка наземної станції Radxa своїми руками: groundstation-build.md
+          - Поширені проблеми: troubleshooting.md
+  - Конфігурація:
+      - Прошивки: firmware.md
+      - Телеметрія та OSD:
+          - VTXMenu: telemetry/vtx-menu.md
+          - 40 MHz режим: telemetry/40mhz.md
+          - OSD: telemetry/osd.md
+          - Перенесення OSD до GS: telemetry/osd-to-gs.md
+      - Додаткові налаштування: advanced.md
+  - Обладнання:
+      - Камери і відеотрансмітери (VTX):
+          - OpenIPC:
+              - Mario AIO: vtx/marioaio.md
+              - Thinker Air Unit: vtx/thinkerairunit.md
+              - UltraSight: vtx/ultrasight.md
+          - Runcam:
+              - WifiLink v1: vtx/runcamwifilink.md
+              - WifiLink v2: vtx/runcamwifilinkv2.md
+          - EMAX:
+              - Wyvern Link 100 mW: vtx/emaxwyvern100mw.md
+              - Wyvern Link 800 mW: vtx/emaxwyvern800mw.md
+      - Приймачі (VRX):
+          - Runcam WifiLink RX: vrx/runcamwifilinkreceiver.md
+          - EMAX Alpha 100 mW: vrx/emaxvrxalpha100mw.md
+          - EMAX Alpha 800 mW: vrx/emaxvrxalpha800mw.md
+      - Мережеві карти та драйвери:
+          - RTL8812EU: net-cards/rtl8812eu.md
+          - RTL8812AU: net-cards/rtl8812au.md
+          - RTL8812BU: net-cards/rtl8812bu.md
+          - Установка драйверів: net-cards/installation.md
+  - Ресурси та сумісність:
+    - Сумісність обладнання: compatibility.md
+    - Корисні посилання: link.md
+
+
