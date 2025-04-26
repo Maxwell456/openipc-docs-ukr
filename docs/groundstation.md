@@ -1,3 +1,8 @@
+---
+title: Інструкція з налаштування VRX Runcam WifiLink
+description: Покрокова інструкція налаштування VRX Runcam WifiLink підключення, WebUI, канали, DVR та моніторинг RSSI
+---
+
 # Інструкція по налаштуванню VRX
 
 ## Runcam WifiLink Receiver

@@ -1,3 +1,7 @@
+---
+title: RunCam WiFiLink RX — цифровий HD-приймач для FPV
+description: Огляд технічних характеристик, комплектації та налаштування приймача RunCam WiFiLink RX для стабільної передачі відео у FPV.
+---
 # RunCam WiFiLink RX (Digital HD Receiver)
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">

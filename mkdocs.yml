@@ -44,6 +44,7 @@ theme:
         name: Темна тема
 
 plugins:
+  - meta-descriptions
   - search:
       lang:
         - uk

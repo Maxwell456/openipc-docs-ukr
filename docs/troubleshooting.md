@@ -1,3 +1,8 @@
+---
+title: Прошивка та відновлення Runcam VRX
+description: Покрокова інструкція як прошити або відновити Runcam VRX за допомогою SD-карти та RKDevTool.
+---
+
 ## Як прошити Runcam VRX за допомогою SD картки
 
 <div style="text-align: center;">
