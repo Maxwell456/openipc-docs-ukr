@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://openfpv.com.ua/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url><loc>https://openfpv.com.ua/update/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/quick-start/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/drone/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/groundstation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/troubleshooting/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/firmware/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/telemetry/vtx-menu/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/telemetry/40mhz/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/telemetry/osd/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/telemetry/osd-to-gs/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/advanced/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/marioaio/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/thinkerairunit/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/ultrasight/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/runcamwifilink/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/runcamwifilinkv2/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/emaxwyvern100mw/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vtx/emaxwyvern800mw/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vrx/runcamwifilinkreceiver/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vrx/emaxvrxalpha100mw/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/vrx/emaxvrxalpha800mw/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/net-cards/rtl8812eu/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/net-cards/rtl8812au/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/net-cards/rtl8812bu/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/net-cards/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/compatibility/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://openfpv.com.ua/examples/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+</urlset>
