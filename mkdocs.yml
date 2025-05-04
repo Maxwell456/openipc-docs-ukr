@@ -7,7 +7,7 @@ repo_name: GitHub
 repo_url: 
 
 extra_css:
-  - css/overrides.css
+  - css/overrides.css  
 
 extra_javascript:
   - https://www.googletagmanager.com/gtag/js?id=G-WFWC26NZLB
@@ -21,7 +21,16 @@ extra:
     - icon: fontawesome/solid/globe
       link: https://openfpv.com.ua
 
+open_graph:
+    image: images/logo.png
+    alt: OpenFPV — Документація та підтримка українською
+    description: Покрокові інструкції з налаштування камер OpenIPC, Runcam WifiLink та адаптивного лінку.
+    title: Документація OpenFPV українською мовою
 
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
 theme:
   name: material
   language: uk
@@ -36,7 +45,7 @@ theme:
     - toc.integrate
     - search.highlight
     - search.suggest
-    #- navigation.expand 
+    # navigation.expand 
 
   palette:
     - scheme: slate
@@ -53,7 +62,7 @@ theme:
         name: Темна тема
 
 plugins:
-  - meta-descriptions
+  - meta-descriptions   
   - search:
       lang:
         - uk
@@ -63,7 +72,7 @@ plugins:
 nav:
   - Головна:
       - Про проєкт: index.md
-      - Оновлення: update.md
+      - Оновлення: update/index.md
 
   - Перші кроки:
       - Швидкий старт: quick-start.md
@@ -87,6 +96,11 @@ nav:
 
   - Обладнання:
       - Камери і відеотрансмітери (VTX):
+          - SigmaStart:
+              - SigmaStart SSC338Q: vtx/sigmastar-ssc338q.md
+          - Goke:
+              - Goke GK7205V200: vtx/goke-gk7205v200.md
+              - Goke GK7205V300: vtx/goke-gk7205v300.md                     
           - OpenIPC:
               - Mario AIO: vtx/marioaio.md
               - Thinker Air Unit: vtx/thinkerairunit.md
@@ -113,4 +127,5 @@ nav:
       - Сумісність обладнання: compatibility.md
       - Корисні посилання: link.md
 
+copyright: "© 2025 OpenFPV Docs — Все права захищені"
 
