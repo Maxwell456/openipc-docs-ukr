@@ -36,6 +36,7 @@ theme:
   language: uk
   logo: images/logo.png
   favicon: images/logo1.png
+  custom_dir: docs/overrides 
 
   features:
     - navigation.instant
@@ -62,7 +63,8 @@ theme:
         name: Темна тема
 
 plugins:
-  - meta-descriptions   
+  - meta-descriptions
+  - social   
   - search:
       lang:
         - uk
@@ -92,8 +94,9 @@ nav:
           - 40 MHz режим: telemetry/40mhz.md
           - OSD: telemetry/osd.md
           - Перенесення OSD до GS: telemetry/osd-to-gs.md
+      - Adaptive-Link: adaptive-link.md
       - Додаткові налаштування: advanced.md
-
+      
   - Обладнання:
       - Камери і відеотрансмітери (VTX):
           - SigmaStart:
@@ -114,8 +117,7 @@ nav:
 
       - Приймачі (VRX):
           - Runcam WifiLink RX: vrx/runcamwifilinkreceiver.md
-          - EMAX Alpha 100 mW: vrx/emaxvrxalpha100mw.md
-          - EMAX Alpha 800 mW: vrx/emaxvrxalpha800mw.md
+          - OpenIPC Bonnet: vrx/openipcbonnet.md
 
       - Мережеві карти та драйвери:
           - RTL8812EU: net-cards/rtl8812eu.md
@@ -128,4 +130,3 @@ nav:
       - Корисні посилання: link.md
 
 copyright: "© 2025 OpenFPV Docs — Все права захищені"
-

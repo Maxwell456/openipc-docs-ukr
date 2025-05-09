@@ -1,31 +1,56 @@
-# --------- Stage 1: Builder ---------
+# --------- Етап 1: Збірка ---------
+
     FROM python:3.11-slim AS builder
 
-    # Устанавливаем все необходимые зависимости
-    RUN pip install mkdocs mkdocs-material pyyaml mkdocs-meta-descriptions-plugin
+    # Встановлюємо системні бібліотеки для cairosvg
     
-    # Работаем в директории /app
+    RUN apt-get update && apt-get install -y \
+        libcairo2 \
+        libpango-1.0-0 \
+        libpangocairo-1.0-0 \
+        libgdk-pixbuf2.0-0 \
+        libffi-dev \
+        shared-mime-info \
+        && rm -rf /var/lib/apt/lists/*
+    
+    # Встановлюємо Python-залежності
+    
+    RUN pip install "mkdocs-material[imaging]" \
+        mkdocs \
+        pyyaml \
+        mkdocs-meta-descriptions-plugin \
+        mkdocs-glightbox \
+        mkdocs-git-revision-date-localized-plugin \
+        mkdocs-minify-plugin
+    
+    # Переходимо до робочої директорії
     WORKDIR /app
     COPY . /app
     
-    # Генерируем sitemap.xml
-    RUN python3 generate_sitemap.py
+    # Копіюємо OG preview зображення (якщо вони вже згенеровані)
+    RUN [ -d .cache/plugin/social ] && python3 build-scripts/copy-og-images.py || echo "OG preview зображення не знайдені"
     
-    # Билдим сайт
+    # Генеруємо sitemap (якщо є відповідний скрипт)
+    RUN python3 build-scripts/generate_sitemap.py || true
+    
+    # Збираємо сайт MkDocs
     RUN mkdocs build --clean
     
-    # --------- Stage 2: NGINX ---------
+    # --------- Етап 2: NGINX ---------
+    
     FROM nginx:alpine
     
-    # Удаляем стандартные HTML страницы nginx
+    # Видаляємо стандартні HTML-файли nginx
     RUN rm -rf /usr/share/nginx/html/*
     
-    # Копируем свою 404.html и сайт
+    # Копіюємо власну сторінку 404
     COPY docs/404.html /usr/share/nginx/html/404.html
+    
+    # Копіюємо зібраний сайт із етапу builder
     COPY --from=builder /app/site/ /usr/share/nginx/html/
     
-    # Копируем свой конфиг
-    COPY nginx.conf /etc/nginx/nginx.conf
+    # Копіюємо конфіг nginx
+    COPY config/nginx.conf /etc/nginx/nginx.conf
     
     EXPOSE 80
     
