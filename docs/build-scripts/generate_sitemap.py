@@ -23,7 +23,7 @@ def extract_paths(nav, parent=""):
 
 extract_paths(config["nav"])
 
-with open("docs/sitemap.xml", "w", encoding="utf-8") as f:
+with open("site/sitemap.xml", "w", encoding="utf-8") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
     f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for path in paths:
