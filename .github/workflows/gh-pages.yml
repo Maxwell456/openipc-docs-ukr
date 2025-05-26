@@ -19,8 +19,8 @@ jobs:
 
       - name: Set up Git credentials
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Maxwell456"
+          git config --global user.email "41898282+Maxwell456@users.noreply.github.com"
 
       - name: Set up Python
         uses: actions/setup-python@v5
