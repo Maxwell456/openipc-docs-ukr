@@ -11,6 +11,9 @@ description: Покрокова інструкція налаштування VR
   <iframe width="560" height="315" src="https://www.youtube.com/embed/BP7Ns7H9wvI?si=sUkZiTPDYfQbjkLS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
+!!! warning "Увага"
+    Не підключайте живлення до VRx, якщо HDMI-кабель під’єднаний, а джерело HDMI вимкнене — це може пошкодити HDMI-вихід!
+
 1. Підключіть живлення **DC 9–30V** та кабель **miniHDMI-to-HDMI** до окулярів або шолома.
 2. За допомогою **HID-джойстика** можна налаштувати канал зв’язку (за замовчуванням `161 → 5.8 GHz`).
 3. Підключіть живлення до дрона та відеоприймача (VRX). За замовчуванням і дрон, і VRX налаштовані на канал `161` та роздільну здатність `1920×1080` — зображення зʼявиться протягом **10 секунд**.
