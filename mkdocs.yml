@@ -1,6 +1,6 @@
 site_name: OpenFPV
 site_description: Інструкції, технічні характеристики та налаштування камер OpenIPC - Runcam VRX, WifiLink, адаптивний лінк і не лише. Все для FPV польотів українською.
-site_url: https://maxwell456.github.io/openipc-docs-ukr/
+site_url: https://openfpv.com.ua
 use_directory_urls: true
 
 repo_name: GitHub
