@@ -1,35 +1,29 @@
-name: Deploy MkDocs to GitHub Pages
-
+name: ci 
 on:
   push:
     branches:
-      - main  
+      - master 
+      - main
+permissions:
+  contents: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
         run: |
-          pip install --no-cache-dir "mkdocs-material[imaging]" \
-            mkdocs-glightbox \
-            mkdocs-meta-descriptions-plugin \
-            mkdocs-git-revision-date-localized-plugin \
-            mkdocs-minify-plugin
-
-      - name: Build site
-        run: mkdocs build --clean
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache 
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: mkdocs gh-deploy --force
