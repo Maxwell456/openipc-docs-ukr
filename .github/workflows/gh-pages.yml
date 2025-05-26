@@ -1,4 +1,4 @@
-name: Deploy MkDocs
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Git credentials
         run: |
@@ -24,7 +25,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.x
+          python-version: '3.11'
 
       - name: Enable pip cache
         run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
@@ -37,7 +38,13 @@ jobs:
             mkdocs-material-
 
       - name: Install dependencies
-        run: pip install mkdocs-material
+        run: |
+          pip install \
+            mkdocs-material[imaging] \
+            mkdocs-glightbox \
+            mkdocs-meta-descriptions-plugin \
+            mkdocs-git-revision-date-localized-plugin \
+            mkdocs-minify-plugin
 
       - name: Deploy site to GitHub Pages
         env:
