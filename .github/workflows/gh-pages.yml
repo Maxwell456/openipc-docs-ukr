@@ -46,6 +46,12 @@ jobs:
             mkdocs-git-revision-date-localized-plugin \
             mkdocs-minify-plugin
 
+      - name: Build site (to generate /site folder)
+        run: mkdocs build
+
+      - name: Generate sitemap
+        run: python docs/build-scripts/generate_sitemap.py
+
       - name: Deploy site to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
