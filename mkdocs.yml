@@ -20,6 +20,8 @@ extra:
       link: https://github.com/Maxwell456/openipc-docs-ukr
     - icon: fontawesome/solid/globe
       link: https://openfpv.com.ua
+    - icon: fontawesome/solid/envelope
+      link: mailto:info@openfpv.com.ua 
 
 open_graph:
     image: images/logo.png
@@ -129,4 +131,4 @@ nav:
       - Сумісність обладнання: compatibility.md
       - Корисні посилання: link.md
 
-copyright: "© 2025 OpenFPV Docs — Все права захищені"
+copyright: "© 2025 OpenFPV Docs — Усі права захищені"
