@@ -9,7 +9,7 @@ description: Всі оновлення OpenIPC FPV згруповані за р�
 
 - [25 квітня — WebUI ](posts/2025-04-25-webui.md)
 - [23 квітня — Jumbo Frame](posts/2025-04-23-jumbo.md)
-
+- [30 травня — APFPV прошивка](posts/2025-05-30-apfpv.md)
 
 https://docs.openipc.org/
 
