@@ -89,6 +89,7 @@ nav:
 
   - Конфігурація:
       - Прошивки:
+          - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
           - Оновлення через Multiconfigurator: firmware.md
           - Прошивка через UART: firmware/uart-flashing.md
       - Телеметрія та OSD:
