@@ -5,6 +5,8 @@ description: "Просте передавання FPV-відео через Wi-F
 
 APFPV розшифровується як "Access Point FPV" — це простий спосіб отримати відео з вашого дрона на телефон, планшет або комп’ютер через звичайний Wi-Fi. Уявіть, що ваш дрон створює власну Wi-Fi мережу, до якої ви підключаєтесь для перегляду відео в реальному часі.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DnEHi86xKFA?si=0YSeYaDRZt7C8tIB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 <h3>Що таке APFPV?</h3>
 
 Прошивка APFPV від команди OpenIPC створює пряме з’єднання Wi-Fi між передавачем відео (VTX) вашого дрона і наземною станцією. Замість складних мереж дрон просто працює як Wi-Fi роутер, до якого ви підключаєтесь напряму.
