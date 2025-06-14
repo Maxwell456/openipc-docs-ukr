@@ -45,6 +45,8 @@ jobs:
             mkdocs-meta-descriptions-plugin \
             mkdocs-git-revision-date-localized-plugin \
             mkdocs-minify-plugin
+            mkdocs-static-i18n
+
 
       - name: Build site (to generate /site folder)
         run: mkdocs build
