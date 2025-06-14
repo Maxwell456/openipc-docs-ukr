@@ -44,7 +44,7 @@ jobs:
             mkdocs-glightbox \
             mkdocs-meta-descriptions-plugin \
             mkdocs-git-revision-date-localized-plugin \
-            mkdocs-minify-plugin
+            mkdocs-minify-plugin \
             mkdocs-static-i18n
 
 
