@@ -85,9 +85,9 @@ nav:
           - Прошивка через UART: firmware/uart-flashing.md
       - Телеметрія та OSD:
           - VTXMenu: telemetry/vtx-menu.md
-          - 40 MHz режим: telemetry/40mhz.md
-          - OSD: telemetry/osd.md
-          - Перенесення OSD до GS: telemetry/osd-to-gs.md
+          #- 40 MHz режим: telemetry/40mhz.md
+          #- OSD: telemetry/osd.md
+          #- Перенесення OSD до GS: telemetry/osd-to-gs.md
       - Adaptive-Link: adaptive-link.md
       - Додаткові налаштування: advanced.md
 
@@ -95,13 +95,13 @@ nav:
       - Камери і відеотрансмітери (VTX):
           - SigmaStart:
               - SigmaStart SSC338Q: vtx/sigmastar-ssc338q.md
-          - Goke:
-              - Goke GK7205V200: vtx/goke-gk7205v200.md
-              - Goke GK7205V300: vtx/goke-gk7205v300.md
+          #- Goke:
+              #- Goke GK7205V200: vtx/goke-gk7205v200.md
+              #- Goke GK7205V300: vtx/goke-gk7205v300.md
           - OpenIPC:
               - Mario AIO: vtx/marioaio.md
               - Thinker Air Unit: vtx/thinkerairunit.md
-              - UltraSight: vtx/ultrasight.md
+              #- UltraSight: vtx/ultrasight.md
           - Runcam:
               - WifiLink v1: vtx/runcamwifilink.md
               - WifiLink v2: vtx/runcamwifilinkv2.md
@@ -115,7 +115,7 @@ nav:
           - RTL8812EU: net-cards/rtl8812eu.md
           - RTL8812AU: net-cards/rtl8812au.md
           - RTL8812BU: net-cards/rtl8812bu.md
-          - Установка драйверів: net-cards/installation.md
+          #- Установка драйверів: net-cards/installation.md
 
   - Корисні посилання: link.md     
       
