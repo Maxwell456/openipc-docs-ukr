@@ -3,6 +3,7 @@ title: OpenFPV — Документація OpenIPC українською мо�
 hide:
   - navigation
   - toc
+  - navigation.tabs
 ---
 
 <section class="hero">

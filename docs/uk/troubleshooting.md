@@ -5,7 +5,7 @@ description: Покрокова інструкція як прошити або 
 
 ## Як прошити Runcam VRX за допомогою SD картки
 
-<div style="text-align: center;">
+<div style="text-align:;">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/jAmCpTOFpfY?si=P_2oop5EI2jQZ8eb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 

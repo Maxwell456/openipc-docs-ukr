@@ -7,7 +7,7 @@ repo_name: GitHub
 repo_url: 
 
 extra_css:
-  - css/overrides.css  
+  - css/overrides.css
 
 extra_javascript:
   - https://www.googletagmanager.com/gtag/js?id=G-WFWC26NZLB
@@ -21,34 +21,29 @@ extra:
     - icon: fontawesome/solid/globe
       link: https://openfpv.com.ua
     - icon: fontawesome/solid/envelope
-      link: mailto:info@openfpv.com.ua 
-
-open_graph:
-    image: images/logo.png
-    alt: OpenFPV — Документація та підтримка українською
-    description: Покрокові інструкції з налаштування камер OpenIPC, Runcam WifiLink та адаптивного лінку.
-    title: Документація OpenFPV українською мовою
+      link: mailto:info@openfpv.com.ua
 
 markdown_extensions:
   - admonition
   - toc:
       permalink: true
+
 theme:
   name: material
   language: uk
   logo: images/logo.png
   favicon: images/logo1.png
-  custom_dir: docs/overrides 
+  custom_dir: docs/overrides
 
   features:
     - navigation.instant
     - navigation.sections
     - navigation.top
+    - navigation.tabs
     - navigation.footer
     - toc.integrate
     - search.highlight
     - search.suggest
-    # navigation.expand 
 
   palette:
     - scheme: slate
@@ -64,15 +59,6 @@ theme:
         icon: material/brightness-4
         name: Темна тема
 
-plugins:
-  - meta-descriptions
-  - social   
-  - search:
-      lang:
-        - uk
-        - en
-      separator: '[\s\-]+'
-
 nav:
   - Головна:
       - Про проєкт: index.md
@@ -85,11 +71,16 @@ nav:
           - Налаштування приймача (VRX): groundstation.md
           - Збірка наземної станції Radxa своїми руками: groundstation-build.md
       - Поширені проблеми: troubleshooting.md
-          
+
+  - Програмне забезпечення:
+      - Прошивки:
+          - Прошивки для камер:              
+              - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
+          - Прошивки для наземки: 
+              - Прошивки для наземної станції APFPV: firmware/apfpv-gs.md
 
   - Конфігурація:
       - Прошивки:
-          - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
           - Оновлення через Multiconfigurator: firmware.md
           - Прошивка через UART: firmware/uart-flashing.md
       - Телеметрія та OSD:
@@ -99,14 +90,14 @@ nav:
           - Перенесення OSD до GS: telemetry/osd-to-gs.md
       - Adaptive-Link: adaptive-link.md
       - Додаткові налаштування: advanced.md
-      
+
   - Обладнання:
       - Камери і відеотрансмітери (VTX):
           - SigmaStart:
               - SigmaStart SSC338Q: vtx/sigmastar-ssc338q.md
           - Goke:
               - Goke GK7205V200: vtx/goke-gk7205v200.md
-              - Goke GK7205V300: vtx/goke-gk7205v300.md                     
+              - Goke GK7205V300: vtx/goke-gk7205v300.md
           - OpenIPC:
               - Mario AIO: vtx/marioaio.md
               - Thinker Air Unit: vtx/thinkerairunit.md
@@ -117,19 +108,91 @@ nav:
           - EMAX:
               - Wyvern Link 100 mW: vtx/emaxwyvern100mw.md
               - Wyvern Link 800 mW: vtx/emaxwyvern800mw.md
-
       - Приймачі (VRX):
           - Runcam WifiLink RX: vrx/runcamwifilinkreceiver.md
           - OpenIPC Bonnet: vrx/openipcbonnet.md
-
       - Мережеві карти та драйвери:
           - RTL8812EU: net-cards/rtl8812eu.md
           - RTL8812AU: net-cards/rtl8812au.md
           - RTL8812BU: net-cards/rtl8812bu.md
           - Установка драйверів: net-cards/installation.md
 
-  - Ресурси та сумісність:
-      - Сумісність обладнання: compatibility.md
-      - Корисні посилання: link.md
+  - Корисні посилання: link.md     
+      
+
+plugins:
+  - search:
+      lang:
+        - uk
+        - en
+      separator: '[\s\-]+'
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: uk
+          default: true
+          name: Українська
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            Головна: Home
+            Про проєкт: About the Project
+            Оновлення: Updates
+            Перші кроки: Getting Started
+            Швидкий старт: Quick Start
+            Перед першим польотом: Before First Flight
+            Налаштування дрона: Drone Setup
+            Налаштування приймача (VRX): Receiver (VRX) Setup
+            Збірка наземної станції Radxa своїми руками: Building Radxa Groundstation Yourself
+            Поширені проблеми: Common Issues
+            Конфігурація: Configuration
+            Прошивки: Firmware
+            Прошивка APFPV — Посібник для початківців: APFPV Firmware — Beginner's Guide
+            Оновлення через Multiconfigurator: Update via Multiconfigurator
+            Прошивка через UART: UART Flashing
+            Телеметрія та OSD: Telemetry & OSD
+            VTXMenu: VTXMenu
+            40 MHz режим: 40 MHz Mode
+            OSD: OSD
+            Перенесення OSD до GS: Transferring OSD to GS
+            Adaptive-Link: Adaptive-Link
+            Додаткові налаштування: Advanced Settings
+            Обладнання: Hardware
+            Камери і відеотрансмітери (VTX): Cameras & Video Transmitters (VTX)
+            SigmaStart: SigmaStart
+            SigmaStart SSC338Q: SigmaStart SSC338Q
+            Goke: Goke
+            Goke GK7205V200: Goke GK7205V200
+            Goke GK7205V300: Goke GK7205V300
+            OpenIPC: OpenIPC
+            Mario AIO: Mario AIO
+            Thinker Air Unit: Thinker Air Unit
+            UltraSight: UltraSight
+            Runcam: Runcam
+            WifiLink v1: WifiLink v1
+            WifiLink v2: WifiLink v2
+            EMAX: EMAX
+            Wyvern Link 100 mW: Wyvern Link 100 mW
+            Wyvern Link 800 mW: Wyvern Link 800 mW
+            Приймачі (VRX): Receivers (VRX)
+            Runcam WifiLink RX: Runcam WifiLink RX
+            OpenIPC Bonnet: OpenIPC Bonnet
+            Мережеві карти та драйвери: Network Cards & Drivers
+            RTL8812EU: RTL8812EU
+            RTL8812AU: RTL8812AU
+            RTL8812BU: RTL8812BU
+            Установка драйверів: Driver Installation
+            Ресурси та сумісність: Resources & Compatibility
+            Сумісність обладнання: Hardware Compatibility
+            Корисні посилання: Useful Links
+            Програмне забезпечення: Software
+            Прошивки для наземки: Firmware for ground
+            Прошивки для наземної станції APFPV: Firmware for APFPV ground station
+            Прошивки для камер: Firmware for cameras
 
 copyright: "© 2025 OpenFPV Docs — Усі права захищені"

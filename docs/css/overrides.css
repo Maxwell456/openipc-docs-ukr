@@ -122,5 +122,13 @@
 }
 .md-button--primary:focus,
 .md-button--primary:hover {
-  background-color: var(--md-primary-fg-color--dark);
+  background-color: var(--md-primary-fg-color--dark);}
+
+/* hide whenever the active tab’s link ends with “/” */
+nav.md-tabs:has(.md-tabs__item--active a[href$="com.ua/"]) {
+  display: none !important;
+}
+/* hide whenever the active tab’s link ends with “/” */
+nav.md-tabs:has(.md-tabs__item--active a[href$="8000/"]) {
+  display: none !important;
 }
