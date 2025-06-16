@@ -132,3 +132,6 @@ nav.md-tabs:has(.md-tabs__item--active a[href$="com.ua/"]) {
 nav.md-tabs:has(.md-tabs__item--active a[href$="8000/"]) {
   display: none !important;
 }
+nav.md-tabs:has(.md-tabs__item--active a[href$="en/"]) {
+  display: none !important;
+}

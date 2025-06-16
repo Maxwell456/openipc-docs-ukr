@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     const text = document.createElement("span");
-    text.innerHTML = 'Знайшли помилку? <strong>Натисніть тут</strong>';
+    text.innerHTML = 'Found an error? <strong>Click here/strong>';
   
     box.appendChild(text);
     banner.appendChild(box);
@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const pageUrl = window.location.href;
   
       if (!selectedText) {
-        alert("Спочатку виділіть текст, у якому ви помітили помилку.");
+        alert("First, highlight the text in which you noticed the error.");
         return;
       }
   
-      const issueTitle = encodeURIComponent("Помилка в документації");
+      const issueTitle = encodeURIComponent("Error in documentation");
       const issueBody = encodeURIComponent(
         `**Виділений текст:**\n\n> ${selectedText}\n\n**URL сторінки:** ${pageUrl}`
       );

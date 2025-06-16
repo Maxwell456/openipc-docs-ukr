@@ -82,7 +82,8 @@ nav:
   - Конфігурація:
       - Прошивки:
           - Оновлення через Multiconfigurator: firmware.md
-          - Прошивка через UART: firmware/uart-flashing.md
+          - Базове оновлення прошивки: firmware/upgrading-firmware.md
+          - Прошивка через UART: firmware/uart-flashing.md          
       - Телеметрія та OSD:
           - VTXMenu: telemetry/vtx-menu.md
           #- 40 MHz режим: telemetry/40mhz.md
