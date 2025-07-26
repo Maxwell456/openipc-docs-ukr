@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Object.assign(banner.style, {
       position: "fixed",
       bottom: "20px",
-      right: "15px",
+      left: "15px",
       zIndex: "9999",
       fontFamily: "system-ui, sans-serif",
       opacity: "0",
