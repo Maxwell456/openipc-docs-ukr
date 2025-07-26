@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     const text = document.createElement("span");
-    text.innerHTML = 'Знайшли помилку? <strong>Натисніть тут</strong>';
+    text.innerHTML = 'Знайшли помилку?';
   
     box.appendChild(text);
     banner.appendChild(box);
