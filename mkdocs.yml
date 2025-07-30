@@ -62,8 +62,7 @@ theme:
 nav:
   - Головна:
       - Про проєкт: index.md
-      - Оновлення: update/index.md
-
+      #- Оновлення: update/index.md   
   - Перші кроки:
       - Швидкий старт: quick-start.md
       - Перед першим польотом:
@@ -119,7 +118,8 @@ nav:
           - RTL8812BU: net-cards/rtl8812bu.md
           #- Установка драйверів: net-cards/installation.md
 
-  - Корисні посилання: link.md     
+  - Корисні посилання: link.md
+  - Оновлення: update/index.md    
       
 
 plugins:
