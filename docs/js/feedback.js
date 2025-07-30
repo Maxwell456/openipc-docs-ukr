@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Object.assign(banner.style, {
       position: "fixed",
       bottom: "20px",
-      right: "15px",
+      left: "15px",
       zIndex: "9999",
       fontFamily: "system-ui, sans-serif",
       opacity: "0",
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     const text = document.createElement("span");
-    text.innerHTML = 'Знайшли помилку? <strong>Натисніть тут</strong>';
+    text.innerHTML = 'Знайшли помилку?';
   
     box.appendChild(text);
     banner.appendChild(box);

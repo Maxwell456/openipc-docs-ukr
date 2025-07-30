@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Object.assign(banner.style, {
       position: "fixed",
       bottom: "20px",
-      right: "15px",
+      left: "15px",
       zIndex: "9999",
       fontFamily: "system-ui, sans-serif",
       opacity: "0",
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     const text = document.createElement("span");
-    text.innerHTML = 'Found an error? <strong>Click here/strong>';
+    text.innerHTML = 'Found an error?';
   
     box.appendChild(text);
     banner.appendChild(box);
