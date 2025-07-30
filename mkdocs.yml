@@ -76,6 +76,7 @@ nav:
       - Прошивки:
           - Прошивки для камер:              
               - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
+              - APALink — адаптивний бітрейт: firmware/apalink.md
           - Прошивки для наземки: 
               - Прошивки для наземної станції APFPV: firmware/apfpv-gs.md
 
