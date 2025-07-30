@@ -1,0 +1,137 @@
+/* === Загальні стилі для головної сторінки === */
+/* Контейнер для всього вмісту */
+.hero {
+  text-align: center;
+  padding: 6rem 1rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 190px); /* Зменшуємо висоту для врахування навігації та футера */
+}
+/* Заголовок */
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2.5rem;
+  color: var(--md-primary-fg-color--light);
+  text-align: center;
+}
+/* Блок опису */
+.hero__description {
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+}
+/* Стилі тексту опису */
+.hero__description p {
+  font-size: 1.05rem;
+  margin: 0 auto 1rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--light);
+}
+/* Кнопки */
+.hero__buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.hero__buttons .md-button {
+  min-width: 140px;
+  padding: 0.7em 1.4em;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+/* Примітка: темний фон, оранжевый текст - стилизована как на второй картинке */
+.hero__note {
+  display: inline-block;
+  background-color: rgba(42, 43, 50, 0.5);
+  color: #ff9100;
+  padding: 0.6rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+/* --- Темна тема Material --- */
+[data-md-color-scheme="slate"] .hero__title {
+  color: white;
+}
+[data-md-color-scheme="slate"] .hero__buttons .md-button {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+[data-md-color-scheme="slate"] .hero__buttons .md-button--primary {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border: none;
+}
+[data-md-color-scheme="slate"] .hero__note {
+  background-color: rgba(42, 43, 50, 0.5);
+  color: #ff9100;
+}
+/* Адаптивність для мобільних пристроїв */
+@media screen and (max-width: 768px) {
+  .hero {
+    padding: 3rem 1rem 2rem;
+    min-height: calc(100vh - 150px);
+  }
+ 
+  .hero__title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+ 
+  .hero__description p {
+    font-size: 0.95rem;
+  }
+ 
+  .hero__buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+  }
+ 
+  .hero__buttons .md-button {
+    width: 100%;
+  }
+}
+/* Стилі для покращення узгодженості з Material for MkDocs */
+.md-button {
+  display: inline-block;
+  padding: 0.625em 1.25em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 125ms, background-color 125ms, border-color 125ms;
+}
+.md-button:focus,
+.md-button:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+.md-button--primary {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  border: none;
+}
+.md-button--primary:focus,
+.md-button--primary:hover {
+  background-color: var(--md-primary-fg-color--dark);}
+
+/* hide whenever the active tab’s link ends with “/” */
+nav.md-tabs:has(.md-tabs__item--active a[href$="com.ua/"]) {
+  display: none !important;
+}
+/* hide whenever the active tab’s link ends with “/” */
+nav.md-tabs:has(.md-tabs__item--active a[href$="8000/"]) {
+  display: none !important;
+}
+nav.md-tabs:has(.md-tabs__item--active a[href$="en/"]) {
+  display: none !important;
+}
