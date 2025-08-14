@@ -32,9 +32,6 @@ description: Офіційні ресурси OpenIPC, спільнота, Telegr
 ### Офіційні ресурси
 - **Сайт OpenIPC:** [openipc.org](https://openipc.org/)
 
-### Документація
-- **Версія документації OpenIPC v3:** [Google Docs](https://docs.google.com/document/d/1aKflZJq0Kv6HkzadFn6S5O1IG_Gklslgt9-m83AD_rs/edit?usp=sharing)
-- **Як прошити Runcam v1 через UART:** [Google Docs](https://docs.google.com/document/d/1CjSadB0vJu52F_fQpsS0DvpLGVtS1DGAefjWZqMJ1_4/edit?usp=sharing)
 
 
 

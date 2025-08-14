@@ -31,8 +31,8 @@ markdown_extensions:
 theme:
   name: material
   language: uk
-  logo: images/logo.png
-  favicon: images/logo1.png
+  logo: images/only-logo-white.png
+  favicon: images/only-logo.png
   custom_dir: docs/overrides
 
   features:
