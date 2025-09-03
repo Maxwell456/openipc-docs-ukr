@@ -73,6 +73,13 @@ nav:
 
   - Програмне забезпечення:
       - Прошивки:
+          - 4G/LTE FPV:
+              - Початок: firmware/overview.md
+              - Налаштування VPN: firmware/vpn.md
+              - Збірка прошивки: firmware/firmware-build.md
+              - Збірка дрону: firmware/drone-build.md
+              - Оновлення налаштувань: firmware/update-settings.md
+              - Карта навігації: firmware/map.md               
           - Прошивки для камер:              
               - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
               - APALink — адаптивний бітрейт: firmware/apalink.md
