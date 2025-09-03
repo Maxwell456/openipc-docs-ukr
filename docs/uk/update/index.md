@@ -11,7 +11,8 @@ description: Всі оновлення OpenIPC FPV згруповані за р�
 - [23 квітня — Jumbo Frame](posts/2025-04-23-jumbo.md)
 - [30 травня — APFPV прошивка](posts/2025-05-30-apfpv.md)
 - [31 липня  — APAlink ](posts/2025-07-31-apalink.md)
+- [3 вересня  — OpenIPC 4G/LTE & Quadrofleet](posts/2025-09-03-openipc4g.md)
 
-https://docs.openipc.org/
+
 
 

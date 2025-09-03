@@ -73,7 +73,7 @@ nav:
 
   - Програмне забезпечення:
       - Прошивки:
-          - 4G/LTE FPV:
+          - OpenIPC 4G/LTE FPV:
               - Початок: firmware/overview.md
               - Налаштування VPN: firmware/vpn.md
               - Збірка прошивки: firmware/firmware-build.md
