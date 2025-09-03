@@ -9,9 +9,9 @@ description: "QuadroFleet — це відкрита модульна платф�
 [**QuadroFleet**](https://quadrofleet.com/) — це модульна відкрита платформа з відкритим кодом для керування FPV-дронами через мобільні мережі.  
 Вона інтегрує відеострімінг із низькою затримкою, безпечну комунікацію та надійні функції безпеки, що робить її придатною як для хобі, так і для професійних застосувань. 
 
-<a href="https://quadrofleet.com/downloads/quadrofleet.msi"><img src="/images/Download-Windows-blue.svg" alt="Download Windows" height="50"></a>
+<a href="https://github.com/beep-systems/quadrofleet.github.io/raw/refs/heads/master/downloads/quadrofleet.msi"><img src="/images/Download-Windows-blue.svg" alt="Download Windows" height="50"></a>
 <a href="https://quadrofleet.com/downloads/quadrofleet.deb"><img src="/images/Download-Linux-green.svg" alt="Download Linux" height="50"></a>
-<a href="https://quadrofleet.com/downloads/quadrofleet.deb"><img src="/images/gp.png" alt="Download Linux" width="140" height="45"></a>
+<a href="https://play.google.com/store/apps/details?id=systems.beep.christof&hl=en"><img src="/images/gp.png" alt="Download Linux" width="140" height="45"></a>
 
 ---
 
