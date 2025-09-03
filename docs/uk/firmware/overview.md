@@ -2,7 +2,7 @@
 title: "QuadroFleet OpenIPC — платформа для FPV для 4G/LTE"
 description: "QuadroFleet — це відкрита модульна платформа для керування FPV-дронами через мобільну мережі. Низька затримка відео, GPS-трекінг, безпечний VPN, OSD і підтримка геймпадів для хобі та професійних застосувань."
 ---
-<img src="/images/quadrofleet.svg" alt="OpenIPC 4G" width="600px"/>  
+<img src="/images/quadrofleet.svg" alt="OpenIPC 4G" width="500px"/>  
 
 ---
 
