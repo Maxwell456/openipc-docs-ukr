@@ -112,7 +112,7 @@ VPN-сервер — це сервіс, що дозволяє створити �
 - **UDP-комунікація**: надсилає керуючі команди та отримує телеметрію/відео.
 
 Завантажити застосунок:  
-- [**QuadroFleet для Windows (.msi)**](https://quadrofleet.com/downloads/quadrofleet.msi)  
+- [**QuadroFleet для Windows (.msi)**](https://github.com/beep-systems/quadrofleet.github.io/raw/refs/heads/master/downloads/quadrofleet.msi)  
 - [**QuadroFleet для Linux (.deb)**](https://quadrofleet.com/downloads/quadrofleet.deb)  
 - [**QuadroFleet для Android (Google Play)**](https://play.google.com/store/apps/details?id=systems.beep.christof&hl=en)  
 

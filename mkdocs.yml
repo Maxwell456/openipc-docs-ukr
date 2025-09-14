@@ -113,9 +113,9 @@ nav:
           - Runcam:
               - WifiLink v1: vtx/runcamwifilink.md
               - WifiLink v2: vtx/runcamwifilinkv2.md
-          - EMAX:
-              - Wyvern Link 100 mW: vtx/emaxwyvern100mw.md
-              - Wyvern Link 800 mW: vtx/emaxwyvern800mw.md
+          #- EMAX:
+              #- Wyvern Link 100 mW: vtx/emaxwyvern100mw.md
+              #- Wyvern Link 800 mW: vtx/emaxwyvern800mw.md
       - Приймачі (VRX):
           - Runcam WifiLink RX: vrx/runcamwifilinkreceiver.md
           - OpenIPC Bonnet: vrx/openipcbonnet.md
@@ -185,9 +185,9 @@ plugins:
             Runcam: Runcam
             WifiLink v1: WifiLink v1
             WifiLink v2: WifiLink v2
-            EMAX: EMAX
-            Wyvern Link 100 mW: Wyvern Link 100 mW
-            Wyvern Link 800 mW: Wyvern Link 800 mW
+            #EMAX: EMAX
+            #Wyvern Link 100 mW: Wyvern Link 100 mW
+            #Wyvern Link 800 mW: Wyvern Link 800 mW
             Приймачі (VRX): Receivers (VRX)
             Runcam WifiLink RX: Runcam WifiLink RX
             OpenIPC Bonnet: OpenIPC Bonnet

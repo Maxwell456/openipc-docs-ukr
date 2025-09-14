@@ -60,10 +60,9 @@ description: Універсальний гайд з прошивки через 
 
 8. Запустіть Putty з відповідним COM-портом:
 
-   ```bash
-   putty.exe -serial COM3 -sercfg 115200,8,n,1,N
-   ```
-
+```bash
+putty.exe -serial COM3 -sercfg 115200,8,n,1,N   
+```
 9. Відкриється вікно **Putty**.
 
 10. Підключіть живлення до FTDI та до Runcam v1.
