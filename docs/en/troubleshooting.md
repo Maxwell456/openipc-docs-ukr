@@ -81,9 +81,9 @@ If the internal memory (eMMC) was completely erased during a failed firmware fla
 
 <img src="/images/vrx-runcam5.png" alt="alink" width="600px"/>
 
-**Step 6: Add the firmware image**
+**Step 6: Add the firmware image**   
 
-1. Unzip the firmware image.
+1. Unzip the firmware image.  
 2. Provide the path to your firmware image.
 3. Double-click on the `storage` field and choose `EMMC`.
 4. Make sure both items are checked, and that "write by address" is enabled.
