@@ -119,6 +119,7 @@ nav:
       - Приймачі (VRX):
           - Runcam WifiLink RX: vrx/runcamwifilinkreceiver.md
           - OpenIPC Bonnet: vrx/openipcbonnet.md
+          - Emax Wyvern Link VRX: vrx/emaxwyvernlinkvrx.md
       - Мережеві карти та драйвери:
           - RTL8812EU: net-cards/rtl8812eu.md
           - RTL8812AU: net-cards/rtl8812au.md
@@ -185,12 +186,10 @@ plugins:
             Runcam: Runcam
             WifiLink v1: WifiLink v1
             WifiLink v2: WifiLink v2
-            #EMAX: EMAX
-            #Wyvern Link 100 mW: Wyvern Link 100 mW
-            #Wyvern Link 800 mW: Wyvern Link 800 mW
             Приймачі (VRX): Receivers (VRX)
             Runcam WifiLink RX: Runcam WifiLink RX
             OpenIPC Bonnet: OpenIPC Bonnet
+            Emax Wyvern Link VRX: Emax Wyvern Link VRX
             Мережеві карти та драйвери: Network Cards & Drivers
             RTL8812EU: RTL8812EU
             RTL8812AU: RTL8812AU
