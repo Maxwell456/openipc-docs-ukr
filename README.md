@@ -5,7 +5,7 @@
 ### Повна документація OpenIPC для FPV-пілотів українською мовою
 
 [![Website](https://img.shields.io/badge/Website-openfpv.com.ua-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://openfpv.com.ua)
-[![GitHub](https://img.shields.io/badge/GitHub-OpenIPC-181717?style=for-the-badge&logo=github)](https://github.com/Maxwell456/openipc-docs-ukr)
+[![GitHub](https://img.shields.io/badge/GitHub-OpenFPV-181717?style=for-the-badge&logo=github)](https://github.com/Maxwell456/openipc-docs-ukr)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 <img src="https://img.shields.io/badge/Language-Українська-yellow?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Ukrainian">
 
