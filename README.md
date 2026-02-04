@@ -1,168 +1,111 @@
 <div align="center">
 
-# 🚁 OpenIPC FPV — Документація українською
+# OpenIPC FPV — Documentation in Ukrainian
 
-### Повна документація OpenIPC для FPV-пілотів українською мовою
+Comprehensive technical documentation of the OpenIPC project for FPV pilots
 
-[![Website](https://img.shields.io/badge/Website-openfpv.com.ua-blue?style=for-the-badge&logo=googlechrome&logoColor=white)](https://openfpv.com.ua)
-[![GitHub](https://img.shields.io/badge/GitHub-OpenFPV-181717?style=for-the-badge&logo=github)](https://github.com/Maxwell456/openipc-docs-ukr)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-<img src="https://img.shields.io/badge/Language-Українська-yellow?style=for-the-badge&logo=googletranslate&logoColor=white" alt="Ukrainian">
+[![Website](https://img.shields.io/badge/Website-openfpv.com.ua-blue?style=flat-square&logo=googlechrome&logoColor=white)](https://openfpv.com.ua)
+[![GitHub](https://img.shields.io/badge/GitHub-OpenFPV-181717?style=flat-square&logo=github)](https://github.com/Maxwell456/openipc-docs-ukr)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+<img src="https://img.shields.io/badge/Language-Ukrainian-yellow?style=flat-square&logo=googletranslate&logoColor=white" alt="Ukrainian">
 
 ---
 
-### 🌟 [**Переглянути документацію →**](https://openfpv.com.ua)
+[**View Documentation Online**](https://openfpv.com.ua)
 
 </div>
 
 ---
 
-## 📖 Про проект
+## Project Overview
 
-**OpenIPC** — це відкрита платформа для IP-камер на цифрових FPV-системах. Цей репозиторій містить повну документацію українською мовою для налаштування та використання OpenIPC у FPV-польотах.
+**OpenIPC** is an open-source platform for IP cameras, optimized for digital FPV systems. This repository contains the full translation and adaptation of the technical documentation into Ukrainian, aimed at assisting in the configuration and operation of OpenIPC-based systems.
 
-### ✨ Особливості
+## Key Documentation Areas
 
-- 🇺🇦 **Повністю українською** — вся документація перекладена
-- 🎨 **Сучасний дизайн** — адаптивний інтерфейс з підтримкою світлої/темної теми
-- � **Швидкий пошук** — миттєвий пошук по всій документації
-- 📱 **Мобільна версія** — зручний перегляд на будь-яких пристроях
-- 🌍 **Двомовність** — підтримка української та англійської мов
-- 🚀 **Постійні оновлення** — актуальна інформація від спільноти
+*   **Hardware**: Guides for VTX (Mario AIO, Thinker, Runcam), VRX (OpenIPC Bonnet, Emax Wyvern), and network adapters (RTL8812EU/AU/BU).
+*   **Software**: Overviews of APFPV, WFB-NG, APALink firmware, and specialized 4G/LTE FPV systems.
+*   **Configuration**: Instructions for telemetry setup, OSD, VTXMenu, and adaptive bitrate.
+*   **Troubleshooting**: Common issue resolution and performance optimization.
 
----
+## Quick Start
 
-## �🚀 Швидкий старт
+### Local Deployment
 
-### Локальна розробка
+To preview the documentation locally, follow these steps:
 
 ```bash
-# Клонування репозиторію
+# Clone the repository
 git clone https://github.com/Maxwell456/openipc-docs-ukr.git
 cd openipc-docs-ukr
 
-# Встановлення залежностей
+# Install dependencies
 pip install mkdocs-material mkdocs-static-i18n
 
-# Запуск локального сервера
+# Start the local development server
 mkdocs serve
 ```
 
-Відкрийте http://127.0.0.1:8000 у браузері 🎉
+The documentation will be available at `http://127.0.0.1:8000`.
 
-### 🐳 Docker
+### Docker Usage
 
 <details>
-<summary><b>Розгорнути Docker команди</b></summary>
+<summary>Show Docker Commands</summary>
 
-**Збірка образу:**
+**Build image:**
 ```bash
 docker build -t openipc-docs .
 ```
 
-**Оновлення без кешу:**
-```bash
-docker build --no-cache -t openipc-docs .
-```
-
-**Запуск контейнера:**
+**Run container:**
 ```bash
 docker run -d --name openipc-docs -p 8888:80 openipc-docs
 ```
 
-**Зупинка контейнера:**
+**Stop and remove container:**
 ```bash
 docker stop openipc-docs && docker rm openipc-docs
 ```
 
 </details>
 
----
+## Repository Structure
 
-## 📚 Структура документації
+| Path | Description |
+| :--- | :--- |
+| **docs/uk** | Primary documentation content in Ukrainian |
+| **docs/en** | English version (for synchronization) |
+| **mkdocs.yml** | Site structure and plugin configuration |
+| **Dockerfile** | Containerization setup |
 
-<table>
-<tr>
-<td width="50%">
+## Contributing
 
-### 🎯 Перші кроки
-- Швидкий старт
-- Налаштування дрона
-- Налаштування приймача (VRX)
-- Збірка наземної станції
-- Поширені проблеми
+Contributions from the community are welcome. You can help by:
 
-</td>
-<td width="50%">
+1.  **Reporting Issues**: Use the [Issue Tracker](https://github.com/Maxwell456/openipc-docs-ukr/issues/new) for bugs or suggestions.
+2.  **Submitting Changes**: Create a Pull Request with fixes or new content.
+3.  **Localization**: Assist in translating new sections from the official documentation.
 
-### 🛠️ Обладнання
-- **VTX**: Mario AIO, Thinker, Runcam
-- **VRX**: Emax Wyvern, OpenIPC Bonnet
-- **Мережеві карти**: RTL8812EU/AU/BU
+### Pull Request Process
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/your-feature`).
+3.  Commit your changes (`git commit -m 'Add descriptive message'`).
+4.  Push to the branch (`git push origin feature/your-feature`).
+5.  Open a Pull Request.
 
-### 💾 Прошивки
-- APFPV — посібник для початківців
-- WFB-NG налаштування
-- APALink — адаптивний бітрейт
-- OpenIPC 4G/LTE FPV
+## License
 
-</td>
-<td width="50%">
-
-### ⚙️ Конфігурація
-- Оновлення прошивки
-- Телеметрія та OSD
-- VTXMenu
-- Adaptive-Link
-
-</td>
-</tr>
-</table>
-
----
-
-## 🤝 Внесок у проект
-
-Ми вітаємо будь-які покращення! Якщо ви знайшли помилку або хочете додати нову інформацію:
-
-1. 🍴 Зробіть Fork репозиторію
-2. 🌿 Створіть нову гілку (`git checkout -b feature/amazing-feature`)
-3. ✍️ Внесіть зміни
-4. 💾 Закомітьте (`git commit -m 'Add some amazing feature'`)
-5. 📤 Відправте (`git push origin feature/amazing-feature`)
-6. 🎉 Створіть Pull Request
-
-### 📝 Як повідомити про помилку
-
-Знайшли помилку в документації? [Створіть Issue](https://github.com/Maxwell456/openipc-docs-ukr/issues/new) або виділіть текст на сайті та натисніть кнопку "Знайшли помилку?"
-
----
-
-## 🔗 Корисні посилання
-
-- 🌐 [Офіційний сайт OpenIPC](https://openipc.org)
-- 💬 [Telegram спільнота](https://t.me/openipc)
-- 🐙 [GitHub OpenIPC](https://github.com/OpenIPC)
-
----
-
-## 📄 Ліцензія
-
-Цей проект розповсюджується під ліцензією MIT. Детальніше в файлі [LICENSE](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-### 💙💛 Made with ❤️ by Ukrainian FPV Community
+Maintained by the Ukrainian FPV Community
 
-**Підтримайте проект ⭐ якщо він вам допоміг!**
-
-[![Star History](https://img.shields.io/github/stars/Maxwell456/openipc-docs-ukr?style=social)](https://github.com/Maxwell456/openipc-docs-ukr/stargazers)
+[![GitHub Stars](https://img.shields.io/github/stars/Maxwell456/openipc-docs-ukr?style=social)](https://github.com/Maxwell456/openipc-docs-ukr/stargazers)
 
 </div>
+
