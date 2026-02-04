@@ -24,17 +24,18 @@
 }
 
 /* Блок опису */
+/* Блок опису */
 .hero__description {
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
+  max-width: 900px;
+  margin: 0 auto 1.2rem;
 }
 
 /* Стилі тексту опису */
 .hero__description p {
-  font-size: 1.05rem;
-  margin: 0 auto 1rem;
-  line-height: 1.6;
-  color: var(--md-default-fg-color--light);
+  font-size: 0.8rem;
+  margin: 0 auto 0.8rem;
+  line-height: 1.5;
+  color: var(--md-default-fg-color);
 }
 
 /* Кнопки */
@@ -42,14 +43,14 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-bottom: 3rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .hero__buttons .md-button {
-  min-width: 140px;
-  padding: 0.7em 1.4em;
-  border-radius: 0.5rem;
+  min-width: 120px;
+  padding: 0.5em 1em;
+  border-radius: 2rem;
   font-weight: 500;
   transition: all 0.2s ease;
 }
@@ -99,7 +100,7 @@
   }
 
   .hero__description p {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .hero__buttons {
@@ -107,21 +108,34 @@
     align-items: center;
     width: 100%;
     max-width: 280px;
+    gap: 1rem;
   }
 
   .hero__buttons .md-button {
     width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .hero__buttons .md-button:last-child {
+    margin-bottom: 0;
   }
 }
 
 /* Стилі для покращення узгодженості з Material for MkDocs */
 .md-button {
   display: inline-block;
-  padding: 0.625em 1.25em;
-  font-size: 0.8rem;
-  font-weight: 500;
+  padding: 0.5em 1.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: color 125ms, background-color 125ms, border-color 125ms;
+  transition: all 125ms;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2rem;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--md-default-fg-color);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .md-button:focus,
