@@ -1,0 +1,4 @@
+<!-- docs/meta-tags.html -->
+{% set page_slug = page.url.strip('/').replace('/', '-') %}
+<meta property="og:image" content="{{ '/images/social/' ~ page_slug ~ '.png' | url }}" />
+<meta name="twitter:card" content="summary_large_image" />

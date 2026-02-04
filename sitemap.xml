@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://openfpv.com.ua/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/adaptive-link/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/adaptive-link/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/adaptive-link/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/advanced/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/advanced/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/advanced/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/drone/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/drone/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/drone/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/examples/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/examples/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/examples/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/groundstation-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/groundstation-build/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/groundstation-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/groundstation/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/groundstation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/groundstation/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/link/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/link/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/link/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/quick-start/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/quick-start/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/quick-start/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/troubleshooting/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/apalink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apalink/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apalink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/apfpv-greg/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv-greg/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv-greg/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/apfpv-gs/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv-gs/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv-gs/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/apfpv/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/drone-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/drone-build/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/drone-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/firmware-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/firmware-build/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/firmware-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/map/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/map/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/map/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/overview/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/overview/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/overview/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/uart-flashing/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/uart-flashing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/uart-flashing/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/update-settings/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/update-settings/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/update-settings/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/upgrading-firmware/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/upgrading-firmware/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/upgrading-firmware/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/firmware/vpn/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/vpn/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/vpn/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/net-cards/rtl8812au/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812au/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812au/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/net-cards/rtl8812bu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812bu/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812bu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/net-cards/rtl8812eu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812eu/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812eu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/telemetry/vtx-menu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/telemetry/vtx-menu/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/telemetry/vtx-menu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/posts/2025-04-23-jumbo/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-04-23-jumbo/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-04-23-jumbo/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/posts/2025-04-25-webui/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-04-25-webui/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-04-25-webui/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/posts/2025-05-30-apfpv/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-05-30-apfpv/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-05-30-apfpv/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/posts/2025-07-31-apalink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-07-31-apalink/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-07-31-apalink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/update/posts/2025-09-03-openipc4g/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-09-03-openipc4g/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-09-03-openipc4g/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vrx/emaxwyvernlinkvrx/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/emaxwyvernlinkvrx/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/emaxwyvernlinkvrx/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vrx/openipcbonnet/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/openipcbonnet/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/openipcbonnet/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vrx/runcamwifilinkreceiver/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/runcamwifilinkreceiver/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/runcamwifilinkreceiver/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vtx/marioaio/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/marioaio/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/marioaio/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vtx/runcamwifilink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/runcamwifilink/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/runcamwifilink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vtx/runcamwifilinkv2/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/runcamwifilinkv2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/runcamwifilinkv2/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vtx/sigmastar-ssc338q/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/sigmastar-ssc338q/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/sigmastar-ssc338q/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/vtx/thinkerairunit/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/thinkerairunit/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/thinkerairunit/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/drone/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/drone/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/drone/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/groundstation-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/groundstation-build/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/groundstation-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/groundstation/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/groundstation/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/groundstation/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/quick-start/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/quick-start/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/quick-start/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/troubleshooting/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/troubleshooting/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/troubleshooting/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/apfpv-gs/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv-gs/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv-gs/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/apfpv/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/adaptive-link/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/adaptive-link/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/adaptive-link/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/advanced/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/advanced/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/advanced/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/examples/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/examples/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/examples/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/link/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/link/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/link/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/apalink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apalink/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apalink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/apfpv-greg/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/apfpv-greg/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/apfpv-greg/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/drone-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/drone-build/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/drone-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/firmware-build/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/firmware-build/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/firmware-build/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/map/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/map/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/map/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/overview/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/overview/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/overview/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/uart-flashing/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/uart-flashing/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/uart-flashing/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/update-settings/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/update-settings/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/update-settings/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/upgrading-firmware/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/upgrading-firmware/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/upgrading-firmware/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/firmware/vpn/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/firmware/vpn/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/firmware/vpn/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/net-cards/rtl8812au/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812au/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812au/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/net-cards/rtl8812bu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812bu/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812bu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/net-cards/rtl8812eu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/net-cards/rtl8812eu/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/net-cards/rtl8812eu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/telemetry/vtx-menu/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/telemetry/vtx-menu/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/telemetry/vtx-menu/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/posts/2025-04-23-jumbo/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-04-23-jumbo/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-04-23-jumbo/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/posts/2025-04-25-webui/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-04-25-webui/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-04-25-webui/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/posts/2025-05-30-apfpv/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-05-30-apfpv/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-05-30-apfpv/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/posts/2025-07-31-apalink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-07-31-apalink/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-07-31-apalink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/update/posts/2025-09-03-openipc4g/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/update/posts/2025-09-03-openipc4g/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/update/posts/2025-09-03-openipc4g/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vrx/emaxwyvernlinkvrx/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/emaxwyvernlinkvrx/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/emaxwyvernlinkvrx/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vrx/openipcbonnet/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/openipcbonnet/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/openipcbonnet/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vrx/runcamwifilinkreceiver/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vrx/runcamwifilinkreceiver/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vrx/runcamwifilinkreceiver/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vtx/marioaio/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/marioaio/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/marioaio/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vtx/runcamwifilink/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/runcamwifilink/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/runcamwifilink/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vtx/runcamwifilinkv2/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/runcamwifilinkv2/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/runcamwifilinkv2/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vtx/sigmastar-ssc338q/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/sigmastar-ssc338q/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/sigmastar-ssc338q/"/>
+    </url>
+    <url>
+        <loc>https://openfpv.com.ua/en/vtx/thinkerairunit/</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://openfpv.com.ua/en/vtx/thinkerairunit/"/>
+        <xhtml:link rel="alternate" hreflang="uk" href="https://openfpv.com.ua/vtx/thinkerairunit/"/>
+    </url>
+</urlset>
