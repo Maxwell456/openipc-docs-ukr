@@ -1,5 +1,9 @@
+import os
 import yaml
 from datetime import datetime
+
+# Handle !!python/name tags in mkdocs.yml
+yaml.SafeLoader.add_multi_constructor('tag:yaml.org,2002:python/name:', lambda loader, suffix, node: suffix)
 
 with open("mkdocs.yml", "r", encoding="utf-8") as f:
     config = yaml.safe_load(f)
@@ -22,6 +26,10 @@ def extract_paths(nav, parent=""):
             paths.append(path)
 
 extract_paths(config["nav"])
+
+# Ensure site directory exists
+if not os.path.exists("site"):
+    os.makedirs("site")
 
 with open("site/sitemap.xml", "w", encoding="utf-8") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')

@@ -25,6 +25,8 @@ extra:
 
 markdown_extensions:
   - admonition
+  - md_in_html
+  - attr_list
   - toc:
       permalink: true
 
@@ -44,6 +46,7 @@ theme:
     - toc.integrate
     - search.highlight
     - search.suggest
+    - content.code.copy
 
   palette:
     - scheme: slate
@@ -83,6 +86,7 @@ nav:
           - Прошивки для камер:              
               - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
               - APALink — адаптивний бітрейт: firmware/apalink.md
+              - APFPV - Greg's: firmware/apfpv-greg.md
           - Прошивки для наземки: 
               - Прошивки для наземної станції APFPV: firmware/apfpv-gs.md
 
