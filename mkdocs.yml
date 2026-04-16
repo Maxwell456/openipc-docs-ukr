@@ -27,6 +27,8 @@ markdown_extensions:
   - admonition
   - md_in_html
   - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
   - toc:
       permalink: true
 
@@ -82,13 +84,18 @@ nav:
               - Збірка прошивки: firmware/firmware-build.md
               - Збірка дрону: firmware/drone-build.md
               - Оновлення налаштувань: firmware/update-settings.md
-              - Карта навігації: firmware/map.md               
+              - Карта навігації: firmware/map.md         
           - Прошивки для камер:              
               - Прошивка APFPV — Посібник для початківців: firmware/apfpv.md
               - APALink — адаптивний бітрейт: firmware/apalink.md
-              - APFPV - Greg's: firmware/apfpv-greg.md
+              - APFPV - Greg's: firmware/apfpv-greg.md         
           - Прошивки для наземки: 
               - Прошивки для наземної станції APFPV: firmware/apfpv-gs.md
+          - Waybeam Venc – відеоенкодер для FPV:
+              - Огляд: firmware/waybeam-venc.md
+              - Встановлення на камеру: firmware/waybeam-venc-install-camera.md
+              - Інтеграція з WFB-ng: firmware/waybeam-venc-install-groundstation.md
+              - Веб-панель та API: firmware/waybeam-venc-web-interface.md    
 
   - Конфігурація:
       - Прошивки:
@@ -206,5 +213,12 @@ plugins:
             Прошивки для наземки: Firmware for ground
             Прошивки для наземної станції APFPV: Firmware for APFPV ground station
             Прошивки для камер: Firmware for cameras
+            Waybeam Venc – відеоенкодер для FPV: Waybeam Venc – FPV Video Encoder
+            Огляд: Overview
+            Встановлення на камеру: Camera Installation
+            Інтеграція з WFB-ng: WFB-ng Integration
+            Веб-панель та API: Web Panel & API
+            Базове оновлення прошивки: Basic Firmware Update
+            APALink — адаптивний бітрейт: APALink — Adaptive Bitrate
 
 copyright: "© 2025 OpenFPV Docs — Усі права захищені"
