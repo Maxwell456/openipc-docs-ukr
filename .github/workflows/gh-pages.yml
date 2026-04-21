@@ -63,6 +63,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # ghp-import is installed with mkdocs-material.
         # One push → one "pages build and deployment" run (no duplicates).
+        # site/ already contains all sitemaps generated in the previous step:
+        #   sitemap.xml        — combined urlset (UK+EN) for MkDocs Material instant nav
+        #   sitemap-ua.xml     — Ukrainian pages only
+        #   en/sitemap.xml     — English pages only
+        #   sitemap_index.xml  — sitemap index for Google Search Console
         run: |
           ghp-import site/ \
             --force \
