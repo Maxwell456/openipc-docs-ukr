@@ -41,6 +41,11 @@ hide:
   </a>
     
   </div>
+  
+  <div class="hero__banner">
+    <span class="hero__banner-text">тут може бути ваша реклама</span>
+  </div>
+
 
   <!-- Заметка с жёлтым фоном -->
   <div class="hero__note">

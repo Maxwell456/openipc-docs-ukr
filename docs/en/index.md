@@ -40,6 +40,11 @@ hide:
     </a>
   </div>
 
+  <div class="hero__banner">
+    <span class="hero__banner-text">your ad could be here</span>
+  </div>
+
+
   <!-- Disclaimer note -->
   <div class="hero__note">
     ⚠️ This website is created by the Ukrainian OpenIPC user community and is not an official resource.

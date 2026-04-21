@@ -151,6 +151,53 @@ nav.md-tabs:has(.md-tabs__item--active a[href$="8000/"]) {
   display: none !important;
 }
 
-nav.md-tabs:has(.md-tabs__item--active a[href$="en/"]) {
-  display: none !important;
+
+/* Рекламний банер (460x90px) */
+.hero__banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 460px;
+  height: 90px;
+  margin: 1.5rem auto 0;
+  border: 1px dashed var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  background-color: rgba(128, 128, 128, 0.05);
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+  cursor: default;
 }
+
+.hero__banner:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-color: var(--md-primary-fg-color);
+}
+
+.hero__banner-text {
+  color: var(--md-default-fg-color--light);
+  opacity: 0.4;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+[data-md-color-scheme="slate"] .hero__banner {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-md-color-scheme="slate"] .hero__banner:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Адаптивність для банера */
+@media screen and (max-width: 480px) {
+  .hero__banner {
+    width: 280px;
+    height: 70px;
+  }
+  .hero__banner-text {
+    font-size: 0.65rem;
+  }
+}
