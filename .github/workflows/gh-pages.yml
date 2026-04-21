@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history needed for git log lastmod dates
 
       - name: Set Git author
         run: |
@@ -50,21 +52,27 @@ jobs:
       - name: Deploy site to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        # mkdocs gh-deploy builds the site internally and pushes to gh-pages.
-        # It auto-generates /sitemap.xml with ALL pages (UK + EN).
+        # gh-deploy builds internally into site/ and pushes to gh-pages branch.
         run: mkdocs gh-deploy --force --remote-name origin
 
-      - name: Generate /en/sitemap.xml
-        # Root /sitemap.xml is already handled by MkDocs Material above.
-        # We only need to add the missing /en/sitemap.xml for the English section.
+      - name: Generate custom sitemaps
+        # Runs after deploy so site/ exists with all built pages.
+        # Produces: site/sitemap-ua.xml, site/en/sitemap.xml,
+        #           site/sitemap_index.xml, site/sitemap.xml (index)
         run: python docs/build-scripts/generate_sitemap.py
 
-      - name: Publish /en/sitemap.xml to gh-pages branch
+      - name: Publish sitemaps to gh-pages branch
         run: |
           git fetch origin gh-pages
           git checkout gh-pages
+          # UA sitemap
+          cp site/sitemap-ua.xml sitemap-ua.xml
+          # EN sitemap
           mkdir -p en
           cp site/en/sitemap.xml en/sitemap.xml
-          git add en/sitemap.xml
-          git diff --staged --quiet || git commit -m "ci: add en/sitemap.xml [skip ci]"
+          # Sitemap index (overwrites MkDocs-generated sitemap.xml)
+          cp site/sitemap_index.xml sitemap_index.xml
+          cp site/sitemap.xml sitemap.xml
+          git add sitemap-ua.xml en/sitemap.xml sitemap_index.xml sitemap.xml
+          git diff --staged --quiet || git commit -m "ci: update sitemaps [skip ci]"
           git push origin gh-pages
