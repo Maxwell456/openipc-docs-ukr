@@ -47,14 +47,24 @@ jobs:
             mkdocs-minify-plugin \
             mkdocs-static-i18n
 
-
-      - name: Build site (to generate /site folder)
-        run: mkdocs build
-
-      - name: Generate sitemap
-        run: python docs/build-scripts/generate_sitemap.py
-
       - name: Deploy site to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # mkdocs gh-deploy builds the site internally and pushes to gh-pages.
+        # It auto-generates /sitemap.xml with ALL pages (UK + EN).
         run: mkdocs gh-deploy --force --remote-name origin
+
+      - name: Generate /en/sitemap.xml
+        # Root /sitemap.xml is already handled by MkDocs Material above.
+        # We only need to add the missing /en/sitemap.xml for the English section.
+        run: python docs/build-scripts/generate_sitemap.py
+
+      - name: Publish /en/sitemap.xml to gh-pages branch
+        run: |
+          git fetch origin gh-pages
+          git checkout gh-pages
+          mkdir -p en
+          cp site/en/sitemap.xml en/sitemap.xml
+          git add en/sitemap.xml
+          git diff --staged --quiet || git commit -m "ci: add en/sitemap.xml [skip ci]"
+          git push origin gh-pages
