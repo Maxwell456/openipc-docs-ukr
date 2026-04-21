@@ -158,6 +158,9 @@ def write_sitemap(filepath: str, entries: list[str]) -> None:
 
 
 def write_sitemap_index() -> None:
+    """Write sitemap_index.xml only (separate file for Google Search Console).
+    Does NOT overwrite sitemap.xml — that must remain a urlset for
+    MkDocs Material's navigation.instant to parse correctly."""
     content = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -171,9 +174,15 @@ def write_sitemap_index() -> None:
         f"  </sitemap>\n"
         f"</sitemapindex>\n"
     )
-    for path in ("site/sitemap_index.xml", "site/sitemap.xml"):
-        with open(path, "w", encoding="utf-8") as f:
-            f.write(content)
+    with open("site/sitemap_index.xml", "w", encoding="utf-8") as f:
+        f.write(content)
+
+
+def write_combined_sitemap(uk_entries: list[str], en_entries: list[str]) -> None:
+    """Write site/sitemap.xml as a combined urlset with ALL pages (UK + EN).
+    MkDocs Material's navigation.instant reads this file to discover all site
+    pages — it must stay in urlset format, not sitemapindex."""
+    write_sitemap("site/sitemap.xml", uk_entries + en_entries)
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -208,8 +217,10 @@ os.makedirs("site/en", exist_ok=True)
 write_sitemap("site/sitemap-ua.xml", uk_entries)
 write_sitemap("site/en/sitemap.xml", en_entries)
 write_sitemap_index()
+write_combined_sitemap(uk_entries, en_entries)
 
+print(f"✅ sitemap.xml        — {len(uk_entries) + len(en_entries)} сторінок (UK+EN, urlset для теми)")
 print(f"✅ sitemap-ua.xml     — {len(uk_entries)} сторінок (UK)")
 print(f"✅ en/sitemap.xml     — {len(en_entries)} сторінок (EN)")
-print(f"✅ sitemap_index.xml  — індекс обох")
-print(f"✅ sitemap.xml        — оновлено (→ sitemap_index)")
+print(f"✅ sitemap_index.xml  — індекс обох (для Google Search Console)")
+
