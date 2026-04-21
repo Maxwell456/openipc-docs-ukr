@@ -7,10 +7,10 @@ hide:
 
 <div class="hero" markdown="1">
 
-<!-- Ad Banner (above the title) -->
-<div id="ad-banner-wrap" onclick="document.getElementById('ad-modal').style.display='flex'" class="ad-banner">
-  <!-- TO INSERT IMAGE: replace the div below with: <img src="images/banner.png" alt="Ad"> -->
-  <div class="ad-banner__placeholder">
+<!-- Custom Section -->
+<div id="partner-section-v8" onclick="document.getElementById('feedback-view-q5').style.display='flex'" class="content-module-s2">
+  <!-- TO INSERT IMAGE: replace the div below with: <img src="images/banner.png" alt="Promo"> -->
+  <div class="module-inner-p3">
     <div style="font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;">Тут може бути ваша реклама</div>
     <div style="font-size:0.75rem;opacity:0.7;margin-top:4px;">Натисніть для замовлення</div>
   </div>
@@ -43,75 +43,75 @@ OpenIPC — це відкрита платформа, яка перетворю�
 
 </div>
 
-<!-- Ad Modal -->
-<div id="ad-modal" style="display:none;position:fixed;z-index:99999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
+<!-- Info Overlay -->
+<div id="feedback-view-q5" style="display:none;position:fixed;z-index:99999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);align-items:center;justify-content:center;">
   <div style="background:#1e293b;color:#f8fafc;padding:2rem;border-radius:16px;width:90%;max-width:480px;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.1);">
-    <span id="ad-modal-close" style="position:absolute;top:1rem;right:1.2rem;font-size:1.5rem;cursor:pointer;color:#94a3b8;line-height:1;">&times;</span>
+    <span id="view-dismiss-x1" style="position:absolute;top:1rem;right:1.2rem;font-size:1.5rem;cursor:pointer;color:#94a3b8;line-height:1;">&times;</span>
     <h2 style="margin:0 0 1.5rem;font-size:1.4rem;color:#3b82f6;border:none;">Замовити рекламу</h2>
-    <div id="ad-status" style="display:none;padding:0.75rem;border-radius:8px;margin-bottom:1rem;font-size:0.9rem;"></div>
-    <form id="ad-contact-form" style="display:flex;flex-direction:column;gap:1rem;">
-      <!-- Honeypot — прихований від людей, але боти його заповнюють -->
-      <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
-      <input type="text" id="ad-name" placeholder="Ваше ім'я" required style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;">
-      <input type="email" id="ad-email" placeholder="Ваш емейл" required style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;">
-      <textarea id="ad-message" placeholder="Ваше повідомлення" required rows="4" style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;resize:vertical;"></textarea>
-      <button id="ad-submit-btn" type="button" onclick="sendAdEmail()" style="background:#3b82f6;color:#fff;border:none;padding:0.8rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;">Відправити</button>
+    <div id="interaction-log-z9" style="display:none;padding:0.75rem;border-radius:8px;margin-bottom:1rem;font-size:0.9rem;"></div>
+    <form id="request-form-k4" style="display:flex;flex-direction:column;gap:1rem;">
+      <!-- Hidden check for validation -->
+      <input type="checkbox" name="u_check" style="display:none;" tabindex="-1" autocomplete="off">
+      <input type="text" id="field-user-n1" placeholder="Ваше ім'я" required style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;">
+      <input type="email" id="field-mail-e2" placeholder="Ваш емейл" required style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;">
+      <textarea id="field-text-m3" placeholder="Ваше повідомлення" required rows="4" style="background:#0f172a;border:1px solid #334155;border-radius:8px;padding:0.75rem;color:#f8fafc;font-family:inherit;font-size:0.9rem;outline:none;resize:vertical;"></textarea>
+      <button id="action-trigger-s4" type="button" onclick="handleRequestSubmission()" style="background:#3b82f6;color:#fff;border:none;padding:0.8rem;border-radius:8px;font-weight:700;font-size:1rem;cursor:pointer;">Відправити</button>
     </form>
   </div>
 </div>
 
 <script>
 (function(){
-  var modal=document.getElementById('ad-modal');
-  document.getElementById('ad-modal-close').onclick=function(){modal.style.display='none';};
-  window.addEventListener('click',function(e){if(e.target===modal)modal.style.display='none';});
+  var overlay=document.getElementById('feedback-view-q5');
+  document.getElementById('view-dismiss-x1').onclick=function(){overlay.style.display='none';};
+  window.addEventListener('click',function(e){if(e.target===overlay)overlay.style.display='none';});
 })();
 
-function sendAdEmail(){
-  var botcheck=document.querySelector('[name="botcheck"]');
-  if(botcheck && botcheck.checked) return;
+function handleRequestSubmission(){
+  var check=document.querySelector('[name="u_check"]');
+  if(check && check.checked) return;
 
-  var name=(document.getElementById('ad-name').value||'').trim();
-  var email=(document.getElementById('ad-email').value||'').trim();
-  var message=(document.getElementById('ad-message').value||'').trim();
-  var status=document.getElementById('ad-status');
-  var btn=document.getElementById('ad-submit-btn');
+  var user=(document.getElementById('field-user-n1').value||'').trim();
+  var mail=(document.getElementById('field-mail-e2').value||'').trim();
+  var text=(document.getElementById('field-text-m3').value||'').trim();
+  var log=document.getElementById('interaction-log-z9');
+  var trigger=document.getElementById('action-trigger-s4');
 
-  if(!name||!email||!message){
-    status.innerText='Будь ласка, заповніть всі поля.';
-    status.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.9rem;margin-bottom:1rem;';
+  if(!user||!mail||!text){
+    log.innerText='Будь ласка, заповніть всі поля.';
+    log.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.9rem;margin-bottom:1rem;';
     return;
   }
 
-  btn.disabled=true; btn.innerText='Надсилається...'; status.style.display='none';
+  trigger.disabled=true; trigger.innerText='Надсилається...'; log.style.display='none';
 
   fetch('https://form.openfpv.workers.dev',{
     method:'POST',
     headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({
       access_key:'58a53acb-8863-4ffe-8eb0-4b51eb6e9322',
-      subject:'Замовлення реклами від '+name,
-      name:name,
-      email:email,
-      message:message,
-      botcheck: botcheck ? botcheck.checked : false
+      subject:'Замовлення від '+user,
+      name:user,
+      email:mail,
+      message:text,
+      botcheck: !!(check && check.checked)
     })
   })
   .then(function(r){return r.json();})
   .then(function(d){
     if(d.success){
-      status.innerText='✅ Листа надіслано! Ми зв\'яжемось з вами найближчим часом.';
-      status.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(34,197,94,0.15);color:#4ade80;font-size:0.9rem;margin-bottom:1rem;';
-      document.getElementById('ad-contact-form').reset();
-      setTimeout(function(){document.getElementById('ad-modal').style.display='none';status.style.display='none';},3500);
+      log.innerText='✅ Листа надіслано! Ми зв\'яжемось з вами найближчим часом.';
+      log.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(34,197,94,0.15);color:#4ade80;font-size:0.9rem;margin-bottom:1rem;';
+      document.getElementById('request-form-k4').reset();
+      setTimeout(function(){document.getElementById('feedback-view-q5').style.display='none';log.style.display='none';},3500);
     } else {
       throw new Error(d.message||'Error');
     }
   })
   .catch(function(err){
-    status.innerText='❌ Помилка надсилання. Спробуйте ще раз або напишіть на openfpv.com.ua@gmail.com';
-    status.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.9rem;margin-bottom:1rem;';
+    log.innerText='❌ Помилка надсилання. Спробуйте ще раз або напишіть на openfpv.com.ua@gmail.com';
+    log.style.cssText='display:block;padding:0.75rem;border-radius:8px;background:rgba(239,68,68,0.15);color:#f87171;font-size:0.9rem;margin-bottom:1rem;';
   })
-  .finally(function(){btn.disabled=false;btn.innerText='Відправити';});
+  .finally(function(){trigger.disabled=false;trigger.innerText='Відправити';});
 }
 </script>

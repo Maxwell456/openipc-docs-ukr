@@ -21,8 +21,8 @@
   min-height: calc(100vh - 170px);
 }
 
-/* --- Ad Banner --- */
-.ad-banner {
+/* --- Promo Content --- */
+.content-module-s2 {
   width: 720px;
   height: 90px;
   max-width: 100%;
@@ -39,27 +39,27 @@
   cursor: pointer;
   box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.05);
   text-align: center;
-  overflow: hidden; /* Important for future image banners */
+  overflow: hidden; /* Important for future image module-inners */
   position: relative;
   z-index: 5;
   pointer-events: auto !important;
 }
 
-.ad-banner:hover {
+.content-module-s2:hover {
   background: rgba(59, 130, 246, 0.08);
   border-color: rgba(59, 130, 246, 0.8);
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.12), inset 0 0 20px rgba(59, 130, 246, 0.08);
   transform: translateY(-3px);
 }
 
-.ad-banner img {
+.content-module-s2 img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 11px;
 }
 
-.ad-banner__placeholder {
+.module-inner-p3 {
   display: flex;
   flex-direction: column;
   align-items: center;
