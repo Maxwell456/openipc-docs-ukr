@@ -15,16 +15,25 @@ base_url = config.get("site_url", "http://localhost").rstrip("/")
 now = datetime.now().date().isoformat()
 uk_paths = []
 
+def normalize_path(raw):
+    """Convert a nav path like 'index.md' or 'update/index.md' to proper URL path.
+    MkDocs treats index.md as the root of its parent directory."""
+    path = raw.replace(".md", "").lstrip("/")
+    # Remove trailing 'index' segment: 'index' -> '', 'update/index' -> 'update'
+    if path == "index" or path.endswith("/index"):
+        path = path[: -len("index")].rstrip("/")
+    return path
+
 def extract_paths(nav):
     for item in nav:
         if isinstance(item, dict):
             for key, value in item.items():
                 if isinstance(value, str):
-                    uk_paths.append(value.replace(".md", "").lstrip("/"))
+                    uk_paths.append(normalize_path(value))
                 elif isinstance(value, list):
                     extract_paths(value)
         elif isinstance(item, str):
-            uk_paths.append(item.replace(".md", "").lstrip("/"))
+            uk_paths.append(normalize_path(item))
 
 extract_paths(config["nav"])
 
