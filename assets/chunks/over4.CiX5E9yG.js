@@ -1,1 +1,0 @@
-const s="/images/Download-Windows-blue.svg",o="/images/Download-Linux-green.svg",a="/images/gp.png",e="/images/overview.png",i="/images/over2.png",n="/images/over3.png",g="/images/over4.png";export{s as _,o as a,a as b,e as c,i as d,n as e,g as f};
