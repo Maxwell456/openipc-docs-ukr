@@ -60,9 +60,7 @@ description: Connection, setup and firmware update guide for the OpenIPC Mario A
   </tbody>
 </table>
 
-
 <img src="https://github.com/user-attachments/assets/ad675599-61ce-4cec-a9bf-5933d907c53a" alt="" width="600px"/>
-
 
 ---
 
@@ -127,7 +125,6 @@ To connect the Mario AIO to a flight controller (e.g. SpeedyBee F405 WING) use t
 1. Download the [Multiplatform Configurator](https://github.com/OpenIPC/openipc-configurator/releases/).
 2. Firmware - OpenIPC - MarioAIO - click Update.
 
-
 >⚠️ Before updating the firmware it is recommended to back up your settings.
 
 ---
@@ -139,7 +136,6 @@ To connect the Mario AIO to a flight controller (e.g. SpeedyBee F405 WING) use t
   - `stbc=1`, `ldpc=1`
   - `mcs` index: 1 or 3
   - Video bitrate: 4096 / 8192 / 12688
-
 
 >⚠️ It is recommended to limit Txpower to 1 when powering via USB only.
 

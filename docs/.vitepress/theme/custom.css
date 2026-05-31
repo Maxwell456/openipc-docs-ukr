@@ -258,16 +258,19 @@ body::after {
   background: rgba(20, 21, 38, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
-/* Animated aurora background — two drifting brand-coloured blobs */
+/* Animated aurora background — two drifting brand-coloured blobs.
+   Clips itself (overflow:hidden) so the card can stay overflow:visible
+   and let the results dropdown float over the page without being cut. */
 .hero-search-aurora {
   position: absolute;
-  inset: -50%;
+  inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  border-radius: 20px;
   filter: blur(46px);
   opacity: 0.55;
 }
@@ -344,27 +347,26 @@ body::after {
   50% { box-shadow: 0 0 0 7px rgba(61, 106, 255, 0.04); }
 }
 
-/* The big search field */
-.hero-search {
+/* The big search field (inline — results show in a dropdown, no modal) */
+.hero-search-fieldwrap {
+  position: relative;
+}
+
+.hero-search-field {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 15px 16px;
+  padding: 13px 16px;
   border-radius: 14px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg);
-  color: var(--vp-c-text-2);
-  font-size: 1.02rem;
-  cursor: text;
-  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
 }
 
-.hero-search:hover,
-.hero-search:focus-visible {
+.hero-search-field:focus-within {
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 0 0 4px var(--vp-c-brand-soft);
-  outline: none;
 }
 
 .hero-search-icon {
@@ -372,29 +374,78 @@ body::after {
   flex-shrink: 0;
 }
 
-.hero-search-text {
+.hero-search-input {
   flex: 1;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--vp-c-text-1);
+  font-size: 1.02rem;
+  font-family: inherit;
 }
 
-.hero-search-keys {
-  display: flex;
-  gap: 4px;
-  flex-shrink: 0;
+.hero-search-input::placeholder {
+  color: var(--vp-c-text-3);
 }
 
-.hero-search-keys kbd {
-  font-family: var(--vp-font-family-base);
-  font-size: 11px;
-  line-height: 1;
-  padding: 4px 6px;
-  border-radius: 6px;
+.hero-search-input::-webkit-search-decoration,
+.hero-search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+/* Inline results dropdown — floats over the page (absolute) so it never
+   pushes the feature cards / layout below the hero. */
+.hero-search-results,
+.hero-search-empty {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  z-index: 10;
   border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-2);
+  border-radius: 12px;
+  background: var(--vp-c-bg);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+}
+
+.hero-search-results {
+  list-style: none;
+  padding: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.hero-search-results a {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+}
+
+.hero-search-results a:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+.hero-search-results .r-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.hero-search-results .r-crumbs {
+  font-size: 0.76rem;
+  color: var(--vp-c-text-3);
+}
+
+.hero-search-empty {
+  margin-top: 6px;
+  padding: 10px;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
 }
 
 /* Popular search chips */
@@ -454,6 +505,11 @@ body::after {
 .VPHome .VPFeatures {
   position: relative;
   z-index: 1;
+}
+
+/* Hero above features so the inline search dropdown floats over the cards */
+.VPHome .VPHero {
+  z-index: 2;
 }
 
 /* ===== Feature cards — clean, with hover lift ===== */
@@ -729,6 +785,18 @@ body::after {
 /* ===== Outline ===== */
 .dark .VPDocAsideOutline .outline-link.active {
   color: var(--vp-c-brand-1);
+}
+
+/* Outline ("На цій сторінці" / "On this page"): wrap long headings onto
+   multiple lines instead of cutting them off with an ellipsis. */
+.VPDocAsideOutline .outline-link,
+.VPLocalNavOutlineDropdown .outline-link {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.4;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 /* Mobile outline dropdown — bump z-index so the flyout appears above page content.

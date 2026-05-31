@@ -3,12 +3,14 @@ title: OpenIPC Bonnet — expansion board for FPV and ground stations
 description: A hardware expansion board for the Radxa Zero 3W and OpenIPC-based FPV systems
 ---
 
+# OpenIPC Bonnet — expansion board for FPV and ground stations
+
 <img src="/images/bonnet.png" alt="OpenIPC bonnet" width="600px"/>   
 **OpenIPC Bonnet** is a compact expansion board designed to extend the capabilities of single-board computers such as the **Radxa Zero 3W**, used in FPV systems, repeaters and ground stations. It combines a USB hub, motion sensors, power management and communication interfaces specifically tailored to OpenIPC.
 
 ---
 
-<h3> Key features</h3>
+### Key features
 
 - **Wide power range**: from 2S to 6S Li-ion / LiPo (high-efficiency bidirectional BEC).
 - **Power outputs**:
@@ -31,7 +33,7 @@ description: A hardware expansion board for the Radxa Zero 3W and OpenIPC-based 
 <img src="/images/bonnet2.png" alt="OpenIPC bonnet" width="600px"/>   
 ---
 
-<h3>Typical use cases</h3>
+### Typical use cases
 
 1. **Portable VRX ground station**  
    Build a mobile FPV station with a single-board computer (e.g. Radxa Zero 3W).
@@ -47,7 +49,9 @@ description: A hardware expansion board for the Radxa Zero 3W and OpenIPC-based 
 
 ---
 
- <h3>Getting started</h3>
+ 
+
+### Getting started
 
 1. **Connect the antennas**    
 Always connect the 4 antennas (IPEX → SMA) before powering on.  
@@ -68,7 +72,7 @@ The Bonnet has reverse-polarity protection.
 
 ---
 
-<h3>DisplayPort output</h3>
+### DisplayPort output
 
 The Bonnet has a built-in HDMI → DisplayPort bridge. This allows you to connect external low-latency displays.
 
@@ -80,7 +84,7 @@ Once connected correctly, video appears automatically during boot.
 
 ---
 
-<h3> Software and drivers</h3>
+### Software and drivers
 
 - **Wi-Fi**: RTL8812AU support (already included in OpenIPC).
 - **IMU**: connected over I2C, compatible with motion-tracking software.
@@ -88,7 +92,7 @@ Once connected correctly, video appears automatically during boot.
 
 ---
 
-<h3>Useful links</h3>
+### Useful links
 
 - [OpenIPC GitHub](https://github.com/OpenIPC)
 - [Radxa Zero 3W – specifications](https://wiki.radxa.com/Zero3W)

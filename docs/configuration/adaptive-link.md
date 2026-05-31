@@ -16,7 +16,10 @@ description: Детальна інструкція з налаштування A
 
 ---
 
-<h2>Як це працює?</h2>
+
+## Як це працює?
+
+
 
 **Adaptive-Link** автоматично контролює:
 
@@ -75,7 +78,10 @@ osd_level=5
 
 ---
 
-<h2>Примусове включення Adaptive Link</h2>
+
+## Примусове включення Adaptive Link
+
+
 
 1. Відкрити WinSCP.  
 2. Підключитися до камери через FTP/SSH.  
@@ -99,7 +105,10 @@ echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/policy0/scaling_max_freq
 ---
 
 
-<h2>Безпечні TX‑профілі </h2>
+
+## Безпечні TX‑профілі
+
+
 txprofile для мережевих карток - [тут](https://github.com/OpenIPC/adaptive-link/tree/main/txprofiles) (*назва завжди повинна бути - txprofile.conf* )
 
 Приклад безпечного TX‑профілю
@@ -114,7 +123,10 @@ txprofile для мережевих карток - [тут](https://github.com/O
 ```
 ---
 
-<h2>Параметри TX-файлу</h2>
+
+## Параметри TX-файлу
+
+
 
 - **range** — діапазон для адаптивної передачі.  
 - **gi** — захисний інтервал.  

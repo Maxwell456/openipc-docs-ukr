@@ -9,7 +9,7 @@ waybeam venc includes a built-in web panel and a full HTTP API for controlling a
 
 ---
 
-<h3>Web panel</h3>
+### Web panel
 
 <strong>Settings tab</strong>
 
@@ -59,7 +59,7 @@ Direct access to 62 SigmaStar ISP parameters:
 
 ---
 
-<h3>HTTP API — reference</h3>
+### HTTP API — reference
 
 All endpoints use HTTP GET (compatible with BusyBox wget). Responses are JSON in the format `{"ok": true/false, ...}`.
 
@@ -114,7 +114,7 @@ Use this endpoint to find out which fields can be changed on the fly and which r
 
 ---
 
-<h3>Reading and writing fields</h3>
+### Reading and writing fields
 
 <strong>GET /api/v1/get?field_name</strong>
 
@@ -181,7 +181,7 @@ curl http://&lt;ip&gt;:80/api/v1/restart
 
 ---
 
-<h3>Encoder control</h3>
+### Encoder control
 
 <strong>GET /request/idr</strong>
 
@@ -209,7 +209,7 @@ curl http://&lt;ip&gt;:80/api/v1/awb
 
 ---
 
-<h3>Recording to the SD card</h3>
+### Recording to the SD card
 
 <strong>GET /api/v1/record/start</strong>
 
@@ -257,7 +257,7 @@ curl "http://&lt;ip&gt;:80/api/v1/record/status"
 
 ---
 
-<h3>Dual-Stream (Gemini mode)</h3>
+### Dual-Stream (Gemini mode)
 
 <strong>GET /api/v1/dual/status</strong>
 
@@ -298,7 +298,7 @@ curl "http://&lt;ip&gt;:80/api/v1/dual/idr"
 
 ---
 
-<h3>ISP Image Quality</h3>
+### ISP Image Quality
 
 <strong>GET /api/v1/iq</strong>
 
@@ -337,7 +337,7 @@ curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,5
 
 ---
 
-<h3>Common scenario examples</h3>
+### Common scenario examples
 
 <strong>Quick switch to 720p 90fps</strong>
 
@@ -378,7 +378,7 @@ After a restart, hold the camera still for 2 seconds for automatic gyroscope cal
 
 ---
 
-<h3>Recommended settings by scenario</h3>
+### Recommended settings by scenario
 
 <strong>FPV racing (minimum latency)</strong>
 
@@ -413,7 +413,7 @@ After a restart, hold the camera still for 2 seconds for automatic gyroscope cal
 
 ---
 
-<h3>Next steps</h3>
+### Next steps
 
 - [**waybeam venc overview**](/en/software/waybeam-venc) — the full list of features
 - [**Install on the camera**](/en/software/waybeam-venc-install-camera) — initial installation

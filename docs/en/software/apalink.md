@@ -3,6 +3,8 @@ title: APALink — dynamic bitrate switching for APFPV
 description: Step-by-step installation and configuration of APALink for the APFPV system.
 ---
 
+# APALink — dynamic bitrate switching for APFPV
+
 **APALink** is a C program for the APFPV firmware, created to keep the video link stable.  
 It uses fallback logic, automatically lowering the bitrate (for example, to **2 Mbps**) when the signal is weak.
 
@@ -24,7 +26,7 @@ chmod 777 +x /usr/bin/ap_alink
 
 ---
 
-<h3>Configuring `ap_alink.conf`</h3>
+### Configuring `ap_alink.conf`
 
 The configuration file lets you change the bitrate and threshold parameters:
 
@@ -39,10 +41,9 @@ dbm_threshold=-47  ## Threshold for activating fallback (dBm)
 - **Higher threshold** → fallback activates sooner, reducing lag, but quality is lower
 :::
 
-
 ---
 
-<h3>Recommended settings</h3>
+### Recommended settings
 
 - **BL-M8812EU2**
 ```bash

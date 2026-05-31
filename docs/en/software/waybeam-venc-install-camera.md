@@ -13,7 +13,7 @@ This guide describes how to install **waybeam venc** on a camera with a SigmaSta
 
 ---
 
-<h3>Requirements</h3>
+### Requirements
 
 | Component | Details |
 | :--- | :--- |
@@ -25,7 +25,7 @@ This guide describes how to install **waybeam venc** on a camera with a SigmaSta
 
 ---
 
-<h3>Step 1: Connecting to the camera via SSH</h3>
+### Step 1: Connecting to the camera via SSH
 
 Connect to the camera via SSH. The camera's IP address is usually `192.168.1.10` or can be found via the router.
 
@@ -53,7 +53,7 @@ Password: `12345`
 
 ---
 
-<h3>Step 2: Stopping Majestic</h3>
+### Step 2: Stopping Majestic
 
 Before installing venc you must stop and disable Majestic:
 
@@ -74,7 +74,7 @@ Majestic and venc cannot run at the same time — both use the chip's ISP and vi
 
 ---
 
-<h3>Step 3: Downloading venc</h3>
+### Step 3: Downloading venc
 
 Download the venc binary onto the camera. Choose the version matching your chip:
 
@@ -106,7 +106,7 @@ scp out/star6e/venc root@192.168.1.10:/usr/bin/venc
 
 ---
 
-<h3>Step 4: Creating the configuration</h3>
+### Step 4: Creating the configuration
 
 Create the configuration file `/etc/venc.json`:
 
@@ -203,7 +203,7 @@ EOF
 
 ---
 
-<h3>Step 5: Key configuration parameters</h3>
+### Step 5: Key configuration parameters
 
 <strong>Video (`video0`)</strong>
 
@@ -236,7 +236,7 @@ EOF
 
 ---
 
-<h3>Step 6: Running venc</h3>
+### Step 6: Running venc
 
 <strong> Manual start (for testing)</strong>
 
@@ -262,7 +262,7 @@ curl http://localhost/api/v1/capabilities
 
 ---
 
-<h3> Step 7: Autostart venc</h3>
+### Step 7: Autostart venc
 
 Create an init script to start venc automatically when the camera boots:
 
@@ -314,7 +314,7 @@ In the config above, `audioPort: 0` and `sidecarPort: 0` are set to 0. This mean
 
 ---
 
-<h3> Step 8: Changing parameters in real time</h3>
+### Step 8: Changing parameters in real time
 
 After starting venc you can change parameters without restarting:
 
@@ -338,7 +338,7 @@ curl http://localhost/request/idr
 
 ---
 
-<h3>Common issues</h3>
+### Common issues
 
 ??? question "venc won't start — library error"
     Make sure all SigmaStar libraries are available in `/usr/lib`. If you use a staged build, set the variable:
@@ -367,7 +367,7 @@ curl http://localhost/request/idr
 
 ---
 
-<h3>Next steps</h3>
+### Next steps
 
 - [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — configuring venc + WFB-ng on the camera and ground station
 - [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — a detailed description of all API endpoints

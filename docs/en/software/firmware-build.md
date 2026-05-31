@@ -3,7 +3,9 @@ title: "OpenIPC 4G firmware for QuadroFleet"
 description: "Step-by-step flashing of drone cameras with the QuadroFleet client and 4G modem setup"
 ---
 
-<h3>Preparing and flashing the OpenIPC firmware</h3>
+# OpenIPC 4G firmware for QuadroFleet
+
+### Preparing and flashing the OpenIPC firmware
 
 This guide explains how to compile and flash the OpenIPC firmware with the QuadroFleet Masina client for a drone camera (e.g. SSC30KQ, SSC338Q). Configuring the ECM interface of the 4G modem is also covered.
 
@@ -18,7 +20,7 @@ Prerequisites
 
 ---
 
-<h3>Step 1: Compiling the OpenIPC firmware</h3>
+### Step 1: Compiling the OpenIPC firmware
 
 Installing dependencies:
 
@@ -61,7 +63,7 @@ make
 
 ---
 
-<h3>Step 2: Flashing via TFTP</h3>
+### Step 2: Flashing via TFTP
 
 Setting up the TFTP server:
 
@@ -98,7 +100,7 @@ reset
 
 ---
 
-<h3>Step 3: Alternative flashing with the CH341A</h3>
+### Step 3: Alternative flashing with the CH341A
 
 1. Download the pre-compiled firmware from QuadroFleet.
 2. Use the CH341A programmer and NeoProgrammer 2.2.0.10:
@@ -113,7 +115,7 @@ reset
 
 ---
 
-<h3>Step 4: Updating the firmware (optional)</h3>
+### Step 4: Updating the firmware (optional)
 
 1. Connect to the camera via Ethernet and access the terminal (SSH or web interface).
 2. Download the new firmware files:
@@ -133,7 +135,7 @@ sysupgrade --kernel=/tmp/uImage.${soc} --rootfs=/tmp/rootfs.squashfs.${soc} -z -
 
 ---
 
-<h3>Step 5: Configuring the 4G modem (Quectel EC25)</h3>
+### Step 5: Configuring the 4G modem (Quectel EC25)
 
 1. Connect the modem to a PC via USB.
 2. Open a terminal (PuTTY) with the settings:
@@ -153,7 +155,6 @@ AT+QCFG="usbnet",1
 AT+CFUN=1,1
 ```
 
-
 ```text
 AT+QCFG="usbnet",1
 AT+CFUN=1,1
@@ -164,7 +165,7 @@ Wait for the modem to reboot and for the network device to appear.
 
 ---
 
-<h3>Step 6: Verifying the firmware</h3>
+### Step 6: Verifying the firmware
 
 * Access the camera's web interface (default IP via DHCP).
 * Make sure the QuadroFleet Masina client is running (`ps | grep client`).

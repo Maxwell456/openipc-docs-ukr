@@ -39,7 +39,6 @@ After connecting, open your browser and go to:
 
 http://radxa-zero3.local/
 
-
 > In the WebUI you can:
 > • change communication channels
 > • download or view DVR recordings

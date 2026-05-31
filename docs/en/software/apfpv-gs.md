@@ -11,14 +11,13 @@ This is a pre-built image for the **Radxa Zero 3W** that lets you stream OpenIPC
 You need to connect a 2.4GHz or 5.8GHz antenna to the UFL port on the Radxa board!
 :::
 
-
 This firmware uses the built-in **AIC8800** Wi-Fi module on the Radxa Zero 3W board and automatically connects to APPFV OpenIPC.
 
 The image is pre-configured to connect to the APPFV firmware's wireless network using the default credentials.
 
 ---
 
-<h3>Setup guide</h3>
+### Setup guide
 
 **Step 1.** Download the `.xz` file and unpack it. Write the resulting `.img` image to a microSD card.
 
@@ -52,7 +51,7 @@ The image is pre-configured to connect to the APPFV firmware's wireless network 
 
 ---
 
-<h3>Notes for version 0.0.1</h3>
+### Notes for version 0.0.1
 
 - This is the **first release**. USB Wi-Fi drivers are included but not yet activated.
 - All settings are made in a single `setup.txt` file in `/config/`.
@@ -66,7 +65,7 @@ The image is pre-configured to connect to the APPFV firmware's wireless network 
 
 ---
 
-<h3>Accessing the DVR</h3>
+### Accessing the DVR
 
 - **Via the SD card:**  
   Insert the card into a PC — the `/dvr` partition will be mounted

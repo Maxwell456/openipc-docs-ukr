@@ -3,6 +3,8 @@ title: "FPV OpenIPC Thinker Air Unit"
 description: "OpenIPC Thinker: technical specifications and installation"
 ---
 
+# FPV OpenIPC Thinker Air Unit
+
 OpenIPC Thinker is a compact camera and video transmission unit that easily integrates with various RC devices.
 
 Two versions are available:
@@ -14,7 +16,7 @@ Two versions are available:
 
 ![Thinker kit](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/aio-thinker/thinker-webshop-photo.jpg)
 
-<h3>Specifications</h3>
+### Specifications
 
 - SoC SSC338Q
 - Power: 2–6S
@@ -27,7 +29,7 @@ Two versions are available:
   - 1x Ethernet
   - 1x power
 
-<h3>Physical parameters</h3>
+### Physical parameters
 
 - Board size: 25×25 mm
 - Weight:
@@ -38,7 +40,9 @@ Two versions are available:
   - With heatsink: 25.5×25.5 mm
 - Cooling: aluminium heatsink
 
- <h3>Cameras</h3>
+ 
+
+### Cameras
 
 **IMX335** ([Store](https://store.openipc.org/OpenIPC-IMX335-v2-module-without-cable-p721231276))
 
@@ -50,7 +54,7 @@ Two versions are available:
 
 ---
 
-<h3>Hardware installation</h3>
+### Hardware installation
 
 Connecting power and the flight controller
 
@@ -82,7 +86,6 @@ Ethernet for configuration and updates
 ![Thinker components](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/aio-thinker/thinker-connectivity.png)
 
 ----
-
 
 <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
   <thead>
@@ -127,10 +130,9 @@ Ethernet for configuration and updates
     - For 3.3V Wi-Fi — remove the voltage-select resistor.  
     - High-consumption modules can be powered separately.
 
-
 ---
 
-<h3>Software configuration</h3>
+### Software configuration
 
  **Accessing the Web UI**
 
@@ -141,7 +143,7 @@ Ethernet for configuration and updates
 > - User: `root`
 > - Password: `12345`
 
-<h3>Firmware update</h3>
+### Firmware update
 
 - Via the Web UI (internet required)
 - Via the [OpenIPC Configurator](https://github.com/OpenIPC/openipc-configurator)

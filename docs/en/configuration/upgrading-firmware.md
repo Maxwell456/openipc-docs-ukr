@@ -32,7 +32,7 @@ where '${soc}' is your camera-specific soc, e.g. gk7205v300, otherwise the lates
 
 ## Using a TFTP server
 
-<h3>On your host machine:</h3>
+### On your host machine:
 
 If you don't already have a TFTP server running on your host machine, see the Wiki article "Setting up a TFTP server".
 
@@ -44,7 +44,7 @@ tar xvf <firmware.tgz>
 
 If you built your own versions using a copy of the firmware repository, your uImage and rootfs.squashfs images will be in the output/images folder. Copy them to the root of your tftp server.
 
-<h3>On the camera:</h3>
+### On the camera:
 
 You can update the images either from a Linux terminal session or from the U-Boot prompt if you have a UART serial connection and interrupted the Linux boot.
 
@@ -52,7 +52,7 @@ Check that your camera's environment variable for the TFTP server is correct by 
 
 If you need to update it, use the command `fw_setenv serverip <your.tftp.ip.address>`.
 
-<h3>From Linux</h3>
+### From Linux
 
 ```bash
 soc=$(fw_printenv -n soc)
@@ -63,7 +63,7 @@ busybox tftp -r uImage.${soc} -g ${serverip}
 sysupgrade --kernel=/tmp/uImage.${soc} --rootfs=/tmp/rootfs.squashfs.${soc} -z
 ```
 
-<h3>From U-Boot</h3>
+### From U-Boot
 
 **For an 8MB image:**
 
@@ -89,7 +89,7 @@ Now restart the camera to boot the new images.
 
 ## Using SCP
 
-<h3>On your host machine:</h3>
+### On your host machine:
 
 If you don't already have uImage and rootfs.squashfs images for your camera, go to [https://github.com/OpenIPC/firmware/releases/tag/latest](https://github.com/OpenIPC/firmware/releases/tag/latest) and download the latest firmware package for your SoC, then extract the contents.
 
@@ -113,7 +113,7 @@ If you get an error that '/usr/libexec/sftp-server could not be found', it's bec
 scp -O uImage* rootfs* root@<yourcameraip>:/tmp/
 ```
 
-<h3>On the camera:</h3>
+### On the camera:
 
 Now create a terminal session with the camera, e.g. `ssh root@192.168.1.10`, and run the sysupgrade command pointing to your new images in /tmp.
 
@@ -124,7 +124,7 @@ sysupgrade --kernel=/tmp/uImage.${soc} --rootfs=/tmp/rootfs.squashfs.${soc} -z
 
 ## Updating from an SD card
 
-<h3>On your host machine</h3>
+### On your host machine
 
 If you don't already have uImage and rootfs.squashfs images for your camera, go to https://github.com/OpenIPC/firmware/releases/tag/latest and download the latest firmware package for your SoC, then extract the contents.
 
@@ -136,7 +136,7 @@ Insert the SD card into your host machine and copy the uImage and squashfs files
 cp uImage* rootfs* /media/<username>/<card-id>/
 ```
 
-<h3>On your camera</h3>
+### On your camera
 
 Insert the SD card into the camera.
 
@@ -147,7 +147,7 @@ soc=$(fw_printenv -n soc)
 sysupgrade --kernel=/mnt/mmcblk0p1/uImage.${soc} --rootfs=/mnt/mmcblk0p1/rootfs.squashfs.${soc} --force_ver -z
 ```
 
-<h3>SD card: alternatively, from U-Boot</h3>
+### SD card: alternatively, from U-Boot
 
 **For an 8MB image:**
 
@@ -173,7 +173,7 @@ fatload mmc 0:1 ${baseaddr} rootfs.squashfs.${soc}
 sf probe 0; sf erase 0x350000 0xa00000; sf write ${baseaddr} 0x350000 ${filesize}
 ```
 
-<h3>Flashing U-Boot via ymodem</h3>
+### Flashing U-Boot via ymodem
 
 Clear 320K of RAM and load the bootloader file into it:
 

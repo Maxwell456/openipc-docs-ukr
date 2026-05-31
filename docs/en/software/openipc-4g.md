@@ -2,6 +2,9 @@
 title: "QuadroFleet OpenIPC — 4G/LTE FPV Platform"
 description: "QuadroFleet — an open modular platform for controlling FPV drones over mobile networks. Low-latency video, GPS tracking, secure VPN, OSD and gamepad support for hobby and professional use."
 ---
+
+# QuadroFleet OpenIPC — 4G/LTE FPV Platform
+
 <img src="/images/quadrofleet.svg" alt="OpenIPC 4G" width="500px"/>
 
 ---
@@ -21,7 +24,7 @@ This section is prepared as part of the **QuadroFleet** and **OpenFPV** project 
 
 ---
 
-<h3>Features</h3>
+### Features
 
 - **Low-latency video**: FPV streaming with &lt;100 ms latency using H.265.
 - **Link loss handling**: configurable failsafe modes (hover, land or RTH) when signal is lost.
@@ -32,11 +35,11 @@ This section is prepared as part of the **QuadroFleet** and **OpenFPV** project 
 
 ---
 
-<h3>System Architecture</h3>
+### System Architecture
 
 **QuadroFleet** operates on a client-server model where components communicate through a secure WireGuard VPN, using UDP for minimal latency.
 
-<h3>Drone Module</h3>
+### Drone Module
 
 **Hardware:**
 
@@ -52,7 +55,7 @@ This section is prepared as part of the **QuadroFleet** and **OpenFPV** project 
 
 ---
 
-<h3>Ground Station (Operator Side)</h3>
+### Ground Station (Operator Side)
 
 **Hardware:** PC or smartphone with the QuadroFleet app.
 
@@ -66,7 +69,7 @@ This section is prepared as part of the **QuadroFleet** and **OpenFPV** project 
 
 ---
 
-<h3>VPN Server</h3>
+### VPN Server
 
 **Purpose:** provides a secure, direct channel between the drone and the ground station.
 
@@ -76,7 +79,7 @@ This section is prepared as part of the **QuadroFleet** and **OpenFPV** project 
 
 ---
 
-<h3>Safety & Redundancy</h3>
+### Safety & Redundancy
 
 - **Link loss:**
 after 250 ms (configurable) the drone enters hover mode;
@@ -86,7 +89,7 @@ after 5 seconds (configurable) it lands or performs RTH according to the flight 
 
 <center><img src="/images/overview.png" alt="OpenIPC 4G" width="800px"/></center>
 
-<h3>FPV Drone Module</h3>
+### FPV Drone Module
 
 The drone module combines:
 
@@ -96,14 +99,14 @@ The drone module combines:
 
 <center><img src="/images/over2.png" alt="OpenIPC LTE" width="800px"/></center>
 
-<h3>VPN Server</h3>
+### VPN Server
 
 The VPN server creates a virtual private network that enables data exchange without additional network configuration.
 In this setup the VPN connection allows the operator to quickly and easily connect directly to the drone.
 
 <center><img src="/images/over3.png" alt="OpenIPC LTE" width="800px"/></center>
 
-<h3>Operator App</h3>
+### Operator App
 
 The **QuadroFleet** control application is a Java-based program that includes:
 

@@ -60,7 +60,6 @@ Here's how **Ostap** did it:
 
 <img src="/images/usb-hat.png" alt="USB HAT" width="500px"/>
 
-
 ***Option 2***
 
 - No BECs needed for **8812EU2** Wi-Fi cards

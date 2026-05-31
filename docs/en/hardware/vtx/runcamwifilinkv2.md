@@ -10,7 +10,7 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
   width="400px"
 />
 
-<h3>Specifications</h3>
+### Specifications
 
 - Image Sensor: Sony IMX415
 - Field of View (FOV): 160°
@@ -26,14 +26,14 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
 - SoC: SigmaStar SSC338Q
 - Firmware: `ssc338q_fpv_openipc_urllc_aio_nor.tgz` ([docs.openipc.org](https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/))
 
-<h3>Board Layout</h3>
+### Board Layout
 
 ![Board layout bottom 1](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-2-motherboard-down-dark.png)
 ![Board layout bottom 2](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-2-motherboard-up-dark.png)
 
-<h3>Basic Setup</h3>
+### Basic Setup
 
-<h3>Required Components</h3>
+### Required Components
 
 - Flight controller with Betaflight, INAV or Ardupilot firmware
 - Runcam WiFiLink 2 and the [PixelPilot](https://github.com/openipc/pixelpilot) app
@@ -42,19 +42,19 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
 - Android 13 or 14 smartphone with a powerful CPU
 - Internet connection ([docs.openipc.org](https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/))
 
-<h3>Hardware Connection</h3>
+### Hardware Connection
 
 1. Attach the antennas to the VTX.
 2. Connect the 4-pin cable to the UART on the FC (or solder directly), powering from the FC BEC; verify GND↔GND, VCC↔VCC.
 3. Insert a formatted microSD card into the slot on the bottom of the VTX (fan on top).
 4. Connect the included Ethernet cable to the device. ([docs.openipc.org](https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/))
 
-<h3>Getting the `gs.key` File</h3>
+### Getting the `gs.key` File
 
 1. Insert an empty, formatted microSD card into the VTX (contacts facing the board); disassemble the housing if needed.
 2. On first boot the device will create `user` and `gs.key`; copy `gs.key` to your VRX (Android, PC, etc.). ([docs.openipc.org](https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/))
 
-<h3>Connecting to Android Ground Station</h3>
+### Connecting to Android Ground Station
 
 1. Install [PixelPilot](https://github.com/openipc/pixelpilot).
 2. Copy `gs.key` to your Android device.
@@ -68,7 +68,7 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
    - Verify `gs.key`
    - Restart Android and the VTX ([docs.openipc.org](https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/))
 
-<h3>LED Status</h3>
+### LED Status
 
 | LED State | Meaning |
 |-----------|---------|
@@ -80,6 +80,6 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
 | Blue fast blinking | Wi-Fi error |
 | Blue and green alternating | Warning: overheating (> 90 °C) |
 
-<h3>Summary</h3>
+### Summary
 
 After basic setup you will have a modern digital FPV system, but without OSD. To configure OSD see the [Advanced Settings guide](/en/configuration/advanced). For manufacturer instructions see the [official documentation](https://store-m8o52p.mybigcommerce.com).

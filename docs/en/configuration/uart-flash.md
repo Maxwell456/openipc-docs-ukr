@@ -55,7 +55,6 @@ An incorrect connection can damage the device.
 Find the correct UART interface according to your hardware's documentation.
 :::
 
-
 6. Solder the FTDI outputs to the UART pins on the board.
 
 7. Open **Device Manager**, plug in the FTDI USB and find the COM port (e.g. **COM3**).

@@ -19,7 +19,6 @@ description: Overview of the specifications, package contents and setup of the R
   </div>
 </div>
 
-
 A digital HD receiver based on OpenIPC / Ruby FPV, designed for stable, high-quality video transmission from the drone to the ground station.
 
 ---

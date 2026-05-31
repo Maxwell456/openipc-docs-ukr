@@ -2,12 +2,16 @@
 title: SSC338Q + IMX415 Cameras
 description: Technical specifications of an IP camera based on the SigmaStar SSC338Q with a Sony IMX415 sensor
 ---
+
+# SSC338Q + IMX415 Cameras
+
 <img 
   src="/images/ssc338q.png" 
   alt="main image" 
   width="400px" 
 />
-<h3>SSC338Q + IMX415 camera specifications</h3>
+
+### SSC338Q + IMX415 camera specifications
 
 | Parameter                 | Value                                         |
 |---------------------------|-----------------------------------------------|
@@ -27,14 +31,15 @@ description: Technical specifications of an IP camera based on the SigmaStar SSC
 | **Protocols**             | RTSP, ONVIF, HTTP, SSH                        |
 | **Form factor**           | Modular board (no enclosure)                 |
 
-<h3>Pinout</h3>
+### Pinout
+
 <img 
   src="/images/ssc338q-1.png" 
   alt="main image" 
   width="400px" 
 />
 
-<h3>How to flash with FPV firmware?</h3>
+### How to flash with FPV firmware?
 
 1. We are interested in the RJ45, GND and 12V pins
 2. Connect the RJ45 + Ethernet cable to the camera and to a router or laptop + supply DC 12V power
@@ -51,7 +56,7 @@ After you solder to the UART, fix the pads together with the wires using hot glu
 
  The next step after flashing the ssc338q is ultimate - 16M. We can safely flash using the [Multiconfigurator](https://github.com/OpenIPC/openipc-configurator/releases).
 
-<h3> <b>How to flash the SSC338Q using firmware files and SCP</b></h3>
+### How to flash the SSC338Q using firmware files and SCP
 
 1. First, go here — [https://github.com/OpenIPC/builder/releases/tag/latest](https://github.com/OpenIPC/builder/releases/tag/latest)   
 2. Next, find the firmware required for our camera; in our case there are several  

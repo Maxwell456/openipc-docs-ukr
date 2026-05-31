@@ -3,17 +3,19 @@ title: "APFPV Firmware — Beginner's Guide"
 description: "Simple FPV video transmission over Wi-Fi for beginners. Easy setup, no complex configuration."
 ---
 
+# APFPV Firmware — Beginner's Guide
+
 APFPV stands for "Access Point FPV" — a simple way to get video from your drone to a phone, tablet or computer over ordinary Wi-Fi. Imagine your drone creating its own Wi-Fi network that you connect to in order to watch the video in real time.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DnEHi86xKFA?si=0YSeYaDRZt7C8tIB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<h3>What is APFPV?</h3>
+### What is APFPV?
 
 The APFPV firmware by the OpenIPC team creates a direct Wi-Fi connection between your drone's video transmitter (VTX) and the ground station. Instead of complex networks, the drone simply works as a Wi-Fi router that you connect to directly.
 
 This is not a revolutionary technology, but a solution built for **simplicity and accessibility**, especially for those who find other FPV systems too complicated.
 
-<h3>Why choose APFPV?</h3>
+### Why choose APFPV?
 
 **Ideal for beginners:**   
 
@@ -28,7 +30,7 @@ This is not a revolutionary technology, but a solution built for **simplicity an
 - Latency 40–70 ms (not suitable for racing). Sometimes as low as 35 ms   
 - Depends on distance and interference   
 
-<h3>What do you need?</h3>
+### What do you need?
 
 **For the drone (VTX):**   
 
@@ -50,9 +52,9 @@ There are three ways to install the APFPV firmware on the drone. The internet me
 
 <img src="/images/apfpv-f.png" alt="alink" width="500px"/>
 
-<h2><b>Easy installation over the Internet (Recommended)</b></h2>
+## Easy installation over the Internet (Recommended)
 
-<h3>Step 1: Connect the drone to the Internet</h3>
+### Step 1: Connect the drone to the Internet
 
 **Physical connection:**
 
@@ -60,7 +62,7 @@ There are three ways to install the APFPV firmware on the drone. The internet me
 2. Power on the drone
 3. Wait for it to fully boot (1–2 minutes)
 
-<h3>Step 2: How to connect to the drone via SSH</h3>
+### Step 2: How to connect to the drone via SSH
 
 **On Windows:**  
 1. Install [PuTTY](https://www.putty.org/)  
@@ -80,7 +82,7 @@ Enter the password when prompted
 - Check the list of connected devices on your router
 - Try network scanner apps on your phone
 
-<h3>Step 3: One-command firmware installation</h3>
+### Step 3: One-command firmware installation
 
 After connecting via SSH and with Internet access:
 
@@ -154,13 +156,13 @@ sysupgrade -z -n --kernel=/tmp/uImage.ssc338q --rootfs=/tmp/rootfs.squashfs.ssc3
 
 ---
 
-<h3>Connecting to the drone</h3>
+### Connecting to the drone
 
 1. Connect to the **OpenIPC** Wi-Fi network
 2. Password: **12345678**
 3. Drone IP: `192.168.0.1`
 
-<h3>Watching the video</h3>
+### Watching the video
 
 **On Android:**
 - Open PixelPilot — the video appears automatically
@@ -173,14 +175,13 @@ sysupgrade -z -n --kernel=/tmp/uImage.ssc338q --rootfs=/tmp/rootfs.squashfs.ssc3
 gst-launch-1.0 udpsrc port=5600 ! application/x-rtp ! rtph265depay ! avdec_h265 ! fpsdisplaysink sync=false
 ```
 
-<h2>Other features and tips</h2>
-
+## Other features and tips
 
 ::: info **Other devices:**
 Use any app that supports RTP streams over UDP on port 5600
 :::
 
-<h3>Configuring the Wi-Fi network</h3>
+### Configuring the Wi-Fi network
 
 **To change the Wi-Fi name and password:**
 
@@ -194,7 +195,7 @@ fw_setenv wlanpass openipcfpv
 Instead of "Drone" enter your desired network name, and instead of "openipcfpv" — your password. Reboot the drone.
 :::
 
-<h3>How the system works</h3>
+### How the system works
 
 Think of it like this: 
 
@@ -203,7 +204,7 @@ Think of it like this:
 - **Video stream** = Data transmitted from the drone
 - **Web interface** = Control panel at `http://192.168.0.1`
 
-<h3>Supported hardware</h3>
+### Supported hardware
 
 **Wi-Fi chips (on the drone):**
 
@@ -292,7 +293,6 @@ Copy the command output from the terminal and send it to ```info@openfpv.com.ua`
 - Keep line of sight
 - Use good antennas
 - Test everything on the ground
-
 
 **Why APFPV is great**
 

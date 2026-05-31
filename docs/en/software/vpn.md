@@ -18,7 +18,7 @@ This guide covers setting up the VPN server and configuring the clients.
 
 ---
 
-<h3>Step 1: Installing WireGuard on the VPN server</h3>
+### Step 1: Installing WireGuard on the VPN server
 
 On a VPS or local PC (Ubuntu/Debian recommended):
 
@@ -81,7 +81,7 @@ sudo ufw allow 51820/udp
 
 ---
 
-<h3>Step 2: Operator device configuration</h3>
+### Step 2: Operator device configuration
 
 Install WireGuard on your PC or smartphone:
 
@@ -114,7 +114,7 @@ Activate the VPN tunnel:
 
 ---
 
-<h3>Step 3: OpenIPC drone camera configuration</h3>
+### Step 3: OpenIPC drone camera configuration
 
 1. Log in to the camera's web interface (default IP via DHCP).
 2. Go to **Extensions > WireGuard** and set:
@@ -152,7 +152,7 @@ Reboot the camera to apply the changes.
 
 ---
 
-<h3>Step 4: Verifying the connection</h3>
+### Step 4: Verifying the connection
 
 * Ping the drone's VPN IP (10.253.0.2) from the operator device (10.253.0.3).
 * Check access to the camera web interface over the VPN.

@@ -3,6 +3,8 @@ title: "OpenIPC 4G firmware for QuadroFleet"
 description: "Step-by-step flashing of drone cameras with the QuadroFleet client and 4G modem setup"
 ---
 
+# OpenIPC 4G firmware for QuadroFleet
+
 Drone build
 
 This guide describes the components and steps for assembling the **QuadroFleet** drone module. The system is designed to be compatible with off-the-shelf FPV components, which reduces cost and ensures performance.
@@ -101,7 +103,7 @@ Specification
 
 ---
 
-<h3>Assembly steps</h3>
+### Assembly steps
 
 Frame and core
 
@@ -115,7 +117,7 @@ Frame and core
 
 ---
 
-<h3>Video and connectivity</h3>
+### Video and connectivity
 
 **Setting up the video transmission system and network connectivity**
 
@@ -126,7 +128,7 @@ Frame and core
 
 ---
 
-<h3>Power system</h3>
+### Power system
 
 **Providing reliable power to all system components**
 
@@ -136,7 +138,7 @@ Frame and core
 
 ---
 
-<h3>Wiring</h3>
+### Wiring
 
 **Wiring diagram and cable management**
 
@@ -151,7 +153,7 @@ Frame and core
 
 <center><img src="/images/bilddrone.png" alt="OpenIPC 4G" width="1000px"/></center>
 
-<h3>Testing</h3>
+### Testing
 
 1. Power on the drone and verify that the flight controller boots correctly.  
 2. Check the camera connection (or flash it first) through the **OpenIPC** web interface (default IP via DHCP).  

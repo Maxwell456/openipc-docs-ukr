@@ -168,7 +168,7 @@ description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
   }
 </style>
 
-<h3>Boards</h3>
+### Boards
 
 RADXA ZERO 3W       
 
@@ -178,12 +178,11 @@ RADXA ZERO 3W
 
 eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage/emmc/emmc-5-1/klmbg2jetd-b041/)
 
-
 Emax custom power, WiFi and button board      
 <img src="/images/emax_vrx_wifi_power_board.png" alt="emax wyvern link vrx" width="600px" />
 
+### Basic setup
 
-<h3>Basic setup</h3>
 What you need
  -   Goggles or a portable monitor with an HDMI input.
  
@@ -204,7 +203,8 @@ What you need
  -   (optional) Insert a formatted micro SD card into the VRX. The slot has no auto-correction, so insert it contacts up when the fan faces up.      
       <img src="/images/emax_vrx_sdcard_orientation.png" alt="emax wyvern link vrx" width="600px" />
       
-<h3>Stock firmware interface</h3>
+
+### Stock firmware interface
 
 The stock firmware on the internal eMMC is [SBC v1.9.9](https://github.com/OpenIPC/sbc-groundstations/releases/tag/zero3w-v1.9.9-rc1) and has a simple menu and button system.
 <img src="/images/emax_vrx_buttons_v1.9.png" alt="emax wyvern link vrx" width="600px" />
@@ -218,25 +218,22 @@ The stock firmware on the internal eMMC is [SBC v1.9.9](https://github.com/OpenI
    
 <img src="/images/emax_vrx_ap_webui.png" alt="emax wyvern link vrx" width="600px" />
 
-<h3>How to get or change gs.key with firmware v1.9.9</h3>
+### How to get or change gs.key with firmware v1.9.9
 
  -   Insert a blank, formatted micro SD card into the VRX.
  -   When you first power on the VRX, the device will create a 'user' file and a 'gs.key' file.
  -   Connect the SD card to a PC and either replace the gs.key file so it matches your VTX, or use this gs.key on all your VTX.
  -   Put the SD card back into the VRX, and on the next boot it will replace the internal gs.key with the one on the SD card.
 
-
 ### Basic setup summary
 The VRX is configured with the default gs.key and should work with RunCam or Emax VTX. After the basic setup you'll have the cheapest modern digital FPV system. The manufacturer currently has no instructions for the Wyvern Link v2 hardware.
-
-
 
 ## Advanced setup
 
 It is recommended to flash the latest firmware to an SD card and boot from the SD card to get the newest features. Once a new stable firmware for flashing to the internal eMMC is available, we will update the documentation.
 
+### SBC 2.0.0 Beta2 setup for wfb-ng
 
-<h3>SBC 2.0.0 Beta2 setup for wfb-ng</h3>
 Download [SBC 2.0.0 Beta2](https://github.com/OpenIPC/sbc-groundstations/releases/tag/zero3w-v2.0.0-beta2) and flash it to an SD card using [belenaEtcher](https://etcher.balena.io/) or your favourite flashing utility. After flashing, connect the SD card to your PC again. The main /config drive will be mounted (possibly as D:) and will let you edit /config/setup.txt and the GPIO files.
 
 Create a new GPIO button layout file /config/scripts/GPIO/Emax.yaml or edit the file /config/scripts/GPIO/Custom.yaml.
@@ -245,7 +242,6 @@ The GPIO buttons are mapped as follows
 <img src="/images/emax_vrx_button_GPIO_pins.png" alt="emax wyvern link vrx" width="600px" />
 
 <img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" width="350px"/>
-
 
 Since the Emax VRX has only 4 buttons, we need to make some choices about mapping their functions to GSMenu. Here is one possible layout with the far-left button as "center" and the 2nd button as "left". This lets you use the GSMenu keyboard and all other GSMenu functions, since right/center behave the same for most menus.
 ```

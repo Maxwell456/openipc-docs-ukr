@@ -9,7 +9,7 @@ waybeam venc включає вбудовану веб-панель та повн
 
 ---
 
-<h3>Веб-панель</h3>
+### Веб-панель
 
 <strong>Вкладка Settings (Налаштування)</strong>
 
@@ -59,7 +59,7 @@ waybeam venc включає вбудовану веб-панель та повн
 
 ---
 
-<h3>HTTP API — довідник</h3>
+### HTTP API — довідник
 
 Всі ендпоінти використовують HTTP GET (сумісно з BusyBox wget). Відповіді — JSON у форматі `{"ok": true/false, ...}`.
 
@@ -114,7 +114,7 @@ curl http://&lt;ip&gt;:80/api/v1/capabilities
 
 ---
 
-<h3>Читання та запис полів</h3>
+### Читання та запис полів
 
 <strong>GET /api/v1/get?field_name</strong>
 
@@ -181,7 +181,7 @@ curl http://&lt;ip&gt;:80/api/v1/restart
 
 ---
 
-<h3>Контроль енкодера</h3>
+### Контроль енкодера
 
 <strong>GET /request/idr</strong>
 
@@ -209,7 +209,7 @@ curl http://&lt;ip&gt;:80/api/v1/awb
 
 ---
 
-<h3>Запис на SD-картку</h3>
+### Запис на SD-картку
 
 <strong>GET /api/v1/record/start</strong>
 
@@ -257,7 +257,7 @@ curl "http://&lt;ip&gt;:80/api/v1/record/status"
 
 ---
 
-<h3>Dual-Stream (Gemini-режим)</h3>
+### Dual-Stream (Gemini-режим)
 
 <strong>GET /api/v1/dual/status</strong>
 
@@ -298,7 +298,7 @@ curl "http://&lt;ip&gt;:80/api/v1/dual/idr"
 
 ---
 
-<h3>ISP Image Quality</h3>
+### ISP Image Quality
 
 <strong>GET /api/v1/iq</strong>
 
@@ -337,7 +337,7 @@ curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,5
 
 ---
 
-<h3>Приклади типових сценаріїв</h3>
+### Приклади типових сценаріїв
 
 <strong>Швидке перемикання на 720p 90fps</strong>
 
@@ -378,7 +378,7 @@ curl http://&lt;ip&gt;/api/v1/restart
 
 ---
 
-<h3>Рекомендовані налаштування за сценарієм</h3>
+### Рекомендовані налаштування за сценарієм
 
 <strong>FPV-рейсінг (мінімальна затримка)</strong>
 
@@ -413,7 +413,7 @@ curl http://&lt;ip&gt;/api/v1/restart
 
 ---
 
-<h3>Наступні кроки</h3>
+### Наступні кроки
 
 - [**Огляд waybeam venc**](/software/waybeam-venc) — повний список можливостей
 - [**Встановлення на камеру**](/software/waybeam-venc-install-camera) — початкове встановлення

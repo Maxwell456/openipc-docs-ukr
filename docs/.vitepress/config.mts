@@ -1,7 +1,9 @@
 import { defineConfig } from 'vitepress'
+import { writeFileSync, mkdirSync } from 'node:fs'
+import { resolve, dirname } from 'node:path'
 
-// Google Analytics 4 Measurement ID — замініть на свій (знайдіть у GA4: Адміністування → Потоки даних)
-const GA4_ID = 'G-XXXXXXXXXX'
+// Google Analytics 4 Measurement ID 
+const GA4_ID = 'G-WFWC26NZLB'
 
 const SITE = 'https://openfpv.com.ua'
 
@@ -48,6 +50,79 @@ function ogImageFor(rel: string): string {
   if (/^(en\/)?software/.test(rel)) return `${SITE}/og-software.png`
   if (/^(en\/)?configuration/.test(rel)) return `${SITE}/og-config.png`
   return `${SITE}/og-default.png`
+}
+
+// Old MkDocs URLs (trailing slash) → new VitePress URLs. Redirect stubs are
+// generated for these in buildEnd() so existing Google rankings are preserved.
+// Applied to both the root locale and the /en/ locale.
+const REDIRECTS: Record<string, string> = {
+  '/adaptive-link/': '/configuration/adaptive-link',
+  '/advanced/': '/configuration/advanced',
+  '/drone/': '/getting-started/drone',
+  '/examples/': '/examples',
+  '/firmware/': '/software/',
+  '/firmware/apalink/': '/software/apalink',
+  '/firmware/apfpv/': '/software/apfpv',
+  '/firmware/apfpv-greg/': '/software/apfpv-greg',
+  '/firmware/apfpv-gs/': '/software/apfpv-gs',
+  '/firmware/drone-build/': '/software/drone-build',
+  '/firmware/firmware-build/': '/software/firmware-build',
+  '/firmware/map/': '/software/map',
+  '/firmware/overview/': '/software/overview',
+  '/firmware/uart-flashing/': '/configuration/uart-flash',
+  '/firmware/update-settings/': '/software/update-settings',
+  '/firmware/upgrading-firmware/': '/configuration/upgrading-firmware',
+  '/firmware/vpn/': '/software/vpn',
+  '/firmware/waybeam-venc/': '/software/waybeam-venc',
+  '/firmware/waybeam-venc-install-camera/': '/software/waybeam-venc-install-camera',
+  '/firmware/waybeam-venc-install-groundstation/': '/software/waybeam-venc-install-groundstation',
+  '/firmware/waybeam-venc-web-interface/': '/software/waybeam-venc-web-interface',
+  '/groundstation/': '/getting-started/groundstation',
+  '/groundstation-build/': '/getting-started/groundstation-build',
+  '/link/': '/configuration/adaptive-link',
+  '/net-cards/rtl8812au/': '/hardware/net-cards/rtl8812au',
+  '/net-cards/rtl8812bu/': '/hardware/net-cards/rtl8812bu',
+  '/net-cards/rtl8812eu/': '/hardware/net-cards/rtl8812eu',
+  '/quick-start/': '/getting-started/quick-start',
+  '/telemetry/vtx-menu/': '/configuration/telemetry',
+  '/troubleshooting/': '/getting-started/troubleshooting',
+  '/update/': '/updates',
+  '/update/posts/2025-04-23-jumbo/': '/updates/posts/2025-04-23-jumbo',
+  '/update/posts/2025-04-25-webui/': '/updates/posts/2025-04-25-webui',
+  '/update/posts/2025-05-30-apfpv/': '/updates/posts/2025-05-30-apfpv',
+  '/update/posts/2025-07-31-apalink/': '/updates/posts/2025-07-31-apalink',
+  '/update/posts/2025-09-03-openipc4g/': '/updates/posts/2025-09-03-openipc4g',
+  '/update/posts/2026-04-16-waybeam-venc/': '/updates/posts/2026-04-16-waybeam-venc',
+  '/vrx/emaxwyvernlinkvrx/': '/hardware/vrx/emaxwyvernlink',
+  '/vrx/openipcbonnet/': '/hardware/vrx/openipcbonnet',
+  '/vrx/runcamwifilinkreceiver/': '/hardware/vrx/runcam-rx',
+  '/vtx/marioaio/': '/hardware/vtx/marioaio',
+  '/vtx/runcamwifilink/': '/hardware/vtx/runcamwifilink',
+  '/vtx/runcamwifilinkv2/': '/hardware/vtx/runcamwifilinkv2',
+  '/vtx/sigmastar-ssc338q/': '/hardware/vtx/sigmastar-ssc338q',
+  '/vtx/thinkerairunit/': '/hardware/vtx/thinkerairunit',
+}
+
+// Write a redirect stub (canonical + meta-refresh + JS) at <outDir>/<oldPath>/index.html
+function writeRedirect(outDir: string, oldPath: string, newPath: string) {
+  const target = SITE + newPath
+  const html = `<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="canonical" href="${target}">
+<meta http-equiv="refresh" content="0; url=${target}">
+<title>Redirecting…</title>
+<script>location.replace(${JSON.stringify(target)})</script>
+</head>
+<body>Redirecting to <a href="${target}">${target}</a>…</body>
+</html>
+`
+  const rel = oldPath.replace(/^\//, '').replace(/\/$/, '')
+  const file = resolve(outDir, rel, 'index.html')
+  mkdirSync(dirname(file), { recursive: true })
+  writeFileSync(file, html)
 }
 
 export default defineConfig({
@@ -103,8 +178,6 @@ export default defineConfig({
                 text: 'Прошивки камер',
                 items: [
                   { text: 'APFPV', link: '/software/apfpv' },
-                  { text: 'APALink', link: '/software/apalink' },
-                  { text: "Greg's Firmware", link: '/software/apfpv-greg' },
                   { text: 'WFB-NG', link: '/software/wfb-ng' },
                   { text: 'OpenIPC 4G/LTE (QuadroFleet)', link: '/software/openipc-4g' },
                 ]
@@ -112,7 +185,7 @@ export default defineConfig({
               {
                 text: 'Наземна станція',
                 items: [
-                  { text: 'GS Firmware (Radxa)', link: '/software/apfpv-gs' },
+                  { text: 'GS Firmware APFPV (Radxa)', link: '/software/apfpv-gs' },
                 ]
               },
               {
@@ -184,9 +257,15 @@ export default defineConfig({
               text: 'Прошивки камер',
               collapsed: false,
               items: [
-                { text: 'APFPV', link: '/software/apfpv' },
-                { text: 'APALink', link: '/software/apalink' },
-                { text: "Greg's Firmware", link: '/software/apfpv-greg' },
+                {
+                  text: 'APFPV',
+                  collapsed: false,
+                  items: [
+                    { text: 'APFPV', link: '/software/apfpv' },
+                    { text: 'APALink', link: '/software/apalink' },
+                    { text: "Greg's Firmware", link: '/software/apfpv-greg' },
+                  ]
+                },
                 { text: 'WFB-NG', link: '/software/wfb-ng' },
                 {
                   text: 'OpenIPC 4G/LTE (QuadroFleet)',
@@ -206,7 +285,7 @@ export default defineConfig({
               text: 'Прошивки наземної станції',
               collapsed: false,
               items: [
-                { text: 'GS Firmware (Radxa)', link: '/software/apfpv-gs' },
+                { text: 'GS Firmware APFPV (Radxa)', link: '/software/apfpv-gs' },
               ]
             },
             {
@@ -299,8 +378,6 @@ export default defineConfig({
                 text: 'Camera Firmware',
                 items: [
                   { text: 'APFPV', link: '/en/software/apfpv' },
-                  { text: 'APALink', link: '/en/software/apalink' },
-                  { text: "Greg's Firmware", link: '/en/software/apfpv-greg' },
                   { text: 'WFB-NG', link: '/en/software/wfb-ng' },
                   { text: 'OpenIPC 4G/LTE (QuadroFleet)', link: '/en/software/openipc-4g' },
                 ]
@@ -308,7 +385,7 @@ export default defineConfig({
               {
                 text: 'Ground Station',
                 items: [
-                  { text: 'GS Firmware (Radxa)', link: '/en/software/apfpv-gs' },
+                  { text: 'GS Firmware APFPV (Radxa)', link: '/en/software/apfpv-gs' },
                 ]
               },
               {
@@ -380,9 +457,15 @@ export default defineConfig({
               text: 'Camera Firmware',
               collapsed: false,
               items: [
-                { text: 'APFPV', link: '/en/software/apfpv' },
-                { text: 'APALink', link: '/en/software/apalink' },
-                { text: "Greg's Firmware", link: '/en/software/apfpv-greg' },
+                {
+                  text: 'APFPV',
+                  collapsed: false,
+                  items: [
+                    { text: 'APFPV', link: '/en/software/apfpv' },
+                    { text: 'APALink', link: '/en/software/apalink' },
+                    { text: "Greg's Firmware", link: '/en/software/apfpv-greg' },
+                  ]
+                },
                 { text: 'WFB-NG', link: '/en/software/wfb-ng' },
                 {
                   text: 'OpenIPC 4G/LTE (QuadroFleet)',
@@ -402,7 +485,7 @@ export default defineConfig({
               text: 'Ground Station Firmware',
               collapsed: false,
               items: [
-                { text: 'GS Firmware (Radxa)', link: '/en/software/apfpv-gs' },
+                { text: 'GS Firmware APFPV (Radxa)', link: '/en/software/apfpv-gs' },
               ]
             },
             {
@@ -488,7 +571,11 @@ export default defineConfig({
           searchOptions: {
             fuzzy: 0.2,
             prefix: true,
-            boost: { title: 4, text: 2, titles: 1 }
+            boost: { title: 4, text: 2, titles: 1 },
+            // Down-rank changelog/news posts so canonical topic pages rank first
+            // (e.g. searching "4G" should surface the 4G topic, not an old update).
+            boostDocument: (id: string) =>
+              typeof id === 'string' && id.includes('/updates/') ? 0.2 : 1
           }
         },
         locales: {
@@ -675,6 +762,16 @@ export default defineConfig({
     }
 
     head.push(['script', { type: 'application/ld+json' }, JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })])
+  },
+
+  // Generate redirect stubs from the old MkDocs URLs (both locales) so existing
+  // Google rankings carry over to the new VitePress URLs.
+  buildEnd(siteConfig) {
+    const outDir = siteConfig.outDir
+    for (const [oldPath, newPath] of Object.entries(REDIRECTS)) {
+      writeRedirect(outDir, oldPath, newPath)
+      writeRedirect(outDir, '/en' + oldPath, '/en' + newPath)
+    }
   },
 
   markdown: { lineNumbers: true },

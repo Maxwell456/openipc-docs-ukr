@@ -13,7 +13,7 @@ description: "Overview of waybeam venc — a standalone H.265/H.264 video encode
 
 ---
 
-<h3>Features</h3>
+### Features
 
 | Feature | Description |
 | :--- | :--- |
@@ -34,7 +34,7 @@ description: "Overview of waybeam venc — a standalone H.265/H.264 video encode
 
 ---
 
-<h3>Supported chips</h3>
+### Supported chips
 
 | Chip | Name | Status |
 | :--- | :--- | :--- |
@@ -48,7 +48,7 @@ Maruko supports both codecs: h264 and h265.
 
 ---
 
-<h3>Comparison with Majestic</h3>
+### Comparison with Majestic
 
 | | **waybeam venc** | **Majestic** |
 | :--- | :--- | :--- |
@@ -62,7 +62,7 @@ Maruko supports both codecs: h264 and h265.
 
 ---
 
-<h3>Documentation structure</h3>
+### Documentation structure
 
 - [**Install on the camera**](/en/software/waybeam-venc-install-camera) — downloading the binary, configuring `/etc/venc.json`, first run
 - [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replacing Majestic with venc alongside WFB-ng

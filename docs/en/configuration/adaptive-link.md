@@ -16,7 +16,7 @@ In other words, you no longer need to manually set transmit power!
 
 ---
 
-<h2>How It Works</h2>
+## How It Works
 
 **Adaptive-Link** automatically controls:
 
@@ -75,7 +75,7 @@ osd_level=5
 
 ---
 
-<h2>Force-Enabling Adaptive Link</h2>
+## Force-Enabling Adaptive Link
 
 1. Open WinSCP.
 2. Connect to the camera via FTP/SSH.
@@ -96,7 +96,7 @@ echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/policy0/scaling_max_freq
 
 ---
 
-<h2>Safe TX Profiles</h2>
+## Safe TX Profiles
 
 txprofile files for network cards — [here](https://github.com/OpenIPC/adaptive-link/tree/main/txprofiles) (*filename must always be* `txprofile.conf`)
 
@@ -112,7 +112,7 @@ Example safe TX profile:
 ```
 ---
 
-<h2>TX File Parameters</h2>
+## TX File Parameters
 
 - **range** — range for adaptive transmission.
 - **gi** — guard interval.

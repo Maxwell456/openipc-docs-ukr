@@ -3,6 +3,8 @@ title: Advanced Settings for OpenIPC
 description: Detailed guide for Jumbo frame, overheating protection and advanced configuration.
 ---
 
+# Advanced Settings for OpenIPC
+
 ## 🛜 Jumbo Frame 50 Mbit
 
 **Jumbo frame** is an Ethernet packet whose size **exceeds the standard 1500 bytes (MTU)**.
@@ -12,7 +14,7 @@ These packets are typically **up to 9000 bytes**.
 
 ---
 
-<h2>Why Use It?</h2>
+## Why Use It?
 
 | Benefit | Explanation |
 |---------|-------------|
@@ -29,14 +31,14 @@ Jumbo frame only works **if all devices on the network support** large packets (
 
 ## Jumbo Frame Setup Guide
 
-<h3>1. Download OpenIPC Configurator Mario</h3>
+### 1. Download OpenIPC Configurator Mario
 
 Download the **unofficial** [OpenIPC Configurator](https://github.com/OpenIPC/configurator/releases)
 > This tool allows flexible configuration of network parameters, image settings and firmware updates.
 
 ---
 
-<h3>2. Update the Firmware</h3>
+### 2. Update the Firmware
 
 Update the camera firmware to:
 `openipc-urlic-aio-nor`
@@ -45,7 +47,7 @@ Update the camera firmware to:
 
 ---
 
-<h3>3. Change MTU to 3994</h3>
+### 3. Change MTU to 3994
 
 Go to the **WFB Settings** tab and find the `MTU` parameter.
 
@@ -57,7 +59,7 @@ Go to the **WFB Settings** tab and find the `MTU` parameter.
 
 ---
 
-<h3>4. Sensor Bin File for Improved Image Quality</h3>
+### 4. Sensor Bin File for Improved Image Quality
 
 Use the *sensor bin file* from Greg to improve image sharpness.
 

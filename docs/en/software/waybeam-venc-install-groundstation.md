@@ -9,7 +9,7 @@ This guide describes how to fully replace **Majestic** with **waybeam venc** in 
 
 ---
 
-<h3>System architecture</h3>
+### System architecture
 
 ```
 ┌─────────────────── CAMERA (VTX) ───────────────────┐
@@ -39,7 +39,7 @@ This guide describes how to fully replace **Majestic** with **waybeam venc** in 
 
 ---
 
-<h3>Part 1: Camera (VTX) setup</h3>
+### Part 1: Camera (VTX) setup
 
 <strong>1.1 Prerequisites</strong>
 
@@ -222,7 +222,7 @@ For automatic startup, create an init script as described in [Install on the cam
 
 ---
 
-<h3>Part 2: Ground station (GS) setup</h3>
+### Part 2: Ground station (GS) setup
 
 <strong>2.1 Ground station requirements</strong>
 
@@ -281,11 +281,11 @@ gst-launch-1.0 udpsrc port=5600 \
 
 ---
 
-<h3> Part 3: Audio over WFB-ng</h3>
+### Part 3: Audio over WFB-ng
 
 venc supports transmitting audio in parallel with video:
 
-<h4>3.1 Enabling audio on the camera</h4>
+#### 3.1 Enabling audio on the camera
 
 Update `/etc/venc.json`:
 
@@ -321,7 +321,7 @@ ffplay -nodisp -fflags nobuffer -i udp://0.0.0.0:5601
 
 ---
 
-<h3>Part 4: Adaptive control (advanced)</h3>
+### Part 4: Adaptive control (advanced)
 
 <strong>4.1 Scene-Change IDR</strong>
 
@@ -348,7 +348,7 @@ The sidecar sends per-frame telemetry: `frame_type`, `complexity`, `scene_change
 
 ---
 
-<h3>Part 5: Recording to the SD card</h3>
+### Part 5: Recording to the SD card
 
 venc supports simultaneous streaming and recording:
 
@@ -385,7 +385,7 @@ The MPEG-TS format doesn't need file finalization. Even on a sudden power loss, 
 
 ---
 
-<h3>Verifying the integration</h3>
+### Verifying the integration
 
 After configuration, run the checks:
 
@@ -406,7 +406,7 @@ curl http://192.168.1.10/request/idr
 
 ---
 
-<h3>Comparison: venc + WFB-ng vs Majestic + WFB-ng</h3>
+### Comparison: venc + WFB-ng vs Majestic + WFB-ng
 
 | Aspect | venc + WFB-ng | Majestic + WFB-ng |
 | :--- | :--- | :--- |
@@ -420,7 +420,7 @@ curl http://192.168.1.10/request/idr
 
 ---
 
-<h3>Next steps</h3>
+### Next steps
 
 - [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — control via the browser
 - [**waybeam venc overview**](/en/software/waybeam-venc) — all features
