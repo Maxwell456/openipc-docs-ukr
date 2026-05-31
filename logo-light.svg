@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- WiFi arcs - blue for light backgrounds -->
+  <circle cx="100" cy="140" r="14" fill="#3451b2"/>
+  <path d="M63 103 Q100 72 137 103" stroke="#3451b2" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M40 80 Q100 38 160 80" stroke="#3451b2" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M18 57 Q100 5 182 57" stroke="#3451b2" stroke-width="14" stroke-linecap="round" fill="none"/>
+</svg>
