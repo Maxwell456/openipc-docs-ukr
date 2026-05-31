@@ -1,0 +1,1198 @@
+/* ===== Dark Navy Color Theme ===== */
+:root {
+  --vp-c-brand-1: #3d6aff;
+  --vp-c-brand-2: #3460e6;
+  --vp-c-brand-3: #2a50cc;
+  --vp-c-brand-soft: rgba(61, 106, 255, 0.14);
+}
+
+/* Always reserve the scrollbar gutter so short pages (homepage) and long pages
+   keep the same content width → the navbar/logo don't shift between pages. */
+html {
+  scrollbar-gutter: stable;
+}
+
+.dark {
+  --vp-c-bg: #0f0f1a;
+  --vp-c-bg-soft: #1a1b2e;
+  --vp-c-bg-mute: #222336;
+  --vp-c-border: #2e2f4a;
+  --vp-c-divider: #2e2f4a;
+  --vp-nav-bg-color: #0f0f1aee;
+  --vp-sidebar-bg-color: #12121f;
+  --vp-c-text-1: #e8e8f0;
+  --vp-c-text-2: #a8a8c0;
+  --vp-c-text-3: #7070a0;
+}
+
+/* ===== Noise texture overlay (Stripe-style depth) ===== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/noise.svg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.038;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* ===== Navigation ===== */
+.VPNav {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--vp-c-border) !important;
+}
+
+/* ===== Logo ===== */
+.VPNavBarTitle .logo {
+  height: 28px;
+  width: auto;
+}
+
+/* ===== Home Hero — modern, minimal, single-screen ===== */
+
+/* Tighten the tall default vertical spacing so it fits one screen */
+.VPHome {
+  padding-bottom: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+/* On tall screens (Full HD and up), center the home content vertically so
+   the hero clears the navbar and there's no large dead gap above the footer.
+   Below this height we keep the compact top-aligned layout that fits one screen. */
+@media (min-height: 880px) {
+  .VPContent.is-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* .VPHero carries a default margin-top:-64px (pulls it under the fixed nav),
+   so its own padding-top must exceed the 64px nav to keep the title clear. */
+.VPHero {
+  padding-top: 84px !important;
+  padding-bottom: 16px !important;
+}
+
+@media (min-width: 768px) {
+  .VPHero {
+    padding-top: 88px !important;
+    padding-bottom: 12px !important;
+  }
+}
+
+/* Hide empty name placeholder — logo image is the wordmark */
+.VPHero .name {
+  display: none !important;
+}
+
+/* Logo image — large, centered, no glow box. Cap the image itself, not just the box */
+.VPHero .container {
+  align-items: center !important;
+}
+
+.VPHero .image {
+  align-self: center !important;
+}
+
+.VPHero .image-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-width: 360px !important;
+  max-height: 320px !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  transform: none !important;
+}
+
+.VPHero .image-bg {
+  display: none !important;
+}
+
+/* Reset VitePress's absolute translate centering — let flexbox center it */
+.VPHero .image-src {
+  position: static !important;
+  transform: none !important;
+  top: auto !important;
+  left: auto !important;
+  width: auto !important;
+  max-width: 320px !important;
+  max-height: 300px !important;
+}
+
+/* ===== Mobile hero (stacked: logo on top, centered) ===== */
+@media (max-width: 767px) {
+  .VPHero {
+    padding-top: 24px !important;
+    padding-bottom: 8px !important;
+  }
+
+  /* Cancel VitePress's negative margins that pull the logo under the navbar */
+  .VPHero .image,
+  .VPHero .image-container {
+    margin: 0 auto !important;
+  }
+
+  .VPHero .image-container {
+    max-width: 200px !important;
+    max-height: 200px !important;
+  }
+
+  .VPHero .image-src {
+    max-width: 180px !important;
+    max-height: 180px !important;
+  }
+
+  .VPHero .text {
+    font-size: 1.9rem !important;
+    margin-top: 8px;
+  }
+
+  .VPHero .tagline {
+    font-size: 1rem !important;
+  }
+
+  .VPHero .actions {
+    justify-content: center !important;
+  }
+
+  .home-notice {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    font-size: 0.85rem;
+  }
+}
+
+.VPHero .text {
+  font-size: 2.3rem;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  max-width: 560px;
+}
+
+.VPHero .tagline {
+  font-size: 1.05rem;
+  line-height: 1.55;
+  opacity: 0.82;
+  max-width: 540px;
+}
+
+/* Buttons — compact, one row, soft radius, subtle motion */
+.VPHero .actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+}
+
+.VPHero .action .VPButton {
+  padding: 9px 18px !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.VPHero .action .VPButton.brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(61, 106, 255, 0.35);
+}
+
+.VPHero .action .VPButton.alt:hover {
+  transform: translateY(-2px);
+  border-color: var(--vp-c-brand-1);
+}
+
+/* ===== Hero search card (homepage) — injected via the home-hero-image slot.
+   Sits in the hero's right column; clicking opens the same search modal. ===== */
+
+/* Neutralize VitePress's logo-oriented image-container sizing so it can hold a card */
+.VPHero .image-bg {
+  display: none;
+}
+
+.VPHero.has-image .image {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.VPHero.has-image .image-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  transform: none !important;
+  display: block !important;
+}
+
+/* Keep text first, search card second on every breakpoint
+   (VitePress puts the image column first on mobile by default) */
+.VPHero.has-image .main {
+  order: 1;
+}
+
+.VPHero.has-image .image {
+  order: 2;
+}
+
+@media (max-width: 959px) {
+  .VPHero .image {
+    margin: 20px 0 0 !important;
+  }
+}
+
+.hero-search-card {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 26px;
+  border-radius: 20px;
+  border: 1px solid var(--vp-c-divider);
+  background: rgba(20, 21, 38, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Animated aurora background — two drifting brand-coloured blobs */
+.hero-search-aurora {
+  position: absolute;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(46px);
+  opacity: 0.55;
+}
+
+.hero-search-aurora::before,
+.hero-search-aurora::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  border-radius: 50%;
+}
+
+.hero-search-aurora::before {
+  top: 4%;
+  left: 8%;
+  background: radial-gradient(circle, #3d6aff, transparent 70%);
+  animation: heroAuroraA 14s ease-in-out infinite;
+}
+
+.hero-search-aurora::after {
+  bottom: 2%;
+  right: 6%;
+  background: radial-gradient(circle, #6f4dff, transparent 70%);
+  animation: heroAuroraB 18s ease-in-out infinite;
+}
+
+@keyframes heroAuroraA {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(28px, 22px) scale(1.18); }
+}
+
+@keyframes heroAuroraB {
+  0%, 100% { transform: translate(0, 0) scale(1.05); }
+  50% { transform: translate(-26px, -20px) scale(0.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-search-aurora::before,
+  .hero-search-aurora::after {
+    animation: none;
+  }
+}
+
+.hero-search-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-search-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+
+.hero-search-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+  animation: heroDotPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes heroDotPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(61, 106, 255, 0.25); }
+  50% { box-shadow: 0 0 0 7px rgba(61, 106, 255, 0.04); }
+}
+
+/* The big search field */
+.hero-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  font-size: 1.02rem;
+  cursor: text;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.hero-search:hover,
+.hero-search:focus-visible {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 4px var(--vp-c-brand-soft);
+  outline: none;
+}
+
+.hero-search-icon {
+  color: var(--vp-c-brand-1);
+  flex-shrink: 0;
+}
+
+.hero-search-text {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-search-keys {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.hero-search-keys kbd {
+  font-family: var(--vp-font-family-base);
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+}
+
+/* Popular search chips */
+.hero-search-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-search-chips-label {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+}
+
+.hero-search-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+}
+
+.hero-search-chip:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+}
+
+/* Subtle ambient glow behind the hero */
+.VPHome {
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHome::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  width: min(820px, 90vw);
+  height: 520px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(61, 106, 255, 0.16), transparent 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.VPHome .VPHero,
+.VPHome .VPFeatures {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Feature cards — clean, with hover lift ===== */
+.VPFeatures {
+  padding-top: 8px !important;
+}
+
+.VPFeatures .VPFeature {
+  border: 1px solid var(--vp-c-border);
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  padding: 12px 18px !important;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.VPFeatures .VPFeature:hover {
+  transform: translateY(-4px);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+}
+
+.VPFeature .title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.VPFeature .link-text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* ===== Sidebar ===== */
+.dark .VPSidebar {
+  border-right: 1px solid #2e2f4a;
+}
+
+.VPSidebarItem.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+  font-weight: 600;
+}
+
+/* ===== Content ===== */
+.vp-doc h1 {
+  border-bottom: 2px solid var(--vp-c-brand-soft);
+  padding-bottom: 0.4rem;
+}
+
+.vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 1.5rem;
+}
+
+/* ===== Code blocks ===== */
+.dark div[class*='language-'] {
+  background: #12121f !important;
+  border: 1px solid #2e2f4a;
+}
+
+/* ===== Tables ===== */
+.dark .vp-doc table {
+  border-color: #2e2f4a;
+}
+
+.dark .vp-doc tr:nth-child(2n) {
+  background: #1a1b2e;
+}
+
+/* ===== Custom info/warning blocks ===== */
+.dark .vp-doc .custom-block.warning {
+  background: rgba(255, 180, 0, 0.08);
+  border-color: rgba(255, 180, 0, 0.4);
+}
+
+.dark .vp-doc .custom-block.tip {
+  background: rgba(61, 106, 255, 0.08);
+  border-color: rgba(61, 106, 255, 0.4);
+}
+
+/* ===== Search ===== */
+.dark .VPLocalSearchBox {
+  background: #1a1b2e;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3d6aff44;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d6aff88;
+}
+
+/* ===== Homepage notice — attention bar, aligned to content width ===== */
+.home-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1152px;
+  margin: 24px auto 0;
+  padding: 12px 24px;
+  border-radius: 12px;
+  background: rgba(61, 106, 255, 0.07);
+  border: 1px solid rgba(61, 106, 255, 0.3);
+  color: var(--vp-c-text-2);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.home-notice-icon {
+  flex-shrink: 0;
+  color: var(--vp-c-brand-1);
+}
+
+/* Match the hero/features container horizontal padding so edges line up */
+@media (min-width: 640px) {
+  .home-notice {
+    margin-left: 24px;
+    margin-right: 24px;
+    width: auto;
+    max-width: calc(1152px - 48px);
+  }
+}
+@media (min-width: 768px) {
+  .home-notice {
+    margin-left: 48px;
+    margin-right: 48px;
+    max-width: calc(1152px - 96px);
+  }
+}
+@media (min-width: 960px) {
+  .home-notice {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1152px;
+  }
+}
+
+/* ===== Theme (appearance) switcher — more prominent ===== */
+
+/* Mobile hamburger nav: the "Тема / Appearance" row */
+.VPNavScreenAppearance {
+  background: rgba(61, 106, 255, 0.08) !important;
+  border: 1px solid rgba(61, 106, 255, 0.32) !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+}
+
+.VPNavScreenAppearance .text {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.01em;
+  color: var(--vp-c-text-1) !important;
+}
+
+/* The toggle switch — brand blue accent */
+.VPSwitchAppearance {
+  border-color: rgba(61, 106, 255, 0.55) !important;
+  background-color: rgba(61, 106, 255, 0.12) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.VPSwitchAppearance:hover {
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 0 0 3px rgba(61, 106, 255, 0.18) !important;
+}
+
+/* The knob */
+.VPSwitchAppearance .check {
+  background-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 1px 8px rgba(61, 106, 255, 0.55) !important;
+}
+
+/* Desktop navbar — subtle ring on hover around the switch */
+.VPNavBarAppearance {
+  padding: 0 4px;
+}
+
+/* ===== Navbar: menu centered between logo and controls, slim search right =====
+   Two auto margins (one before the menu, one before the search) split the free
+   space equally → the menu sits centred while the controls stay flush right.
+   This never overlaps and adapts to width (unlike absolute centering). */
+@media (min-width: 768px) {
+  .VPNavBar .content-body > .VPNavBarMenu {
+    order: -1;
+    margin-left: auto;
+  }
+  .VPNavBarMenu .VPNavBarMenuLink,
+  .VPNavBarMenu .VPNavBarMenuGroup > .VPFlyout > .button {
+    padding: 0 9px !important;
+  }
+  .VPNavBar .content-body > .VPNavBarSearch {
+    flex-grow: 0 !important;
+    margin-left: auto !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* Keep the navbar layout IDENTICAL on doc pages (with sidebar) and the homepage,
+   so the logo/menu don't shift (jump) when navigating between them. By default
+   VitePress offsets the navbar content by the sidebar width on doc pages. */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .wrapper {
+    padding: 0 32px !important;
+  }
+  .VPNavBar.has-sidebar .container {
+    max-width: calc(var(--vp-layout-max-width) - 64px) !important;
+  }
+  .VPNavBar.has-sidebar .title {
+    position: static !important;
+    width: auto !important;
+    padding: 0 !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPNavBar.has-sidebar .title {
+    padding-left: 0 !important;
+    width: auto !important;
+  }
+  .VPNavBar.has-sidebar .content {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Slim pill styling for the local-search button (the ⌘K hint lives in the hero) */
+.VPNavBarSearch .DocSearch-Button {
+  border-radius: 9px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
+  height: 34px;
+  padding: 0 10px;
+  margin: 0 6px 0 0;
+  transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+}
+
+.VPNavBarSearch .DocSearch-Button:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+}
+
+.VPNavBarSearch .DocSearch-Button .DocSearch-Search-Icon {
+  color: var(--vp-c-brand-1);
+}
+
+/* Hide the keyboard hint on the compact navbar pill */
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys {
+  display: none !important;
+}
+
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Placeholder {
+  padding: 0 4px 0 6px;
+  font-size: 13px;
+}
+
+/* ===== Outline ===== */
+.dark .VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+}
+
+/* Mobile outline dropdown — bump z-index so the flyout appears above page content.
+   VPLocalNav defaults to z-index:20; raising it here ensures the absolute-positioned
+   .items panel is never clipped or painted behind sibling layers on mobile. */
+@media (max-width: 1279px) {
+  .VPLocalNav {
+    z-index: 40 !important;
+    overflow: visible !important;
+  }
+
+  .VPLocalNavOutlineDropdown {
+    position: relative;
+  }
+}
+
+/* ===== Footer ===== */
+.dark .VPFooter {
+  border-top: 1px solid #2e2f4a;
+  background: #0f0f1a;
+}
+
+/* ===== Hide default VitePress language switcher icon ===== */
+.VPNavBarTranslations {
+  display: none !important;
+}
+
+/* ===== Navbar UKR/ENG language switcher ===== */
+.nav-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+}
+
+.nav-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none !important;
+  color: var(--vp-c-text-2);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-lang-btn:hover {
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-1);
+  text-decoration: none !important;
+}
+
+.nav-lang-btn--active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* ===== Mobile nav screen lang switcher ===== */
+.VPNavScreen .nav-lang-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 0 8px;
+  margin-top: 12px;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.VPNavScreen .nav-lang-btn {
+  flex: 1;
+  max-width: 140px;
+  justify-content: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg-soft);
+}
+
+/* ===== Smooth scroll ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Global focus ring ===== */
+:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ===== Tablet improvements (768px – 1024px) ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .VPHero .text {
+    font-size: 2rem !important;
+  }
+
+  .VPHero .tagline {
+    font-size: 0.98rem !important;
+  }
+
+  .VPFeatures .items {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ===== Mobile improvements (≤ 767px) ===== */
+@media (max-width: 767px) {
+  /* Hero */
+  .VPHero {
+    padding-top: 28px !important;
+    padding-bottom: 4px !important;
+  }
+
+  .VPHero .container {
+    gap: 0 !important;
+  }
+
+  .VPHero .text {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+    margin-top: 0 !important;
+  }
+
+  .VPHero .tagline {
+    font-size: 0.95rem !important;
+    margin-top: 8px !important;
+  }
+
+  .VPHero .actions {
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
+    padding-top: 0 !important;
+  }
+
+  .VPHero .action .VPButton {
+    padding: 10px 22px !important;
+    font-size: 0.92rem !important;
+  }
+
+  /* Feature cards — single column, compact */
+  .VPFeatures {
+    padding-top: 24px !important;
+  }
+
+  .VPFeatures .VPFeature {
+    padding: 14px 16px !important;
+    border-radius: 12px;
+  }
+
+  .VPFeature .title {
+    font-size: 1rem;
+  }
+
+  .VPFeature .details {
+    font-size: 0.87rem;
+    line-height: 1.5;
+  }
+
+  /* Home notice */
+  .home-notice {
+    margin: 12px 16px 0 !important;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    border-radius: 10px;
+    gap: 8px;
+  }
+
+  /* Content pages */
+  .vp-doc h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .vp-doc h2 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Tables — horizontal scroll */
+  .vp-doc table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85rem;
+  }
+
+  /* Code blocks */
+  div[class*='language-'] {
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* ===== Small phones (≤ 480px) ===== */
+@media (max-width: 480px) {
+  .VPHero .text {
+    font-size: 1.55rem !important;
+  }
+
+  .VPHero .actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .VPHero .action {
+    width: 100%;
+  }
+
+  .VPHero .action .VPButton {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
+/* ===== Visual polish — card icon accent ===== */
+.VPFeature .icon {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+/* ===== Nav bar compact on small screens ===== */
+@media (max-width: 767px) {
+  .nav-lang-switcher {
+    margin-left: 2px;
+    gap: 1px;
+  }
+
+  .nav-lang-btn {
+    padding: 3px 7px !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+/* ===== Floating report error button ===== */
+@keyframes report-pulse {
+  0%, 100% { box-shadow: 2px 0 12px rgba(61, 106, 255, 0.25); }
+  50%       { box-shadow: 2px 0 24px rgba(61, 106, 255, 0.55); }
+}
+
+.report-float {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 150;
+  display: flex;
+  align-items: center;
+}
+
+.report-float-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 16px 10px;
+  background: var(--vp-c-brand-1);
+  border: none;
+  border-radius: 0 12px 12px 0;
+  color: #fff;
+  cursor: pointer;
+  animation: report-pulse 3s ease-in-out infinite;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.report-float-btn:hover {
+  background: var(--vp-c-brand-2);
+  transform: translateX(3px);
+  animation: none;
+}
+
+.report-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #fff;
+}
+
+/* Tooltip */
+.report-tip {
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-brand-1);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--vp-c-text-1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.tip-fade-enter-active,
+.tip-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.tip-fade-enter-from,
+.tip-fade-leave-to {
+  opacity: 0;
+}
+
+/* ===== Mobile: circle button bottom-left ===== */
+@keyframes report-pulse-mob {
+  0%, 100% { box-shadow: 0 4px 14px rgba(61, 106, 255, 0.3); }
+  50%       { box-shadow: 0 4px 26px rgba(61, 106, 255, 0.6); }
+}
+
+@media (max-width: 767px) {
+  .report-float {
+    top: auto;
+    bottom: 28px;
+    left: 16px;
+    transform: none;
+  }
+
+  .report-float-btn {
+    flex-direction: row;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border-radius: 14px;
+    justify-content: center;
+    animation: report-pulse-mob 3s ease-in-out infinite;
+  }
+
+  .report-float-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .report-label {
+    display: none;
+  }
+
+  .report-tip {
+    left: 0;
+    top: auto;
+    bottom: calc(100% + 10px);
+    transform: none;
+    white-space: normal;
+    max-width: 230px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ===== Back to top button ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-brand-1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(61, 106, 255, 0.22);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background: var(--vp-c-brand-soft);
+  box-shadow: 0 8px 28px rgba(61, 106, 255, 0.38);
+}
+
+.back-top-enter-active,
+.back-top-leave-active {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.back-top-enter-from,
+.back-top-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@media (max-width: 767px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ===== Print styles ===== */
+@media print {
+  /* Hide navigation chrome */
+  .VPNav,
+  .VPSidebar,
+  .VPLocalNav,
+  .VPDocAside,
+  .VPFooter,
+  .report-float,
+  .back-to-top,
+  .nav-lang-switcher {
+    display: none !important;
+  }
+
+  /* Full-width content, white background */
+  .VPDoc .container,
+  .vp-doc {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  body,
+  .vp-doc {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Show URLs next to links */
+  .vp-doc a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555;
+  }
+
+  /* Avoid page breaks inside code blocks and tables */
+  pre,
+  table {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+}
+
+/* ===== Gradient divider between hero and features ===== */
+.VPFeatures::before {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-brand-soft) 30%,
+    var(--vp-c-brand-soft) 70%,
+    transparent
+  );
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
