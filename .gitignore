@@ -17,3 +17,6 @@ Thumbs.db
 
 # Claude Code (local tooling, not part of the site)
 .claude/
+
+# One-off maintenance scripts (not part of the published site)
+scripts/
