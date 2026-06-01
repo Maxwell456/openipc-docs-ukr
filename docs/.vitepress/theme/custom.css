@@ -98,7 +98,7 @@ body::after {
 /* On tall screens (Full HD and up), center the home content vertically so
    the hero clears the navbar and there's no large dead gap above the footer.
    Below this height we keep the compact top-aligned layout that fits one screen. */
-@media (min-height: 880px) {
+@media (min-width: 768px) and (min-height: 880px) {
   .VPContent.is-home {
     display: flex;
     flex-direction: column;
@@ -162,25 +162,17 @@ body::after {
 
 /* ===== Mobile hero (stacked: logo on top, centered) ===== */
 @media (max-width: 767px) {
+  /* Clear the 64px fixed navbar: .VPHero has margin-top:-64px, so padding-top
+     must exceed it or the title's top lines hide under the navbar. */
   .VPHero {
-    padding-top: 24px !important;
+    padding-top: 76px !important;
     padding-bottom: 8px !important;
   }
 
-  /* Cancel VitePress's negative margins that pull the logo under the navbar */
-  .VPHero .image,
-  .VPHero .image-container {
-    margin: 0 auto !important;
-  }
-
-  .VPHero .image-container {
-    max-width: 200px !important;
-    max-height: 200px !important;
-  }
-
-  .VPHero .image-src {
-    max-width: 180px !important;
-    max-height: 180px !important;
+  /* Hide the big hero search card on mobile — the navbar already has a search
+     button, and removing it lets the first screen fit without scrolling. */
+  .VPHero .image {
+    display: none !important;
   }
 
   .VPHero .text {
@@ -986,9 +978,9 @@ html {
 
 /* ===== Mobile improvements (≤ 767px) ===== */
 @media (max-width: 767px) {
-  /* Hero */
+  /* Hero — padding-top must clear the 64px fixed navbar (see note above) */
   .VPHero {
-    padding-top: 28px !important;
+    padding-top: 76px !important;
     padding-bottom: 4px !important;
   }
 
