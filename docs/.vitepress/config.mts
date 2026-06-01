@@ -83,7 +83,7 @@ const REDIRECTS: Record<string, string> = {
   '/net-cards/rtl8812au/': '/hardware/net-cards/rtl8812au',
   '/net-cards/rtl8812bu/': '/hardware/net-cards/rtl8812bu',
   '/net-cards/rtl8812eu/': '/hardware/net-cards/rtl8812eu',
-  '/quick-start/': '/getting-started/quick-start',
+  '/quick-start/': '/getting-started/',
   '/telemetry/vtx-menu/': '/configuration/telemetry',
   '/troubleshooting/': '/getting-started/troubleshooting',
   '/update/': '/updates',
