@@ -813,6 +813,11 @@ body::after {
   }
 }
 
+/* Mobile nav screen must sit above VPLocalNav (z-index 40) */
+.VPNavScreen {
+  z-index: 50 !important;
+}
+
 /* ===== Footer ===== */
 .dark .VPFooter {
   border-top: 1px solid #2e2f4a;
@@ -1042,7 +1047,7 @@ html {
 .report-float {
   position: fixed;
   left: 0;
-  top: 50%;
+  top: 65%;
   transform: translateY(-50%);
   z-index: 150;
   display: flex;
