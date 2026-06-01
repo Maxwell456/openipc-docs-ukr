@@ -926,6 +926,37 @@ body::after {
   background: var(--vp-c-bg-soft);
 }
 
+/* ===== Mobile nav screen — close button ===== */
+.nav-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(61, 106, 255, 0.32);
+  transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.nav-close-btn:hover {
+  background: var(--vp-c-brand-2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(61, 106, 255, 0.45);
+}
+
+.nav-close-btn:active {
+  transform: translateY(0);
+}
+
 /* ===== Smooth scroll ===== */
 html {
   scroll-behavior: smooth;
