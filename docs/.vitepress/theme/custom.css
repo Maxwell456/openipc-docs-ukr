@@ -35,7 +35,7 @@ body::after {
   background-size: 200px 200px;
   opacity: 0.038;
   pointer-events: none;
-  z-index: 9998;
+  z-index: -1;
   mix-blend-mode: overlay;
 }
 
