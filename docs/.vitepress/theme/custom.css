@@ -1114,14 +1114,16 @@ html {
 }
 
 /* ===== Floating report error button ===== */
+/* Pinned to the RIGHT edge on desktop: the left edge is occupied by the sidebar
+   on doc pages, so a left tab would overlap the menu. (Mobile = circle, see below.) */
 @keyframes report-pulse {
-  0%, 100% { box-shadow: 2px 0 12px rgba(61, 106, 255, 0.25); }
-  50%       { box-shadow: 2px 0 24px rgba(61, 106, 255, 0.55); }
+  0%, 100% { box-shadow: -2px 0 12px rgba(61, 106, 255, 0.25); }
+  50%       { box-shadow: -2px 0 24px rgba(61, 106, 255, 0.55); }
 }
 
 .report-float {
   position: fixed;
-  left: 0;
+  right: 0;
   top: 65%;
   transform: translateY(-50%);
   z-index: 150;
@@ -1137,7 +1139,7 @@ html {
   padding: 16px 10px;
   background: var(--vp-c-brand-1);
   border: none;
-  border-radius: 0 12px 12px 0;
+  border-radius: 12px 0 0 12px;
   color: #fff;
   cursor: pointer;
   animation: report-pulse 3s ease-in-out infinite;
@@ -1146,7 +1148,7 @@ html {
 
 .report-float-btn:hover {
   background: var(--vp-c-brand-2);
-  transform: translateX(3px);
+  transform: translateX(-3px);
   animation: none;
 }
 
@@ -1161,10 +1163,10 @@ html {
   color: #fff;
 }
 
-/* Tooltip */
+/* Tooltip — opens to the LEFT of the right-edge tab */
 .report-tip {
   position: absolute;
-  left: calc(100% + 10px);
+  right: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
   background: var(--vp-c-bg-soft);
@@ -1202,6 +1204,7 @@ html {
     top: auto;
     bottom: 28px;
     left: 16px;
+    right: auto;
     transform: none;
   }
 
@@ -1225,6 +1228,7 @@ html {
 
   .report-tip {
     left: 0;
+    right: auto;
     top: auto;
     bottom: calc(100% + 10px);
     transform: none;

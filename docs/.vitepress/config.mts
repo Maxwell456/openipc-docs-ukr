@@ -340,7 +340,7 @@ export default defineConfig({
           copyright: '© 2024–2026 OpenFPV Ukraine'
         },
         editLink: {
-          pattern: 'https://github.com/Maxwell456/openipc-docs-ukr/edit/main/docs/uk/:path',
+          pattern: 'https://github.com/Maxwell456/openipc-docs-ukr/edit/main/docs/:path',
           text: 'Редагувати на GitHub'
         }
       }
@@ -535,7 +535,7 @@ export default defineConfig({
           copyright: '© 2024–2026 OpenFPV Ukraine'
         },
         editLink: {
-          pattern: 'https://github.com/Maxwell456/openipc-docs-ukr/edit/main/docs/en/:path',
+          pattern: 'https://github.com/Maxwell456/openipc-docs-ukr/edit/main/docs/:path',
           text: 'Edit this page on GitHub'
         }
       }
