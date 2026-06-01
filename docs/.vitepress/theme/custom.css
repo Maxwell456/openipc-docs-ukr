@@ -7,9 +7,44 @@
 }
 
 /* Always reserve the scrollbar gutter so short pages (homepage) and long pages
-   keep the same content width → the navbar/logo don't shift between pages. */
+   keep the same content width → the navbar/logo don't shift between pages.
+   Disabled on mobile: no visible scrollbar, so the reserved gap causes
+   horizontal overflow when the nav menu opens. */
 html {
   scrollbar-gutter: stable;
+}
+
+@media (max-width: 767px) {
+  html {
+    scrollbar-gutter: auto;
+    /* Safety net: clip any stray wide element so it never creates a horizontal
+       scrollbar (which, with a fixed-position nav menu, shifts the whole layout). */
+    overflow-x: clip;
+  }
+}
+
+/* ===== Responsive media — never let an embed overflow the viewport =====
+   Raw markdown embeds use <iframe width="560" height="315">, a fixed pixel
+   width that overflows narrow screens. CSS overrides the presentational
+   width/height attributes so every video scales to its container at 16:9. */
+.vp-doc iframe {
+  max-width: 100%;
+}
+
+.vp-doc iframe[src*="youtube"],
+.vp-doc iframe[src*="youtu.be"],
+.vp-doc iframe[src*="youtube-nocookie"] {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+/* Images in content stay within their column */
+.vp-doc img {
+  max-width: 100%;
+  height: auto;
 }
 
 .dark {
@@ -813,7 +848,14 @@ body::after {
   }
 }
 
-/* Mobile nav screen must sit above VPLocalNav (z-index 40) */
+/* The whole nav header (which contains VPNavScreen) must sit above VPLocalNav
+   (z-index 40). VPNavScreen is trapped inside .VPNav's stacking context, so a
+   z-index on it alone is capped by .VPNav's — raise the parent instead, else the
+   "≡ Меню / На цій сторінці" bar paints over the open menu's first item. */
+.VPNav {
+  z-index: 50 !important;
+}
+
 .VPNavScreen {
   z-index: 50 !important;
 }
@@ -824,8 +866,10 @@ body::after {
   background: #0f0f1a;
 }
 
-/* ===== Hide default VitePress language switcher icon ===== */
-.VPNavBarTranslations {
+/* ===== Hide default VitePress language switcher (desktop icon + mobile menu
+   "Українська" dropdown) — we use our own UKR/ENG switch instead ===== */
+.VPNavBarTranslations,
+.VPNavScreenTranslations {
   display: none !important;
 }
 
