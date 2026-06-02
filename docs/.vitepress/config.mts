@@ -1,6 +1,10 @@
 import { defineConfig } from 'vitepress'
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+// Absolute path to the docs/ source dir (this file lives in docs/.vitepress/)
+const DOCS_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 // Google Analytics 4 Measurement ID 
 const GA4_ID = 'G-WFWC26NZLB'
@@ -680,13 +684,19 @@ export default defineConfig({
 
     const head = (pageData.frontmatter.head ??= [])
 
-    // Canonical + per-page hreflang alternates
-    head.push(
-      ['link', { rel: 'canonical', href: canonical }],
-      ['link', { rel: 'alternate', hreflang: 'uk', href: ukUrl }],
-      ['link', { rel: 'alternate', hreflang: 'en', href: enUrl }],
-      ['link', { rel: 'alternate', hreflang: 'x-default', href: ukUrl }]
-    )
+    // Canonical + per-page hreflang alternates — only emit a language alternate
+    // when that translation actually exists on disk, otherwise hreflang points at
+    // a 404 (Google flags this and it can hurt international ranking signals).
+    const ukRel = isEn ? rel.replace(/^en\//, '') : rel
+    const enRel = isEn ? rel : `en/${rel}`
+    const ukExists = existsSync(resolve(DOCS_DIR, ukRel))
+    const enExists = existsSync(resolve(DOCS_DIR, enRel))
+
+    head.push(['link', { rel: 'canonical', href: canonical }])
+    if (ukExists) head.push(['link', { rel: 'alternate', hreflang: 'uk', href: ukUrl }])
+    if (enExists) head.push(['link', { rel: 'alternate', hreflang: 'en', href: enUrl }])
+    // x-default points to the Ukrainian (primary) version when present
+    head.push(['link', { rel: 'alternate', hreflang: 'x-default', href: ukExists ? ukUrl : enUrl }])
 
     // Open Graph + Twitter (PNG images — SVG is not rendered by social platforms)
     head.push(

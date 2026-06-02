@@ -35,8 +35,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Stale .vitepress/cache intermittently triggers a "resolvePageImports"
+      # crash during render — start each deploy from a clean cache.
       - name: Build VitePress site
-        run: npm run build
+        run: |
+          rm -rf docs/.vitepress/cache
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
