@@ -305,12 +305,12 @@ The script is numbered `S96`, which means it starts after most system services, 
 
 ::: info audioPort and sidecarPort
 In the config above, `audioPort: 0` and `sidecarPort: 0` are set to 0. This means:
+
+- `audioPort: 0` — audio is transmitted together with the video over the same Unix socket (optimal for WFB-ng)
+- `sidecarPort: 0` — the sidecar diagnostics channel is disabled (no overhead)
+
+The default config has `audioPort: 5601` and `sidecarPort: 5602` — if you need separate audio transmission over UDP, set the appropriate values.
 :::
-
-    - `audioPort: 0` — audio is transmitted together with the video over the same Unix socket (optimal for WFB-ng)
-    - `sidecarPort: 0` — the sidecar diagnostics channel is disabled (no overhead)
-
-    The default config has `audioPort: 5601` and `sidecarPort: 5602` — if you need separate audio transmission over UDP, set the appropriate values.
 
 ---
 
@@ -340,30 +340,38 @@ curl http://localhost/request/idr
 
 ### Common issues
 
-??? question "venc won't start — library error"
-    Make sure all SigmaStar libraries are available in `/usr/lib`. If you use a staged build, set the variable:
-    ```bash
-    export LD_LIBRARY_PATH=/path/to/lib
-    ```
+::: details venc won't start — library error
+Make sure all SigmaStar libraries are available in `/usr/lib`. If you use a staged build, set the variable:
 
-??? question "No video after starting"
-    1. Check that `outgoing.enabled` is set to `true`
-    2. Check that the `outgoing.server` address is correct
-    3. Check that Majestic is fully stopped: `ps | grep majestic`
-    4. Check the logs: `cat /tmp/venc.log`
+```bash
+export LD_LIBRARY_PATH=/path/to/lib
+```
+:::
 
-??? question "Black screen or artifacts"
-    Check sensor compatibility:
-    ```bash
-    curl http://localhost/api/v1/version
-    ```
-    Make sure `sensor.index` and `sensor.mode` are set to `-1` (auto-detect).
+::: details No video after starting
+1. Check that `outgoing.enabled` is set to `true`
+2. Check that the `outgoing.server` address is correct
+3. Check that Majestic is fully stopped: `ps | grep majestic`
+4. Check the logs: `cat /tmp/venc.log`
+:::
 
-??? question "Star6E: error with h264 over RTP"
-    On Star6E the RTP mode supports only H.265. Change the codec:
-    ```bash
-    curl "http://localhost/api/v1/set?video0.codec=h265"
-    ```
+::: details Black screen or artifacts
+Check sensor compatibility:
+
+```bash
+curl http://localhost/api/v1/version
+```
+
+Make sure `sensor.index` and `sensor.mode` are set to `-1` (auto-detect).
+:::
+
+::: details Star6E: error with h264 over RTP
+On Star6E the RTP mode supports only H.265. Change the codec:
+
+```bash
+curl "http://localhost/api/v1/set?video0.codec=h265"
+```
+:::
 
 ---
 

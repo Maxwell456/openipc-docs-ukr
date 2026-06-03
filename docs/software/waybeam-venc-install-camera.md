@@ -305,12 +305,12 @@ chmod +x /etc/init.d/S96venc
 
 ::: info audioPort та sidecarPort
 У конфізі вище `audioPort: 0` і `sidecarPort: 0` встановлені значенням 0. Це означає:
+
+- `audioPort: 0` — аудіо передається разом з відео через той самий Unix-сокет (оптимально для WFB-ng)
+- `sidecarPort: 0` — sidecar-канал діагностики вимкнений (ніяких накладних витрат)
+
+Дефолтний конфіг має `audioPort: 5601` і `sidecarPort: 5602` — якщо вам потрібна окрема передача аудіо через UDP, встановіть відповідні значення.
 :::
-
-    - `audioPort: 0` — аудіо передається разом з відео через той самий Unix-сокет (оптимально для WFB-ng)
-    - `sidecarPort: 0` — sidecar-канал діагностики вимкнений (ніяких накладних витрат)
-
-    Дефолтний конфіг має `audioPort: 5601` і `sidecarPort: 5602` — якщо вам потрібна окрема передача аудіо через UDP, встановіть відповідні значення.
 
 ---
 
@@ -340,30 +340,38 @@ curl http://localhost/request/idr
 
 ### Поширені проблеми
 
-??? question "venc не запускається — помилка бібліотек"
-    Переконайтеся, що всі бібліотеки SigmaStar доступні в `/usr/lib`. Якщо ви використовуєте staged-збірку, встановіть змінну:
-    ```bash
-    export LD_LIBRARY_PATH=/шлях/до/lib
-    ```
+::: details venc не запускається — помилка бібліотек
+Переконайтеся, що всі бібліотеки SigmaStar доступні в `/usr/lib`. Якщо ви використовуєте staged-збірку, встановіть змінну:
 
-??? question "Немає відео після запуску"
-    1. Перевірте, що `outgoing.enabled` встановлено в `true`
-    2. Перевірте правильність адреси `outgoing.server`
-    3. Перевірте, що Majestic повністю зупинений: `ps | grep majestic`
-    4. Перевірте логи: `cat /tmp/venc.log`
+```bash
+export LD_LIBRARY_PATH=/шлях/до/lib
+```
+:::
 
-??? question "Чорний екран або артефакти"
-    Перевірте сумісність сенсора:
-    ```bash
-    curl http://localhost/api/v1/version
-    ```
-    Переконайтеся, що `sensor.index` та `sensor.mode` встановлені на `-1` (автовизначення).
+::: details Немає відео після запуску
+1. Перевірте, що `outgoing.enabled` встановлено в `true`
+2. Перевірте правильність адреси `outgoing.server`
+3. Перевірте, що Majestic повністю зупинений: `ps | grep majestic`
+4. Перевірте логи: `cat /tmp/venc.log`
+:::
 
-??? question "Star6E: помилка при h264 з RTP"
-    На Star6E RTP-режим підтримує тільки H.265. Змініть кодек:
-    ```bash
-    curl "http://localhost/api/v1/set?video0.codec=h265"
-    ```
+::: details Чорний екран або артефакти
+Перевірте сумісність сенсора:
+
+```bash
+curl http://localhost/api/v1/version
+```
+
+Переконайтеся, що `sensor.index` та `sensor.mode` встановлені на `-1` (автовизначення).
+:::
+
+::: details Star6E: помилка при h264 з RTP
+На Star6E RTP-режим підтримує тільки H.265. Змініть кодек:
+
+```bash
+curl "http://localhost/api/v1/set?video0.codec=h265"
+```
+:::
 
 ---
 
