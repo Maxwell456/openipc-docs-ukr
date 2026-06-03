@@ -18,6 +18,7 @@ const chips = computed(() => {
     { label: 'APFPV', link: `${p}/software/apfpv` },
     { label: 'WFB-NG', link: `${p}/software/wfb-ng` },
     { label: 'OpenIPC 4G', link: `${p}/software/openipc-4g` },
+    { label: 'Venc', link: `${p}/software/waybeam-venc` },
   ]
 })
 

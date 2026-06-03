@@ -482,25 +482,28 @@ body::after {
 /* Popular search chips */
 .hero-search-chips {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .hero-search-chips-label {
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   color: var(--vp-c-text-3);
+  flex: 0 0 auto;
 }
 
 .hero-search-chip {
   display: inline-flex;
   align-items: center;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
   border: 1px solid var(--vp-c-divider);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  font-size: 0.82rem;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
