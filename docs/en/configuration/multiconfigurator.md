@@ -1,6 +1,13 @@
 ---
 title: "Updating via Multiconfigurator"
 description: "Guide for updating firmware using the OpenIPC configurator"
+faq:
+  - q: "How do I update OpenIPC firmware using Multiconfigurator?"
+    a: "Download the OpenIPC Multiconfigurator, connect to your device, open the 'Firmware' section, select your device and start flashing. Make sure the drone has stable power before flashing."
+  - q: "What should I do if the device failed to flash?"
+    a: "If the blue Connect button does not appear within 5 minutes, the flash failed. Follow the UART recovery guide to restore the device."
+  - q: "How do I factory reset OpenIPC without reflashing the firmware?"
+    a: "Run the firstboot command via SSH or terminal. This restores factory settings without reinstalling the firmware."
 ---
 
 # Updating via Multiconfigurator

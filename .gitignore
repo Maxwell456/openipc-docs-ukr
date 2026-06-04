@@ -20,3 +20,6 @@ Thumbs.db
 
 # One-off maintenance scripts (not part of the published site)
 scripts/
+
+# Local change log (personal notes, not for repo)
+CHANGES_LOCAL.md

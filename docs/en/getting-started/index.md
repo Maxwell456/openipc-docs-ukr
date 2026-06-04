@@ -1,6 +1,15 @@
 ---
 title: Quick Start with OpenIPC FPV
 description: What to buy for OpenIPC FPV, how to quickly set up camera, VRX and ground station for first flights.
+faq:
+  - q: "What hardware do I need to start with OpenIPC FPV?"
+    a: "You need an OpenIPC-compatible camera/VTX (e.g. Runcam WiFiLink v1/v2 or EMAX Wyvern Link) and a VRX ground station. The easiest entry point is a Runcam WiFiLink v1/v2 paired with a smartphone running PixelPilot."
+  - q: "What is the video latency of OpenIPC FPV?"
+    a: "Latency depends on the firmware: APFPV delivers 40–70 ms, WFB-NG can achieve under 35 ms. A Radxa Zero 3W ground station provides the lowest latency."
+  - q: "Is OpenIPC FPV suitable for TinyWhoop?"
+    a: "Yes. The EMAX Wyvern Link and OpenIPC Thinker v1 with built-in Wi-Fi (100 mW) are ideal for TinyWhoop builds with a range of up to ~500 m."
+  - q: "What is a VRX and which one should I choose as a beginner?"
+    a: "VRX is a ground station for receiving video. For beginners, the RunCam WiFiLink‑RX (ready-made) or PixelPilot on Android with an RTL8812AU USB Wi-Fi adapter is the easiest choice."
 ---
 
 # Quick Start
