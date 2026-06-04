@@ -263,7 +263,7 @@ export default defineConfig({
               items: [
                 {
                   text: 'APFPV',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'APFPV', link: '/software/apfpv' },
                     { text: 'APALink', link: '/software/apalink' },
@@ -272,7 +272,7 @@ export default defineConfig({
                 },
                 {
                   text: 'WFB-NG',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Огляд', link: '/software/wfb-ng' },
                     { text: 'Конфігурація', link: '/software/wfb-ng-config' },
@@ -470,7 +470,7 @@ export default defineConfig({
               items: [
                 {
                   text: 'APFPV',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'APFPV', link: '/en/software/apfpv' },
                     { text: 'APALink', link: '/en/software/apalink' },
@@ -479,7 +479,7 @@ export default defineConfig({
                 },
                 {
                   text: 'WFB-NG',
-                  collapsed: false,
+                  collapsed: true,
                   items: [
                     { text: 'Overview', link: '/en/software/wfb-ng' },
                     { text: 'Configuration', link: '/en/software/wfb-ng-config' },
