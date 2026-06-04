@@ -83,7 +83,6 @@
       <div class="wfb-calc__result-value" :style="{ color: tierColor }">
         {{ videoBitrate }}<span class="wfb-calc__unit"> Mbps</span>
       </div>
-      <div class="wfb-calc__result-hint" :style="{ color: tierColor }">{{ tierHint }}</div>
       <div class="wfb-calc__result-fec">
         FEC {{ fec_k }}/{{ fec_n }} · {{ Math.round(fecRatio * 100) }}% {{ t.ofPhy }}
       </div>
@@ -109,7 +108,6 @@ const T = {
     fecHint: 'Менше k/n — надійніше, але нижчий бітрейт',
     videoLabel: 'Відеобітрейт',
     ofPhy: 'від PHY',
-    hints: ['Замало для FPV', 'Мінімум для FPV', 'Добре для FPV', 'Відмінно для FPV'],
   },
   en: {
     mcsLabel: 'MCS Index (modulation scheme)',
@@ -122,7 +120,6 @@ const T = {
     fecHint: 'Lower k/n = more robust, less bitrate',
     videoLabel: 'Video bitrate',
     ofPhy: 'of PHY',
-    hints: ['Too low for FPV', 'Minimum for FPV', 'Good for FPV', 'Excellent for FPV'],
   },
 }
 
@@ -175,7 +172,6 @@ const TIERS = [
 
 const tierIdx   = computed(() => TIERS.findIndex(tier => videoBitrate.value < tier.max))
 const tierColor = computed(() => TIERS[Math.max(0, tierIdx.value)].color)
-const tierHint  = computed(() => t.value.hints[Math.max(0, tierIdx.value)])
 </script>
 
 <style scoped>
@@ -332,16 +328,12 @@ const tierHint  = computed(() => t.value.hints[Math.max(0, tierIdx.value)])
   font-size: 1rem;
   font-weight: 400;
 }
-.wfb-calc__result-hint {
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-top: 0.35rem;
-  transition: color 0.3s;
-}
 .wfb-calc__result-fec {
   font-size: 0.73rem;
   color: var(--vp-c-text-2);
   margin-top: 0.5rem;
+  border-top: 1px solid var(--vp-c-border);
+  padding-top: 0.4rem;
 }
 
 @media (max-width: 640px) {
