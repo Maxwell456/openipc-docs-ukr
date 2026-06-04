@@ -34,9 +34,21 @@
         </div>
       </div>
 
-      <!-- FEC -->
+      <!-- FEC presets -->
       <div class="wfb-calc__row">
-        <span class="wfb-calc__label">FEC (fec_k / fec_n)</span>
+        <span class="wfb-calc__label">{{ t.fecPresetsLabel }}</span>
+        <div class="wfb-calc__btns">
+          <button
+            v-for="p in FEC_PRESETS" :key="p.k + '/' + p.n"
+            class="wfb-calc__btn"
+            :class="{ 'wfb-calc__btn--active': fec_k === p.k && fec_n === p.n }"
+            @click="fec_k = p.k; fec_n = p.n"
+          >{{ t.fecPresets[p.key] }} ({{ p.k }}/{{ p.n }})</button>
+        </div>
+      </div>
+
+      <!-- FEC sliders -->
+      <div class="wfb-calc__row">
         <div class="wfb-calc__fec">
           <div class="wfb-calc__fec-group">
             <code>fec_k</code>
@@ -51,6 +63,16 @@
           </div>
         </div>
         <small class="wfb-calc__sub">{{ t.fecHint }}</small>
+
+        <!-- FEC overhead bar -->
+        <div class="wfb-calc__bar-wrap">
+          <div class="wfb-calc__bar-video" :style="{ width: fecRatio * 100 + '%' }">
+            <span>{{ t.videoLabel }}</span>
+          </div>
+          <div class="wfb-calc__bar-overhead">
+            <span>FEC</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -63,7 +85,7 @@
       </div>
       <div class="wfb-calc__result-hint" :style="{ color: tierColor }">{{ tierHint }}</div>
       <div class="wfb-calc__result-fec">
-        FEC {{ fec_k }}/{{ fec_n }} = {{ Math.round(fec_k / fec_n * 100) }}%
+        FEC {{ fec_k }}/{{ fec_n }} · {{ Math.round(fecRatio * 100) }}% {{ t.ofPhy }}
       </div>
     </div>
   </div>
@@ -82,8 +104,11 @@ const T = {
     giLabel: 'Guard Interval',
     giLong: 'Long (800 нс)',
     giShort: 'Short (400 нс)',
+    fecPresetsLabel: 'FEC — швидкий вибір',
+    fecPresets: { conservative: 'Надійно', default: 'Стандарт', aggressive: 'Максимум' },
     fecHint: 'Менше k/n — надійніше, але нижчий бітрейт',
-    videoLabel: 'Відеобітрейт після FEC',
+    videoLabel: 'Відеобітрейт',
+    ofPhy: 'від PHY',
     hints: ['Замало для FPV', 'Мінімум для FPV', 'Добре для FPV', 'Відмінно для FPV'],
   },
   en: {
@@ -92,11 +117,20 @@ const T = {
     giLabel: 'Guard Interval',
     giLong: 'Long (800 ns)',
     giShort: 'Short (400 ns)',
+    fecPresetsLabel: 'FEC — quick select',
+    fecPresets: { conservative: 'Reliable', default: 'Default', aggressive: 'Max bitrate' },
     fecHint: 'Lower k/n = more robust, less bitrate',
-    videoLabel: 'Video bitrate after FEC',
+    videoLabel: 'Video bitrate',
+    ofPhy: 'of PHY',
     hints: ['Too low for FPV', 'Minimum for FPV', 'Good for FPV', 'Excellent for FPV'],
   },
 }
+
+const FEC_PRESETS = [
+  { key: 'conservative', k: 4,  n: 12 },
+  { key: 'default',      k: 8,  n: 12 },
+  { key: 'aggressive',   k: 11, n: 12 },
+]
 
 const MCS_LABELS = [
   'BPSK 1/2', 'QPSK 1/2', 'QPSK 3/4',
@@ -115,20 +149,22 @@ const MCS_RATES = {
   },
 }
 
-const t       = computed(() => lang.value.startsWith('uk') ? T.uk : T.en)
-const mcs     = ref(1)
-const bw      = ref(20)
-const gi      = ref('long')
-const fec_k   = ref(8)
-const fec_n   = ref(12)
+const t     = computed(() => lang.value.startsWith('uk') ? T.uk : T.en)
+const mcs   = ref(1)
+const bw    = ref(20)
+const gi    = ref('long')
+const fec_k = ref(8)
+const fec_n = ref(12)
 
 const phyRate = computed(() => MCS_RATES[bw.value][gi.value][mcs.value])
 
-const videoBitrate = computed(() => {
+const fecRatio = computed(() => {
   const k = Math.max(1, Math.min(fec_k.value, fec_n.value))
   const n = Math.max(k, fec_n.value)
-  return +(phyRate.value * (k / n)).toFixed(1)
+  return k / n
 })
+
+const videoBitrate = computed(() => +(phyRate.value * fecRatio.value).toFixed(1))
 
 const TIERS = [
   { max: 8,        color: '#ef4444' },
@@ -232,6 +268,36 @@ const tierHint  = computed(() => t.value.hints[Math.max(0, tierIdx.value)])
   font-weight: 300;
 }
 
+/* FEC overhead bar */
+.wfb-calc__bar-wrap {
+  display: flex;
+  height: 22px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.wfb-calc__bar-video {
+  background: var(--vp-c-brand-1);
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  color: #fff;
+  transition: width 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.wfb-calc__bar-overhead {
+  flex: 1;
+  background: var(--vp-c-bg-mute, #2a2b3d);
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+}
+
 /* Result panel */
 .wfb-calc__result {
   min-width: 175px;
@@ -278,12 +344,15 @@ const tierHint  = computed(() => t.value.hints[Math.max(0, tierIdx.value)])
   margin-top: 0.5rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .wfb-calc {
     flex-direction: column;
   }
   .wfb-calc__result {
     width: 100%;
+  }
+  .wfb-calc__fec-group input[type="range"] {
+    width: 110px;
   }
 }
 </style>

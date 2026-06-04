@@ -54,7 +54,7 @@ peer = 'connect://127.0.0.1:14550'
 | `wifi_channel` | e.g. `161` | Wi-Fi channel (must match on drone and GS) |
 | `wifi_region` | e.g. `'BO'` | Region/power (choose one legal for your country) |
 | `bandwidth` | `20` / `40` | Channel width, MHz |
-| `mcs_index` | `1`–`5` | Modulation scheme: higher = more bitrate, less range |
+| `mcs_index` | `0`–`7` | Modulation scheme: higher = more bitrate, less range |
 | `stbc` / `ldpc` | `0`/`1` | Coding for interference resilience |
 | `fec_k` / `fec_n` | e.g. `8` / `12` | FEC: `k` data out of `n` packets (more headroom = more robust) |
 | `short_gi` | `True`/`False` | Short guard interval |
@@ -69,8 +69,7 @@ Select your parameters — the calculator shows the real video bitrate after FEC
 
 <WfbCalculator />
 
-**How to read the result:**
-- The displayed bitrate is the effective video bitrate after applying FEC redundancy
-- PHY (radio) is the raw Wi-Fi bitrate before FEC
-- For quality HD video you need ≥ 15 Mbps; for best results — ≥ 20 Mbps
+::: tip How to read the result
+**PHY** is the raw Wi-Fi channel bitrate. **Video bitrate** is what actually reaches the screen after FEC overhead. For smooth HD video you need ≥ 15 Mbps, for comfortable flying — ≥ 20 Mbps. Default settings: MCS 1, 20 MHz, Long GI, FEC 8/12 give ~8.7 Mbps — enough for basic FPV.
+:::
 

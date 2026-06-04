@@ -64,7 +64,7 @@ cd wfb-ng
 sudo ./scripts/install_gs.sh "wlan0"
 ```
 
-**6. Config** — edit `/etc/wifibroadcast.cfg` (channel/region/streams) and place `/etc/gs.key`.
+**6. Config** — edit `/etc/wifibroadcast.cfg` (channel/region/streams) and place `/etc/gs.key`. For a full parameter reference and key generation guide, see [Configuration](/en/software/wfb-ng-config).
 
 ## Start and monitor
 
