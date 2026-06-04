@@ -33,5 +33,5 @@ description: Офіційні ресурси OpenIPC, спільноти, Telegr
 ---
 
 ::: tip Маєте корисний ресурс?
-Цей перелік ведеться спільнотою. Якщо знаєте якісне україномовне джерело про OpenIPC чи FPV — [запропонуйте його на GitHub](https://github.com/Maxwell456/openipc-docs-ukr).
+Цей перелік ведеться спільнотою. Якщо знаєте якісне україномовне джерело про OpenIPC чи FPV — [запропонуйте його](https://mail.google.com/mail/?view=cm&fs=1&to=openfpv.com.ua@gmail.com).
 :::

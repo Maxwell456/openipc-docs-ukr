@@ -6,16 +6,18 @@ import BackToTop from './BackToTop.vue'
 import ReportError from './ReportError.vue'
 import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
+import WfbCalculator from './WfbCalculator.vue'
 import './custom.css'
 
 export default {
   extends: DefaultTheme,
-  enhanceApp() {
+  enhanceApp({ app }) {
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {})
       })
     }
+    app.component('WfbCalculator', WfbCalculator)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

@@ -270,7 +270,15 @@ export default defineConfig({
                     { text: "Greg's Firmware", link: '/software/apfpv-greg' },
                   ]
                 },
-                { text: 'WFB-NG', link: '/software/wfb-ng' },
+                {
+                  text: 'WFB-NG',
+                  collapsed: false,
+                  items: [
+                    { text: 'Огляд', link: '/software/wfb-ng' },
+                    { text: 'Конфігурація', link: '/software/wfb-ng-config' },
+                    { text: 'Наземна станція (Ubuntu)', link: '/software/wfb-ng-groundstation' },
+                  ]
+                },
                 {
                   text: 'OpenIPC 4G/LTE (QuadroFleet)',
                   collapsed: true,
@@ -469,7 +477,15 @@ export default defineConfig({
                     { text: "Greg's Firmware", link: '/en/software/apfpv-greg' },
                   ]
                 },
-                { text: 'WFB-NG', link: '/en/software/wfb-ng' },
+                {
+                  text: 'WFB-NG',
+                  collapsed: false,
+                  items: [
+                    { text: 'Overview', link: '/en/software/wfb-ng' },
+                    { text: 'Configuration', link: '/en/software/wfb-ng-config' },
+                    { text: 'Ground Station (Ubuntu)', link: '/en/software/wfb-ng-groundstation' },
+                  ]
+                },
                 {
                   text: 'OpenIPC 4G/LTE (QuadroFleet)',
                   collapsed: true,
