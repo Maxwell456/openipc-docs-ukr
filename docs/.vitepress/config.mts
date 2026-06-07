@@ -116,6 +116,7 @@ function writeRedirect(outDir: string, oldPath: string, newPath: string) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="canonical" href="${target}">
+<meta name="robots" content="noindex, follow">
 <meta http-equiv="refresh" content="0; url=${target}">
 <title>Redirecting…</title>
 <script>location.replace(${JSON.stringify(target)})</script>
@@ -787,6 +788,7 @@ export default defineConfig({
             thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
             embedUrl: `https://www.youtube.com/embed/${videoId}`,
             contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
+            uploadDate: pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : new Date().toISOString(),
             inLanguage,
             publisher: { '@id': `${SITE}/#org` },
           })
