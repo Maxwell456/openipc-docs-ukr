@@ -787,7 +787,7 @@ export default defineConfig({
             '@type': 'VideoObject',
             name: title,
             description: desc,
-            thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+            thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
             embedUrl: `https://www.youtube.com/embed/${videoId}`,
             contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
             uploadDate: pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : new Date().toISOString(),
