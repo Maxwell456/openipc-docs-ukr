@@ -51,7 +51,7 @@ http://radxa-zero3.local/
 
 ### 2. Основні функції WebUI
 
-<img src="/images/homegs.png" alt="alink" width="1000px"/>
+<img src="/images/homegs.png" alt="alink" width="1000" height="181"/>
 
 - **DVR**
 - **Налаштування VRX**
@@ -65,7 +65,7 @@ http://radxa-zero3.local/
 Перейдіть до **Groundstation Editor → Screen-mode → Edit**  
 Встановіть роздільну здатність, наприклад: `1280×720` — вона має **збігатися з налаштуваннями Air Unit**.
 
-<img src="/images/gs-edit.png" alt="alink" width="1000px"/>
+<img src="/images/gs-edit.png" alt="alink" width="1000" height="397"/>
 
 ---
 
@@ -75,7 +75,7 @@ http://radxa-zero3.local/
 Встановіть інший канал зв’язку на вибір (наприклад: `140`, `64`, тощо) —  
 **він має збігатися з каналом на Air Unit**.
 
-<img src="/images/gs-channel.png" alt="alink" width="1000px"/>
+<img src="/images/gs-channel.png" alt="alink" width="1000" height="397"/>
 
 #### 📡 Таблиця каналів зв’язку 5.8 GHz (20 MHz)
 
@@ -136,8 +136,8 @@ http://radxa-zero3.local/
 - Збережіть  
 - Виконайте перезавантаження **Majestic**
 
-<img src="/images/gs-majestic.png" alt="alink" width="1000px"/>
-<img src="/images/gs-majestic1.png" alt="alink" width="1000px"/>
+<img src="/images/gs-majestic.png" alt="alink" width="1000" height="434"/>
+<img src="/images/gs-majestic1.png" alt="alink" width="1000" height="545"/>
 
 ---
 
@@ -145,13 +145,13 @@ http://radxa-zero3.local/
 
 Графік **RSSI** дозволяє в реальному часі оцінити силу сигналу, якість зв’язку, а також перевірити ефективність розміщення антен і стабільність лінку.
 
-<img src="/images/gs-rssi.png" alt="alink" width="1000px"/>
+<img src="/images/gs-rssi.png" alt="alink" width="1000" height="557"/>
 
 ### 7. DVR 
 
 Скачати або видалити запис вашого польоту
 
-<img src="/images/dvr.png" alt="alink" width="1000px"/>
+<img src="/images/dvr.png" alt="alink" width="1000" height="722"/>
 
 ### 8. Підключення Radxa до домашньої мережі
 
@@ -170,7 +170,7 @@ http://radxa-zero3.local/
 4. `nmtui` → підключіться до домашнього Wi‑Fi → перезавантажте.
 5. (Опційно) AP‑режим → radxa-zero3.local → Web UI.
 
-<img src="/images/multiconf.png" alt="alink" width="800px"/><br>
+<img src="/images/multiconf.png" alt="alink" width="800" height="540"/><br>
 **Налаштування камери (Runcam WiFiLink v1/v2)**
 
  1. Підключіть мережевий кабель до роутера або ПК (IP 192.168.1.10).

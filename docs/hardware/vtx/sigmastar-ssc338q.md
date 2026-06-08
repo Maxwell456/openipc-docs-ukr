@@ -2,11 +2,7 @@
 title: Камери SSC338Q + IMX415
 description: Технічні характеристики IP-камери на базі SigmaStar SSC338Q з сенсором Sony IMX415
 ---
-<img 
-  src="/images/ssc338q.png" 
-  alt="головна картинка" 
-  width="400px" 
-/>
+<img src="/images/ssc338q.png" alt="головна картинка" width="400" height="294"/>
 
 ### Характеристики камери SSC338Q + IMX415
 
@@ -34,11 +30,7 @@ description: Технічні характеристики IP-камери на 
 ### Розпинування
 
 
-<img 
-  src="/images/ssc338q-1.png" 
-  alt="головна картинка" 
-  width="400px" 
-/>
+<img src="/images/ssc338q-1.png" alt="головна картинка" width="400" height="400"/>
 
 
 ### Як прошити FPV прошивкою?

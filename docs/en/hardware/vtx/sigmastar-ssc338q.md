@@ -5,11 +5,7 @@ description: Technical specifications of an IP camera based on the SigmaStar SSC
 
 # SSC338Q + IMX415 Cameras
 
-<img 
-  src="/images/ssc338q.png" 
-  alt="main image" 
-  width="400px" 
-/>
+<img src="/images/ssc338q.png" alt="main image" width="400" height="294"/>
 
 ### SSC338Q + IMX415 camera specifications
 
@@ -33,11 +29,7 @@ description: Technical specifications of an IP camera based on the SigmaStar SSC
 
 ### Pinout
 
-<img 
-  src="/images/ssc338q-1.png" 
-  alt="main image" 
-  width="400px" 
-/>
+<img src="/images/ssc338q-1.png" alt="main image" width="400" height="400"/>
 
 ### How to flash with FPV firmware?
 
