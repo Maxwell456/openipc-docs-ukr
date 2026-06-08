@@ -207,7 +207,7 @@ What you need
 ### Stock firmware interface
 
 The stock firmware on the internal eMMC is [SBC v1.9.9](https://github.com/OpenIPC/sbc-groundstations/releases/tag/zero3w-v1.9.9-rc1) and has a simple menu and button system.
-<img src="/images/emax_vrx_buttons_v1.9.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_buttons_v1.9.webp" alt="emax wyvern link vrx" width="600px" />
 
  - The up and down buttons change the WiFi channel
  - The side arrow starts/stops DVR recording

@@ -216,7 +216,7 @@ eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage
 
 
 Стандартна прошивка на внутрішній eMMC - це [SBC v1.9.9](https://github.com/OpenIPC/sbc-groundstations/releases/tag/zero3w-v1.9.9-rc1) і має просте меню та систему кнопок.
-<img src="/images/emax_vrx_buttons_v1.9.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_buttons_v1.9.webp" alt="emax wyvern link vrx" width="600px" />
 
  - Кнопки вгору та вниз змінюють канал WiFi
  - Бічна стрілка запускає/зупиняє запис DVR
