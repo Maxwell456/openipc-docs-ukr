@@ -86,6 +86,7 @@ const REDIRECTS: Record<string, string> = {
   '/net-cards/rtl8812au/': '/hardware/net-cards/rtl8812au',
   '/net-cards/rtl8812bu/': '/hardware/net-cards/rtl8812bu',
   '/net-cards/rtl8812eu/': '/hardware/net-cards/rtl8812eu',
+  '/net-cards/rtl8731bu/': '/hardware/net-cards/rtl8731bu',
   '/quick-start/': '/getting-started/',
   '/osd/': '/configuration/telemetry',
   '/telemetry/vtx-menu/': '/configuration/telemetry',
@@ -256,6 +257,7 @@ export default defineConfig({
                 { text: 'RTL8812AU', link: '/hardware/net-cards/rtl8812au' },
                 { text: 'RTL8812EU2', link: '/hardware/net-cards/rtl8812eu' },
                 { text: 'RTL8812BU', link: '/hardware/net-cards/rtl8812bu' },
+                { text: 'RTL8731BU', link: '/hardware/net-cards/rtl8731bu' },
               ]
             }
           ],
@@ -463,6 +465,7 @@ export default defineConfig({
                 { text: 'RTL8812AU', link: '/en/hardware/net-cards/rtl8812au' },
                 { text: 'RTL8812EU2', link: '/en/hardware/net-cards/rtl8812eu' },
                 { text: 'RTL8812BU', link: '/en/hardware/net-cards/rtl8812bu' },
+                { text: 'RTL8731BU', link: '/en/hardware/net-cards/rtl8731bu' },
               ]
             }
           ],
