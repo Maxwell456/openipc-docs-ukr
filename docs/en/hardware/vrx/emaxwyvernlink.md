@@ -71,75 +71,68 @@ description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
   }
   
   /* DARK THEME */
-  [data-md-color-scheme="slate"] .specs-table,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .specs-table {
+  .dark .specs-table {
     background-color: #1e2530;
     border: 1px solid #2d3748;
   }
   
-  [data-md-color-scheme="slate"] .specs-table tr,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .specs-table tr {
+  .dark .specs-table tr {
     border-bottom: 1px solid #2d3748;
   }
   
-  [data-md-color-scheme="slate"] .specs-table tr:last-child,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .specs-table tr:last-child {
+  .dark .specs-table tr:last-child {
     border-bottom: none;
   }
   
-  [data-md-color-scheme="slate"] .spec-label,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .spec-label {
+  .dark .spec-label {
     color: #8b949e;
     background-color: #1e2530;
   }
   
-  [data-md-color-scheme="slate"] .spec-value,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .spec-value {
+  .dark .spec-value {
     color: #c9d1d9;
     background-color: #252d38;
   }
   
-  [data-md-color-scheme="slate"] .spec-link,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .spec-link {
+  .dark .spec-link {
     color: #58a6ff;
     text-decoration: none;
   }
   
-  [data-md-color-scheme="slate"] .spec-link:hover,
-  [data-md-color-scheme="default"][data-md-color-primary="black"] .spec-link:hover {
+  .dark .spec-link:hover {
     text-decoration: underline;
   }
   
   /* LIGHT THEME */
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .specs-table {
+  .specs-table {
     background-color: #ffffff;
     border: 1px solid #d0d7de;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .specs-table tr {
+  .specs-table tr {
     border-bottom: 1px solid #d0d7de;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .specs-table tr:last-child {
+  .specs-table tr:last-child {
     border-bottom: none;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .spec-label {
+  .spec-label {
     color: #57606a;
     background-color: #f6f8fa;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .spec-value {
+  .spec-value {
     color: #24292f;
     background-color: #ffffff;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .spec-link {
+  .spec-link {
     color: #0969da;
     text-decoration: none;
   }
   
-  [data-md-color-scheme="default"]:not([data-md-color-primary="black"]) .spec-link:hover {
+  .spec-link:hover {
     text-decoration: underline;
   }
   

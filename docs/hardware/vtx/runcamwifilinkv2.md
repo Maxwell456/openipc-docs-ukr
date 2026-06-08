@@ -3,11 +3,7 @@ title: Runcam WiFiLink v2 — характеристики та налаштув
 description: Інструкція з підключення, налаштування та використання камери Runcam WiFiLink v2 для цифрової FPV-системи.
 ---
 # Runcam WiFiLink 2
-<img 
-  src="https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-v2-main-photo.png" 
-  alt="головна картинка" 
-  width="400px" 
-/>
+<img src="/images/runcam_wifilink-v2.webp" alt="Runcam WiFiLink v2" width="400" height="400"/>
 
 
 
