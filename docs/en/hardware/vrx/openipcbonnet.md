@@ -5,7 +5,7 @@ description: A hardware expansion board for the Radxa Zero 3W and OpenIPC-based 
 
 # OpenIPC Bonnet — expansion board for FPV and ground stations
 
-<img src="/images/bonnet.png" alt="OpenIPC bonnet" width="600px"/>   
+<img src="/images/bonnet.webp" alt="OpenIPC bonnet" width="600px"/>   
 **OpenIPC Bonnet** is a compact expansion board designed to extend the capabilities of single-board computers such as the **Radxa Zero 3W**, used in FPV systems, repeaters and ground stations. It combines a USB hub, motion sensors, power management and communication interfaces specifically tailored to OpenIPC.
 
 ---
@@ -29,8 +29,8 @@ description: A hardware expansion board for the Radxa Zero 3W and OpenIPC-based 
   - UART and I2C connectors
 - **Compactness**: optimized for drones, portable and field applications
 ---
-<img src="/images/bonnet1.png" alt="OpenIPC bonnet" width="600px"/>   
-<img src="/images/bonnet2.png" alt="OpenIPC bonnet" width="600px"/>   
+<img src="/images/bonnet1.webp" alt="OpenIPC bonnet" width="600px"/>   
+<img src="/images/bonnet2.webp" alt="OpenIPC bonnet" width="600px"/>   
 ---
 
 ### Typical use cases

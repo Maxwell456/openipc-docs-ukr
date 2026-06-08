@@ -43,7 +43,7 @@ Download the **unofficial** [OpenIPC Configurator](https://github.com/OpenIPC/co
 Update the camera firmware to:
 `openipc-urlic-aio-nor`
 
-<img src="/images/jumbo.png" alt="jumbo" width="800px"/>
+<img src="/images/jumbo.webp" alt="jumbo" width="800px"/>
 
 ---
 
@@ -55,7 +55,7 @@ Go to the **WFB Settings** tab and find the `MTU` parameter.
 - ▶️ Change to: `3994`
 - ✅ Click **Save and Reboot** to restart the device.
 
-<img src="/images/jumbo1.png" alt="jumbo1" width="800px"/>
+<img src="/images/jumbo1.webp" alt="jumbo1" width="800px"/>
 
 ---
 

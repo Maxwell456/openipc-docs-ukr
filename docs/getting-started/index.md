@@ -84,14 +84,14 @@ VRX (приймальні станції)
 
 - *Варіант 1*: USB‑HAT + 2×RTL8812AU → 227 g без антен  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa1.png" alt="Варіант 1 — вид спереду" width="400" />
-    <img src="/images/vrx_radxa1-1.png" alt="Варіант 1 — вид сбоку" width="400" />
+    <img src="/images/vrx_radxa1.webp" alt="Варіант 1 — вид спереду" width="400" />
+    <img src="/images/vrx_radxa1-1.webp" alt="Варіант 1 — вид сбоку" width="400" />
   </div>  
 <br>
 - *Варіант 2*: USB‑hub + 2×RTL8812EU → 105 g без антен  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa2.png" alt="Варіант 2 — вид спереду" width="400" />
-    <img src="/images/vrx_radxa2-2.png" alt="Варіант 2 — вид сбоку" width="400" />
+    <img src="/images/vrx_radxa2.webp" alt="Варіант 2 — вид спереду" width="400" />
+    <img src="/images/vrx_radxa2-2.webp" alt="Варіант 2 — вид сбоку" width="400" />
   </div>
 3D-модель корпусу можно знайти ось  - [тут](https://www.thingiverse.com/thing:6680584/files)
 

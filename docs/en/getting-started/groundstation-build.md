@@ -7,9 +7,9 @@ description: A guide to building a VRX station based on the Radxa Zero 3W — ch
 
 > When we talk about the "Radxa", it looks roughly like this:
 
-<img src="/images/radxa.jpg" alt="Radxa Board" width="500px"/>
+<img src="/images/radxa.webp" alt="Radxa Board" width="500px"/>
 <br/>
-<img src="/images/radxa-pin.png" alt="Radxa Pinout" width="500px"/>
+<img src="/images/radxa-pin.webp" alt="Radxa Pinout" width="500px"/>
 
 Components for a Radxa Zero 3W ground station
 
@@ -48,7 +48,7 @@ Here's how **Ostap** did it:
 
 > Let me sketch the diagram to the best of my artistic ability:
 
-<img src="/images/shema.png" alt="Power diagram" width="500px"/>
+<img src="/images/shema.webp" alt="Power diagram" width="500px"/>
 
 ---
 
@@ -58,7 +58,7 @@ Here's how **Ostap** did it:
 
 > the inner universe with a [USB-HAT](https://arduino.ua/prod2536-4-h-portovii-usb-hub-hat-dlya-raspberry-pi)
 
-<img src="/images/usb-hat.png" alt="USB HAT" width="500px"/>
+<img src="/images/usb-hat.webp" alt="USB HAT" width="500px"/>
 
 ***Option 2***
 
@@ -71,14 +71,14 @@ Here's how **Ostap** did it:
 
 - *Option 1*: USB‑HAT + 2×RTL8812AU → 227 g without antennas  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa1.png" alt="Option 1 — front view" width="400" />
-    <img src="/images/vrx_radxa1-1.png" alt="Option 1 — side view" width="400" />
+    <img src="/images/vrx_radxa1.webp" alt="Option 1 — front view" width="400" />
+    <img src="/images/vrx_radxa1-1.webp" alt="Option 1 — side view" width="400" />
   </div>  
 <br>
 - *Option 2*: USB‑hub + 2×RTL8812EU → 105 g without antennas  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa2.png" alt="Option 2 — front view" width="400" />
-    <img src="/images/vrx_radxa2-2.png" alt="Option 2 — side view" width="400" />
+    <img src="/images/vrx_radxa2.webp" alt="Option 2 — front view" width="400" />
+    <img src="/images/vrx_radxa2-2.webp" alt="Option 2 — side view" width="400" />
   </div>
 The 3D model of the enclosure can be found  - [here](https://www.thingiverse.com/thing:6680584/files)
 
@@ -86,8 +86,8 @@ The 3D model of the enclosure can be found  - [here](https://www.thingiverse.com
 
 ***🟣 8812AU***
 
-<img src="/images/af1.png" alt="8812AU diagram" width="500px"/>
+<img src="/images/af1.webp" alt="8812AU diagram" width="500px"/>
 
 ***🔵 8812EU2***
 
-<img src="/images/eu2.png" alt="8812EU2 diagram" width="500px"/>
+<img src="/images/eu2.webp" alt="8812EU2 diagram" width="500px"/>

@@ -24,13 +24,13 @@ description: Універсальний гайд з прошивки через 
    ipconfig
    ```
 
-   ![ipconfig](/images/runcamv1ip.png)
+   ![ipconfig](/images/runcamv1ip.webp)
 
    Знайдіть свою **IPv4-адресу**.
 
 2. Запустіть **Tftpd64**:
 
-   ![Tftpd64](/images/tftpd.png)
+   ![Tftpd64](/images/tftpd.webp)
 
    [Посилання на інструкцію](https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q?locale=en)
 
@@ -40,7 +40,7 @@ description: Універсальний гайд з прошивки через 
 
 5. Перевірте підключення FTDI:
 
-   ![FTDI](/images/ftdi.png)
+   ![FTDI](/images/ftdi.webp)
 
    - **RX** → **TX**  
    - **TX** → **RX**  
@@ -75,18 +75,18 @@ putty.exe -serial COM3 -sercfg 115200,8,n,1,N
 
 11. Якщо все підключено правильно, ви побачите лог у Putty:
 
-   ![Putty лог](/images/runcamv1putty.png)
+   ![Putty лог](/images/runcamv1putty.webp)
 
 12. Перейдіть на сторінку інструкцій:  
 [https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q](https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q)
 
 13. Скопіюйте файл прошивки `.bin` у папку TFTP:
 
-   ![Файл прошивки](/images/runcamv1tftp1.png)
+   ![Файл прошивки](/images/runcamv1tftp1.webp)
 
 14. Виконуйте команди з сайту **поступово по рядках**, не вставляйте все одразу:
 
-   ![Команди прошивки](/images/runcamv1firmware.png)
+   ![Команди прошивки](/images/runcamv1firmware.webp)
 
 ::: tip Порада
 Виконуйте по рядку, не вставляйте одразу кілька команд.

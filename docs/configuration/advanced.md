@@ -50,7 +50,7 @@ Jumbo frame працює **лише якщо всі пристрої в мере
 Оновити прошивку камери до:  
 `openipc-urlic-aio-nor`
 
-<img src="/images/jumbo.png" alt="alink" width="800px"/>
+<img src="/images/jumbo.webp" alt="alink" width="800px"/>
 
 ---
 
@@ -65,7 +65,7 @@ Jumbo frame працює **лише якщо всі пристрої в мере
 - ▶️ Змінити на: `3994`  
 - ✅ Натисніть **Save and Reboot**, щоб перезавантажити пристрій
 
-<img src="/images/jumbo1.png" alt="alink" width="800px"/>
+<img src="/images/jumbo1.webp" alt="alink" width="800px"/>
 
 ---
 

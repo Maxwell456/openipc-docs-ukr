@@ -5,7 +5,7 @@ description: Overview of the specifications, package contents and setup of the R
 # RunCam WiFiLink RX (Digital HD Receiver)
 
 <div style="display: flex; justify-content: center; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
-  <img src="/images/runcam-vrx.png" alt="main image" width="400px" style="max-width: 100%; height: auto;" />
+  <img src="/images/runcam-vrx.webp" alt="main image" width="400px" style="max-width: 100%; height: auto;" />
   
   <div style="position: relative; width: 560px; max-width: 100%; aspect-ratio: 16 / 9;">
     <iframe
@@ -38,7 +38,7 @@ A digital HD receiver based on OpenIPC / Ruby FPV, designed for stable, high-qua
 
 ---
 
-<img src="/images/runcam-vrx1.png" alt="main image" width="600px"/>
+<img src="/images/runcam-vrx1.webp" alt="main image" width="600px"/>
 
 ### Bundled antennas
 

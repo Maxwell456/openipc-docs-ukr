@@ -87,7 +87,7 @@ after 5 seconds (configurable) it lands or performs RTH according to the flight 
 
 - **Redundancy:** optional ELRS (ExpressLRS) support for local control in case of mobile network failure.
 
-<center><img src="/images/overview.png" alt="OpenIPC 4G" width="800px"/></center>
+<center><img src="/images/overview.webp" alt="OpenIPC 4G" width="800px"/></center>
 
 ### FPV Drone Module
 
@@ -97,14 +97,14 @@ The drone module combines:
 - 4G/5G modem: provides internet connectivity for VPN and data transmission.
 - Power management: a DC-DC step-down converter supplies stable 5V to the camera and modem.
 
-<center><img src="/images/over2.png" alt="OpenIPC LTE" width="800px"/></center>
+<center><img src="/images/over2.webp" alt="OpenIPC LTE" width="800px"/></center>
 
 ### VPN Server
 
 The VPN server creates a virtual private network that enables data exchange without additional network configuration.
 In this setup the VPN connection allows the operator to quickly and easily connect directly to the drone.
 
-<center><img src="/images/over3.png" alt="OpenIPC LTE" width="800px"/></center>
+<center><img src="/images/over3.webp" alt="OpenIPC LTE" width="800px"/></center>
 
 ### Operator App
 
@@ -121,4 +121,4 @@ Download the app:
 - [**QuadroFleet for Linux (.deb)**](https://quadrofleet.com/downloads/quadrofleet.deb)
 - [**QuadroFleet for Android (Google Play)**](https://play.google.com/store/apps/details?id=systems.beep.christof&hl=en)
 
-<center><img src="/images/over4.png" alt="OpenIPC LTE" width="800px"/></center>
+<center><img src="/images/over4.webp" alt="OpenIPC LTE" width="800px"/></center>

@@ -151,7 +151,7 @@ Frame and core
  Secure the wires with zip ties to minimize the risk of vibration damage.
 :::
 
-<center><img src="/images/bilddrone.png" alt="OpenIPC 4G" width="1000px"/></center>
+<center><img src="/images/bilddrone.webp" alt="OpenIPC 4G" width="1000px"/></center>
 
 ### Testing
 

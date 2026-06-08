@@ -2,7 +2,7 @@
 title: Камери SSC338Q + IMX415
 description: Технічні характеристики IP-камери на базі SigmaStar SSC338Q з сенсором Sony IMX415
 ---
-<img src="/images/ssc338q.png" alt="головна картинка" width="400" height="294"/>
+<img src="/images/ssc338q.webp" alt="головна картинка" width="400" height="294"/>
 
 ### Характеристики камери SSC338Q + IMX415
 
@@ -30,7 +30,7 @@ description: Технічні характеристики IP-камери на 
 ### Розпинування
 
 
-<img src="/images/ssc338q-1.png" alt="головна картинка" width="400" height="400"/>
+<img src="/images/ssc338q-1.webp" alt="головна картинка" width="400" height="400"/>
 
 
 ### Як прошити FPV прошивкою?
@@ -61,7 +61,7 @@ description: Технічні характеристики IP-камери на 
 2. Далі знаходимо необхідний для нашої камери прошивку  в нашому випадку маємо їх кілька  
 [openipc.ssc338q-nand-fpv.tgz](https://github.com/OpenIPC/builder/releases/download/latest/openipc.ssc338q-nand-fpv.tgz)  
 [openipc.ssc338q-nor-fpv.tgz](https://github.com/OpenIPC/builder/releases/download/latest/openipc.ssc338q-nor-fpv.tgz)  
-![ssc338q](/images/ssc338q-3.png)
+![ssc338q](/images/ssc338q-3.webp)
 3. Розархівуємо на ПК та за допомогою WinSCP завантажуэмо в камеру в розділ ```/tmp/```
 4. Виконуємо наступні команди по 1 команді:  
 ```soc=$(fw_printenv -n soc)```   

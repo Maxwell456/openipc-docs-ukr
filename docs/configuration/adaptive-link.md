@@ -58,7 +58,7 @@ sudo ./alink_install.sh gs install
 Увімкнути Alink Drone → Enable<br>
 
 Після конекту між камерой та радхою ви маєте побачити ось таке віконце <br>
-<img src="/images/alink_window.png" alt="" width="400px"/><br>
+<img src="/images/alink_window.webp" alt="" width="400px"/><br>
 ::: warning Увага!
 Якщо його немає — `adaptive_link` НЕ працює.
 :::

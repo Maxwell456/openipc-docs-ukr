@@ -26,7 +26,7 @@ faq:
 
 4. **Відкрийте розділ "Firmware" та оберіть ваш пристрій.**
 
-<img src="/images/multiconf2.png" alt="alink" width="1000px"/>
+<img src="/images/multiconf2.webp" alt="alink" width="1000px"/>
 
 
 ::: warning Увага!

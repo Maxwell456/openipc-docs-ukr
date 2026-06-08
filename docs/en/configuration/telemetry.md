@@ -27,7 +27,7 @@ description: VTX Menu for configuring the video transmitter in the OpenIPC FPV s
 
 2. Connect to the camera → Telemetry → Latest YML VTXMENU → press Enter in the command line.
 
-<img src="/images/vtxmenu.png" alt="vtxmenu_openipc" width="600px"/>
+<img src="/images/vtxmenu.webp" alt="vtxmenu_openipc" width="600px"/>
 
 Save and reboot the Air Unit.
 

@@ -9,7 +9,7 @@ This section explains how to use the interactive map window in the control appli
 
 Before continuing, make sure the application is correctly installed and configured. If the setup is not yet complete, refer to the following guide: [Update Settings](/en/software/update-settings)
 
-<center><img src="/images/map.jpg" alt="OpenIPC LTE Map" width="2000px"/></center>
+<center><img src="/images/map.webp" alt="OpenIPC LTE Map" width="2000px"/></center>
 
 ### Launching the map
 

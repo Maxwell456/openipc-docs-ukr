@@ -57,7 +57,7 @@ APFPV розшифровується як "Access Point FPV" — це прост
 
 Є три способи встановлення прошивки APFPV на дрон. Інтернет-метод набагато простіший, якщо дрон може підключитися до Wi-Fi або можно скористатись [Конфігуратором](https://github.com/OpenIPC/openipc-configurator).  
 
-<img src="/images/apfpv-f.png" alt="alink" width="500px"/>
+<img src="/images/apfpv-f.webp" alt="alink" width="500px"/>
 
 
 ## Легке встановлення через Інтернет (Рекомендовано)

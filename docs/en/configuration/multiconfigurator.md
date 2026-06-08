@@ -26,7 +26,7 @@ faq:
 
 4. **Open the "Firmware" section and select your device.**
 
-<img src="/images/multiconf2.png" alt="multiconf" width="1000px"/>
+<img src="/images/multiconf2.webp" alt="multiconf" width="1000px"/>
 
 ::: warning Warning!
 Always check the drone's power supply quality before starting the flash process!

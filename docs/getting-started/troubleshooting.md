@@ -54,33 +54,33 @@ description: Покрокова інструкція як прошити або 
 
 - Перед використанням RKDevTool встановіть драйвер для пристрою.
 
-<img src="/images/vrx-runcam.png" alt="alink" width="600px"/><br>
+<img src="/images/vrx-runcam.webp" alt="alink" width="600px"/><br>
 
 ***Крок 4: Налаштування RKDevTool***
 
 1. Відкрийте конфігураційний файл у папці `RKDevTool_Release_v2.93`.
 2. Змініть `Selected=1` на `Selected=2`, щоб перемкнути інтерфейс на англійську мову.
 
-<img src="/images/vrx-runcam1.png" alt="alink" width="500px"/><br>
+<img src="/images/vrx-runcam1.webp" alt="alink" width="500px"/><br>
 
 3. У вікні програми клацніть правою кнопкою миші та оберіть "Clear items", щоб очистити список.
 
-<img src="/images/vrx-runcam2.png" alt="alink" width="600px"/><br>
+<img src="/images/vrx-runcam2.webp" alt="alink" width="600px"/><br>
 
 ***Крок 5: Додайте завантажувач (loader)***
 
 1. Переконайтесь, що ім’я файлу — `loader`.<br>
 
-<img src="/images/vrx-runcam3.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam3.webp" alt="alink" width="600px"/>
 
 2. Завантажте <a href="https://dl.radxa.com/rock3/images/loader/rock-3a/" target="_blank"><strong>файл bin</strong></a> завантажувача з офіційного сайту Radxa.
    
 
-<img src="/images/vrx-runcam4.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam4.webp" alt="alink" width="600px"/>
 
 3. Клацніть правою кнопкою миші в програмі та оберіть "Add item", щоб додати файл завантажувача.
 
-<img src="/images/vrx-runcam5.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam5.webp" alt="alink" width="600px"/>
 
 
 ***Крок 6: Додайте образ прошивки***  
@@ -90,7 +90,7 @@ description: Покрокова інструкція як прошити або 
 3. Двічі клацніть по полю `storage` і оберіть `EMMC`.
 4. Переконайтесь, що обидва пункти мають позначки, а параметр "write by address" активований.
 
-<img src="/images/vrx-runcam6.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam6.webp" alt="alink" width="600px"/>
 
 ***Крок 7: Переключіть VRX у режим завантажувача***
 
@@ -99,14 +99,14 @@ description: Покрокова інструкція як прошити або 
 3. Підключіть живлення до VRX, зачекайте 2 секунди і відпустіть кнопку.
 4. Підключіть VRX до ПК через порт USB Type-C. Програма має розпізнати пристрій.
 
-<img src="/images/vrx-runcam7.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam7.webp" alt="alink" width="600px"/>
 
 ***Крок 8: Запустіть прошивку***
 
 1. Натисніть кнопку "Run" в RKDevTool.
 2. Дочекайтесь завершення процесу. Після успішного завершення зʼявиться повідомлення **Download complete**.
 
-<img src="/images/vrx-runcam8.png" alt="alink" width="600px"/>
+<img src="/images/vrx-runcam8.webp" alt="alink" width="600px"/>
 
 ***Крок 9: Завершення***
 

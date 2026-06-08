@@ -37,11 +37,11 @@ description: Інструкція з підключення, базового н
 
 **Motherboard (вверх)**
 
-![Розташування плати зверху](/images/wifilinkv1.png)
+![Розташування плати зверху](/images/wifilinkv1.webp)
 
 **Motherboard (вниз)**
 
-![Розташування плати знизу](/images/wifilinkv1-1.png)
+![Розташування плати знизу](/images/wifilinkv1-1.webp)
 
 ---
 

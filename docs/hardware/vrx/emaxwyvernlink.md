@@ -2,7 +2,7 @@
 title: "Emax Wyvern Link VRX"
 description: "Сторінка документації Emax Wyvern Link для OpenIPC wiki"
 ---
-<img src="/images/emax_vrx_fatshark.jpg" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_fatshark.webp" alt="emax wyvern link vrx" width="600px" />
 
 ### Специфікації
 
@@ -175,15 +175,15 @@ description: "Сторінка документації Emax Wyvern Link для 
 
 RADXA ZERO 3W       
 
-<img src="/images/emax_vrx_radxa_board_front.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_radxa_board_front.webp" alt="emax wyvern link vrx" width="600px" />
 
-<img src="/images/emax_vrx_radxa_board_back.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_radxa_board_back.webp" alt="emax wyvern link vrx" width="600px" />
 
 eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage/emmc/emmc-5-1/klmbg2jetd-b041/)
 
 
 Спеціальна плата живлення, WiFi та кнопок Emax      
-<img src="/images/emax_vrx_wifi_power_board.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_wifi_power_board.webp" alt="emax wyvern link vrx" width="600px" />
 
 
 
@@ -199,7 +199,7 @@ eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage
 ### Налаштування обладнання
 
  -   Підключіть USB-кабель, що входить в комплект, між внутрішніми платами
-     <img src="/images/emax_vrx_usb_cable.png" alt="emax wyvern link vrx" width="600px" />
+     <img src="/images/emax_vrx_usb_cable.webp" alt="emax wyvern link vrx" width="600px" />
 
  -   Підключіть антени до VRX
  
@@ -208,7 +208,7 @@ eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage
  -   Підключіть HDMI-кабель між VRX та окулярами або монітором. VRX Radxa використовує micro-HDMI.
  
  -   (опціонально) Вставте відформатовану карту micro SD у VRX. Слот не має автокорекції, тому вставляйте контактами вгору, коли вентилятор спрямований вгору.      
-      <img src="/images/emax_vrx_sdcard_orientation.png" alt="emax wyvern link vrx" width="600px" />
+      <img src="/images/emax_vrx_sdcard_orientation.webp" alt="emax wyvern link vrx" width="600px" />
       
 
 ### Інтерфейс стандартної прошивки
@@ -225,7 +225,7 @@ eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage
    - довге натискання активує точку доступу WiFi (AP). VRX з'явиться у вашій локальній мережі WiFi як SSID: RadxaGroundstation, пароль: radaxaopenipc  
    Веб-інтерфейс наземної станції доступний за адресою http://192.168.4.1/ 
    
-<img src="/images/emax_vrx_ap_webui.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_ap_webui.webp" alt="emax wyvern link vrx" width="600px" />
 
 
 ### Як отримати або змінити gs.key з прошивкою v1.9.9
@@ -257,7 +257,7 @@ VRX налаштований зі стандартним gs.key і повине�
 Створіть новий файл розкладки кнопок GPIO /config/scripts/GPIO/Emax.yaml або змініть файл /config/scripts/GPIO/Custom.yaml.
 
 Кнопки GPIO відображаються наступним чином      
-<img src="/images/emax_vrx_button_GPIO_pins.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_button_GPIO_pins.webp" alt="emax wyvern link vrx" width="600px" />
 
 <img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" width="350px"/>
 

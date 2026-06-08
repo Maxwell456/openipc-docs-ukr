@@ -2,7 +2,7 @@
 title: "Emax Wyvern Link VRX"
 description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
 ---
-<img src="/images/emax_vrx_fatshark.jpg" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_fatshark.webp" alt="emax wyvern link vrx" width="600px" />
 
 ### Specifications
 
@@ -172,14 +172,14 @@ description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
 
 RADXA ZERO 3W       
 
-<img src="/images/emax_vrx_radxa_board_front.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_radxa_board_front.webp" alt="emax wyvern link vrx" width="600px" />
 
-<img src="/images/emax_vrx_radxa_board_back.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_radxa_board_back.webp" alt="emax wyvern link vrx" width="600px" />
 
 eMMC - Samsung [KLMBG2JETD-B041 32GB](https://semiconductor.samsung.com/estorage/emmc/emmc-5-1/klmbg2jetd-b041/)
 
 Emax custom power, WiFi and button board      
-<img src="/images/emax_vrx_wifi_power_board.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_wifi_power_board.webp" alt="emax wyvern link vrx" width="600px" />
 
 ### Basic setup
 
@@ -192,7 +192,7 @@ What you need
 ### Hardware setup
 
  -   Connect the bundled USB cable between the internal boards
-     <img src="/images/emax_vrx_usb_cable.png" alt="emax wyvern link vrx" width="600px" />
+     <img src="/images/emax_vrx_usb_cable.webp" alt="emax wyvern link vrx" width="600px" />
 
  -   Connect the antennas to the VRX
  
@@ -201,7 +201,7 @@ What you need
  -   Connect an HDMI cable between the VRX and the goggles or monitor. The Radxa VRX uses micro-HDMI.
  
  -   (optional) Insert a formatted micro SD card into the VRX. The slot has no auto-correction, so insert it contacts up when the fan faces up.      
-      <img src="/images/emax_vrx_sdcard_orientation.png" alt="emax wyvern link vrx" width="600px" />
+      <img src="/images/emax_vrx_sdcard_orientation.webp" alt="emax wyvern link vrx" width="600px" />
       
 
 ### Stock firmware interface
@@ -216,7 +216,7 @@ The stock firmware on the internal eMMC is [SBC v1.9.9](https://github.com/OpenI
    - a long press enables the WiFi access point (AP). The VRX appears in your local WiFi network as SSID: RadxaGroundstation, password: radaxaopenipc  
    The ground station web interface is available at http://192.168.4.1/ 
    
-<img src="/images/emax_vrx_ap_webui.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_ap_webui.webp" alt="emax wyvern link vrx" width="600px" />
 
 ### How to get or change gs.key with firmware v1.9.9
 
@@ -239,7 +239,7 @@ Download [SBC 2.0.0 Beta2](https://github.com/OpenIPC/sbc-groundstations/release
 Create a new GPIO button layout file /config/scripts/GPIO/Emax.yaml or edit the file /config/scripts/GPIO/Custom.yaml.
 
 The GPIO buttons are mapped as follows      
-<img src="/images/emax_vrx_button_GPIO_pins.png" alt="emax wyvern link vrx" width="600px" />
+<img src="/images/emax_vrx_button_GPIO_pins.webp" alt="emax wyvern link vrx" width="600px" />
 
 <img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" width="350px"/>
 

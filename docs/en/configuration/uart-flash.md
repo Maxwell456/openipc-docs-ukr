@@ -24,13 +24,13 @@ description: A universal guide to flashing via UART using FTDI and TFTP
    ipconfig
    ```
 
-   ![ipconfig](/images/runcamv1ip.png)
+   ![ipconfig](/images/runcamv1ip.webp)
 
    Find your **IPv4 address**.
 
 2. Run **Tftpd64**:
 
-   ![Tftpd64](/images/tftpd.png)
+   ![Tftpd64](/images/tftpd.webp)
 
    [Link to the guide](https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q?locale=en)
 
@@ -40,7 +40,7 @@ description: A universal guide to flashing via UART using FTDI and TFTP
 
 5. Check the FTDI connection:
 
-   ![FTDI](/images/ftdi.png)
+   ![FTDI](/images/ftdi.webp)
 
    - **RX** → **TX**  
    - **TX** → **RX**  
@@ -74,18 +74,18 @@ Open Putty **before** powering on, so you can see the device boot log.
 
 11. If everything is connected correctly, you will see the log in Putty:
 
-   ![Putty log](/images/runcamv1putty.png)
+   ![Putty log](/images/runcamv1putty.webp)
 
 12. Go to the instructions page:  
 [https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q](https://openipc.org/cameras/vendors/sigmastar/socs/ssc338q)
 
 13. Copy the `.bin` firmware file into the TFTP folder:
 
-   ![Firmware file](/images/runcamv1tftp1.png)
+   ![Firmware file](/images/runcamv1tftp1.webp)
 
 14. Run the commands from the site **one line at a time**, do not paste everything at once:
 
-   ![Flashing commands](/images/runcamv1firmware.png)
+   ![Flashing commands](/images/runcamv1firmware.webp)
 
 ::: tip Tip
 Run one line at a time, do not paste several commands at once.

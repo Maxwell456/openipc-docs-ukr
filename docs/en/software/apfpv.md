@@ -50,7 +50,7 @@ Step 1: Installing the APFPV firmware
 
 There are three ways to install the APFPV firmware on the drone. The internet method is much simpler if the drone can connect to Wi-Fi, or you can use the [Configurator](https://github.com/OpenIPC/openipc-configurator).  
 
-<img src="/images/apfpv-f.png" alt="alink" width="500px"/>
+<img src="/images/apfpv-f.webp" alt="alink" width="500px"/>
 
 ## Easy installation over the Internet (Recommended)
 

@@ -30,11 +30,11 @@ description: Guide for connecting, basic setup and use of the Runcam WiFiLink v1
 
 **Motherboard (top)**
 
-![Board layout top](/images/wifilinkv1.png)
+![Board layout top](/images/wifilinkv1.webp)
 
 **Motherboard (bottom)**
 
-![Board layout bottom](/images/wifilinkv1-1.png)
+![Board layout bottom](/images/wifilinkv1-1.webp)
 
 ---
 

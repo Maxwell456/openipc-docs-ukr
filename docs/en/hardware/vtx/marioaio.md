@@ -5,7 +5,7 @@ description: Connection, setup and firmware update guide for the OpenIPC Mario A
 
 # OpenIPC Mario AIO
 
-<img src="/images/mario.jpg" alt="" width="400px"/>
+<img src="/images/mario.webp" alt="" width="400px"/>
 
 **OpenIPC Mario AIO** is a compact module for a digital FPV system that combines a camera, a transmitter (VTX) and a system-on-chip (SoC). It is designed for use in drones and other FPV projects, providing high image quality and low video latency.
 

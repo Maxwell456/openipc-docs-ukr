@@ -50,7 +50,7 @@ http://radxa-zero3.local/
 
 ### 2. Main WebUI Features
 
-<img src="/images/homegs.png" alt="homegs" width="1000px"/>
+<img src="/images/homegs.webp" alt="homegs" width="1000px"/>
 
 - **DVR**
 - **VRX Settings**
@@ -64,7 +64,7 @@ http://radxa-zero3.local/
 Go to **Groundstation Editor → Screen-mode → Edit**.
 Set the resolution, e.g. `1280×720` — it must **match the Air Unit settings**.
 
-<img src="/images/gs-edit.png" alt="gs-edit" width="1000px"/>
+<img src="/images/gs-edit.webp" alt="gs-edit" width="1000px"/>
 
 ---
 
@@ -74,7 +74,7 @@ Go to **Groundstation Editor → wifibroadcast.cfg → Edit**.
 Set a different channel (e.g. `140`, `64`, etc.) —
 **it must match the channel on the Air Unit**.
 
-<img src="/images/gs-channel.png" alt="gs-channel" width="1000px"/>
+<img src="/images/gs-channel.webp" alt="gs-channel" width="1000px"/>
 
 #### 📡 5.8 GHz Channel Table (20 MHz)
 
@@ -135,7 +135,7 @@ Go to:
 - Restart **Majestic**
 
 <img src="/images/gs-majestic.png" alt="gs-majestic" width="1000px"/>
-<img src="/images/gs-majestic1.png" alt="gs-majestic1" width="1000px"/>
+<img src="/images/gs-majestic1.webp" alt="gs-majestic1" width="1000px"/>
 
 ---
 
@@ -143,13 +143,13 @@ Go to:
 
 The **RSSI** graph lets you monitor signal strength, link quality, and verify antenna placement and link stability in real time.
 
-<img src="/images/gs-rssi.png" alt="gs-rssi" width="1000px"/>
+<img src="/images/gs-rssi.webp" alt="gs-rssi" width="1000px"/>
 
 ### 7. DVR
 
 Download or delete your flight recordings.
 
-<img src="/images/dvr.png" alt="dvr" width="1000px"/>
+<img src="/images/dvr.webp" alt="dvr" width="1000px"/>
 
 ### 8. Connecting Radxa to Your Home Network
 
@@ -168,7 +168,7 @@ Download or delete your flight recordings.
 4. Run `nmtui` → connect to your home Wi-Fi → reboot.
 5. (Optional) AP mode → radxa-zero3.local → Web UI.
 
-<img src="/images/multiconf.png" alt="multiconf" width="800px"/><br>
+<img src="/images/multiconf.webp" alt="multiconf" width="800px"/><br>
 
 **Camera Setup (Runcam WiFiLink v1/v2)**
 

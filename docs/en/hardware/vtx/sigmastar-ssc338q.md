@@ -5,7 +5,7 @@ description: Technical specifications of an IP camera based on the SigmaStar SSC
 
 # SSC338Q + IMX415 Cameras
 
-<img src="/images/ssc338q.png" alt="main image" width="400" height="294"/>
+<img src="/images/ssc338q.webp" alt="main image" width="400" height="294"/>
 
 ### SSC338Q + IMX415 camera specifications
 
@@ -29,7 +29,7 @@ description: Technical specifications of an IP camera based on the SigmaStar SSC
 
 ### Pinout
 
-<img src="/images/ssc338q-1.png" alt="main image" width="400" height="400"/>
+<img src="/images/ssc338q-1.webp" alt="main image" width="400" height="400"/>
 
 ### How to flash with FPV firmware?
 
@@ -54,7 +54,7 @@ After you solder to the UART, fix the pads together with the wires using hot glu
 2. Next, find the firmware required for our camera; in our case there are several  
 [openipc.ssc338q-nand-fpv.tgz](https://github.com/OpenIPC/builder/releases/download/latest/openipc.ssc338q-nand-fpv.tgz)  
 [openipc.ssc338q-nor-fpv.tgz](https://github.com/OpenIPC/builder/releases/download/latest/openipc.ssc338q-nor-fpv.tgz)  
-![ssc338q](/images/ssc338q-3.png)
+![ssc338q](/images/ssc338q-3.webp)
 3. Unpack on your PC and, using WinSCP, upload to the camera into the ```/tmp/``` directory
 4. Run the following commands, one command at a time:  
 ```soc=$(fw_printenv -n soc)```   

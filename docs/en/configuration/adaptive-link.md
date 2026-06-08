@@ -55,7 +55,7 @@ Open Telemetry → enable UART0, add Mavlink.<br>
 Enable Alink Drone → Enable.
 
 After the camera connects to the Radxa you should see this window:<br>
-<img src="/images/alink_window.png" alt="" width="400px"/><br>
+<img src="/images/alink_window.webp" alt="" width="400px"/><br>
 ::: warning Warning!
 If it doesn't appear — `adaptive_link` is **NOT** working.
 :::

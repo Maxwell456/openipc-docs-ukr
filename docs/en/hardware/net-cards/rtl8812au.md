@@ -19,7 +19,7 @@ This page lists the best-known Wi-Fi adapters based on this chip.
 
 **LB-LINK BL-R8812AF1** is a compact and power-efficient network card that is popular in **"toothpick" FPV builds** thanks to its size and stable operation. It is often used in ready-made solutions such as the **EMAX Wyvern Link VTX Alpha 100mW**.
 
-![BL-M8812EU2](/images/af.png) ![BL-M8812EU2](/images/af2.png)
+![BL-M8812EU2](/images/af.webp) ![BL-M8812EU2](/images/af2.webp)
 
 ----
 
@@ -54,7 +54,7 @@ The module runs on **3.3 V**! Applying **5 V** can destroy it.
 
 This module is often part of the **WiFiLink-G** kit, which ships together with an FPV camera, mounts and the necessary cables. Thanks to its low power and reliable operation, the adapter is a great fit for mobile Android ground stations.
 
-![BL-M8812EU2](/images/wifilink-g.png)
+![BL-M8812EU2](/images/wifilink-g.webp)
 
 ### Specifications
 

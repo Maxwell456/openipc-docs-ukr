@@ -7,9 +7,9 @@ description: Інструкція зі збірки VRX станції на ба
 
 > Ми говоримо про Радху — то виглядає все приблизно так:
 
-<img src="/images/radxa.jpg" alt="Radxa Board" width="500px"/>
+<img src="/images/radxa.webp" alt="Radxa Board" width="500px"/>
 <br/>
-<img src="/images/radxa-pin.png" alt="Radxa Pinout" width="500px"/>
+<img src="/images/radxa-pin.webp" alt="Radxa Pinout" width="500px"/>
 
 Компоненти для Radxa Zero 3W Ground Station
 
@@ -48,7 +48,7 @@ description: Інструкція зі збірки VRX станції на ба
 
 > Спробую накидати схему в міру своїх художніх здібностей:
 
-<img src="/images/shema.png" alt="Схема живлення" width="500px"/>
+<img src="/images/shema.webp" alt="Схема живлення" width="500px"/>
 
 ---
 
@@ -58,7 +58,7 @@ description: Інструкція зі збірки VRX станції на ба
 
 > внутрішній всесвіт з [USB-HAT](https://arduino.ua/prod2536-4-h-portovii-usb-hub-hat-dlya-raspberry-pi)
 
-<img src="/images/usb-hat.png" alt="USB HAT" width="500px"/>
+<img src="/images/usb-hat.webp" alt="USB HAT" width="500px"/>
 
 
 ***Варіант 2***
@@ -72,14 +72,14 @@ description: Інструкція зі збірки VRX станції на ба
 
 - *Варіант 1*: USB‑HAT + 2×RTL8812AU → 227 g без антен  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa1.png" alt="Варіант 1 — вид спереду" width="400" />
-    <img src="/images/vrx_radxa1-1.png" alt="Варіант 1 — вид сбоку" width="400" />
+    <img src="/images/vrx_radxa1.webp" alt="Варіант 1 — вид спереду" width="400" />
+    <img src="/images/vrx_radxa1-1.webp" alt="Варіант 1 — вид сбоку" width="400" />
   </div>  
 <br>
 - *Варіант 2*: USB‑hub + 2×RTL8812EU → 105 g без антен  
   <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-    <img src="/images/vrx_radxa2.png" alt="Варіант 2 — вид спереду" width="400" />
-    <img src="/images/vrx_radxa2-2.png" alt="Варіант 2 — вид сбоку" width="400" />
+    <img src="/images/vrx_radxa2.webp" alt="Варіант 2 — вид спереду" width="400" />
+    <img src="/images/vrx_radxa2-2.webp" alt="Варіант 2 — вид сбоку" width="400" />
   </div>
 3D-модель корпусу можно знайти ось  - [тут](https://www.thingiverse.com/thing:6680584/files)
 
@@ -87,8 +87,8 @@ description: Інструкція зі збірки VRX станції на ба
 
 ***🟣 8812AU***
 
-<img src="/images/af1.png" alt="8812AU схема" width="500px"/>
+<img src="/images/af1.webp" alt="8812AU схема" width="500px"/>
 
 ***🔵 8812EU2***
 
-<img src="/images/eu2.png" alt="8812EU2 схема" width="500px"/>
+<img src="/images/eu2.webp" alt="8812EU2 схема" width="500px"/>
