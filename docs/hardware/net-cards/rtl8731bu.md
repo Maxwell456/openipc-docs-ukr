@@ -25,9 +25,14 @@ RTL8731BU та RTL8733BU — це надзвичайно компактні Wi-F
 
 **BL-M8731BU3** — один із найпоширеніших модулів на базі RTL8731BU. Завдяки своїм мікроскопічним розмірам він ідеально підходить для мінімалістичних FPV-збірок.
 
+<img src="/images/bl-m8731bu3-top.webp" alt="BL-M8731BU3 вид зверху" width="300" height="314"/>
+<img src="/images/bl-m8731bu3-bottom.webp" alt="BL-M8731BU3 вид знизу" width="300" height="314"/>
+
 ---
 
 ### Розпіновка
+
+<img src="/images/bl-m8731bu3-pinout-light.webp" alt="Розпіновка BL-M8731BU3" width="400" height="366"/>
 
 | № піна | Функція    |
 |--------|------------|

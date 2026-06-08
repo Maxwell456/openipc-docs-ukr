@@ -1347,6 +1347,11 @@ html {
   }
 }
 
+/* ===== Light/dark mode image switching ===== */
+.dark-img { display: none; }
+.dark .light-img { display: none; }
+.dark .dark-img { display: block; }
+
 /* ===== Gradient divider between hero and features ===== */
 .VPFeatures::before {
   content: '';

@@ -25,9 +25,14 @@ If you don't receive an image after switching to 40 MHz mode, please read the re
 
 **BL-M8731BU3** is one of the most common modules based on the RTL8731BU chip. Its microscopic size makes it ideal for minimalist FPV builds.
 
+<img src="/images/bl-m8731bu3-top.webp" alt="BL-M8731BU3 top view" width="300" height="314"/>
+<img src="/images/bl-m8731bu3-bottom.webp" alt="BL-M8731BU3 bottom view" width="300" height="314"/>
+
 ---
 
 ### Pinout
+
+<img src="/images/bl-m8731bu3-pinout-light.webp" alt="BL-M8731BU3 pinout" width="400" height="366"/>
 
 | Pin | Function  |
 |-----|-----------|
