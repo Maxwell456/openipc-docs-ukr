@@ -92,6 +92,27 @@ Once connected correctly, video appears automatically during boot.
 
 ---
 
+### GPIO button mappings
+
+The 5-way joystick and the record button map to the following GPIO pins:
+
+| Function | GPIO pin |
+|---|---|
+| Up | 16 |
+| Down | 18 |
+| Left | 12 |
+| Right | 13 |
+| Center (OK) | 11 |
+| DVR record | 22 |
+
+---
+
+### RubyFPV setup
+
+The Bonnet is compatible with **RubyFPV**. To remap buttons, create a `gpio.txt` file in the root directory of the microSD card and specify the appropriate pins.
+
+---
+
 ### Useful links
 
 - [OpenIPC GitHub](https://github.com/OpenIPC)
