@@ -113,19 +113,16 @@ Ethernet для конфігурації та оновлень
     <tr><td style="padding: 8px; border: 1px solid #ddd;">RJ45 TX-</td><td style="padding: 8px; border: 1px solid #ddd;">Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">Ethernet передача TX-</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">RJ45 RX+</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">Ethernet прийом RX+</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">RJ45 RX-</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">Ethernet прийом RX-</td></tr>
-
     <tr><td rowspan="4" style="padding: 8px; border: 1px solid #ddd;"><strong>USB Header</strong></td><td style="padding: 8px; border: 1px solid #ddd;">Vd</td><td style="padding: 8px; border: 1px solid #ddd;">Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">Живлення для зовнішнього Wi-Fi модуля</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">DM</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід/Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">USB Data− (D−)</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">DP</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід/Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">USB Data+ (D+)</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">GND</td><td style="padding: 8px; border: 1px solid #ddd;">—</td><td style="padding: 8px; border: 1px solid #ddd;">Земля</td></tr>
-
     <tr><td rowspan="6" style="padding: 8px; border: 1px solid #ddd;"><strong>Power / UART2 Header</strong></td><td style="padding: 8px; border: 1px solid #ddd;">Vcc</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід живлення</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">Vcc (дубль)</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">Дублюючий пін живлення (об'єднується)</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">RX</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">UART2 прийом (до контролера польоту)</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">TX</td><td style="padding: 8px; border: 1px solid #ddd;">Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">UART2 передача (до контролера польоту)</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">GND</td><td style="padding: 8px; border: 1px solid #ddd;">—</td><td style="padding: 8px; border: 1px solid #ddd;">Земля</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">GND (дубль)</td><td style="padding: 8px; border: 1px solid #ddd;">—</td><td style="padding: 8px; border: 1px solid #ddd;">Дублюючий пін землі (об'єднується)</td></tr>
-
     <tr><td rowspan="2" style="padding: 8px; border: 1px solid #ddd;"><strong>UART1 (контакти для пайки)</strong></td><td style="padding: 8px; border: 1px solid #ddd;">RX</td><td style="padding: 8px; border: 1px solid #ddd;">Вхід</td><td style="padding: 8px; border: 1px solid #ddd;">UART1 прийом</td></tr>
     <tr><td style="padding: 8px; border: 1px solid #ddd;">TX</td><td style="padding: 8px; border: 1px solid #ddd;">Вихід</td><td style="padding: 8px; border: 1px solid #ddd;">UART1 передача</td></tr>
   </tbody>
