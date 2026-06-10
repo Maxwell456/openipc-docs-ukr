@@ -3,6 +3,8 @@ title: "OpenIPC 4G прошивка для QuadroFleet"
 description: "Покрокова прошивка камер дронів з клієнтом QuadroFleet та налаштуванням 4G модему"
 ---
 
+# Збірка та прошивка OpenIPC Firmware (QuadroFleet 4G)
+
 
 ### Підготовка та прошивка OpenIPC Firmware
 

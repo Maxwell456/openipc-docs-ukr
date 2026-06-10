@@ -3,6 +3,8 @@ title: BL-M8812EU2 Wi-Fi Модуль (RTL8812EU)
 description: Розпіновка модуля BL-M8812EU2 тап характеристики
 ---
 
+# Wi-Fi модуль BL-M8812EU2 (RTL8812EU)
+
 <img src="/images/eu.webp" alt="BL-M8812EU2" width="275" height="276"/> <img src="/images/eu1.webp" alt="BL-M8812EU2" width="290" height="358"/>
 
 

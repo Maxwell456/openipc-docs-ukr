@@ -2,6 +2,8 @@
 title: "Emax Wyvern Link VRX"
 description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
 ---
+# Emax Wyvern Link VRX
+
 <img src="/images/emax_vrx_fatshark.webp" alt="emax wyvern link vrx" width="600px" />
 
 ### Specifications

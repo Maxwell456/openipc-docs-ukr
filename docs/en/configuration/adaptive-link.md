@@ -3,6 +3,8 @@ title: Installing Adaptive-Link for OpenIPC
 description: Detailed guide for setting up Adaptive-Link
 ---
 
+# Installing Adaptive-Link for OpenIPC
+
 ## What is Adaptive-Link?
 
 **Adaptive-Link** is a system that **automatically adjusts video and link quality** between the drone and the ground station based on signal strength.

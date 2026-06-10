@@ -3,6 +3,8 @@ title: "FPV OpenIPC Thinker Air Unit"
 description: "OpenIPC Thinker: технічні характеристики та встановлення"
 ---
 
+# FPV OpenIPC Thinker Air Unit
+
 OpenIPC Thinker — це компактний блок камери та передачі відео, що легко інтегрується з різними RC-пристроями.
 
 Доступні дві версії:

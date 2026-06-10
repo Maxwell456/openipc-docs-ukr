@@ -3,6 +3,8 @@ title: Додаткові налаштування OpenIPC
 description: Детальна інструкція з налаштування Adaptive-Link, Jumbo frame.
 ---
 
+# Додаткові налаштування OpenIPC
+
 ## 🛜 Jumbo frame 50Mbit
 
 **Jumbo frame** — це Ethernet-пакет, розмір якого **перевищує стандартні 1500 байт (MTU)**  

@@ -2,6 +2,8 @@
 title: "VPN setup for OpenIPC 4G"
 description: "VPN for OpenIPC 4G — a detailed WireGuard setup guide to ensure low latency and secure drone control"
 ---
+
+# VPN setup for OpenIPC 4G
 <img src="/images/WireGuard-Logo.wine.svg" alt="WireGuard Logo" width="320" height="120" style="object-fit: contain;">
 
 **WireGuard VPN** provides secure, low-latency communication between the QuadroFleet drone and the operator's device.

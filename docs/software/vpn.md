@@ -2,6 +2,8 @@
 title: "Налаштування VPN для OpenIPC 4G"
 description: "VPN для OpenIPC 4G — детальна інструкція налаштування WireGuard, щоб забезпечити низьку затримку та безпечне управління дроном"
 ---
+
+# Налаштування VPN для OpenIPC 4G
 <img src="/images/WireGuard-Logo.wine.svg" alt="WireGuard Logo" width="320" height="120" style="object-fit: contain;">
 
 **WireGuard VPN** забезпечує безпечну та низькозатримкову комунікацію між дроном QuadroFleet та пристроєм оператора.

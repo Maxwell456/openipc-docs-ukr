@@ -2,6 +2,8 @@
 title: Камери SSC338Q + IMX415
 description: Технічні характеристики IP-камери на базі SigmaStar SSC338Q з сенсором Sony IMX415
 ---
+# Камери SSC338Q + IMX415
+
 <img src="/images/ssc338q.webp" alt="головна картинка" width="400" height="294"/>
 
 ### Характеристики камери SSC338Q + IMX415
