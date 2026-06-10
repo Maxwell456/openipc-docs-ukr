@@ -1,6 +1,6 @@
 ﻿---
-title: BL-M8812EU2 Wi-Fi Модуль (RTL8812EU)
-description: Розпіновка модуля BL-M8812EU2 тап характеристики
+title: RTL8812AU Wi-Fi модуль (BL-R8812AF1)
+description: Характеристики та розпіновка Wi-Fi модуля RTL8812AU (BL-R8812AF1) для OpenIPC FPV
 ---
 
 # Wi-Fi модуль RTL8812AU
