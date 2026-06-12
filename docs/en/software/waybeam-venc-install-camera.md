@@ -8,7 +8,7 @@ description: "Step-by-step guide to installing Waybeam on a SigmaStar (Infinity6
 This guide describes how to install **Waybeam** on a SigmaStar (Infinity6E / Infinity6C) camera and configure it to work with **WFB-ng** instead of Majestic.
 
 ::: info What is Waybeam?
-**Waybeam** is a standalone H.265 (HEVC) video encoder that fully replaces Majestic. It provides lower latency, a full HTTP API for real-time tuning, and native WFB-ng integration via a Unix socket. The binary, config (`/etc/waybeam.json`) and init script are named `waybeam` (the old `venc` name only survives in the repository URL).
+**Waybeam** is a standalone H.265 (HEVC) video encoder that fully replaces Majestic. It provides lower latency, a full HTTP API for real-time tuning, and native WFB-ng integration via a Unix socket. The binary, config (`/etc/waybeam.json`) and init script are named `waybeam`.
 :::
 
 ---

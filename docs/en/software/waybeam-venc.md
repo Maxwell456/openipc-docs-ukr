@@ -7,10 +7,6 @@ description: "Overview of Waybeam — a standalone H.265 (HEVC) video encoder an
 
 **Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for cameras on SigmaStar Infinity6E (Star6E) and Infinity6C (Maruko) chips. It was designed specifically for FPV drones with minimal latency and full real-time control via an HTTP API.
 
-::: info About the name
-The application, binary, config file (`/etc/waybeam.json`) and init script are all named **`waybeam`**. The old `venc` name survives only in the repository URL `waybeam_venc`, for URL stability.
-:::
-
 ::: info Repository
 [https://github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc)
 :::
