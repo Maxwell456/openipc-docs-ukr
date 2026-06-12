@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -773,29 +773,6 @@ export default defineConfig({
         author: { '@id': `${SITE}/#org` },
         publisher: { '@id': `${SITE}/#org` },
       })
-
-      // VideoObject: auto-detect YouTube embeds from the page markdown source
-      const mdContent = readFileSync(resolve(DOCS_DIR, rel), 'utf-8')
-      const seenVideoIds = new Set<string>()
-      const ytRegex = /youtube\.com\/embed\/([a-zA-Z0-9_-]+)/g
-      let ytMatch: RegExpExecArray | null
-      while ((ytMatch = ytRegex.exec(mdContent)) !== null) {
-        const videoId = ytMatch[1]
-        if (!seenVideoIds.has(videoId)) {
-          seenVideoIds.add(videoId)
-          graph.push({
-            '@type': 'VideoObject',
-            name: title,
-            description: desc,
-            thumbnailUrl: `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
-            embedUrl: `https://www.youtube.com/embed/${videoId}`,
-            contentUrl: `https://www.youtube.com/watch?v=${videoId}`,
-            uploadDate: pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : new Date().toISOString(),
-            inLanguage,
-            publisher: { '@id': `${SITE}/#org` },
-          })
-        }
-      }
     }
 
     // Opt-in FAQ rich result: add `faq: [{ q, a }]` to a page's frontmatter
