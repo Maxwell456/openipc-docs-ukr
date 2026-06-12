@@ -1,11 +1,15 @@
 ---
-title: "Waybeam venc — Video encoder for FPV"
-description: "Overview of waybeam venc — a standalone H.265/H.264 video encoder and streamer for FPV systems based on SigmaStar Infinity6E and Infinity6C."
+title: "Waybeam — Video encoder for FPV"
+description: "Overview of Waybeam — a standalone H.265 (HEVC) video encoder and RTP streamer for FPV systems based on SigmaStar Infinity6E (Star6E) and Infinity6C (Maruko)."
 ---
 
-# Waybeam venc — Video encoder for FPV
+# Waybeam — Video encoder for FPV
 
-**waybeam venc** is a standalone H.265/H.264 video encoder and RTP streamer for cameras on SigmaStar Infinity6E (Star6E) and Infinity6C (Maruko) chips. It was designed specifically for FPV drones with minimal latency and full real-time control via an HTTP API.
+**Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for cameras on SigmaStar Infinity6E (Star6E) and Infinity6C (Maruko) chips. It was designed specifically for FPV drones with minimal latency and full real-time control via an HTTP API.
+
+::: info About the name
+The application, binary, config file (`/etc/waybeam.json`) and init script are all named **`waybeam`**. The old `venc` name survives only in the repository URL `waybeam_venc`, for URL stability.
+:::
 
 ::: info Repository
 [https://github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc)
@@ -17,53 +21,68 @@ description: "Overview of waybeam venc — a standalone H.265/H.264 video encode
 
 | Feature | Description |
 | :--- | :--- |
-| **Codecs** | H.265 (HEVC) and H.264 with CBR / VBR / AVBR / FIXQP modes |
-| **Streaming** | RTP packetization; Compact UDP mode (raw NAL units without headers) |
-| **HTTP API** | Change any of 84 parameters in real time without restarting the stream |
+| **Codec** | H.265 (HEVC) with CBR / VBR / AVBR / FIXQP modes. The codec is hardcoded — there is no `video0.codec` field |
+| **Streaming** | RTP packetization; Compact UDP mode (raw NAL units). Transports: `udp://`, `unix://`, `shm://` |
+| **HTTP API** | Real-time parameter tuning without restarting the stream |
 | **Web panel** | Built-in dashboard on port 80: configuration, API docs, ISP tuning |
-| **ISP IQ** | 60+ ISP parameters with profile export/import support |
-| **Custom 3A** | Built-in AE and AWB with configurable gain limits and tracking |
+| **ISP IQ** | 62 ISP parameters with profile export/import support |
+| **Custom 3A** | Built-in AE and AWB; on Maruko `isp.aeEngine: "custom"` saves ~24% CPU at 120 fps |
 | **ROI encoding** | Frame-center priority for FPV |
+| **Loss resilience** | Resilience presets: intra-refresh (rolling GDR) + SVC-T reference pyramid |
+| **Framing** | Digital zoom 1.25×–4× (both chips) + `stab` / `stab-fill` stabilization (Kalman, Star6E only) |
 | **High frame rate** | Up to 120 fps for IMX415 / IMX335 |
-| **Audio** | Audio capture, G.711 / PCM / Opus codecs |
-| **SD recording** | MPEG-TS (HEVC + PCM), power-loss safe |
+| **Audio** | Audio capture, Opus / G.711a / G.711µ / PCM codecs |
+| **Snapshot** | Dedicated MJPEG channel — frame via `/api/v1/snapshot.jpg` |
+| **SD recording** | MPEG-TS (HEVC + audio), power-loss safe |
 | **Gemini mode** | Two VENC channels: streaming + recording independently |
 | **Adaptive recording bitrate** | Auto-lowers the recording bitrate if the SD card can't keep up (10%/s) |
-| **EIS (stabilization)** | GyroGlide-Lite — gyroscopic stabilization (Star6E only) |
-| **IMU** | BMI270 support (Star6E only) |
+| **IMU** | BMI270 driver (both chips), disabled by default — a POC for telemetry/sidecar |
+
+::: warning Stabilization changed
+The gyroscopic **GyroGlide-Lite stabilization (the `eis` section) was removed in version 0.8.0**. Stabilization is now implemented via a Kalman filter in the `video0.framing` field (`stab` / `stab-fill`, Star6E only) and does not require an IMU. The BMI270 driver remains, but as a POC consumer for telemetry, not for EIS.
+:::
 
 ---
 
 ### Supported chips
 
-| Chip | Name | Status |
-| :--- | :--- | :--- |
-| SigmaStar Infinity6E | Star6E (SSC338Q etc.) | ✅ Full support |
-| SigmaStar Infinity6C | Maruko | ✅ Full support |
+| Chip | Backend | Sensors | Status |
+| :--- | :--- | :--- | :--- |
+| SigmaStar Infinity6E | Star6E | SSC30KQ, SSC338Q | ✅ Full support |
+| SigmaStar Infinity6C | Maruko | SSC378QE | ✅ Supported (some features are a subset of Star6E) |
 
-::: warning Star6E and RTP
-On Star6E the `outgoing.streamMode: "rtp"` mode requires the codec `video0.codec: "h265"`.
-Maruko supports both codecs: h264 and h265.
+::: info Codec — H.265 only
+Waybeam encodes only H.265 (HEVC) on both chips. There is no `video0.codec` field; old configs containing `"codec": "h264"` or `"h265"` load without errors, but the key is ignored.
+:::
+
+::: warning Star6E-only features
+- `stab` / `stab-fill` stabilization
+- Scene-change IDR (`video0.sceneThreshold` / `sceneHoldoff`)
+- `hevc` recording format (Maruko is `ts` only)
+- HTTP-driven recording (`/api/v1/record/start|stop`); on Maruko recording is config-only
+
+Check per-field backend support via `/api/v1/capabilities`.
 :::
 
 ---
 
 ### Comparison with Majestic
 
-| | **waybeam venc** | **Majestic** |
+| | **Waybeam** | **Majestic** |
 | :--- | :--- | :--- |
 | **Purpose** | Specialized FPV streamer | General IP camera |
-| **HTTP API** | Full, real-time change of all fields | Limited |
-| **WFB integration** | Native via Unix socket / UDP | Via UDP |
+| **HTTP API** | Full, real-time field changes | Limited |
+| **WFB integration** | Native via Unix socket / SHM / UDP | Via UDP |
 | **SD recording** | Gemini mode (streaming + recording) | Limited |
-| **EIS / IMU** | GyroGlide-Lite (Star6E) | None |
-| **ISP tuning** | 60+ parameters in real time | Basic |
+| **Loss resilience** | Resilience presets (intra-refresh + SVC-T) | Basic |
+| **Stabilization / zoom** | Kalman stabilization (Star6E) + digital zoom | None |
+| **ISP tuning** | 62 parameters in real time | Basic |
 | **License** | MIT (open source) | Closed |
 
 ---
 
 ### Documentation structure
 
-- [**Install on the camera**](/en/software/waybeam-venc-install-camera) — downloading the binary, configuring `/etc/venc.json`, first run
-- [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replacing Majestic with venc alongside WFB-ng
+- [**Install on the camera**](/en/software/waybeam-venc-install-camera) — downloading the tarball, configuring `/etc/waybeam.json`, first run
+- [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replacing Majestic with Waybeam alongside WFB-ng
 - [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — configuration via the browser and command line

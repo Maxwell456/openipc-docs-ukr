@@ -1,11 +1,11 @@
-﻿---
-title: "Веб-панель та HTTP API venc"
-description: "Повний довідник HTTP API waybeam venc — веб-дешборд, ISP-тюнінг, керування записом та параметрами відео в реальному часі."
+---
+title: "Веб-панель та HTTP API Waybeam"
+description: "Повний довідник HTTP API Waybeam — веб-дешборд, ISP-тюнінг, стабілізація, resilience-пресети, керування записом та параметрами відео в реальному часі."
 ---
 
 # Веб-панель та HTTP API
 
-waybeam venc включає вбудовану веб-панель та повний HTTP API для керування всіма параметрами в реальному часі. Веб-панель доступна за адресою `http://<ip-камери>/` (порт за замовчуванням — 80).
+Waybeam включає вбудовану веб-панель та повний HTTP API для керування параметрами в реальному часі. Веб-панель доступна за адресою `http://<ip-камери>/` (порт за замовчуванням — 80).
 
 ---
 
@@ -13,41 +13,39 @@ waybeam venc включає вбудовану веб-панель та повн
 
 <strong>Вкладка Settings (Налаштування)</strong>
 
-Всі 84 параметри конфігурації згруповані за 13 секціями:
+Поля конфігурації згруповані за **12 секціями**:
 
-| Секція | Кількість полів | Опис |
-| :--- | :--- | :--- |
-| System | 3 | Порт, розгін, логування |
-| Sensor | 7 | Вибір та розблокування сенсора |
-| ISP | 7 | Експозиція, AWB, AE |
-| Image | 3 | Дзеркало, фліп, поворот |
-| Video | 10 | Кодек, бітрейт, FPS, GOP |
-| Outgoing | 7 | Стрімінг, адреса, режим |
-| Audio | 6 | Кодек, частота, гучність |
-| FPV | 5 | ROI-кодування |
-| IMU | 7 | Гіроскоп BMI270 |
-| EIS | 11 | Стабілізація зображення |
-| Recording | 10 | Запис на SD-картку |
-| Adaptive Encoder | 2 | Детекція сцен |
-| Debug | 1 | OSD |
+| Секція | Опис |
+| :--- | :--- |
+| System | Порт, розгін, логування |
+| Sensor | Вибір сенсора (index / mode) |
+| ISP | Експозиція, AWB, AE-движок |
+| Image | Дзеркало, фліп, поворот |
+| Video | Кодек, бітрейт, FPS, GOP, framing, resilience |
+| Outgoing | Стрімінг, адреса, режим |
+| Audio | Кодек, частота, гучність |
+| FPV | ROI-кодування + 3DNR |
+| IMU | Гіроскоп BMI270 (POC) |
+| Recording | Запис на SD-картку |
+| Adaptive Encoder Control | Детекція сцен |
+| Debug | OSD |
 
 **Елементи інтерфейсу:**
 
 - 🟢 **Live** — параметр змінюється миттєво без перезапуску
 - 🟠 **Restart** — потребує reinit пайплайну (автоматично)
+- 🔴 **Reboot** — потребує повного перезавантаження камери (лише `video0.resilience`)
 - **Apply Changes** — застосувати всі змінені поля
 - **Save & Restart** — застосувати та перезапустити пайплайн
 - **Restore Defaults** — повернути конфігурацію з диска
 
+::: info Секцію EIS видалено
+У попередніх версіях була окрема секція `eis` (гіроскопна стабілізація GyroGlide). Її **видалено у 0.8.0**. Стабілізація тепер живе у секції Video — поле `video0.framing` (див. [нижче](#framing-стабілізація-та-цифровий-зум)).
+:::
+
 <strong>Вкладка API Reference</strong>
 
-Документація всіх HTTP-ендпоінтів з прикладами відповідей. Категорії:
-
-- Configuration
-- Encoder Control
-- ISP & Image Quality
-- Recording
-- Dual-Stream
+Документація всіх HTTP-ендпоінтів з прикладами відповідей. Категорії: Configuration, Encoder Control, ISP & Image Quality, Recording, Dual-Stream.
 
 <strong>Вкладка Image Quality (ISP)</strong>
 
@@ -63,16 +61,22 @@ waybeam venc включає вбудовану веб-панель та повн
 
 Всі ендпоінти використовують HTTP GET (сумісно з BusyBox wget). Відповіді — JSON у форматі `{"ok": true/false, ...}`.
 
----
+::: tip Три рівні мутабельності
+- **live** — застосовується миттєво без переривання потоку
+- **restart_required** — ініціює автоматичний reinit пайплайну
+- **reboot** — потребує повного перезавантаження камери (лише `video0.resilience`)
 
-<strong>Основні ендпоінти</strong>
+`/api/v1/capabilities` показує рівень мутабельності та підтримку кожного поля бекендом.
+:::
+
+---
 
 <strong>GET /api/v1/version</strong>
 
 Повертає інформацію про версію.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/version
+curl http://<ip>/api/v1/version
 ```
 
 **Відповідь:**
@@ -80,7 +84,7 @@ curl http://&lt;ip&gt;:80/api/v1/version
 {
   "ok": true,
   "data": {
-    "app_version": "0.5.2",
+    "app_version": "0.16.0",
     "backend": "star6e",
     "contract_version": "0.2.0",
     "config_schema_version": "0.2.0"
@@ -90,27 +94,26 @@ curl http://&lt;ip&gt;:80/api/v1/version
 
 ---
 
-<strong>GET /api/v1/config</strong>
+<strong>GET /api/v1/config</strong> — повна активна конфігурація.
 
-Повертає повну активну конфігурацію.
-
-```bash
-curl http://&lt;ip&gt;:80/api/v1/config
-```
-
----
-
-<strong>GET /api/v1/capabilities</strong>
-
-Показує мутабельність кожного поля (`live` або `restart_required`) та підтримку бекендом.
+<strong>GET /api/v1/capabilities</strong> — мутабельність кожного поля (`live` / `restart_required`) та підтримка бекендом.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/capabilities
+curl http://<ip>/api/v1/config
+curl http://<ip>/api/v1/capabilities
 ```
 
 ::: tip Перевірка підтримки
-Використовуйте цей ендпоінт, щоб дізнатися, які поля можна змінювати на льоту, а які потребують перезапуску пайплайну.
+Підтримка полів залежить від бекенда. Наприклад, Star6E повертає `video0.scene_threshold` як підтримуване, а Maruko — ні. Використовуйте `capabilities` перед записом.
 :::
+
+<strong>GET /api/v1/modes</strong>
+
+Перелік режимів сенсора (pad + роздільність) — поточний вибір і всі режими, які перелічує SDK. Заповнює випадайку в WebUI.
+
+```bash
+curl http://<ip>/api/v1/modes
+```
 
 ---
 
@@ -118,18 +121,13 @@ curl http://&lt;ip&gt;:80/api/v1/capabilities
 
 <strong>GET /api/v1/get?field_name</strong>
 
-Прочитати одне поле:
-
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/get?video0.bitrate"
+curl "http://<ip>/api/v1/get?video0.bitrate"
 ```
 
-**Відповідь:**
 ```json
 {"ok": true, "data": {"field": "video0.bitrate", "value": 8192}}
 ```
-
----
 
 <strong>GET /api/v1/set?field_name=value</strong>
 
@@ -137,13 +135,13 @@ curl "http://&lt;ip&gt;:80/api/v1/get?video0.bitrate"
 
 ```bash
 # Миттєва зміна бітрейту (live)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.bitrate=4096"
+curl "http://<ip>/api/v1/set?video0.bitrate=4096"
 
 # Мульти-зміна (тільки для live-полів)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.bitrate=4096&system.verbose=true"
+curl "http://<ip>/api/v1/set?video0.bitrate=4096&system.verbose=true"
 
 # Зміна роздільної здатності (restart — reinit пайплайну)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.size=1280x720"
+curl "http://<ip>/api/v1/set?video0.size=1280x720"
 ```
 
 **Відповіді:**
@@ -162,21 +160,19 @@ curl "http://&lt;ip&gt;:80/api/v1/set?video0.size=1280x720"
 ```
 
 ::: warning Обмеження мульти-set
-Мульти-set підтримується тільки для live-полів. Якщо хоча б одне restart-поле присутнє — весь запит відхиляється. Restart-зміни відправляйте по одній.
+Мульти-set підтримується тільки для live-полів. Якщо хоча б одне restart-поле присутнє — весь запит відхиляється. Restart-зміни відправляйте по одній (демон перезапускається між ними — чекайте, поки відновиться).
 :::
 
 ::: danger HTTP 409 — помилка валідації
-Якщо значення невалідне (наприклад, неіснуючий режим AWB або якщо поле не існує), API поверне **HTTP 409 Conflict** замість звичайного 200.
+Якщо значення невалідне (наприклад, неіснуючий режим AWB або неіснуюче поле), API поверне **HTTP 409 Conflict** замість 200.
 :::
-
----
 
 <strong>GET /api/v1/restart</strong>
 
-Повний reinit пайплайну. Перезавантажує `/etc/venc.json` та перезапускає камеру без завершення процесу.
+Повний reinit пайплайну. Перезавантажує `/etc/waybeam.json` та перезапускає камеру без завершення процесу.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/restart
+curl http://<ip>/api/v1/restart
 ```
 
 ---
@@ -188,7 +184,7 @@ curl http://&lt;ip&gt;:80/api/v1/restart
 Запит IDR-кейфрейму від енкодера:
 
 ```bash
-curl http://&lt;ip&gt;:80/request/idr
+curl http://<ip>/request/idr
 ```
 
 ::: tip Коли запитувати IDR
@@ -197,15 +193,53 @@ curl http://&lt;ip&gt;:80/request/idr
 - При появі артефактів відео
 :::
 
----
+<strong>GET /api/v1/idr/stats</strong>
+
+Лічильники rate-limit IDR за каналом: скільки запитів виконано, а скільки злито (coalesced).
 
 <strong>GET /api/v1/awb</strong>
 
-Стан автобалансу білого від ISP:
+Стан автобалансу білого від ISP.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/awb
+curl http://<ip>/api/v1/idr/stats
+curl http://<ip>/api/v1/awb
 ```
+
+---
+
+### Спостереження за потоком
+
+<strong>GET /api/v1/transport/status</strong>
+
+Стан активного відеотранспорту (UDP / Unix / SHM): відсоток заповнення буфера, прапор backpressure, лічильники втрат за весь час роботи.
+
+<strong>GET /api/v1/audio/status</strong>
+
+Знімок аудіо-пайплайну: чи завантажена бібліотека, стан захоплення, кодек, частота, канали, ініціалізація Opus.
+
+```bash
+curl http://<ip>/api/v1/transport/status
+curl http://<ip>/api/v1/audio/status
+```
+
+---
+
+### Snapshot (JPEG)
+
+<strong>GET /api/v1/snapshot.jpg</strong>
+
+Один JPEG-кадр з окремого MJPEG-каналу VENC (відгалуження від того ж порту, що й основний H.265-потік). Без параметрів; якість за замовчуванням 80, роздільність — як в основному потоці.
+
+```bash
+curl -o snapshot.jpg http://<ip>/api/v1/snapshot.jpg
+```
+
+Відповідь — `Content-Type: image/jpeg`. Можливі помилки: `503 snapshot_disabled` (пайплайн ще не піднявся), `504 snapshot_timeout` (немає кадру за 1500 мс), `500 snapshot_failed`.
+
+::: info Налаштування snapshot
+`snapshot.quality` — **live** (миттєво, без reinit). Поля `snapshot.channel`, `snapshot.width`, `snapshot.height` — restart (зашиваються при `MI_VENC_CreateChn`). `width=0`/`height=0` означає «як в основному потоці».
+:::
 
 ---
 
@@ -213,33 +247,21 @@ curl http://&lt;ip&gt;:80/api/v1/awb
 
 <strong>GET /api/v1/record/start</strong>
 
-Почати запис. Використовує сконфігурований `record.dir`, або можна вказати каталог параметром:
+Почати запис. Використовує сконфігурований `record.dir`, або вкажіть каталог параметром:
 
 ```bash
-# Запис у каталог за замовчуванням
-curl "http://&lt;ip&gt;:80/api/v1/record/start"
-
-# Запис у вказаний каталог
-curl "http://&lt;ip&gt;:80/api/v1/record/start?dir=/mnt/mmcblk0p1"
+curl "http://<ip>/api/v1/record/start"
+curl "http://<ip>/api/v1/record/start?dir=/mnt/mmcblk0p1"
 ```
 
-<strong>GET /api/v1/record/stop</strong>
+<strong>GET /api/v1/record/stop</strong> — зупинити запис.
 
-Зупинити запис:
+<strong>GET /api/v1/record/status</strong> — статус запису:
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/record/stop"
+curl "http://<ip>/api/v1/record/status"
 ```
 
-<strong>GET /api/v1/record/status</strong>
-
-Статус запису:
-
-```bash
-curl "http://&lt;ip&gt;:80/api/v1/record/status"
-```
-
-**Відповідь:**
 ```json
 {
   "ok": true,
@@ -255,19 +277,22 @@ curl "http://&lt;ip&gt;:80/api/v1/record/status"
 }
 ```
 
+::: warning Запис на Maruko
+HTTP-керування записом (`start`/`stop`) працює лише на Star6E. На Maruko запис **тільки через конфіг** (`record.enabled=true` + `record.mode=...` у `/etc/waybeam.json`), а `/api/v1/record/start|stop` повертає `501 not_implemented`.
+:::
+
 ---
 
 ### Dual-Stream (Gemini-режим)
 
 <strong>GET /api/v1/dual/status</strong>
 
-Статус другого VENC-каналу:
+Статус другого VENC-каналу (лише режими `dual` / `dual-stream`):
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/dual/status"
+curl "http://<ip>/api/v1/dual/status"
 ```
 
-**Відповідь:**
 ```json
 {"ok": true, "data": {"active": true, "channel": 1, "bitrate": 20000, "fps": 120, "gop": 240}}
 ```
@@ -278,61 +303,130 @@ curl "http://&lt;ip&gt;:80/api/v1/dual/status"
 
 <strong>GET /api/v1/dual/set?param=value</strong>
 
-Зміна параметрів другого каналу в реальному часі:
-
 ```bash
 # Змінити бітрейт запису
-curl "http://&lt;ip&gt;:80/api/v1/dual/set?bitrate=10000"
+curl "http://<ip>/api/v1/dual/set?bitrate=10000"
 
 # Змінити GOP (у секундах)
-curl "http://&lt;ip&gt;:80/api/v1/dual/set?gop=1.0"
+curl "http://<ip>/api/v1/dual/set?gop=1.0"
 ```
 
-<strong>GET /api/v1/dual/idr</strong>
+<strong>GET /api/v1/dual/idr</strong> — IDR-кейфрейм для другого каналу.
 
-IDR-кейфрейм для другого каналу:
+---
+
+### Framing: стабілізація та цифровий зум
+
+`video0.framing` — це **єдиний користувацький перемикач** обрізки VPE. Це іменований пресет (restart-required); коефіцієнт обрізки *виводиться* з пресету (окремого поля `zoomPct` немає).
+
+| `framing` | Ефект | Роздільність @1080p | Чіпи |
+| :--- | :--- | :--- | :--- |
+| `off` | Повний кадр | 1920×1080 | обидва |
+| `stab` | Стабілізація (центрована обрізка 80%) | 1536×864 | тільки Star6E |
+| `stab-fill` | Стабілізація (плаваюче зображення на чорній рамці) | 1920×1080 | тільки Star6E |
+| `zoom-1.25x` | Цифровий зум 1.25× | 1536×864 | обидва |
+| `zoom-1.50x` | Цифровий зум 1.50× | 1280×720 | обидва |
+| `zoom-1.75x` | Цифровий зум 1.75× | 1088×608 | обидва |
+| `zoom-2x` | Цифровий зум 2× | 960×528 | обидва |
+| `zoom-3x` | Цифровий зум 3× | 640×352 | обидва |
+| `zoom-4x` | Цифровий зум 4× | 480×256 | обидва |
+
+**Цифровий зум** зменшує і вікно обрізки, і вихідну роздільність — без апскейлу, без додаткового навантаження на канал. Панорамування всередині зуму — live, через `video0.zoomX` / `video0.zoomY` (∈ [0,1], центр 0.5/0.5):
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/dual/idr"
+# Увімкнути 3× зум (restart)
+curl "http://<ip>/api/v1/set?video0.framing=zoom-3x"
+
+# Панорамування (live) — лівий верхній кут / центр
+curl "http://<ip>/api/v1/set?video0.zoomX=0.0&video0.zoomY=0.0"
+curl "http://<ip>/api/v1/set?video0.zoomX=0.5&video0.zoomY=0.5"
 ```
+
+**Стабілізація** (`stab` / `stab-fill`, тільки Star6E) використовує Kalman-фільтр траєкторії. Тонке налаштування (всі restart; повторний вибір пресету скидає їх до дефолтів, тому **спочатку задавайте `framing`, потім переоприділення**):
+
+| Поле | За замовч. | Опис |
+| :--- | :--- | :--- |
+| `video0.stabCropPct` | 80 | Запас на стабілізацію (менше = більший «мертвий» бордер, більше поглинання руху) |
+| `video0.stabKalmanQ` | 0.03 | Реакція на панорамування (`0.001..1.0`; вище = швидше слідує за повільними панорамами) |
+| `video0.stabKalmanR` | 2.0 | **Головний параметр відчуття.** Плавність (`0.1..50.0`; вище = плавніше, але із затримкою) |
+| `video0.pauseStab` | — | **live** пауза: плавно повертає вікно/зображення в центр (тільки `stab`/`stab-fill`) |
+
+```bash
+# Увімкнути стабілізацію (restart)
+curl "http://<ip>/api/v1/set?video0.framing=stab"
+
+# Пауза стабілізації на льоту (live)
+curl "http://<ip>/api/v1/set?video0.pauseStab=1"   # заморозити (плавно в центр)
+curl "http://<ip>/api/v1/set?video0.pauseStab=0"   # відновити
+```
+
+::: info Гіроскоп більше не потрібен
+Нова стабілізація працює на основі аналізу руху в кадрі (Kalman) і **не використовує IMU**. Колишня EIS на BMI270 (`gyroglide`) видалена у 0.8.0.
+:::
+
+---
+
+### Resilience: стійкість до втрат пакетів
+
+`video0.resilience` обирає профіль стійкості — intra-refresh (rolling GDR-смуга), SVC-T пірамида посилань та довжина GOP виводяться з пресету.
+
+::: danger Зміна resilience потребує REBOOT
+Запис `video0.resilience` зберігає значення у `/etc/waybeam.json` і повертає `{"reboot_required": true}`. **Активний пайплайн продовжує працювати зі старим пресетом до наступного запуску камери** — kernel-модуль SigmaStar MI не переживає live-переконфігурацію цих полів (на Star6E це призводить до kernel panic, на Maruko — до зависання демона). Тому застосовується модель «cold-boot».
+:::
+
+| Пресет | intra-refresh | refPred | GOP | OSD-safe? |
+| :--- | :--- | :--- | :--- | :--- |
+| `off` | вимк. | вимк. | користувацький | так |
+| `rescue` | вимк. | вимк. | 0.25 с (IDR-спам) | так |
+| `quality` | вимк. | вимк. | 4.0 с | так |
+| `sprint` | швидкий (150 мс) | вимк. | 0.5 с | так |
+| `racing` | швидкий (150 мс) | вимк. | 2.0 с | так |
+| `endurance` | збалансований (500 мс) | вимк. | 2.0 с | так |
+| `patrol` | збалансований (500 мс) | вимк. | 4.0 с | так |
+| `rally` | швидкий (150 мс) | base=1, enhance=1 | 2.0 с | ні — «зелений шлейф» |
+| `range` | збалансований (500 мс) | base=1, enhance=4 | 2.0 с | ні — «зелений шлейф» |
+| `fpv` | стійкий (1000 мс) | base=1, enhance=4 | 2.0 с | ні — «зелений шлейф» |
+
+```bash
+# FPV з OSD-оверлеєм — швидке відновлення смугами, без SVC-T
+curl "http://<ip>/api/v1/set?video0.resilience=racing"
+# далі перезавантажте камеру, щоб застосувати
+```
+
+::: warning OSD та SVC-T
+Пресети з `refPred` (`rally`, `range`, `fpv`) можуть лишати стійкий «зелений шлейф» на статичному OSD до наступного IDR. Для польотів з OSD-оверлеєм використовуйте OSD-safe пресети (`racing`, `endurance`, `patrol`). Бюджетуйте +20–30% бітрейту для пресетів з intra-refresh.
+:::
 
 ---
 
 ### ISP Image Quality
 
-<strong>GET /api/v1/iq</strong>
-
-Експорт усіх ISP-параметрів:
+<strong>GET /api/v1/iq</strong> — експорт усіх ISP-параметрів:
 
 ```bash
-# Зберегти як файл
-curl http://&lt;ip&gt;:80/api/v1/iq > my_tuning.json
+curl http://<ip>/api/v1/iq > my_tuning.json
 ```
 
-<strong>POST /api/v1/iq/import</strong>
-
-Імпорт ISP-параметрів (повний або частковий):
+<strong>POST /api/v1/iq/import</strong> — імпорт (повний або частковий):
 
 ```bash
 # Повний імпорт
 curl -X POST -H "Content-Type: application/json" \
-  -d @my_tuning.json http://&lt;ip&gt;:80/api/v1/iq/import
+  -d @my_tuning.json http://<ip>/api/v1/iq/import
 
 # Частковий імпорт — тільки конкретні параметри
 echo '{"lightness":{"value":75},"demosaic":{"fields":{"dir_thrd":30}}}' | \
-  curl -X POST -H "Content-Type: application/json" -d @- http://&lt;ip&gt;:80/api/v1/iq/import
+  curl -X POST -H "Content-Type: application/json" -d @- http://<ip>/api/v1/iq/import
 ```
 
-<strong>GET /api/v1/iq/set?param=value</strong>
-
-Зміна окремого ISP-параметра (dot-notation):
+<strong>GET /api/v1/iq/set?param=value</strong> — зміна окремого ISP-параметра (dot-notation):
 
 ```bash
 # Встановити одне поле
-curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.y_ofst=200"
+curl "http://<ip>/api/v1/iq/set?colortrans.y_ofst=200"
 
 # Встановити масив (через кому)
-curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,56,977,1015"
+curl "http://<ip>/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,56,977,1015"
 ```
 
 ---
@@ -342,39 +436,34 @@ curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,5
 <strong>Швидке перемикання на 720p 90fps</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?video0.size=1280x720"
+curl "http://<ip>/api/v1/set?video0.size=1280x720"
 # Чекаємо reinit...
-curl "http://&lt;ip&gt;/api/v1/set?video0.fps=90"
-curl "http://&lt;ip&gt;/api/v1/set?video0.bitrate=4096"
+curl "http://<ip>/api/v1/set?video0.fps=90"
+curl "http://<ip>/api/v1/set?video0.bitrate=4096"
 ```
 
 <strong>Ручний баланс білого (6500K)</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?isp.awbMode=ct_manual"
-curl "http://&lt;ip&gt;/api/v1/set?isp.awbCt=6500"
+curl "http://<ip>/api/v1/set?isp.awbMode=ct_manual"
+curl "http://<ip>/api/v1/set?isp.awbCt=6500"
 ```
 
 <strong>Увімкнення ROI-кодування для FPV</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiEnabled=true"
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiQp=-18"
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiSteps=2"
+curl "http://<ip>/api/v1/set?fpv.roiEnabled=true"
+curl "http://<ip>/api/v1/set?fpv.roiQp=-18"
+curl "http://<ip>/api/v1/set?fpv.roiSteps=2"
 ```
 
-<strong>Увімкнення EIS (тільки Star6E)</strong>
+<strong>Увімкнення стабілізації (тільки Star6E)</strong>
 
 ```bash
-# Спочатку в /etc/venc.json:
-# "imu": {"enabled": true}, "eis": {"enabled": true, "mode": "gyroglide"}
-# Потім перезапуск:
-curl http://&lt;ip&gt;/api/v1/restart
+# framing — restart-поле; задавайте першим, потім тонке налаштування
+curl "http://<ip>/api/v1/set?video0.framing=stab"
+curl "http://<ip>/api/v1/set?video0.stabKalmanR=6"
 ```
-
-::: info Калібрування IMU
-Після перезапуску тримайте камеру нерухомо 2 секунди для автокалібрування гіроскопа.
-:::
 
 ---
 
@@ -384,7 +473,7 @@ curl http://&lt;ip&gt;/api/v1/restart
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":90, "size":"1280x720", "bitrate":6144, "gopSize":0.5},
+  "video0": {"rcMode":"cbr", "fps":90, "size":"1280x720", "bitrate":6144, "gopSize":0.5, "resilience":"racing"},
   "fpv": {"roiEnabled":true, "roiQp":-12, "roiSteps":2, "roiCenter":0.35},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
 }
@@ -394,7 +483,7 @@ curl http://&lt;ip&gt;/api/v1/restart
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":60, "size":"1920x1080", "bitrate":8192, "gopSize":1.0},
+  "video0": {"rcMode":"cbr", "fps":60, "size":"1920x1080", "bitrate":8192, "gopSize":1.0},
   "fpv": {"roiEnabled":true, "roiQp":-18, "roiSteps":3, "roiCenter":0.4},
   "record": {"enabled":true, "mode":"dual", "bitrate":20000, "fps":120},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
@@ -405,16 +494,20 @@ curl http://&lt;ip&gt;/api/v1/restart
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":30, "size":"1280x720", "bitrate":3072, "gopSize":2.0},
+  "video0": {"rcMode":"cbr", "fps":30, "size":"1280x720", "bitrate":3072, "gopSize":2.0, "resilience":"range"},
   "fpv": {"roiEnabled":false},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
 }
 ```
 
+::: tip resilience у конфізі
+`resilience` застосовується при холодному старті, тому в конфізі він спрацьовує одразу. Через API він потребує перезавантаження камери.
+:::
+
 ---
 
 ### Наступні кроки
 
-- [**Огляд waybeam venc**](/software/waybeam-venc) — повний список можливостей
+- [**Огляд Waybeam**](/software/waybeam-venc) — повний список можливостей
 - [**Встановлення на камеру**](/software/waybeam-venc-install-camera) — початкове встановлення
 - [**Інтеграція з WFB-ng**](/software/waybeam-venc-install-groundstation) — налаштування зв'язки з WFB

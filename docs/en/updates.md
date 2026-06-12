@@ -7,6 +7,7 @@ description: All OpenIPC FPV updates grouped by year.
 
 ## 2026
 
+- [June 12 — Waybeam — major update and new features](/en/updates/posts/2026-06-12-waybeam-update)
 - [April 16 — Waybeam Venc — new FPV video encoder](/en/updates/posts/2026-04-16-waybeam-venc)
 
 ## 2025

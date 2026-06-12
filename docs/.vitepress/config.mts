@@ -334,6 +334,7 @@ export default defineConfig({
               text: 'Оновлення та новини',
               items: [
                 { text: 'Всі оновлення', link: '/updates' },
+                { text: '12 червня 2026 — Waybeam (оновлення)', link: '/updates/posts/2026-06-12-waybeam-update' },
                 { text: '16 квітня 2026 — Waybeam Venc', link: '/updates/posts/2026-04-16-waybeam-venc' },
                 { text: '3 вересня 2025 — OpenIPC 4G/LTE', link: '/updates/posts/2025-09-03-openipc4g' },
                 { text: '31 липня 2025 — APALink', link: '/updates/posts/2025-07-31-apalink' },
@@ -543,6 +544,7 @@ export default defineConfig({
               text: 'Updates & News',
               items: [
                 { text: 'All updates', link: '/en/updates' },
+                { text: 'Jun 12 2026 — Waybeam (update)', link: '/en/updates/posts/2026-06-12-waybeam-update' },
                 { text: 'Apr 16 2026 — Waybeam Venc', link: '/en/updates/posts/2026-04-16-waybeam-venc' },
                 { text: 'Sep 3 2025 — OpenIPC 4G/LTE', link: '/en/updates/posts/2025-09-03-openipc4g' },
                 { text: 'Jul 31 2025 — APALink', link: '/en/updates/posts/2025-07-31-apalink' },

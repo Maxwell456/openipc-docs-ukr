@@ -1,11 +1,11 @@
 ---
-title: "venc web panel and HTTP API"
-description: "Complete reference for the waybeam venc HTTP API — web dashboard, ISP tuning, recording and real-time video parameter control."
+title: "Waybeam web panel and HTTP API"
+description: "Complete reference for the Waybeam HTTP API — web dashboard, ISP tuning, stabilization, resilience presets, recording and real-time video parameter control."
 ---
 
 # Web panel and HTTP API
 
-waybeam venc includes a built-in web panel and a full HTTP API for controlling all parameters in real time. The web panel is available at `http://<camera-ip>/` (default port — 80).
+Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80).
 
 ---
 
@@ -13,66 +13,70 @@ waybeam venc includes a built-in web panel and a full HTTP API for controlling a
 
 <strong>Settings tab</strong>
 
-All 84 configuration parameters are grouped into 13 sections:
+Configuration fields are grouped into **12 sections**:
 
-| Section | Number of fields | Description |
-| :--- | :--- | :--- |
-| System | 3 | Port, overclock, logging |
-| Sensor | 7 | Sensor selection and unlock |
-| ISP | 7 | Exposure, AWB, AE |
-| Image | 3 | Mirror, flip, rotate |
-| Video | 10 | Codec, bitrate, FPS, GOP |
-| Outgoing | 7 | Streaming, address, mode |
-| Audio | 6 | Codec, sample rate, volume |
-| FPV | 5 | ROI encoding |
-| IMU | 7 | BMI270 gyroscope |
-| EIS | 11 | Image stabilization |
-| Recording | 10 | Recording to the SD card |
-| Adaptive Encoder | 2 | Scene detection |
-| Debug | 1 | OSD |
+| Section | Description |
+| :--- | :--- |
+| System | Port, overclock, logging |
+| Sensor | Sensor selection (index / mode) |
+| ISP | Exposure, AWB, AE engine |
+| Image | Mirror, flip, rotate |
+| Video | Codec, bitrate, FPS, GOP, framing, resilience |
+| Outgoing | Streaming, address, mode |
+| Audio | Codec, sample rate, volume |
+| FPV | ROI encoding + 3DNR |
+| IMU | BMI270 gyro (POC) |
+| Recording | SD card recording |
+| Adaptive Encoder Control | Scene detection |
+| Debug | OSD |
 
 **Interface elements:**
 
 - 🟢 **Live** — the parameter changes instantly without a restart
 - 🟠 **Restart** — requires a pipeline reinit (automatic)
+- 🔴 **Reboot** — requires a full camera reboot (only `video0.resilience`)
 - **Apply Changes** — apply all changed fields
-- **Save & Restart** — apply and restart the pipeline
-- **Restore Defaults** — restore the configuration from disk
+- **Save & Restart** — apply changes and restart the pipeline
+- **Restore Defaults** — reload the on-disk configuration
+
+::: info The EIS section was removed
+Earlier versions had a separate `eis` section (gyroscopic GyroGlide stabilization). It was **removed in 0.8.0**. Stabilization now lives in the Video section — the `video0.framing` field (see [below](#framing-stabilization-and-digital-zoom)).
+:::
 
 <strong>API Reference tab</strong>
 
-Documentation for all HTTP endpoints with example responses. Categories:
+Documentation for all HTTP endpoints with example responses. Categories: Configuration, Encoder Control, ISP & Image Quality, Recording, Dual-Stream.
 
-- Configuration
-- Encoder Control
-- ISP & Image Quality
-- Recording
-- Dual-Stream
-
-<strong>Image Quality tab (ISP)</strong>
+<strong>Image Quality (ISP) tab</strong>
 
 Direct access to 62 SigmaStar ISP parameters:
 
-- **Parameters** — expandable sections with parameter chips
-- **Multi-fields** — a built-in editor for complex parameters (colortrans, OBC, demosaic, etc.)
-- **Export / Import** — saving and restoring ISP profiles in JSON
+- **Parameters** — collapsible sections with parameter chips
+- **Multi-fields** — built-in editor for complex parameters (colortrans, OBC, demosaic, etc.)
+- **Export / Import** — save and restore ISP profiles as JSON
 
 ---
 
-### HTTP API — reference
+### HTTP API reference
 
-All endpoints use HTTP GET (compatible with BusyBox wget). Responses are JSON in the format `{"ok": true/false, ...}`.
+All endpoints use HTTP GET (BusyBox wget compatible). Responses are JSON in the `{"ok": true/false, ...}` format.
+
+::: tip Three mutability levels
+- **live** — applied instantly without interrupting the stream
+- **restart_required** — triggers an automatic pipeline reinit
+- **reboot** — requires a full camera reboot (only `video0.resilience`)
+
+`/api/v1/capabilities` shows each field's mutability level and backend support.
+:::
 
 ---
-
-<strong>Core endpoints</strong>
 
 <strong>GET /api/v1/version</strong>
 
 Returns version information.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/version
+curl http://<ip>/api/v1/version
 ```
 
 **Response:**
@@ -80,7 +84,7 @@ curl http://&lt;ip&gt;:80/api/v1/version
 {
   "ok": true,
   "data": {
-    "app_version": "0.5.2",
+    "app_version": "0.16.0",
     "backend": "star6e",
     "contract_version": "0.2.0",
     "config_schema_version": "0.2.0"
@@ -90,27 +94,26 @@ curl http://&lt;ip&gt;:80/api/v1/version
 
 ---
 
-<strong>GET /api/v1/config</strong>
+<strong>GET /api/v1/config</strong> — the full active configuration.
 
-Returns the full active configuration.
-
-```bash
-curl http://&lt;ip&gt;:80/api/v1/config
-```
-
----
-
-<strong>GET /api/v1/capabilities</strong>
-
-Shows the mutability of each field (`live` or `restart_required`) and backend support.
+<strong>GET /api/v1/capabilities</strong> — each field's mutability (`live` / `restart_required`) and backend support.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/capabilities
+curl http://<ip>/api/v1/config
+curl http://<ip>/api/v1/capabilities
 ```
 
 ::: tip Checking support
-Use this endpoint to find out which fields can be changed on the fly and which require a pipeline restart.
+Field support is backend-specific. For example, Star6E reports `video0.scene_threshold` as supported, while Maruko does not. Use `capabilities` before writing.
 :::
+
+<strong>GET /api/v1/modes</strong>
+
+Sensor mode introspection (pad + resolution) — the current selection and every mode the SDK enumerates. Populates the WebUI dropdown.
+
+```bash
+curl http://<ip>/api/v1/modes
+```
 
 ---
 
@@ -118,32 +121,27 @@ Use this endpoint to find out which fields can be changed on the fly and which r
 
 <strong>GET /api/v1/get?field_name</strong>
 
-Read a single field:
-
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/get?video0.bitrate"
+curl "http://<ip>/api/v1/get?video0.bitrate"
 ```
 
-**Response:**
 ```json
 {"ok": true, "data": {"field": "video0.bitrate", "value": 8192}}
 ```
 
----
-
 <strong>GET /api/v1/set?field_name=value</strong>
 
-Write a field. Live fields are applied instantly. Restart fields trigger a reinit.
+Write a field. Live fields apply instantly. Restart fields trigger a reinit.
 
 ```bash
 # Instant bitrate change (live)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.bitrate=4096"
+curl "http://<ip>/api/v1/set?video0.bitrate=4096"
 
-# Multi-change (live fields only)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.bitrate=4096&system.verbose=true"
+# Multi-set (live fields only)
+curl "http://<ip>/api/v1/set?video0.bitrate=4096&system.verbose=true"
 
 # Resolution change (restart — pipeline reinit)
-curl "http://&lt;ip&gt;:80/api/v1/set?video0.size=1280x720"
+curl "http://<ip>/api/v1/set?video0.size=1280x720"
 ```
 
 **Responses:**
@@ -151,7 +149,7 @@ curl "http://&lt;ip&gt;:80/api/v1/set?video0.size=1280x720"
 // Single field
 {"ok": true, "data": {"field": "video0.bitrate", "value": 4096}}
 
-// Multi-change
+// Multi-set
 {"ok": true, "data": {"applied": [
   {"field": "video0.bitrate", "value": 4096},
   {"field": "system.verbose", "value": true}
@@ -162,21 +160,19 @@ curl "http://&lt;ip&gt;:80/api/v1/set?video0.size=1280x720"
 ```
 
 ::: warning Multi-set limitation
-Multi-set is supported only for live fields. If at least one restart field is present, the entire request is rejected. Send restart changes one at a time.
+Multi-set is supported only for live fields. If any restart field is present, the whole request is rejected. Send restart changes one at a time (the daemon respawns between them — wait for it to come back).
 :::
 
 ::: danger HTTP 409 — validation error
-If a value is invalid (for example, a non-existent AWB mode, or if the field doesn't exist), the API returns **HTTP 409 Conflict** instead of the usual 200.
+If a value is invalid (e.g. a non-existent AWB mode or a field that does not exist), the API returns **HTTP 409 Conflict** instead of 200.
 :::
-
----
 
 <strong>GET /api/v1/restart</strong>
 
-A full pipeline reinit. Reloads `/etc/venc.json` and restarts the camera without terminating the process.
+A full pipeline reinit. Reloads `/etc/waybeam.json` and restarts the camera pipeline without terminating the process.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/restart
+curl http://<ip>/api/v1/restart
 ```
 
 ---
@@ -188,7 +184,7 @@ curl http://&lt;ip&gt;:80/api/v1/restart
 Request an IDR keyframe from the encoder:
 
 ```bash
-curl http://&lt;ip&gt;:80/request/idr
+curl http://<ip>/request/idr
 ```
 
 ::: tip When to request an IDR
@@ -197,49 +193,75 @@ curl http://&lt;ip&gt;:80/request/idr
 - When video artifacts appear
 :::
 
----
+<strong>GET /api/v1/idr/stats</strong>
+
+Per-channel IDR rate-limit counters: how many requests were honored vs. coalesced.
 
 <strong>GET /api/v1/awb</strong>
 
-The auto white balance state from the ISP:
+Current AWB (auto white balance) state from the ISP.
 
 ```bash
-curl http://&lt;ip&gt;:80/api/v1/awb
+curl http://<ip>/api/v1/idr/stats
+curl http://<ip>/api/v1/awb
 ```
 
 ---
 
-### Recording to the SD card
+### Stream observability
+
+<strong>GET /api/v1/transport/status</strong>
+
+State of the active video transport (UDP / Unix / SHM): buffer fill percentage, backpressure flag, lifetime drop counters.
+
+<strong>GET /api/v1/audio/status</strong>
+
+A snapshot of the audio pipeline: whether the library is loaded, capture state, codec, sample rate, channels, Opus initialization.
+
+```bash
+curl http://<ip>/api/v1/transport/status
+curl http://<ip>/api/v1/audio/status
+```
+
+---
+
+### Snapshot (JPEG)
+
+<strong>GET /api/v1/snapshot.jpg</strong>
+
+One JPEG frame from a dedicated MJPEG VENC channel (tapped off the same port as the main H.265 stream). No parameters; quality defaults to 80, resolution matches the main stream.
+
+```bash
+curl -o snapshot.jpg http://<ip>/api/v1/snapshot.jpg
+```
+
+The response is `Content-Type: image/jpeg`. Possible errors: `503 snapshot_disabled` (pipeline not up yet), `504 snapshot_timeout` (no frame within 1500 ms), `500 snapshot_failed`.
+
+::: info Snapshot settings
+`snapshot.quality` is **live** (instant, no reinit). The `snapshot.channel`, `snapshot.width`, `snapshot.height` fields are restart (baked at `MI_VENC_CreateChn`). `width=0`/`height=0` means "match the main stream".
+:::
+
+---
+
+### SD card recording
 
 <strong>GET /api/v1/record/start</strong>
 
-Start recording. Uses the configured `record.dir`, or you can specify a directory as a parameter:
+Start recording. Uses the configured `record.dir`, or override with a parameter:
 
 ```bash
-# Record to the default directory
-curl "http://&lt;ip&gt;:80/api/v1/record/start"
-
-# Record to a specific directory
-curl "http://&lt;ip&gt;:80/api/v1/record/start?dir=/mnt/mmcblk0p1"
+curl "http://<ip>/api/v1/record/start"
+curl "http://<ip>/api/v1/record/start?dir=/mnt/mmcblk0p1"
 ```
 
-<strong>GET /api/v1/record/stop</strong>
+<strong>GET /api/v1/record/stop</strong> — stop recording.
 
-Stop recording:
+<strong>GET /api/v1/record/status</strong> — recording status:
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/record/stop"
+curl "http://<ip>/api/v1/record/status"
 ```
 
-<strong>GET /api/v1/record/status</strong>
-
-Recording status:
-
-```bash
-curl "http://&lt;ip&gt;:80/api/v1/record/status"
-```
-
-**Response:**
 ```json
 {
   "ok": true,
@@ -255,19 +277,22 @@ curl "http://&lt;ip&gt;:80/api/v1/record/status"
 }
 ```
 
+::: warning Recording on Maruko
+HTTP recording control (`start`/`stop`) works only on Star6E. On Maruko recording is **config-only** (`record.enabled=true` + `record.mode=...` in `/etc/waybeam.json`), and `/api/v1/record/start|stop` returns `501 not_implemented`.
+:::
+
 ---
 
 ### Dual-Stream (Gemini mode)
 
 <strong>GET /api/v1/dual/status</strong>
 
-Status of the second VENC channel:
+Secondary VENC channel status (only `dual` / `dual-stream` modes):
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/dual/status"
+curl "http://<ip>/api/v1/dual/status"
 ```
 
-**Response:**
 ```json
 {"ok": true, "data": {"active": true, "channel": 1, "bitrate": 20000, "fps": 120, "gop": 240}}
 ```
@@ -278,61 +303,130 @@ If the recording mode is not `"dual"` or `"dual-stream"`, this endpoint returns 
 
 <strong>GET /api/v1/dual/set?param=value</strong>
 
-Change the second channel's parameters in real time:
-
 ```bash
 # Change the recording bitrate
-curl "http://&lt;ip&gt;:80/api/v1/dual/set?bitrate=10000"
+curl "http://<ip>/api/v1/dual/set?bitrate=10000"
 
 # Change the GOP (in seconds)
-curl "http://&lt;ip&gt;:80/api/v1/dual/set?gop=1.0"
+curl "http://<ip>/api/v1/dual/set?gop=1.0"
 ```
 
-<strong>GET /api/v1/dual/idr</strong>
+<strong>GET /api/v1/dual/idr</strong> — IDR keyframe for the secondary channel.
 
-IDR keyframe for the second channel:
+---
+
+### Framing: stabilization and digital zoom
+
+`video0.framing` is the **single user-facing knob** for the VPE crop. It is a named preset (restart-required); the crop fraction is *derived* from the preset (there is no separate `zoomPct` field).
+
+| `framing` | Effect | Resolution @1080p | Chips |
+| :--- | :--- | :--- | :--- |
+| `off` | Full frame | 1920×1080 | both |
+| `stab` | Stabilization (centered 80% crop) | 1536×864 | Star6E only |
+| `stab-fill` | Stabilization (floating image on a black border) | 1920×1080 | Star6E only |
+| `zoom-1.25x` | Digital zoom 1.25× | 1536×864 | both |
+| `zoom-1.50x` | Digital zoom 1.50× | 1280×720 | both |
+| `zoom-1.75x` | Digital zoom 1.75× | 1088×608 | both |
+| `zoom-2x` | Digital zoom 2× | 960×528 | both |
+| `zoom-3x` | Digital zoom 3× | 640×352 | both |
+| `zoom-4x` | Digital zoom 4× | 480×256 | both |
+
+**Digital zoom** shrinks both the crop window and the output resolution — no upscale, no extra link load. Panning inside the zoom is live, via `video0.zoomX` / `video0.zoomY` (∈ [0,1], center 0.5/0.5):
 
 ```bash
-curl "http://&lt;ip&gt;:80/api/v1/dual/idr"
+# Enable 3× zoom (restart)
+curl "http://<ip>/api/v1/set?video0.framing=zoom-3x"
+
+# Pan (live) — top-left corner / center
+curl "http://<ip>/api/v1/set?video0.zoomX=0.0&video0.zoomY=0.0"
+curl "http://<ip>/api/v1/set?video0.zoomX=0.5&video0.zoomY=0.5"
 ```
+
+**Stabilization** (`stab` / `stab-fill`, Star6E only) uses a Kalman trajectory filter. Fine-tuning (all restart; re-selecting the preset resets them to defaults, so **set `framing` first, then the overrides**):
+
+| Field | Default | Description |
+| :--- | :--- | :--- |
+| `video0.stabCropPct` | 80 | Stabilization headroom (lower = bigger dead border, more motion absorbed) |
+| `video0.stabKalmanQ` | 0.03 | Pan response (`0.001..1.0`; higher = follows slow pans sooner) |
+| `video0.stabKalmanR` | 2.0 | **The primary feel knob.** Smoothness (`0.1..50.0`; higher = smoother but laggier) |
+| `video0.pauseStab` | — | **live** pause: glides the window/image back to center (`stab`/`stab-fill` only) |
+
+```bash
+# Enable stabilization (restart)
+curl "http://<ip>/api/v1/set?video0.framing=stab"
+
+# Pause stabilization live
+curl "http://<ip>/api/v1/set?video0.pauseStab=1"   # freeze (glide to center)
+curl "http://<ip>/api/v1/set?video0.pauseStab=0"   # resume
+```
+
+::: info The gyro is no longer needed
+The new stabilization works from in-frame motion analysis (Kalman) and **does not use the IMU**. The former BMI270 EIS (`gyroglide`) was removed in 0.8.0.
+:::
+
+---
+
+### Resilience: packet-loss resilience
+
+`video0.resilience` selects a resilience profile — intra-refresh (rolling GDR stripe), the SVC-T reference pyramid, and GOP length are all derived from the preset.
+
+::: danger Changing resilience requires a REBOOT
+Writing `video0.resilience` persists the value to `/etc/waybeam.json` and returns `{"reboot_required": true}`. **The live pipeline keeps running the previous preset until the next camera start** — the SigmaStar MI kernel module does not survive a live re-configure of these fields (on Star6E it causes a kernel panic, on Maruko it hangs the daemon). Hence the "cold-boot" model.
+:::
+
+| Preset | intra-refresh | refPred | GOP | OSD-safe? |
+| :--- | :--- | :--- | :--- | :--- |
+| `off` | off | off | user-set | yes |
+| `rescue` | off | off | 0.25 s (IDR-spam) | yes |
+| `quality` | off | off | 4.0 s | yes |
+| `sprint` | fast (150 ms) | off | 0.5 s | yes |
+| `racing` | fast (150 ms) | off | 2.0 s | yes |
+| `endurance` | balanced (500 ms) | off | 2.0 s | yes |
+| `patrol` | balanced (500 ms) | off | 4.0 s | yes |
+| `rally` | fast (150 ms) | base=1, enhance=1 | 2.0 s | no — "green smear" |
+| `range` | balanced (500 ms) | base=1, enhance=4 | 2.0 s | no — "green smear" |
+| `fpv` | robust (1000 ms) | base=1, enhance=4 | 2.0 s | no — "green smear" |
+
+```bash
+# FPV with an OSD overlay — fast stripe recovery, no SVC-T
+curl "http://<ip>/api/v1/set?video0.resilience=racing"
+# then reboot the camera to apply
+```
+
+::: warning OSD and SVC-T
+Presets with `refPred` (`rally`, `range`, `fpv`) can leave a persistent "green smear" over a static OSD until the next IDR. For flights with an OSD overlay use OSD-safe presets (`racing`, `endurance`, `patrol`). Budget +20–30% bitrate for presets with intra-refresh.
+:::
 
 ---
 
 ### ISP Image Quality
 
-<strong>GET /api/v1/iq</strong>
-
-Export all ISP parameters:
+<strong>GET /api/v1/iq</strong> — export all ISP parameters:
 
 ```bash
-# Save as a file
-curl http://&lt;ip&gt;:80/api/v1/iq > my_tuning.json
+curl http://<ip>/api/v1/iq > my_tuning.json
 ```
 
-<strong>POST /api/v1/iq/import</strong>
-
-Import ISP parameters (full or partial):
+<strong>POST /api/v1/iq/import</strong> — import (full or partial):
 
 ```bash
 # Full import
 curl -X POST -H "Content-Type: application/json" \
-  -d @my_tuning.json http://&lt;ip&gt;:80/api/v1/iq/import
+  -d @my_tuning.json http://<ip>/api/v1/iq/import
 
-# Partial import — only specific parameters
+# Partial import — specific parameters only
 echo '{"lightness":{"value":75},"demosaic":{"fields":{"dir_thrd":30}}}' | \
-  curl -X POST -H "Content-Type: application/json" -d @- http://&lt;ip&gt;:80/api/v1/iq/import
+  curl -X POST -H "Content-Type: application/json" -d @- http://<ip>/api/v1/iq/import
 ```
 
-<strong>GET /api/v1/iq/set?param=value</strong>
-
-Change a single ISP parameter (dot-notation):
+<strong>GET /api/v1/iq/set?param=value</strong> — change a single ISP parameter (dot-notation):
 
 ```bash
 # Set a single field
-curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.y_ofst=200"
+curl "http://<ip>/api/v1/iq/set?colortrans.y_ofst=200"
 
 # Set an array (comma-separated)
-curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,56,977,1015"
+curl "http://<ip>/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,56,977,1015"
 ```
 
 ---
@@ -342,49 +436,44 @@ curl "http://&lt;ip&gt;:80/api/v1/iq/set?colortrans.matrix=23,45,9,1005,987,56,5
 <strong>Quick switch to 720p 90fps</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?video0.size=1280x720"
+curl "http://<ip>/api/v1/set?video0.size=1280x720"
 # Wait for reinit...
-curl "http://&lt;ip&gt;/api/v1/set?video0.fps=90"
-curl "http://&lt;ip&gt;/api/v1/set?video0.bitrate=4096"
+curl "http://<ip>/api/v1/set?video0.fps=90"
+curl "http://<ip>/api/v1/set?video0.bitrate=4096"
 ```
 
 <strong>Manual white balance (6500K)</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?isp.awbMode=ct_manual"
-curl "http://&lt;ip&gt;/api/v1/set?isp.awbCt=6500"
+curl "http://<ip>/api/v1/set?isp.awbMode=ct_manual"
+curl "http://<ip>/api/v1/set?isp.awbCt=6500"
 ```
 
-<strong>Enabling ROI encoding for FPV</strong>
+<strong>Enable ROI encoding for FPV</strong>
 
 ```bash
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiEnabled=true"
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiQp=-18"
-curl "http://&lt;ip&gt;/api/v1/set?fpv.roiSteps=2"
+curl "http://<ip>/api/v1/set?fpv.roiEnabled=true"
+curl "http://<ip>/api/v1/set?fpv.roiQp=-18"
+curl "http://<ip>/api/v1/set?fpv.roiSteps=2"
 ```
 
-<strong>Enabling EIS (Star6E only)</strong>
+<strong>Enable stabilization (Star6E only)</strong>
 
 ```bash
-# First in /etc/venc.json:
-# "imu": {"enabled": true}, "eis": {"enabled": true, "mode": "gyroglide"}
-# Then restart:
-curl http://&lt;ip&gt;/api/v1/restart
+# framing is a restart field; set it first, then fine-tune
+curl "http://<ip>/api/v1/set?video0.framing=stab"
+curl "http://<ip>/api/v1/set?video0.stabKalmanR=6"
 ```
-
-::: info IMU calibration
-After a restart, hold the camera still for 2 seconds for automatic gyroscope calibration.
-:::
 
 ---
 
 ### Recommended settings by scenario
 
-<strong>FPV racing (minimum latency)</strong>
+<strong>FPV racing (minimal latency)</strong>
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":90, "size":"1280x720", "bitrate":6144, "gopSize":0.5},
+  "video0": {"rcMode":"cbr", "fps":90, "size":"1280x720", "bitrate":6144, "gopSize":0.5, "resilience":"racing"},
   "fpv": {"roiEnabled":true, "roiQp":-12, "roiSteps":2, "roiCenter":0.35},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
 }
@@ -394,7 +483,7 @@ After a restart, hold the camera still for 2 seconds for automatic gyroscope cal
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":60, "size":"1920x1080", "bitrate":8192, "gopSize":1.0},
+  "video0": {"rcMode":"cbr", "fps":60, "size":"1920x1080", "bitrate":8192, "gopSize":1.0},
   "fpv": {"roiEnabled":true, "roiQp":-18, "roiSteps":3, "roiCenter":0.4},
   "record": {"enabled":true, "mode":"dual", "bitrate":20000, "fps":120},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
@@ -405,16 +494,20 @@ After a restart, hold the camera still for 2 seconds for automatic gyroscope cal
 
 ```json
 {
-  "video0": {"codec":"h265", "rcMode":"cbr", "fps":30, "size":"1280x720", "bitrate":3072, "gopSize":2.0},
+  "video0": {"rcMode":"cbr", "fps":30, "size":"1280x720", "bitrate":3072, "gopSize":2.0, "resilience":"range"},
   "fpv": {"roiEnabled":false},
   "outgoing": {"streamMode":"rtp", "server":"unix://wfb_tx"}
 }
 ```
 
+::: tip resilience in the config
+`resilience` is applied at cold boot, so in the config file it takes effect immediately. Via the API it requires a camera reboot.
+:::
+
 ---
 
 ### Next steps
 
-- [**waybeam venc overview**](/en/software/waybeam-venc) — the full list of features
+- [**Waybeam overview**](/en/software/waybeam-venc) — the full feature list
 - [**Install on the camera**](/en/software/waybeam-venc-install-camera) — initial installation
-- [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — configuring the WFB combination
+- [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — setting up the WFB link

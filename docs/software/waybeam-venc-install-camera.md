@@ -1,14 +1,14 @@
-﻿---
-title: "Встановлення venc на камеру"
-description: "Покрокова інструкція встановлення waybeam venc на камеру з чіпом SigmaStar SSC338Q та інтеграція з WFB-ng замість Majestic."
+---
+title: "Встановлення Waybeam на камеру"
+description: "Покрокова інструкція встановлення Waybeam на камеру з чіпом SigmaStar (Infinity6E / Infinity6C) та інтеграція з WFB-ng замість Majestic."
 ---
 
-# Встановлення venc на камеру
+# Встановлення Waybeam на камеру
 
-Ця інструкція описує, як встановити **waybeam venc** на камеру з чіпом SigmaStar (Infinity6E / Infinity6C) та налаштувати його для роботи з **WFB-ng** замість Majestic.
+Ця інструкція описує, як встановити **Waybeam** на камеру з чіпом SigmaStar (Infinity6E / Infinity6C) та налаштувати його для роботи з **WFB-ng** замість Majestic.
 
-::: info Що таке venc?
-**waybeam venc** — це автономний відеоенкодер, який повністю замінює Majestic. Він забезпечує нижчу затримку, повний HTTP API для налаштування в реальному часі, та нативну інтеграцію з WFB-ng через Unix-сокет.
+::: info Що таке Waybeam?
+**Waybeam** — це автономний H.265 (HEVC) відеоенкодер, який повністю замінює Majestic. Він забезпечує нижчу затримку, повний HTTP API для налаштування в реальному часі, та нативну інтеграцію з WFB-ng через Unix-сокет. Бінарник, конфіг (`/etc/waybeam.json`) та init-скрипт мають назву `waybeam` (стара назва `venc` лишилася тільки в URL репозиторію).
 :::
 
 ---
@@ -17,7 +17,7 @@ description: "Покрокова інструкція встановлення w
 
 | Компонент | Деталі |
 | :--- | :--- |
-| **Камера (VTX)** | SSC338Q (Infinity6E) або Infinity6C з OpenIPC прошивкою |
+| **Камера (VTX)** | Star6E (SSC30KQ / SSC338Q, Infinity6E) або Maruko (SSC378QE, Infinity6C) з OpenIPC прошивкою |
 | **Сенсор** | IMX335, IMX415, GC4653 або інший підтримуваний |
 | **Прошивка** | OpenIPC (Lite або FPV) |
 | **Доступ** | SSH до камери (`root` / `12345`) |
@@ -55,7 +55,7 @@ ssh root@192.168.1.10
 
 ### Крок 2: Зупинка Majestic
 
-Перед встановленням venc необхідно зупинити та вимкнути Majestic:
+Перед встановленням Waybeam необхідно зупинити та вимкнути Majestic:
 
 ```bash
 # Зупинити Majestic
@@ -69,38 +69,48 @@ fi
 ```
 
 ::: warning Важливо
-Majestic і venc не можуть працювати одночасно — вони обидва використовують ISP та відеоенкодер чіпа.
+Majestic і Waybeam не можуть працювати одночасно — вони обидва використовують ISP та відеоенкодер чіпа.
 :::
 
 ---
 
-### Крок 3: Завантаження venc
+### Крок 3: Завантаження Waybeam
 
-Завантажте бінарний файл venc на камеру. Оберіть версію відповідно до вашого чіпа:
+Релізи поставляються тарболами, які містять бінарник `waybeam`, шаблон конфігурації `waybeam.json` і (для Maruko) потрібні бібліотеки SigmaStar. Оберіть тарбол відповідно до вашого чіпа.
 
-**Для Star6E (SSC338Q / Infinity6E):**
+**Для Star6E (SSC30KQ / SSC338Q / Infinity6E):**
 
 ```bash
-# Завантаження бінарника venc
-curl -L -o /usr/bin/venc \
-  https://github.com/OpenIPC/waybeam_venc/releases/latest/download/venc-star6e
+cd /tmp
+curl -L -o waybeam-star6e.tar.gz \
+  https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-star6e.tar.gz
+tar xzf waybeam-star6e.tar.gz
 
-chmod +x /usr/bin/venc
+# Встановити бінарник
+cp waybeam /usr/bin/waybeam
+chmod +x /usr/bin/waybeam
 ```
 
-**Для Maruko (Infinity6C):**
+**Для Maruko (SSC378QE / Infinity6C):**
 
 ```bash
-curl -L -o /usr/bin/venc \
-  https://github.com/OpenIPC/waybeam_venc/releases/latest/download/venc-maruko
+cd /tmp
+curl -L -o waybeam-maruko.tar.gz \
+  https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-maruko.tar.gz
+tar xzf waybeam-maruko.tar.gz
 
-chmod +x /usr/bin/venc
+cp waybeam /usr/bin/waybeam
+chmod +x /usr/bin/waybeam
 ```
 
-::: tip Альтернативний метод — SCP
-Якщо у вас є зібраний бінарник на комп'ютері:
+::: warning Maruko потребує бібліотек
+Стокова прошивка OpenIPC для Infinity6C **не містить** vendor-бібліотек SigmaStar (MI). Бібліотеки з тарболу потрібно скопіювати в `/usr/lib/`, а також можуть знадобитися сенсорні `.ko`-модулі та ISP `.bin`-файли. Деталі та скрипти провізіонінгу — у [README репозиторію](https://github.com/OpenIPC/waybeam_venc#maruko-infinity6c).
+:::
+
+::: tip Альтернативний метод — SCP зі зібраного бінарника
+Якщо ви збираєте Waybeam самостійно (`make build SOC_BUILD=star6e`):
 ```bash
-scp out/star6e/venc root@192.168.1.10:/usr/bin/venc
+scp out/star6e/waybeam root@192.168.1.10:/usr/bin/waybeam
 ```
 :::
 
@@ -108,29 +118,24 @@ scp out/star6e/venc root@192.168.1.10:/usr/bin/venc
 
 ### Крок 4: Створення конфігурації
 
-Створіть файл конфігурації `/etc/venc.json`:
+Створіть файл конфігурації `/etc/waybeam.json` (у тарболі є готовий шаблон `waybeam.json` — його можна просто скопіювати в `/etc/`):
 
 ```bash
-cat > /etc/venc.json << 'EOF'
+cat > /etc/waybeam.json << 'EOF'
 {
   "system": { "webPort": 80, "overclockLevel": 1, "verbose": false },
-  "sensor": {
-    "index": -1,
-    "mode": -1,
-    "unlockEnabled": true,
-    "unlockCmd": 35,
-    "unlockReg": 12298,
-    "unlockValue": 128,
-    "unlockDir": 0
-  },
+  "sensor": { "index": -1, "mode": -1 },
   "isp": {
-    "sensorBin": "", "exposure": 0,
-    "legacyAe": true, "aeFps": 15, "gainMax": 0,
-    "awbMode": "auto", "awbCt": 5500
+    "sensorBin": "",
+    "aeEngine": "sdk",
+    "aeFps": 15,
+    "gainMax": 0,
+    "awbMode": "auto",
+    "awbCt": 5500,
+    "keepAspect": true
   },
   "image": { "mirror": false, "flip": false, "rotate": 0 },
   "video0": {
-    "codec": "h265",
     "rcMode": "cbr",
     "fps": 60,
     "size": "1920x1080",
@@ -139,7 +144,11 @@ cat > /etc/venc.json << 'EOF'
     "qpDelta": -4,
     "frameLost": true,
     "sceneThreshold": 0,
-    "sceneHoldoff": 2
+    "sceneHoldoff": 2,
+    "resilience": "off",
+    "framing": "off",
+    "zoomX": 0.5,
+    "zoomY": 0.5
   },
   "outgoing": {
     "enabled": true,
@@ -168,20 +177,6 @@ cat > /etc/venc.json << 'EOF'
     "calFile": "/etc/imu.cal",
     "calSamples": 400
   },
-  "eis": {
-    "enabled": false,
-    "mode": "gyroglide",
-    "marginPercent": 30,
-    "testMode": false,
-    "swapXY": false,
-    "invertX": false,
-    "invertY": false,
-    "gain": 1.0,
-    "deadbandRad": 0.0,
-    "recenterRate": 0.5,
-    "maxSlewPx": 0,
-    "biasAlpha": 0.001
-  },
   "record": {
     "enabled": false,
     "mode": "mirror",
@@ -194,12 +189,19 @@ cat > /etc/venc.json << 'EOF'
     "gopSize": 0,
     "server": ""
   },
-  "debug": {
-    "showOsd": false
-  }
+  "snapshot": { "enabled": true, "quality": 80, "channel": 7, "width": 0, "height": 0 },
+  "debug": { "showOsd": false }
 }
 EOF
 ```
+
+::: info Усі поля опціональні
+Будь-яке пропущене поле бере вбудоване значення за замовчуванням. Дефолтне `video0.size` — `"auto"` (рідна роздільність сенсора).
+:::
+
+::: tip Кодек завжди H.265
+Поля `video0.codec` більше немає — Waybeam кодує тільки H.265 (HEVC). Старі конфіги з `"codec": "h264"` чи `"h265"` завантажуються без помилок, але ключ ігнорується.
+:::
 
 ---
 
@@ -209,45 +211,51 @@ EOF
 
 | Параметр | Опис | Типові значення |
 | :--- | :--- | :--- |
-| `codec` | Кодек відео | `"h265"` або `"h264"` |
 | `rcMode` | Режим керування бітрейтом | `"cbr"`, `"vbr"`, `"avbr"`, `"fixqp"` |
 | `fps` | Частота кадрів | `30`, `60`, `90`, `120` |
-| `size` | Роздільна здатність | `"1920x1080"`, `"1280x720"` |
+| `size` | Роздільна здатність | `"auto"`, `"1920x1080"`, `"1280x720"` |
 | `bitrate` | Бітрейт (кбіт/с) | `4096` — `16384` |
-| `gopSize` | Розмір GOP у секундах | `0.5` — `2.0` |
+| `gopSize` | Розмір GOP у секундах (діє лише коли `resilience: "off"`) | `0.5` — `4.0` |
+| `qpDelta` | Зсув QP I/P-кадрів | `-12` — `12` |
+| `resilience` | Пресет стійкості до втрат (потребує **reboot**) | `"off"`, `"racing"`, `"fpv"`, … |
+| `framing` | Стабілізація / цифровий зум | `"off"`, `"stab"`, `"zoom-2x"`, … |
 
-<strong> Стрімінг (`outgoing`)</strong>
+::: info Детальніше про framing та resilience
+Режими стабілізації/зуму (`framing`) та пресети стійкості (`resilience`) докладно описані у розділі [Веб-панель та HTTP API](/software/waybeam-venc-web-interface).
+:::
+
+<strong>Стрімінг (`outgoing`)</strong>
 
 | Параметр | Опис | Приклади |
 | :--- | :--- | :--- |
 | `enabled` | Увімкнути стрімінг | `true` / `false` |
-| `server` | Адреса приймача | `"unix://wfb_tx"`, `"udp://192.168.1.1:5600"` |
+| `server` | Адреса приймача | `"unix://wfb_tx"`, `"udp://192.168.1.1:5600"`, `"shm://venc_ring"` |
 | `streamMode` | Режим потоку | `"rtp"` або `"compact"` |
 | `maxPayloadSize` | Макс. розмір RTP-пакету | `1400` (за замовч.) |
 
-<strong> FPV ROI-кодування (`fpv`)</strong>
+<strong>FPV ROI-кодування (`fpv`)</strong>
 
 | Параметр | Опис | Значення |
 | :--- | :--- | :--- |
 | `roiEnabled` | Пріоритет центру кадру | `true` — центр у вищій якості |
-| `roiQp` | QP-зсув для ROI | `-18` — максимальна якість центру |
-| `roiSteps` | Кількість зон | `2` — `4` |
-| `roiCenter` | Розмір центральної зони | `0.25` — `0.5` |
+| `roiQp` | QP-зсув для ROI (`-30`…`30`) | `-18` — максимальна якість центру |
+| `roiSteps` | Кількість зон | `1` — `4` |
+| `roiCenter` | Розмір центральної зони | `0.1` — `0.9` |
 
 ---
 
-### Крок 6: Запуск venc
+### Крок 6: Запуск Waybeam
 
-<strong> Ручний запуск (для тестування)</strong>
+<strong>Ручний запуск (для тестування)</strong>
 
 ```bash
 # Запуск з виводом логів у консоль
-venc
+waybeam
 ```
 
 Веб-панель буде доступна за адресою `http://<ip-камери>/`
 
-<strong> Перевірка роботи</strong>
+<strong>Перевірка роботи</strong>
 
 ```bash
 # Перевірити версію
@@ -262,25 +270,25 @@ curl http://localhost/api/v1/capabilities
 
 ---
 
-### Крок 7: Автозапуск venc
+### Крок 7: Автозапуск Waybeam
 
-Створіть init-скрипт для автоматичного запуску venc при завантаженні камери:
+Створіть init-скрипт для автоматичного запуску Waybeam при завантаженні камери:
 
 ```bash
-cat > /etc/init.d/S96venc << 'INITEOF'
+cat > /etc/init.d/S96waybeam << 'INITEOF'
 #!/bin/sh
 
 case "$1" in
   start)
-    echo "Starting venc..."
+    echo "Starting waybeam..."
     # Переконатися, що Majestic не запущений
     killall majestic 2>/dev/null
-    # Запуск venc у фоновому режимі
-    start-stop-daemon -S -b -x /usr/bin/venc -- 2>&1 | tee /tmp/venc.log &
+    # Запуск waybeam у фоновому режимі
+    start-stop-daemon -S -b -x /usr/bin/waybeam -- 2>&1 | tee /tmp/waybeam.log &
     ;;
   stop)
-    echo "Stopping venc..."
-    killall venc 2>/dev/null
+    echo "Stopping waybeam..."
+    killall waybeam 2>/dev/null
     ;;
   restart)
     $0 stop
@@ -296,39 +304,39 @@ esac
 exit 0
 INITEOF
 
-chmod +x /etc/init.d/S96venc
+chmod +x /etc/init.d/S96waybeam
 ```
 
 ::: tip Порядок запуску
-Скрипт має номер `S96`, що означає запуск після більшості системних сервісів, але вам потрібно переконатися, що WiFi-драйвери та WFB-ng вже завантажені до цього моменту.
+Скрипт має номер `S96`, що означає запуск після більшості системних сервісів, але вам потрібно переконатися, що WiFi-драйвери та WFB-ng вже завантажені до цього моменту (особливо для `unix://wfb_tx`, де `wfb_tx` має слухати сокет раніше).
 :::
 
 ::: info audioPort та sidecarPort
-У конфізі вище `audioPort: 0` і `sidecarPort: 0` встановлені значенням 0. Це означає:
+У конфізі вище `audioPort: 0` і `sidecarPort: 0`. Це означає:
 
-- `audioPort: 0` — аудіо передається разом з відео через той самий Unix-сокет (оптимально для WFB-ng)
+- `audioPort: 0` — аудіо передається разом з відео через той самий канал (оптимально для WFB-ng)
 - `sidecarPort: 0` — sidecar-канал діагностики вимкнений (ніяких накладних витрат)
 
-Дефолтний конфіг має `audioPort: 5601` і `sidecarPort: 5602` — якщо вам потрібна окрема передача аудіо через UDP, встановіть відповідні значення.
+Дефолтний шаблон має `audioPort: 5601` і `sidecarPort: 5602` — якщо вам потрібна окрема передача аудіо чи покадрова телеметрія через UDP, встановіть відповідні значення.
 :::
 
 ---
 
 ### Крок 8: Зміна параметрів у реальному часі
 
-Після запуску venc ви можете змінювати параметри без перезапуску:
+Після запуску Waybeam ви можете змінювати параметри без перезапуску:
 
 ```bash
-# Змінити бітрейт
+# Змінити бітрейт (live)
 curl "http://localhost/api/v1/set?video0.bitrate=4096"
 
 # Змінити роздільну здатність (потребує reinit)
 curl "http://localhost/api/v1/set?video0.size=1280x720"
 
-# Змінити FPS
+# Змінити FPS (live)
 curl "http://localhost/api/v1/set?video0.fps=90"
 
-# Увімкнути ROI для FPV
+# Увімкнути ROI для FPV (live)
 curl "http://localhost/api/v1/set?fpv.roiEnabled=true"
 curl "http://localhost/api/v1/set?fpv.roiQp=-18"
 
@@ -340,8 +348,8 @@ curl http://localhost/request/idr
 
 ### Поширені проблеми
 
-::: details venc не запускається — помилка бібліотек
-Переконайтеся, що всі бібліотеки SigmaStar доступні в `/usr/lib`. Якщо ви використовуєте staged-збірку, встановіть змінну:
+::: details Waybeam не запускається — помилка бібліотек
+Переконайтеся, що всі бібліотеки SigmaStar доступні в `/usr/lib`. На Maruko їх потрібно встановити з тарболу вручну. Якщо ви використовуєте staged-збірку, встановіть змінну:
 
 ```bash
 export LD_LIBRARY_PATH=/шлях/до/lib
@@ -352,31 +360,28 @@ export LD_LIBRARY_PATH=/шлях/до/lib
 1. Перевірте, що `outgoing.enabled` встановлено в `true`
 2. Перевірте правильність адреси `outgoing.server`
 3. Перевірте, що Majestic повністю зупинений: `ps | grep majestic`
-4. Перевірте логи: `cat /tmp/venc.log`
+4. Перевірте логи: `cat /tmp/waybeam.log`
 :::
 
 ::: details Чорний екран або артефакти
 Перевірте сумісність сенсора:
 
 ```bash
-curl http://localhost/api/v1/version
+# Поточний сенсор і доступні режими
+curl http://localhost/api/v1/modes
 ```
 
 Переконайтеся, що `sensor.index` та `sensor.mode` встановлені на `-1` (автовизначення).
 :::
 
-::: details Star6E: помилка при h264 з RTP
-На Star6E RTP-режим підтримує тільки H.265. Змініть кодек:
-
-```bash
-curl "http://localhost/api/v1/set?video0.codec=h265"
-```
+::: details Кодек H.264 не працює
+Waybeam кодує **тільки H.265 (HEVC)** на обох чіпах. Поля `video0.codec` немає; H.264 не підтримується. Переконайтеся, що ваш приймач (PixelPilot, ffplay, QGroundControl, GStreamer) налаштований на H.265.
 :::
 
 ---
 
 ### Наступні кроки
 
-- [**Інтеграція з WFB-ng**](/software/waybeam-venc-install-groundstation) — налаштування venc + WFB-ng на камері та наземній станції
+- [**Інтеграція з WFB-ng**](/software/waybeam-venc-install-groundstation) — налаштування Waybeam + WFB-ng на камері та наземній станції
 - [**Веб-панель та HTTP API**](/software/waybeam-venc-web-interface) — детальний опис усіх API-ендпоінтів
-- [**Огляд waybeam venc**](/software/waybeam-venc) — повний список можливостей
+- [**Огляд Waybeam**](/software/waybeam-venc) — повний список можливостей
