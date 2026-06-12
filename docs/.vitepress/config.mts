@@ -235,6 +235,7 @@ export default defineConfig({
                 { text: 'Runcam WiFiLink v1', link: '/hardware/vtx/runcamwifilink' },
                 { text: 'Runcam WiFiLink v2', link: '/hardware/vtx/runcamwifilinkv2' },
                 { text: 'SSC338Q + IMX415', link: '/hardware/vtx/sigmastar-ssc338q' },
+                { text: 'SSC30KQ', link: '/hardware/vtx/sigmastar-ssc30kq' },
                 { text: 'Mario AIO', link: '/hardware/vtx/marioaio' },
                 { text: 'Thinker Air Unit', link: '/hardware/vtx/thinkerairunit' },
                 { text: 'EMAX Wyvern Link', link: '/hardware/vtx/emaxwyvernlink' },
@@ -247,6 +248,7 @@ export default defineConfig({
                 { text: 'RunCam WiFiLink RX', link: '/hardware/vrx/runcam-rx' },
                 { text: 'EMAX Wyvern VRX', link: '/hardware/vrx/emaxwyvernlink' },
                 { text: 'OpenIPC Bonnet (Radxa)', link: '/hardware/vrx/openipcbonnet' },
+                { text: 'Radxa Zero 3W', link: '/hardware/vrx/radxa-zero-3w' },
               ]
             },
             {
@@ -442,6 +444,7 @@ export default defineConfig({
                 { text: 'Runcam WiFiLink v1', link: '/en/hardware/vtx/runcamwifilink' },
                 { text: 'Runcam WiFiLink v2', link: '/en/hardware/vtx/runcamwifilinkv2' },
                 { text: 'SSC338Q + IMX415', link: '/en/hardware/vtx/sigmastar-ssc338q' },
+                { text: 'SSC30KQ', link: '/en/hardware/vtx/sigmastar-ssc30kq' },
                 { text: 'Mario AIO', link: '/en/hardware/vtx/marioaio' },
                 { text: 'Thinker Air Unit', link: '/en/hardware/vtx/thinkerairunit' },
                 { text: 'EMAX Wyvern Link', link: '/en/hardware/vtx/emaxwyvernlink' },
@@ -454,6 +457,7 @@ export default defineConfig({
                 { text: 'RunCam WiFiLink RX', link: '/en/hardware/vrx/runcam-rx' },
                 { text: 'EMAX Wyvern VRX', link: '/en/hardware/vrx/emaxwyvernlink' },
                 { text: 'OpenIPC Bonnet (Radxa)', link: '/en/hardware/vrx/openipcbonnet' },
+                { text: 'Radxa Zero 3W', link: '/en/hardware/vrx/radxa-zero-3w' },
               ]
             },
             {
