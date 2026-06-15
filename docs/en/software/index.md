@@ -17,10 +17,12 @@ If you're new — start with the [**APFPV**](/en/software/apfpv) firmware (the s
 
 The firmware determines how an OpenIPC camera encodes and transmits video. Pick the option that fits your scenario.
 
-- [**OpenFPV firmware overview**](/en/software/firmware) — comparison of the available firmware for OpenIPC FPV cameras
-- [**APFPV — beginner's guide**](/en/software/apfpv) — simple FPV video transmission over Wi-Fi, no complex configuration
-- [**Greg's APFPV**](/en/software/apfpv-greg) — a version of APFPV with adaptive bitrate for FPV/GPS drones and planes
-- [**APALink**](/en/software/apalink) — dynamic bitrate switching for APFPV
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/software/firmware"><span class="fpv-card-t">OpenFPV firmware overview</span><span class="fpv-card-d">Comparison of the available firmware for OpenIPC FPV cameras</span></a>
+  <a class="fpv-card" href="/en/software/apfpv"><span class="fpv-card-t">APFPV — beginner's guide</span><span class="fpv-card-d">Simple FPV video transmission over Wi-Fi, no complex configuration</span></a>
+  <a class="fpv-card" href="/en/software/apfpv-greg"><span class="fpv-card-t">Greg's APFPV</span><span class="fpv-card-d">A version of APFPV with adaptive bitrate for FPV/GPS drones and planes</span></a>
+  <a class="fpv-card" href="/en/software/apalink"><span class="fpv-card-t">APALink</span><span class="fpv-card-d">Dynamic bitrate switching for APFPV</span></a>
+</div>
 
 ---
 
@@ -28,9 +30,11 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 **WFB-NG** (WiFi Broadcast Next Generation) is the foundation of OpenIPC's digital FPV link: broadcast video transmission without associating to an access point.
 
-- [**WFB-NG — how it works**](/en/software/wfb-ng) — operating principle, supported hardware and components
-- [**Configuration & bitrate calculator**](/en/software/wfb-ng-config) — encryption keys, `wifibroadcast.cfg`, channel parameters and an interactive bitrate calculator
-- [**Ground station on Ubuntu**](/en/software/wfb-ng-groundstation) — installing WFB-NG on Ubuntu 22.04, drivers, startup and link monitoring
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/software/wfb-ng"><span class="fpv-card-t">WFB-NG — how it works</span><span class="fpv-card-d">Operating principle, supported hardware and components</span></a>
+  <a class="fpv-card" href="/en/software/wfb-ng-config"><span class="fpv-card-t">Configuration & bitrate calculator</span><span class="fpv-card-d">Encryption keys, wifibroadcast.cfg, channel parameters and a bitrate calculator</span></a>
+  <a class="fpv-card" href="/en/software/wfb-ng-groundstation"><span class="fpv-card-t">Ground station on Ubuntu</span><span class="fpv-card-d">Installing WFB-NG on Ubuntu 22.04, drivers, startup and link monitoring</span></a>
+</div>
 
 ---
 
@@ -38,10 +42,12 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 **Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar cameras that replaces Majestic and integrates natively with WFB-NG.
 
-- [**Waybeam overview**](/en/software/waybeam-venc) — features, supported chips and comparison with Majestic
-- [**Install on the camera**](/en/software/waybeam-venc-install-camera) — download, `/etc/waybeam.json` configuration, first run
-- [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replacing Majestic alongside WFB-ng
-- [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — real-time parameter control, ISP tuning, resilience presets
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/software/waybeam-venc"><span class="fpv-card-t">Waybeam overview</span><span class="fpv-card-d">Features, supported chips and comparison with Majestic</span></a>
+  <a class="fpv-card" href="/en/software/waybeam-venc-install-camera"><span class="fpv-card-t">Install on the camera</span><span class="fpv-card-d">Download, <code>/etc/waybeam.json</code> configuration, first run</span></a>
+  <a class="fpv-card" href="/en/software/waybeam-venc-install-groundstation"><span class="fpv-card-t">WFB-ng integration</span><span class="fpv-card-d">Replacing Majestic alongside WFB-ng</span></a>
+  <a class="fpv-card" href="/en/software/waybeam-venc-web-interface"><span class="fpv-card-t">Web panel and HTTP API</span><span class="fpv-card-d">Real-time parameter control, ISP tuning, resilience presets</span></a>
+</div>
 
 ---
 
@@ -49,8 +55,10 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 Software for the receiving side — decoding and displaying FPV video.
 
-- [**Radxa Zero 3W with APFPV**](/en/software/apfpv-gs) — a ready-made image for receiving FPV video on the Radxa Zero 3W
-- [**WFB-NG on Ubuntu**](/en/software/wfb-ng-groundstation) — a universal ground station on a PC running Ubuntu
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/software/apfpv-gs"><span class="fpv-card-t">Radxa Zero 3W with APFPV</span><span class="fpv-card-d">A ready-made image for receiving FPV video on the Radxa Zero 3W</span></a>
+  <a class="fpv-card" href="/en/software/wfb-ng-groundstation"><span class="fpv-card-t">WFB-NG on Ubuntu</span><span class="fpv-card-d">A universal ground station on a PC running Ubuntu</span></a>
+</div>
 
 ---
 
@@ -58,12 +66,14 @@ Software for the receiving side — decoding and displaying FPV video.
 
 **QuadroFleet** is an open modular platform for controlling FPV drones over mobile networks: low-latency video, GPS tracking, secure VPN and OSD.
 
-- [**QuadroFleet platform overview**](/en/software/openipc-4g) — architecture, features and use cases
-- [**Drone build**](/en/software/drone-build) — components and assembly steps for a QuadroFleet drone
-- [**Build & flash firmware**](/en/software/firmware-build) — compiling and flashing OpenIPC Firmware for 4G
-- [**VPN setup**](/en/software/vpn) — WireGuard configuration for secure control
-- [**Map navigation**](/en/software/map) — working with the interactive QuadroFleet map
-- [**Updating settings**](/en/software/update-settings) — updating the QuadroFleet firmware
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/software/openipc-4g"><span class="fpv-card-t">QuadroFleet platform overview</span><span class="fpv-card-d">Architecture, features and use cases</span></a>
+  <a class="fpv-card" href="/en/software/drone-build"><span class="fpv-card-t">Drone build</span><span class="fpv-card-d">Components and assembly steps for a QuadroFleet drone</span></a>
+  <a class="fpv-card" href="/en/software/firmware-build"><span class="fpv-card-t">Build & flash firmware</span><span class="fpv-card-d">Compiling and flashing OpenIPC Firmware for 4G</span></a>
+  <a class="fpv-card" href="/en/software/vpn"><span class="fpv-card-t">VPN setup</span><span class="fpv-card-d">WireGuard configuration for secure control</span></a>
+  <a class="fpv-card" href="/en/software/map"><span class="fpv-card-t">Map navigation</span><span class="fpv-card-d">Working with the interactive QuadroFleet map</span></a>
+  <a class="fpv-card" href="/en/software/update-settings"><span class="fpv-card-t">Updating settings</span><span class="fpv-card-d">Updating the QuadroFleet firmware</span></a>
+</div>
 
 ---
 

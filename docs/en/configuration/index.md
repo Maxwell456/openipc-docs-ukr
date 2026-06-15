@@ -11,17 +11,21 @@ This section collects all the setup and update guides for the **OpenIPC FPV** sy
 
 ## ⬆️ Flashing & updates
 
-- [**Updating via Multiconfigurator**](/en/configuration/multiconfigurator) — update firmware using the OpenIPC graphical configurator
-- [**Firmware update (sysupgrade)**](/en/configuration/upgrading-firmware) — manual update from the terminal with the `sysupgrade` command
-- [**Flashing via UART**](/en/configuration/uart-flash) — a universal recovery/flashing guide using FTDI and TFTP
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/configuration/multiconfigurator"><span class="fpv-card-t">Updating via Multiconfigurator</span><span class="fpv-card-d">Update firmware using the OpenIPC graphical configurator</span></a>
+  <a class="fpv-card" href="/en/configuration/upgrading-firmware"><span class="fpv-card-t">Firmware update (sysupgrade)</span><span class="fpv-card-d">Manual update from the terminal with the <code>sysupgrade</code> command</span></a>
+  <a class="fpv-card" href="/en/configuration/uart-flash"><span class="fpv-card-t">Flashing via UART</span><span class="fpv-card-d">A universal recovery/flashing guide using FTDI and TFTP</span></a>
+</div>
 
 ---
 
 ## 🎛️ Settings & tuning
 
-- [**Telemetry & OSD (VTX Menu)**](/en/configuration/telemetry) — the VTX menu for transmitter configuration and telemetry overlay
-- [**Adaptive-Link**](/en/configuration/adaptive-link) — set up adaptive bitrate control based on link quality
-- [**Advanced settings**](/en/configuration/advanced) — Jumbo frame, overheating protection and other advanced parameters
+<div class="fpv-cards">
+  <a class="fpv-card" href="/en/configuration/telemetry"><span class="fpv-card-t">Telemetry & OSD (VTX Menu)</span><span class="fpv-card-d">The VTX menu for transmitter configuration and telemetry overlay</span></a>
+  <a class="fpv-card" href="/en/configuration/adaptive-link"><span class="fpv-card-t">Adaptive-Link</span><span class="fpv-card-d">Set up adaptive bitrate control based on link quality</span></a>
+  <a class="fpv-card" href="/en/configuration/advanced"><span class="fpv-card-t">Advanced settings</span><span class="fpv-card-d">Jumbo frame, overheating protection and other advanced parameters</span></a>
+</div>
 
 ---
 
