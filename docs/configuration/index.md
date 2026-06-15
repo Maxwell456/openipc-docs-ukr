@@ -9,7 +9,7 @@ description: "Каталог гайдів з конфігурації OpenIPC FP
 
 ---
 
-## ⬆️ Прошивка та оновлення
+## Прошивка та оновлення
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/configuration/multiconfigurator"><span class="fpv-card-t">Оновлення через Multiconfigurator</span><span class="fpv-card-d">Оновлення прошивки за допомогою графічного конфігуратора OpenIPC</span></a>
@@ -19,7 +19,7 @@ description: "Каталог гайдів з конфігурації OpenIPC FP
 
 ---
 
-## 🎛️ Налаштування та тюнінг
+## Налаштування та тюнінг
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/configuration/telemetry"><span class="fpv-card-t">Телеметрія та OSD (VTX Menu)</span><span class="fpv-card-d">Меню VTX для конфігурації передавача та накладання телеметрії</span></a>

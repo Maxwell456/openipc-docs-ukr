@@ -9,7 +9,7 @@ This section collects all the setup and update guides for the **OpenIPC FPV** sy
 
 ---
 
-## ⬆️ Flashing & updates
+## Flashing & updates
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/en/configuration/multiconfigurator"><span class="fpv-card-t">Updating via Multiconfigurator</span><span class="fpv-card-d">Update firmware using the OpenIPC graphical configurator</span></a>
@@ -19,7 +19,7 @@ This section collects all the setup and update guides for the **OpenIPC FPV** sy
 
 ---
 
-## 🎛️ Settings & tuning
+## Settings & tuning
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/en/configuration/telemetry"><span class="fpv-card-t">Telemetry & OSD (VTX Menu)</span><span class="fpv-card-d">The VTX menu for transmitter configuration and telemetry overlay</span></a>

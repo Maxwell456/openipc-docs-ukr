@@ -13,7 +13,7 @@ If you're new — start with the [**APFPV**](/en/software/apfpv) firmware (the s
 
 ---
 
-## 📷 Camera firmware
+## Camera firmware
 
 The firmware determines how an OpenIPC camera encodes and transmits video. Pick the option that fits your scenario.
 
@@ -26,7 +26,7 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 ---
 
-## 📡 WFB-NG — digital video link
+## WFB-NG — digital video link
 
 **WFB-NG** (WiFi Broadcast Next Generation) is the foundation of OpenIPC's digital FPV link: broadcast video transmission without associating to an access point.
 
@@ -38,7 +38,7 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 ---
 
-## 🎥 Waybeam — video encoder
+## Waybeam — video encoder
 
 **Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar cameras that replaces Majestic and integrates natively with WFB-NG.
 
@@ -51,7 +51,7 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 ---
 
-## 🖥️ Ground station
+## Ground station
 
 Software for the receiving side — decoding and displaying FPV video.
 
@@ -62,7 +62,7 @@ Software for the receiving side — decoding and displaying FPV video.
 
 ---
 
-## 🌍 QuadroFleet — 4G/LTE platform
+## QuadroFleet — 4G/LTE platform
 
 **QuadroFleet** is an open modular platform for controlling FPV drones over mobile networks: low-latency video, GPS tracking, secure VPN and OSD.
 
