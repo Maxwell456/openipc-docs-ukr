@@ -29,27 +29,23 @@ description: "Покрокова інструкція встановлення W
 
 Підключіться до камери по SSH. IP-адреса камери зазвичай `192.168.1.10` або визначається через роутер.
 
-<details markdown="1">
-<summary><strong>Windows</strong></summary>
+::: code-group
 
-1. Завантажте та встановіть [PuTTY](https://www.putty.org/)
-2. Введіть IP-адресу камери у полі «Host Name»
-3. Порт: `22`, тип: `SSH`
-4. Натисніть «Open»
-5. Логін: `root`, пароль: `12345`
-
-</details>
-
-<details markdown="1">
-<summary><strong>Mac / Linux</strong></summary>
-
-```bash
+```powershell [Windows (PowerShell)]
 ssh root@192.168.1.10
+# пароль: 12345
 ```
 
-Пароль: `12345`
+```bash [macOS / Linux]
+ssh root@192.168.1.10
+# пароль: 12345
+```
 
-</details>
+:::
+
+::: tip Графічний клієнт для Windows
+Замість командного рядка можна скористатися [PuTTY](https://www.putty.org/): у полі «Host Name» — IP камери, порт `22`, тип `SSH`, логін `root`, пароль `12345`.
+:::
 
 ---
 
@@ -78,9 +74,9 @@ Majestic і Waybeam не можуть працювати одночасно — 
 
 Релізи поставляються тарболами, які містять бінарник `waybeam`, шаблон конфігурації `waybeam.json` і (для Maruko) потрібні бібліотеки SigmaStar. Оберіть тарбол відповідно до вашого чіпа.
 
-**Для Star6E (SSC30KQ / SSC338Q / Infinity6E):**
+::: code-group
 
-```bash
+```bash [Star6E · SSC30KQ / SSC338Q]
 cd /tmp
 curl -L -o waybeam-star6e.tar.gz \
   https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-star6e.tar.gz
@@ -91,9 +87,7 @@ cp waybeam /usr/bin/waybeam
 chmod +x /usr/bin/waybeam
 ```
 
-**Для Maruko (SSC378QE / Infinity6C):**
-
-```bash
+```bash [Maruko · SSC378QE]
 cd /tmp
 curl -L -o waybeam-maruko.tar.gz \
   https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-maruko.tar.gz
@@ -102,6 +96,8 @@ tar xzf waybeam-maruko.tar.gz
 cp waybeam /usr/bin/waybeam
 chmod +x /usr/bin/waybeam
 ```
+
+:::
 
 ::: warning Maruko потребує бібліотек
 Стокова прошивка OpenIPC для Infinity6C **не містить** vendor-бібліотек SigmaStar (MI). Бібліотеки з тарболу потрібно скопіювати в `/usr/lib/`, а також можуть знадобитися сенсорні `.ko`-модулі та ISP `.bin`-файли. Деталі та скрипти провізіонінгу — у [README репозиторію](https://github.com/OpenIPC/waybeam_venc#maruko-infinity6c).

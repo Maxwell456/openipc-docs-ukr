@@ -13,27 +13,26 @@ This guide describes how to fully replace **Majestic** with **Waybeam** alongsid
 
 ```
 ┌─────────────────── CAMERA (VTX) ───────────────────┐
-                                                      
-  Sensor → ISP → waybeam (H.265 encoder)             
-                    │                                  
-                    ├─ RTP over Unix socket            
-                    ▼                                  
-              wfb_tx (WFB-ng TX)                      
-                    │                                  
-                    ▼                                  
-              WiFi adapter (RTL8812EU / AU)            
+  Sensor → ISP → waybeam (H.265 encoder)
+                    │
+                    ├─ RTP over Unix socket
+                    ▼
+              wfb_tx (WFB-ng TX)
+                    │
+                    ▼
+              WiFi adapter (RTL8812EU / AU)
 └──────────────────────────────────────────────────────┘
                      │  (radio link)
                      ▼
 ┌──────────── GROUND STATION (GS) ─────────────────────┐
-              WiFi adapter (RTL8812EU / AU)            
-                    │                                  
-                    ▼                                  
-              wfb_rx (WFB-ng RX)                      
-                    │                                  
+              WiFi adapter (RTL8812EU / AU)
+                    │
+                    ▼
+              wfb_rx (WFB-ng RX)
+                    │
                     ├─ UDP → PixelPilot / QGroundControl
-                    ▼                                  
-         Video player (port 5600)                      
+                    ▼
+         Video player (port 5600)
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -74,7 +73,8 @@ The most efficient method is delivery over an abstract Unix socket. This reduces
 
 Edit `/etc/waybeam.json`:
 
-```json
+::: code-group
+```json [/etc/waybeam.json]
 {
   "outgoing": {
     "enabled": true,
@@ -87,6 +87,7 @@ Edit `/etc/waybeam.json`:
   }
 }
 ```
+:::
 
 ::: tip Socket name
 The `wfb_tx` name in `unix://wfb_tx` is the name of the abstract Unix socket. It must match the WFB-ng setting on the transmitter side. Check the WFB-ng configuration to ensure `wfb_tx` listens on this socket.

@@ -1557,3 +1557,16 @@ html {
   .fpv-card::after { animation: none !important; }
   .fpv-reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---- Refined callout containers (no emoji, tasteful accent) ---- */
+.vp-doc .custom-block {
+  border-radius: 10px;
+  border-left-width: 4px;
+}
+.vp-doc .custom-block-title {
+  font-weight: 700;
+}
+
+/* ---- Code groups: drop terminal dots (the tab bar already frames them) ---- */
+.vp-doc .vp-code-group div[class*='language-']::before { display: none; }
+.vp-doc .vp-code-group div[class*='language-'] pre { padding-top: 20px !important; }

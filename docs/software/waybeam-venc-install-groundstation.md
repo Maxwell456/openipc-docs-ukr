@@ -13,27 +13,26 @@ description: "Як налаштувати Waybeam для роботи з WFB-ng 
 
 ```
 ┌─────────────────── КАМЕРА (VTX) ───────────────────┐
-                                                      
-  Сенсор → ISP → waybeam (H.265 encoder)             
-                    │                                  
-                    ├─ RTP через Unix-сокет            
-                    ▼                                  
-              wfb_tx (WFB-ng TX)                      
-                    │                                  
-                    ▼                                  
-              WiFi-адаптер (RTL8812EU / AU)            
+  Сенсор → ISP → waybeam (H.265 encoder)
+                    │
+                    ├─ RTP через Unix-сокет
+                    ▼
+              wfb_tx (WFB-ng TX)
+                    │
+                    ▼
+              WiFi-адаптер (RTL8812EU / AU)
 └──────────────────────────────────────────────────────┘
                      │  (радіоканал)
                      ▼
 ┌──────────── НАЗЕМНА СТАНЦІЯ (GS) ────────────────────┐
-              WiFi-адаптер (RTL8812EU / AU)            
-                    │                                  
-                    ▼                                  
-              wfb_rx (WFB-ng RX)                      
-                    │                                  
+              WiFi-адаптер (RTL8812EU / AU)
+                    │
+                    ▼
+              wfb_rx (WFB-ng RX)
+                    │
                     ├─ UDP → PixelPilot / QGroundControl
-                    ▼                                  
-         Програвач відео (порт 5600)                   
+                    ▼
+         Програвач відео (порт 5600)
 └──────────────────────────────────────────────────────┘
 ```
 
@@ -74,7 +73,8 @@ chmod -x /etc/init.d/S95majestic 2>/dev/null
 
 Відредагуйте `/etc/waybeam.json`:
 
-```json
+::: code-group
+```json [/etc/waybeam.json]
 {
   "outgoing": {
     "enabled": true,
@@ -87,6 +87,7 @@ chmod -x /etc/init.d/S95majestic 2>/dev/null
   }
 }
 ```
+:::
 
 ::: tip Назва сокету
 Назва `wfb_tx` у `unix://wfb_tx` — це ім'я абстрактного Unix-сокету. Воно повинно збігатися з налаштуванням WFB-ng на стороні передавача. Перевірте конфігурацію WFB-ng щоб упевнитися, що `wfb_tx` слухає цей сокет.

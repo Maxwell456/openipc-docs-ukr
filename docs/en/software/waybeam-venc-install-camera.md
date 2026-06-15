@@ -29,27 +29,23 @@ This guide describes how to install **Waybeam** on a SigmaStar (Infinity6E / Inf
 
 Connect to the camera over SSH. The camera's IP address is usually `192.168.1.10` or can be found via the router.
 
-<details markdown="1">
-<summary><strong>Windows</strong></summary>
+::: code-group
 
-1. Download and install [PuTTY](https://www.putty.org/)
-2. Enter the camera's IP address in the "Host Name" field
-3. Port: `22`, type: `SSH`
-4. Click "Open"
-5. Login: `root`, password: `12345`
-
-</details>
-
-<details markdown="1">
-<summary><strong>Mac / Linux</strong></summary>
-
-```bash
+```powershell [Windows (PowerShell)]
 ssh root@192.168.1.10
+# password: 12345
 ```
 
-Password: `12345`
+```bash [macOS / Linux]
+ssh root@192.168.1.10
+# password: 12345
+```
 
-</details>
+:::
+
+::: tip GUI client for Windows
+Instead of the command line you can use [PuTTY](https://www.putty.org/): "Host Name" — the camera IP, port `22`, type `SSH`, login `root`, password `12345`.
+:::
 
 ---
 
@@ -78,9 +74,9 @@ Majestic and Waybeam cannot run at the same time — they both use the chip's IS
 
 Releases ship as tarballs that contain the `waybeam` binary, a `waybeam.json` config template, and (for Maruko) the required SigmaStar libraries. Pick the tarball for your chip.
 
-**For Star6E (SSC30KQ / SSC338Q / Infinity6E):**
+::: code-group
 
-```bash
+```bash [Star6E · SSC30KQ / SSC338Q]
 cd /tmp
 curl -L -o waybeam-star6e.tar.gz \
   https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-star6e.tar.gz
@@ -91,9 +87,7 @@ cp waybeam /usr/bin/waybeam
 chmod +x /usr/bin/waybeam
 ```
 
-**For Maruko (SSC378QE / Infinity6C):**
-
-```bash
+```bash [Maruko · SSC378QE]
 cd /tmp
 curl -L -o waybeam-maruko.tar.gz \
   https://github.com/OpenIPC/waybeam_venc/releases/latest/download/waybeam-maruko.tar.gz
@@ -102,6 +96,8 @@ tar xzf waybeam-maruko.tar.gz
 cp waybeam /usr/bin/waybeam
 chmod +x /usr/bin/waybeam
 ```
+
+:::
 
 ::: warning Maruko needs libraries
 Stock OpenIPC firmware for Infinity6C does **not** ship SigmaStar (MI) vendor libraries. The libraries from the tarball must be copied to `/usr/lib/`, and sensor `.ko` modules and ISP `.bin` files may also be required. See the [repository README](https://github.com/OpenIPC/waybeam_venc#maruko-infinity6c) for details and provisioning scripts.
