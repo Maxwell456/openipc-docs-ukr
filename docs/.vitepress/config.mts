@@ -26,16 +26,16 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
   uk: {
     'getting-started': { name: 'Початок роботи', landing: '/getting-started/' },
     'hardware': { name: 'Обладнання', landing: '/hardware/vtx/' },
-    'software': { name: 'Програмне забезпечення', landing: '/software/apfpv' },
-    'configuration': { name: 'Конфігурація', landing: '/configuration/multiconfigurator' },
+    'software': { name: 'Програмне забезпечення', landing: '/software/' },
+    'configuration': { name: 'Конфігурація', landing: '/configuration/' },
     'updates': { name: 'Оновлення', landing: '/updates' },
     'links': { name: 'Корисні посилання', landing: '/links' },
   },
   en: {
     'getting-started': { name: 'Getting Started', landing: '/en/getting-started/' },
     'hardware': { name: 'Hardware', landing: '/en/hardware/vtx/' },
-    'software': { name: 'Software', landing: '/en/software/apfpv' },
-    'configuration': { name: 'Configuration', landing: '/en/configuration/multiconfigurator' },
+    'software': { name: 'Software', landing: '/en/software/' },
+    'configuration': { name: 'Configuration', landing: '/en/configuration/' },
     'updates': { name: 'Updates', landing: '/en/updates' },
     'links': { name: 'Links', landing: '/en/links' },
   },
@@ -80,6 +80,9 @@ const REDIRECTS: Record<string, string> = {
   '/firmware/waybeam-venc-install-camera/': '/software/waybeam-venc-install-camera',
   '/firmware/waybeam-venc-install-groundstation/': '/software/waybeam-venc-install-groundstation',
   '/firmware/waybeam-venc-web-interface/': '/software/waybeam-venc-web-interface',
+  '/getting-started/quick-start/': '/getting-started/',
+  '/getting-started/installation/': '/getting-started/',
+  '/getting-started/faq/': '/getting-started/',
   '/groundstation/': '/getting-started/groundstation',
   '/groundstation-build/': '/getting-started/groundstation-build',
   '/link/': '/configuration/adaptive-link',
@@ -262,6 +265,7 @@ export default defineConfig({
             }
           ],
           '/software/': [
+            { text: 'Огляд ПЗ', link: '/software/' },
             {
               text: 'Прошивки камер',
               collapsed: false,
@@ -317,6 +321,7 @@ export default defineConfig({
             },
           ],
           '/configuration/': [
+            { text: 'Огляд конфігурації', link: '/configuration/' },
             {
               text: 'Конфігурація',
               items: [
@@ -472,6 +477,7 @@ export default defineConfig({
             }
           ],
           '/en/software/': [
+            { text: 'Software overview', link: '/en/software/' },
             {
               text: 'Camera Firmware',
               collapsed: false,
@@ -527,6 +533,7 @@ export default defineConfig({
             },
           ],
           '/en/configuration/': [
+            { text: 'Configuration overview', link: '/en/configuration/' },
             {
               text: 'Configuration',
               items: [
