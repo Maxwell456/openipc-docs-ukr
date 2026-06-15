@@ -352,7 +352,7 @@ export default defineConfig({
         },
         outline: { label: 'На цій сторінці', level: [2, 3] },
         docFooter: { prev: 'Попередня', next: 'Наступна' },
-        lastUpdated: { text: 'Оновлено' },
+        lastUpdated: { text: 'Оновлено', formatOptions: { dateStyle: 'long', forceLocale: true } },
         returnToTopLabel: 'Вгору',
         sidebarMenuLabel: 'Меню',
         darkModeSwitchLabel: 'Тема',
@@ -564,7 +564,7 @@ export default defineConfig({
         },
         outline: { label: 'On this page', level: [2, 3] },
         docFooter: { prev: 'Previous', next: 'Next' },
-        lastUpdated: { text: 'Last updated' },
+        lastUpdated: { text: 'Last updated', formatOptions: { dateStyle: 'long', forceLocale: true } },
         footer: {
           copyright: '© 2024–2026 OpenFPV Ukraine'
         },

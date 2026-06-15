@@ -65,7 +65,7 @@ make
 ```
 
 * Виберіть цільовий пристрій (SSC30KQ\_4G або SSC338Q\_4G) під час компіляції
-* Файли виходу знаходяться в `firmware/output/images` (наприклад, `rootfs.squashfs.ssc30kq`, `uImage.ssc30kq`)
+* Готові файли — у каталозі `firmware/output/images` (наприклад, `rootfs.squashfs.ssc30kq`, `uImage.ssc30kq`)
 
 ---
 
