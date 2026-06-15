@@ -85,7 +85,7 @@ Pagoda Antenna
 ---
 
 ### 🔗 Посилання
--  [Інструкція по налаштуванню](/getting-started/groundstation) 
+-  [Інструкція з налаштування](/getting-started/groundstation) 
 -  [Інструкція з прошивки RunCam ](/getting-started/troubleshooting) 
 -  [Інструкція з відновлення RunCam ](/getting-started/troubleshooting#runcam-vrx) 
 -  [Офіційна сторінка продукту](https://shop.runcam.com/runcam-wifilink-rx/)

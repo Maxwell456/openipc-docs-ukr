@@ -4,9 +4,11 @@ import NotFound from './NotFound.vue'
 import LangSwitcher from './LangSwitcher.vue'
 import BackToTop from './BackToTop.vue'
 import ReportError from './ReportError.vue'
+import Helpful from './Helpful.vue'
 import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
 import WfbCalculator from './WfbCalculator.vue'
+import FpvLinkDiagram from './FpvLinkDiagram.vue'
 import './custom.css'
 
 const inBrowser = typeof window !== 'undefined'
@@ -127,6 +129,7 @@ export default {
       window.addEventListener('load', initPageFx)
     }
     app.component('WfbCalculator', WfbCalculator)
+    app.component('FpvLinkDiagram', FpvLinkDiagram)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
@@ -135,7 +138,7 @@ export default {
       'nav-screen-content-after': () => [h(LangSwitcher), h(CloseMenu)],
       'home-hero-image': () => h(HeroSearch),
       'layout-bottom': () => h(BackToTop),
-      'doc-after': () => h(ReportError)
+      'doc-after': () => [h(Helpful), h(ReportError)]
     })
   }
 }

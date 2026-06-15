@@ -633,6 +633,18 @@ html:not(.dark) .hero-search-chip:hover {
   padding-top: 1.5rem;
 }
 
+/* Avoid a stray line under a heading. Two cases:
+   1) a `---` divider right before a heading (the <hr> already draws a line);
+   2) an h2/h3 placed immediately under the page <h1> (acts as a subtitle).
+   In both cases the heading drops its own top border. */
+.vp-doc hr + h2,
+.vp-doc hr + h3,
+.vp-doc h1 + h2,
+.vp-doc h1 + h3 {
+  border-top: none;
+  padding-top: 0;
+}
+
 /* ===== Code blocks ===== */
 .dark div[class*='language-'] {
   background: #12121f !important;

@@ -5,6 +5,18 @@ description: Overview of ground stations and receivers for OpenFPV. RunCam RX, R
 
 # Receivers (VRX)
 
+Ground stations and receivers for OpenFPV — from ready-made plug & play solutions to DIY on the Radxa Zero 3W.
+
+## Comparison Table
+
+| Solution | Platform | Video out | Latency | Best for |
+|---|---|---|---|---|
+| [RunCam WiFiLink RX](runcam-rx) | OpenIPC / Ruby (ready) | Mini-HDMI 1080p60 | Minimal | Plug & Play ✅ |
+| [EMAX Wyvern Link VRX](emaxwyvernlink) | Radxa Zero 3W + RTL8812AF1 | micro-HDMI | Low | Ready-made kit |
+| [Radxa Zero 3W (DIY)](radxa-zero-3w) | RK3566 SBC | micro-HDMI | Low | DIY, hardware decoding |
+| [OpenIPC Bonnet](openipcbonnet) | Expansion board for Radxa | HDMI → DP | Low | Long range (2×RTL8812AU + FEM) |
+| PixelPilot (Android) | Phone + RTL8812AU | Phone screen | ~50–70 ms | Cheapest, always with you |
+
 ## Ready-made Solutions
 
 ### RunCam WiFiLink‑RX

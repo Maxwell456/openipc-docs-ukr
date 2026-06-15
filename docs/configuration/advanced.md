@@ -32,7 +32,7 @@ Jumbo frame працює **лише якщо всі пристрої в мере
 
 
 ---
-## Інструкція по підключенню Jumbo frame
+## Підключення Jumbo frame
 
 
 ### 1. Завантажити OpenIPC Configurator Mario

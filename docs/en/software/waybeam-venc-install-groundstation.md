@@ -11,30 +11,7 @@ This guide describes how to fully replace **Majestic** with **Waybeam** alongsid
 
 ### System architecture
 
-```
-┌─────────────────── CAMERA (VTX) ───────────────────┐
-  Sensor → ISP → waybeam (H.265 encoder)
-                    │
-                    ├─ RTP over Unix socket
-                    ▼
-              wfb_tx (WFB-ng TX)
-                    │
-                    ▼
-              WiFi adapter (RTL8812EU / AU)
-└──────────────────────────────────────────────────────┘
-                     │  (radio link)
-                     ▼
-┌──────────── GROUND STATION (GS) ─────────────────────┐
-              WiFi adapter (RTL8812EU / AU)
-                    │
-                    ▼
-              wfb_rx (WFB-ng RX)
-                    │
-                    ├─ UDP → PixelPilot / QGroundControl
-                    ▼
-         Video player (port 5600)
-└──────────────────────────────────────────────────────┘
-```
+<FpvLinkDiagram />
 
 ---
 
