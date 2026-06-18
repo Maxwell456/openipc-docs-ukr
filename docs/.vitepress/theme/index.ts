@@ -9,6 +9,7 @@ import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
 import WfbCalculator from './WfbCalculator.vue'
 import FpvLinkDiagram from './FpvLinkDiagram.vue'
+import '@fontsource-variable/inter'
 import './custom.css'
 
 const inBrowser = typeof window !== 'undefined'

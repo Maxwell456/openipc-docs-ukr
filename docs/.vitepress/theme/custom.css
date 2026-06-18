@@ -4,6 +4,9 @@
   --vp-c-brand-2: #3460e6;
   --vp-c-brand-3: #2a50cc;
   --vp-c-brand-soft: rgba(61, 106, 255, 0.14);
+  --vp-c-warning-1: #ff9a00;
+  --vp-c-warning-soft: rgba(255, 154, 0, 0.12);
+  --vp-font-family-base: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Always reserve the scrollbar gutter so short pages (homepage) and long pages
@@ -284,6 +287,12 @@ body::after {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Light mode: frosted glass instead of dark card */
+:root:not(.dark) .hero-search-card {
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 8px 32px rgba(61, 106, 255, 0.09), 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 /* Animated aurora background — two drifting brand-coloured blobs.
@@ -674,24 +683,6 @@ html:not(.dark) .hero-search-chip:hover {
 /* ===== Search ===== */
 .dark .VPLocalSearchBox {
   background: #1a1b2e;
-}
-
-/* ===== Scrollbar ===== */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #3d6aff44;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3d6aff88;
 }
 
 /* ===== Homepage notice — attention bar, aligned to content width ===== */
@@ -1168,7 +1159,7 @@ html {
   border-radius: 12px 0 0 12px;
   color: #fff;
   cursor: pointer;
-  animation: report-pulse 3s ease-in-out infinite;
+  animation: report-pulse 3s ease-in-out 4;
   transition: background 0.15s ease, transform 0.15s ease;
 }
 
@@ -1228,7 +1219,7 @@ html {
 @media (max-width: 767px) {
   .report-float {
     top: auto;
-    bottom: 28px;
+    bottom: 24px;
     left: 16px;
     right: auto;
     transform: none;
@@ -1241,7 +1232,7 @@ html {
     padding: 0;
     border-radius: 14px;
     justify-content: center;
-    animation: report-pulse-mob 3s ease-in-out infinite;
+    animation: report-pulse-mob 3s ease-in-out 4;
   }
 
   .report-float-btn:hover {
@@ -1303,7 +1294,7 @@ html {
 
 @media (max-width: 767px) {
   .back-to-top {
-    bottom: 20px;
+    bottom: 24px;
     right: 16px;
     width: 40px;
     height: 40px;
@@ -1410,22 +1401,20 @@ html {
 }
 .fpv-progress.fpv-on { opacity: 1; }
 
-/* ---- Code blocks: terminal window header ---- */
+/* ---- Code blocks: FPV gradient top bar ---- */
 .vp-doc div[class*='language-'] { position: relative; }
 .vp-doc div[class*='language-']::before {
   content: '';
   position: absolute;
-  top: 14px;
-  left: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
   z-index: 3;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #ff5f56;
-  box-shadow: 18px 0 0 #ffbd2e, 36px 0 0 #27c93f;
-  opacity: 0.9;
+  border-radius: 12px 12px 0 0;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), #7c9bff, #6f4dff);
 }
-.vp-doc div[class*='language-'] pre { padding-top: 42px !important; }
+.vp-doc div[class*='language-'] pre { padding-top: 20px !important; }
 .vp-doc div[class*='language-'] > span.lang { top: 14px; }
 .vp-doc div[class*='language-'] > button.copy { top: 8px; }
 
@@ -1582,3 +1571,82 @@ html {
 /* ---- Code groups: drop terminal dots (the tab bar already frames them) ---- */
 .vp-doc .vp-code-group div[class*='language-']::before { display: none; }
 .vp-doc .vp-code-group div[class*='language-'] pre { padding-top: 20px !important; }
+
+/* ===== Light-mode sidebar separator ===== */
+:root:not(.dark) .VPSidebar {
+  border-right: 1px solid var(--vp-c-border);
+}
+
+/* ===== Documentation navigation grid (homepage) ===== */
+.VPHome .VPFeatures { display: none !important; }
+
+.doc-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.doc-nav-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 18px 20px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.doc-nav-item:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 4px 16px rgba(61, 106, 255, 0.12);
+}
+
+.doc-nav-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  margin-top: 1px;
+  color: var(--vp-c-brand-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.doc-nav-body { flex: 1; min-width: 0; }
+
+.doc-nav-title {
+  display: block;
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 3px;
+  transition: color 0.15s;
+}
+
+.doc-nav-desc {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+.doc-nav-arrow {
+  flex-shrink: 0;
+  align-self: center;
+  color: var(--vp-c-text-3);
+  opacity: 0.4;
+  transition: opacity 0.15s, transform 0.15s, color 0.15s;
+}
+
+.doc-nav-item:hover .doc-nav-title { color: var(--vp-c-brand-1); }
+.doc-nav-item:hover .doc-nav-arrow { opacity: 1; transform: translateX(3px); color: var(--vp-c-brand-1); }
+
+@media (max-width: 640px) {
+  .doc-nav { grid-template-columns: 1fr; }
+}
