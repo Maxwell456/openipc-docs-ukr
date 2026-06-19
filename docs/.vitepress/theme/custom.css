@@ -172,14 +172,8 @@ body::after {
     padding-bottom: 8px !important;
   }
 
-  /* Hide the big hero search card on mobile — the navbar already has a search
-     button, and removing it lets the first screen fit without scrolling. */
-  .VPHero .image {
-    display: none !important;
-  }
-
   .VPHero .text {
-    font-size: 1.9rem !important;
+    font-size: 2.1rem !important;
     margin-top: 8px;
   }
 
@@ -197,7 +191,7 @@ body::after {
 }
 
 .VPHero .text {
-  font-size: 2.3rem;
+  font-size: 2.4rem;
   line-height: 1.18;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -225,23 +219,39 @@ body::after {
   font-size: 0.95rem !important;
   font-weight: 600 !important;
   border-radius: 10px !important;
-  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  border: none !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
+}
+
+.VPHero .action .VPButton:active {
+  transform: scale(0.97) !important;
+}
+
+.VPHero .action .VPButton.brand {
+  background: linear-gradient(180deg, var(--vp-c-brand-1), var(--vp-c-brand-2)) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 6px 16px -8px rgba(61, 106, 255, 0.5);
 }
 
 .VPHero .action .VPButton.brand:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(61, 106, 255, 0.35);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset, 0 12px 30px -10px rgba(61, 106, 255, 0.5);
+}
+
+.VPHero .action .VPButton.alt {
+  background: var(--vp-c-bg-mute) !important;
+  box-shadow: 0 0 0 1px var(--vp-c-divider);
 }
 
 .VPHero .action .VPButton.alt:hover {
   transform: translateY(-2px);
-  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft) !important;
+  box-shadow: 0 0 0 1px var(--vp-c-brand-1), 0 8px 20px -8px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== Hero search card (homepage) — injected via the home-hero-image slot.
-   Sits in the hero's right column; clicking opens the same search modal. ===== */
+/* ===== Hero search card (homepage) — injected via the home-hero-image
+   slot, sitting in the hero's right column next to the title. ===== */
 
-/* Neutralize VitePress's logo-oriented image-container sizing so it can hold a card */
+/* Neutralize VitePress's logo-oriented image-container sizing so it can hold the search */
 .VPHero .image-bg {
   display: none;
 }
@@ -275,163 +285,185 @@ body::after {
   }
 }
 
-.hero-search-card {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  margin: 0 auto;
-  padding: 26px;
-  border-radius: 20px;
-  border: 1px solid var(--vp-c-divider);
-  background: rgba(20, 21, 38, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-}
-
-/* Light mode: frosted glass instead of dark card */
-:root:not(.dark) .hero-search-card {
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 8px 32px rgba(61, 106, 255, 0.09), 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-/* Animated aurora background — two drifting brand-coloured blobs.
-   Clips itself (overflow:hidden) so the card can stay overflow:visible
-   and let the results dropdown float over the page without being cut. */
-.hero-search-aurora {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: 20px;
-  filter: blur(46px);
-  opacity: 0.55;
-}
-
-.hero-search-aurora::before,
-.hero-search-aurora::after {
-  content: '';
-  position: absolute;
-  width: 55%;
-  height: 55%;
-  border-radius: 50%;
-}
-
-.hero-search-aurora::before {
-  top: 4%;
-  left: 8%;
-  background: radial-gradient(circle, #3d6aff, transparent 70%);
-  animation: heroAuroraA 14s ease-in-out infinite;
-}
-
-.hero-search-aurora::after {
-  bottom: 2%;
-  right: 6%;
-  background: radial-gradient(circle, #6f4dff, transparent 70%);
-  animation: heroAuroraB 18s ease-in-out infinite;
-}
-
-@keyframes heroAuroraA {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(28px, 22px) scale(1.18); }
-}
-
-@keyframes heroAuroraB {
-  0%, 100% { transform: translate(0, 0) scale(1.05); }
-  50% { transform: translate(-26px, -20px) scale(0.9); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-search-aurora::before,
-  .hero-search-aurora::after {
-    animation: none;
+/* Hide the search card on mobile — the navbar already has a search
+   button, and removing it lets the first screen fit without scrolling. */
+@media (max-width: 767px) {
+  .VPHero .image {
+    display: none !important;
   }
 }
 
-.hero-search-inner {
-  position: relative;
-  z-index: 1;
+/* ===== Hero search — purpose-built for this hero, not a generic widget.
+   A single elevated bar with a soft top sheen (catches light like the
+   page's other elevated surfaces), an icon well that lights up only on
+   focus, and a shortcut hint that flips from "/" to "esc" so it's always
+   telling you the next useful key. Quick-topic chips below are colour-
+   coded per category, echoing the icon language used in the nav cards. */
+.hero-search {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
-.hero-search-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-2);
-}
-
-.hero-search-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--vp-c-brand-1);
-  animation: heroDotPulse 2.4s ease-in-out infinite;
-}
-
-@keyframes heroDotPulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(61, 106, 255, 0.25); }
-  50% { box-shadow: 0 0 0 7px rgba(61, 106, 255, 0.04); }
-}
-
-/* Light theme: white dot pulse (sits on the solid blue card) */
-@keyframes heroDotPulseLight {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4); }
-  50% { box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.05); }
-}
-
-/* The big search field (inline — results show in a dropdown, no modal) */
 .hero-search-fieldwrap {
   position: relative;
 }
 
 .hero-search-field {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  padding: 13px 16px;
-  border-radius: 14px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+  padding: 8px 10px 8px 8px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, var(--vp-c-bg-mute), var(--vp-c-bg-soft) 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 0 1px var(--vp-c-divider),
+    0 14px 32px -16px rgba(0, 0, 0, 0.55);
+  transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-search-field:focus-within {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 4px var(--vp-c-brand-soft);
+.hero-search-field:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1px var(--vp-c-divider),
+    0 18px 38px -16px rgba(0, 0, 0, 0.6);
+}
+
+/* Focus ring is two layers: a crisp 1px brand ring for definition, plus
+   a soft wider glow behind it for depth — the same dual-ring technique
+   Stripe and Linear use instead of a single flat outline. */
+.hero-search-field.is-focused {
+  transform: translateY(-1px) scale(1.008);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 0 1.5px var(--vp-c-brand-1),
+    0 0 0 5px var(--vp-c-brand-soft),
+    0 18px 38px -16px rgba(61, 106, 255, 0.45);
+}
+
+/* Icon well — neutral at rest, fills with the brand colour on focus so
+   the field visibly "switches on" instead of just gaining a border. */
+.hero-search-icon-well {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: var(--vp-c-bg);
+  transition: background 0.2s ease;
+}
+
+.hero-search-field.is-focused .hero-search-icon-well {
+  background: var(--vp-c-brand-1);
 }
 
 .hero-search-icon {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-3);
   flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-search-field.is-focused .hero-search-icon {
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.hero-search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
 }
 
 .hero-search-input {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   border: none;
   outline: none;
   background: transparent;
   color: var(--vp-c-text-1);
-  font-size: 1.02rem;
+  font-size: 1rem;
   font-family: inherit;
-}
-
-.hero-search-input::placeholder {
-  color: var(--vp-c-text-3);
 }
 
 .hero-search-input::-webkit-search-decoration,
 .hero-search-input::-webkit-search-cancel-button {
   -webkit-appearance: none;
+}
+
+/* Decorative rotating placeholder — overlaid on the (visually empty)
+   input rather than using the native placeholder attribute, so it can
+   crossfade between example queries instead of snapping. */
+.hero-search-placeholder-cycle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  color: var(--vp-c-text-3);
+  font-size: 1rem;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ph-fade-enter-active,
+.ph-fade-leave-active {
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.ph-fade-enter-from {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+.ph-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.kbd-fade-enter-active,
+.kbd-fade-leave-active {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.kbd-fade-enter-from,
+.kbd-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
+/* Shortcut hint — "/" focuses the field, "esc" clears it. Always present,
+   always telling you the one key that matters right now. */
+.hero-search-kbd {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 7px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-3);
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: inherit;
+  text-transform: lowercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hero-search-field.is-focused .hero-search-kbd {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
 }
 
 /* Inline results dropdown — floats over the page (absolute) so it never
@@ -444,10 +476,9 @@ body::after {
   right: 0;
   margin-top: 8px;
   z-index: 10;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  background: var(--vp-c-bg);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 0 0 1px var(--vp-c-divider), 0 18px 44px rgba(0, 0, 0, 0.4);
 }
 
 .hero-search-results {
@@ -461,8 +492,8 @@ body::after {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 9px 11px;
+  border-radius: 9px;
   text-decoration: none;
   color: var(--vp-c-text-1);
 }
@@ -488,12 +519,14 @@ body::after {
   color: var(--vp-c-text-3);
 }
 
-/* Popular search chips */
+/* Popular search chips — colour-coded dots give each topic a scannable
+   identity instead of uniform grey pills. */
 .hero-search-chips {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 6px;
+  padding-left: 4px;
 }
 
 .hero-search-chips-label {
@@ -505,61 +538,38 @@ body::after {
 .hero-search-chip {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
+  gap: 6px;
+  padding: 5px 12px 5px 10px;
   border-radius: 999px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
+  background: var(--vp-c-bg-mute);
+  color: var(--vp-c-text-2) !important;
   font-size: 0.72rem;
   white-space: nowrap;
   flex: 0 0 auto;
   font-weight: 500;
-  text-decoration: none;
+  text-decoration: none !important;
   cursor: pointer;
-  transition: border-color 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.hero-search-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px transparent;
+  transition: box-shadow 0.2s ease;
+}
+
+.hero-search-chip:hover .hero-search-chip-dot {
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
 }
 
 .hero-search-chip:hover {
-  border-color: var(--vp-c-brand-1);
-  color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
   transform: translateY(-1px);
-}
-
-/* ===== Light theme only: solid brand-blue card (dark theme keeps the navy look) ===== */
-html:not(.dark) .hero-search-card {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  box-shadow: 0 20px 50px rgba(61, 106, 255, 0.35);
-}
-
-html:not(.dark) .hero-search-aurora {
-  display: none;
-}
-
-html:not(.dark) .hero-search-eyebrow {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-html:not(.dark) .hero-search-dot {
-  background: #fff;
-  animation-name: heroDotPulseLight;
-}
-
-html:not(.dark) .hero-search-chips-label {
-  color: rgba(255, 255, 255, 0.78);
-}
-
-html:not(.dark) .hero-search-chip {
-  border-color: rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.14);
-  color: #fff;
-}
-
-html:not(.dark) .hero-search-chip:hover {
-  background: #fff;
-  border-color: #fff;
-  color: var(--vp-c-brand-1);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.4);
 }
 
 /* Subtle ambient glow behind the hero */
@@ -571,14 +581,36 @@ html:not(.dark) .hero-search-chip:hover {
 .VPHome::before {
   content: '';
   position: absolute;
-  top: -120px;
+  /* The glow's centers sit low in this box (~70% down) so its value is
+     already near-zero right at the navbar line (~64px) — it builds up
+     gradually behind the hero text/card instead of revealing abruptly
+     the instant it clears the fixed navbar. */
+  top: -200px;
   left: 50%;
-  width: min(820px, 90vw);
-  height: 520px;
+  width: min(1180px, 96vw);
+  height: 700px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(61, 106, 255, 0.16), transparent 68%);
+  background:
+    radial-gradient(ellipse 58% 42% at 34% 70%, rgba(61, 106, 255, 0.06), transparent 70%),
+    radial-gradient(ellipse 46% 38% at 68% 64%, rgba(111, 77, 255, 0.04), transparent 72%);
+  filter: blur(30px);
   pointer-events: none;
   z-index: 0;
+}
+
+/* The homepage owns its own ambient lighting — a hard 1px divider would
+   cut across that glow. Instead of just removing the border (which left
+   the navbar with no visual presence at all, floating over the page),
+   give it a faintly distinct tint plus a soft shadow so it still reads
+   as a separate layer above the content. */
+body:has(.VPContent.is-home) .VPNavBar {
+  border-bottom-color: transparent !important;
+  background-color: rgba(26, 27, 46, 0.66) !important;
+  box-shadow: 0 12px 28px -18px rgba(0, 0, 0, 0.6);
+}
+
+:root:not(.dark) body:has(.VPContent.is-home) .VPNavBar {
+  background-color: rgba(255, 255, 255, 0.66) !important;
 }
 
 .VPHome .VPHero,
@@ -697,13 +729,16 @@ html:not(.dark) .hero-search-chip:hover {
   margin: 24px 0 0;
   padding: 12px 24px;
   border-radius: 12px;
-  background: rgba(61, 106, 255, 0.07);
-  border: 1px solid rgba(61, 106, 255, 0.3);
+  background: rgba(61, 106, 255, 0.08);
+  box-shadow: 0 0 0 1px rgba(61, 106, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: var(--vp-c-text-2);
   font-size: 0.92rem;
   font-weight: 500;
   line-height: 1.5;
   text-align: left;
+  transition: box-shadow 0.2s ease;
 }
 
 .home-notice-icon {
@@ -1588,37 +1623,54 @@ html {
   margin-bottom: 32px;
 }
 
+/* Same dual-ring / cubic-bezier language as the hero search: a soft
+   resting shadow, a brand ring + glow on hover instead of a flat border
+   change, and an icon well that lights up to match the search icon. */
 .doc-nav-item {
+  position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 13px;
+  gap: 14px;
   padding: 18px 20px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 10px;
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 0 0 1px var(--vp-c-divider), 0 1px 2px rgba(0, 0, 0, 0.12);
   text-decoration: none !important;
   color: inherit;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  transition: background 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .doc-nav-item:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg-soft);
-  box-shadow: 0 4px 16px rgba(61, 106, 255, 0.12);
+  background: var(--vp-c-bg-mute);
+  box-shadow:
+    0 0 0 1.5px var(--vp-c-brand-1),
+    0 0 0 4px var(--vp-c-brand-soft),
+    0 14px 28px -12px rgba(61, 106, 255, 0.3);
+  transform: translateY(-3px);
 }
 
 .doc-nav-icon {
   flex-shrink: 0;
-  width: 26px;
-  height: 26px;
-  margin-top: 1px;
+  width: 38px;
+  height: 38px;
+  margin-top: 0;
+  border-radius: 11px;
   color: var(--vp-c-brand-1);
+  background: var(--vp-c-bg);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.doc-nav-body { flex: 1; min-width: 0; }
+.doc-nav-item:hover .doc-nav-icon {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.doc-nav-body { flex: 1; min-width: 0; padding-top: 2px; }
 
 .doc-nav-title {
   display: block;
@@ -1626,7 +1678,7 @@ html {
   font-weight: 600;
   color: var(--vp-c-text-1);
   margin-bottom: 3px;
-  transition: color 0.15s;
+  transition: color 0.2s ease;
 }
 
 .doc-nav-desc {
@@ -1641,11 +1693,11 @@ html {
   align-self: center;
   color: var(--vp-c-text-3);
   opacity: 0.4;
-  transition: opacity 0.15s, transform 0.15s, color 0.15s;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
 }
 
 .doc-nav-item:hover .doc-nav-title { color: var(--vp-c-brand-1); }
-.doc-nav-item:hover .doc-nav-arrow { opacity: 1; transform: translateX(3px); color: var(--vp-c-brand-1); }
+.doc-nav-item:hover .doc-nav-arrow { opacity: 1; transform: translateX(4px); color: var(--vp-c-brand-1); }
 
 @media (max-width: 640px) {
   .doc-nav { grid-template-columns: 1fr; }
