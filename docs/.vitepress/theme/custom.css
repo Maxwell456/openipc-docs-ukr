@@ -239,13 +239,13 @@ body::after {
 
 .VPHero .action .VPButton.alt {
   background: var(--vp-c-bg-mute) !important;
-  box-shadow: 0 0 0 1px var(--vp-c-divider);
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.3);
 }
 
 .VPHero .action .VPButton.alt:hover {
   transform: translateY(-2px);
-  background: var(--vp-c-bg-soft) !important;
-  box-shadow: 0 0 0 1px var(--vp-c-brand-1), 0 8px 20px -8px rgba(0, 0, 0, 0.3);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 80%, var(--vp-c-brand-1) 20%) !important;
+  box-shadow: 0 10px 24px -10px rgba(61, 106, 255, 0.4);
 }
 
 /* ===== Hero search card (homepage) — injected via the home-hero-image
@@ -312,6 +312,10 @@ body::after {
   position: relative;
 }
 
+/* Zero-frame variant — no border, no ring, ever. Depth and state are
+   conveyed purely through soft layered shadow and background tint, the
+   way Notion/Linear's "borderless everything" surfaces work: nothing
+   ever gets a hard edge, it just gets brighter and lifts. */
 .hero-search-field {
   position: relative;
   z-index: 1;
@@ -320,33 +324,33 @@ body::after {
   gap: 12px;
   width: 100%;
   padding: 8px 10px 8px 8px;
-  border-radius: 16px;
+  border-radius: 18px;
   background: linear-gradient(180deg, var(--vp-c-bg-mute), var(--vp-c-bg-soft) 60%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 0 1px var(--vp-c-divider),
-    0 14px 32px -16px rgba(0, 0, 0, 0.55);
-  transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    0 8px 24px -12px rgba(0, 0, 0, 0.5),
+    0 2px 6px -2px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
 }
 
 .hero-search-field:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 1px var(--vp-c-divider),
-    0 18px 38px -16px rgba(0, 0, 0, 0.6);
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 16px 36px -14px rgba(0, 0, 0, 0.6),
+    0 4px 10px -2px rgba(0, 0, 0, 0.35);
 }
 
-/* Focus ring is two layers: a crisp 1px brand ring for definition, plus
-   a soft wider glow behind it for depth — the same dual-ring technique
-   Stripe and Linear use instead of a single flat outline. */
+/* Focus state — background warms slightly toward brand-tinted, and the
+   shadow itself takes on the brand colour and grows softer/wider. No
+   ring, no outline; the glow alone tells you it's active. */
 .hero-search-field.is-focused {
-  transform: translateY(-1px) scale(1.008);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, var(--vp-c-bg-mute), color-mix(in srgb, var(--vp-c-bg-soft) 85%, var(--vp-c-brand-1) 15%) 60%);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 0 1.5px var(--vp-c-brand-1),
-    0 0 0 5px var(--vp-c-brand-soft),
-    0 18px 38px -16px rgba(61, 106, 255, 0.45);
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 20px 44px -16px rgba(61, 106, 255, 0.4),
+    0 6px 14px -4px rgba(61, 106, 255, 0.25);
 }
 
 /* Icon well — neutral at rest, fills with the brand colour on focus so
@@ -478,7 +482,7 @@ body::after {
   z-index: 10;
   border-radius: 14px;
   background: var(--vp-c-bg-soft);
-  box-shadow: 0 0 0 1px var(--vp-c-divider), 0 18px 44px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.45), 0 4px 12px -4px rgba(0, 0, 0, 0.3);
 }
 
 .hero-search-results {
@@ -519,37 +523,49 @@ body::after {
   color: var(--vp-c-text-3);
 }
 
-/* Popular search chips — colour-coded dots give each topic a scannable
-   identity instead of uniform grey pills. */
+/* Popular search topics — a quiet inline list, not a row of pill
+   buttons. Pills cost padding + gaps per item, which is what pushed
+   "Waybeam Venc" past the field's edge; plain text with a colour dot
+   and a hairline separator carries the same information in roughly
+   half the width, and reads as the more editorial, premium treatment
+   (the way Linear/Stripe list "Popular:" links). Wraps as a fallback
+   on very narrow widths, but at the field's own width it's one line. */
 .hero-search-chips {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 4px 0;
   padding-left: 4px;
+  font-size: 0.72rem;
 }
 
 .hero-search-chips-label {
-  font-size: 0.72rem;
   color: var(--vp-c-text-3);
   flex: 0 0 auto;
+  margin-right: 8px;
 }
 
 .hero-search-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 12px 5px 10px;
-  border-radius: 999px;
-  background: var(--vp-c-bg-mute);
+  gap: 5px;
   color: var(--vp-c-text-2) !important;
-  font-size: 0.72rem;
-  white-space: nowrap;
-  flex: 0 0 auto;
   font-weight: 500;
+  white-space: nowrap;
   text-decoration: none !important;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  transition: color 0.18s ease;
+}
+
+.hero-search-chip:not(:last-child)::after {
+  content: '';
+  width: 3px;
+  height: 3px;
+  margin: 0 9px;
+  border-radius: 50%;
+  background: var(--vp-c-text-3);
+  opacity: 0.5;
+  flex-shrink: 0;
 }
 
 .hero-search-chip-dot {
@@ -557,19 +573,17 @@ body::after {
   height: 6px;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 0 3px transparent;
-  transition: box-shadow 0.2s ease;
+  box-shadow: 0 0 0 0 transparent;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
 }
 
 .hero-search-chip:hover .hero-search-chip-dot {
-  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 18%, transparent);
+  box-shadow: 0 0 6px 1px currentColor;
+  transform: scale(1.15);
 }
 
 .hero-search-chip:hover {
-  background: var(--vp-c-bg-soft);
-  color: var(--vp-c-text-1);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px -8px rgba(0, 0, 0, 0.4);
+  color: var(--vp-c-text-1) !important;
 }
 
 /* Subtle ambient glow behind the hero */
@@ -729,8 +743,8 @@ body:has(.VPContent.is-home) .VPNavBar {
   margin: 24px 0 0;
   padding: 12px 24px;
   border-radius: 12px;
-  background: rgba(61, 106, 255, 0.08);
-  box-shadow: 0 0 0 1px rgba(61, 106, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: rgba(61, 106, 255, 0.1);
+  box-shadow: 0 8px 24px -14px rgba(61, 106, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   color: var(--vp-c-text-2);
@@ -744,6 +758,43 @@ body:has(.VPContent.is-home) .VPNavBar {
 .home-notice-icon {
   flex-shrink: 0;
   color: var(--vp-c-brand-1);
+}
+
+/* ===== Premium homepage footer — replaces the default plain VPFooter on
+   the home layout only. Just a copyright line, set off by a short
+   gradient hairline instead of a hard border. */
+.Layout:has(.VPContent.is-home) > footer.VPFooter {
+  display: none;
+}
+
+.home-footer {
+  position: relative;
+  margin-top: 36px;
+  padding: 26px 0 8px;
+  text-align: center;
+}
+
+.home-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--vp-c-brand-soft),
+    transparent
+  );
+}
+
+.home-footer-copy {
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--vp-c-text-3);
+  opacity: 0.75;
 }
 
 /* ===== Theme (appearance) switcher — more prominent ===== */
@@ -1634,7 +1685,7 @@ html {
   padding: 18px 20px;
   border-radius: 14px;
   background: var(--vp-c-bg-soft);
-  box-shadow: 0 0 0 1px var(--vp-c-divider), 0 1px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 6px 16px -10px rgba(0, 0, 0, 0.4);
   text-decoration: none !important;
   color: inherit;
   cursor: pointer;
@@ -1642,11 +1693,8 @@ html {
 }
 
 .doc-nav-item:hover {
-  background: var(--vp-c-bg-mute);
-  box-shadow:
-    0 0 0 1.5px var(--vp-c-brand-1),
-    0 0 0 4px var(--vp-c-brand-soft),
-    0 14px 28px -12px rgba(61, 106, 255, 0.3);
+  background: color-mix(in srgb, var(--vp-c-bg-mute) 88%, var(--vp-c-brand-1) 12%);
+  box-shadow: 0 18px 36px -16px rgba(61, 106, 255, 0.4), 0 6px 14px -6px rgba(0, 0, 0, 0.4);
   transform: translateY(-3px);
 }
 

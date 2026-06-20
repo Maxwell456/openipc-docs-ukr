@@ -13,7 +13,7 @@ hero:
       link: /getting-started/
     - theme: alt
       text: Прошивки
-      link: /software/apfpv
+      link: https://github.com/OpenIPC/firmware/releases
 
 features:
   - title: Перші кроки
@@ -26,7 +26,7 @@ features:
     linkText: Огляд
   - title: Програмне забезпечення
     details: Прошивки камер (APFPV, WFB-NG), наземні станції та платформа QuadroFleet 4G/LTE.
-    link: /software/apfpv
+    link: /software/
     linkText: Прошивки
   - title: Оновлення
     details: Нові прошивки, журнал змін та оновлення компонентів платформи OpenFPV.
@@ -35,7 +35,7 @@ features:
 ---
 
 <div class="doc-nav">
-  <a href="/software/apfpv" class="doc-nav-item">
+  <a href="/software/" class="doc-nav-item">
     <span class="doc-nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
     <span class="doc-nav-body">
       <span class="doc-nav-title">Програмне забезпечення</span>
@@ -77,3 +77,7 @@ features:
   </svg>
   <span>Цей сайт створений українською спільнотою користувачів OpenIPC і не є офіційним ресурсом.</span>
 </div>
+
+<footer class="home-footer">
+  <span class="home-footer-copy">© 2024–2026 OpenFPV Ukraine</span>
+</footer>
