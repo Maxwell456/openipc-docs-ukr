@@ -36,6 +36,11 @@ const GA4_ID = 'G-WFWC26NZLB'
 
 const SITE = 'https://openfpv.com.ua'
 
+// Homepage redesign draft (docs/home-v2.md):
+//  - `npm run dev`  → draft is served at `/`, current home moves to /home-old
+//  - `npm run build`→ draft is excluded entirely, production home unchanged
+const IS_DEV = process.argv[2] === 'dev'
+
 // Organization node, referenced by @id across all JSON-LD graphs
 const ORG = {
   '@type': 'Organization',
@@ -174,6 +179,10 @@ function writeRedirect(outDir: string, oldPath: string, newPath: string) {
 export default defineConfig({
   base: '/',
   appearance: 'dark',
+
+  // See IS_DEV above: swap the homepage for the redesign draft in dev only
+  rewrites: IS_DEV ? { 'home-v2.md': 'index.md', 'index.md': 'home-old.md' } : {},
+  srcExclude: IS_DEV ? [] : ['home-v2.md'],
 
   // llms.txt + llms-full.txt + a .md copy of every page in dist/ so AI
   // assistants (ChatGPT, Claude, Perplexity) can read the docs directly.
