@@ -1,6 +1,15 @@
 ---
 title: "APFPV Firmware — Beginner's Guide"
 description: "Simple FPV video transmission over Wi-Fi for beginners. Easy setup, no complex configuration."
+faq:
+  - q: "What is APFPV firmware?"
+    a: "APFPV (Access Point FPV) is OpenIPC firmware that makes the drone create its own Wi-Fi network. You connect to it from a phone, tablet or computer and watch live video without any special ground equipment."
+  - q: "What is the video latency of APFPV?"
+    a: "Typical latency is 40–70 ms, down to about 35 ms in good conditions. Too much for racing, but perfectly fine for learning, cruising and TinyWhoop flying."
+  - q: "What do I need to watch APFPV video?"
+    a: "Any Wi-Fi device: an Android smartphone with the PixelPilot app (recommended), a computer with a browser, or any device that can play an RTP stream."
+  - q: "How do I install APFPV on a camera?"
+    a: "The easiest way is over the internet: connect the camera via Ethernet, SSH in (root/12345), run firstboot, then sysupgrade with the APFPV firmware URL for your SoC. You can also use the OpenIPC Configurator."
 ---
 
 # APFPV Firmware — Beginner's Guide

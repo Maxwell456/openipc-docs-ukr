@@ -1,6 +1,6 @@
+# Classic search engines
 User-agent: *
 Allow: /
-Crawl-delay: 2
 
 User-agent: Googlebot
 Allow: /
@@ -9,6 +9,39 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+# AI assistants & answer engines — explicitly allowed so the docs
+# can be read and cited in AI answers (see also /llms.txt)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# SEO tool crawlers — slow down
 User-agent: AhrefsBot
 Crawl-delay: 10
 

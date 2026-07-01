@@ -1,6 +1,13 @@
 ---
 title: Installing Adaptive-Link for OpenIPC
 description: Detailed guide for setting up Adaptive-Link
+faq:
+  - q: "What is Adaptive-Link in OpenIPC?"
+    a: "It is a system that automatically adjusts bitrate, transmitter power and MCS/FEC parameters based on signal quality: up close the video is as sharp as possible, at distance quality drops but the link stays stable."
+  - q: "How do I install Adaptive-Link on a Radxa ground station?"
+    a: "On image v1.9.9 or newer, connect the Radxa to your home Wi-Fi via nmtui and run the alink_install.sh script from the OpenIPC/adaptive-link repository: first gs remove, then gs install."
+  - q: "How do I know Adaptive-Link is working?"
+    a: "Once the camera links with the ground station, an alink info window appears on screen. If it does not — Adaptive-Link is not running: check that UART0 with Mavlink and the Alink Drone option are enabled in the configurator."
 ---
 
 # Installing Adaptive-Link for OpenIPC

@@ -1,6 +1,13 @@
 ---
 title: Cameras & VTX for OpenFPV
 description: Comparison of supported FPV cameras and video transmitters for OpenIPC — Runcam WiFiLink, Mario AIO, OpenIPC Thinker, EMAX Wyvern Link.
+faq:
+  - q: "Which OpenIPC camera should I choose to start with?"
+    a: "Runcam WiFiLink v1 or v2 is the universal choice: IMX415 sensor, SSC338Q SoC, Wi-Fi up to 800 mW and full out-of-the-box OpenIPC firmware support."
+  - q: "Which OpenIPC camera fits a TinyWhoop?"
+    a: "EMAX Wyvern Link and OpenIPC Thinker v1 with built-in Wi-Fi (100 mW) are the lightest options for TinyWhoop, with a range of up to ~500 m."
+  - q: "What is the difference between Thinker v1 with and without Wi-Fi?"
+    a: "The version with built-in Wi-Fi (100 mW) is meant for close-range flying like TinyWhoop. The version without Wi-Fi uses an external RTL8812EU2 card and suits DIY builds with longer range."
 ---
 
 # Cameras & VTX

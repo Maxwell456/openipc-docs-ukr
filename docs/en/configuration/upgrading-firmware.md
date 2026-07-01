@@ -1,3 +1,8 @@
+---
+title: Upgrading OpenIPC firmware with sysupgrade
+description: How to manually update OpenIPC camera firmware with the sysupgrade command — from GitHub releases or local uImage and rootfs files.
+---
+
 # Upgrading firmware
 
 This article explains how to perform an update manually from a terminal window using the ```sysupgrade``` command.

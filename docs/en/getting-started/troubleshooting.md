@@ -1,6 +1,13 @@
 ---
 title: Troubleshooting
 description: Common problems and solutions for OpenIPC FPV systems.
+faq:
+  - q: "Why is there no video in PixelPilot?"
+    a: "Check that the lens cap is removed, that gs.key matches on the camera and ground station, and that channel and bandwidth are correct (e.g. 161 / 20 MHz). Then restart PixelPilot and reboot the camera."
+  - q: "Why does the FPV video have artifacts?"
+    a: "Check antenna distance and orientation, make sure both antennas use the same polarization (LHCP ↔ LHCP), and try reducing the bitrate in camera settings."
+  - q: "The camera is not responding via SSH. What should I do?"
+    a: "The default IP is 192.168.1.10 — try pinging it first. If there is no response, connect to the camera over UART."
 ---
 
 # Troubleshooting

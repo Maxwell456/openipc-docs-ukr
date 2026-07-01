@@ -2,9 +2,34 @@ import { defineConfig } from 'vitepress'
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
+import llmstxt from 'vitepress-plugin-llms'
 
 // Absolute path to the docs/ source dir (this file lives in docs/.vitepress/)
 const DOCS_DIR = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+
+// docs-relative .md path → ISO date of the commit that first added the file.
+// Single git call at config load; feeds JSON-LD datePublished. Empty map when
+// git history is unavailable (e.g. building from a tarball) — the field is
+// simply omitted then.
+const FIRST_COMMIT: Record<string, string> = (() => {
+  const map: Record<string, string> = {}
+  try {
+    const out = execSync('git log --diff-filter=A --name-only --format=%x00%aI', {
+      cwd: DOCS_DIR,
+      maxBuffer: 64 * 1024 * 1024,
+    }).toString()
+    let date = ''
+    for (const line of out.split('\n')) {
+      if (line.charCodeAt(0) === 0) { date = line.slice(1).trim(); continue }
+      const f = line.trim()
+      // git paths are repo-relative; log is newest-first, so later (older)
+      // entries overwrite and the earliest addition wins.
+      if (f.startsWith('docs/') && f.endsWith('.md')) map[f.slice(5)] = date
+    }
+  } catch { /* no git — skip datePublished */ }
+  return map
+})()
 
 // Google Analytics 4 Measurement ID 
 const GA4_ID = 'G-WFWC26NZLB'
@@ -30,6 +55,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'configuration': { name: 'Конфігурація', landing: '/configuration/' },
     'updates': { name: 'Оновлення', landing: '/updates' },
     'links': { name: 'Корисні посилання', landing: '/links' },
+    'faq': { name: 'FAQ', landing: '/faq' },
   },
   en: {
     'getting-started': { name: 'Getting Started', landing: '/en/getting-started/' },
@@ -38,6 +64,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'configuration': { name: 'Configuration', landing: '/en/configuration/' },
     'updates': { name: 'Updates', landing: '/en/updates' },
     'links': { name: 'Links', landing: '/en/links' },
+    'faq': { name: 'FAQ', landing: '/en/faq' },
   },
 }
 
@@ -139,6 +166,21 @@ export default defineConfig({
   base: '/',
   appearance: 'dark',
 
+  // llms.txt + llms-full.txt + a .md copy of every page in dist/ so AI
+  // assistants (ChatGPT, Claude, Perplexity) can read the docs directly.
+  // injectLLMHint is off: it adds display:none text to every page, which
+  // Google may treat as hidden-text cloaking.
+  vite: {
+    plugins: [
+      llmstxt({
+        domain: SITE,
+        title: 'OpenFPV — OpenIPC FPV documentation',
+        description: 'OpenIPC digital FPV systems documentation (Ukrainian + English): cameras, VTX, ground stations, firmware (APFPV, WFB-NG), configuration.',
+        injectLLMHint: false,
+      }),
+    ],
+  },
+
   sitemap: {
     hostname: 'https://openfpv.com.ua',
     // Attach hreflang alternates to every sitemap entry (i18n SEO best practice)
@@ -167,6 +209,7 @@ export default defineConfig({
             text: 'Початок роботи',
             items: [
               { text: 'Швидкий старт', link: '/getting-started/' },
+              { text: 'Порівняння FPV-систем', link: '/getting-started/comparison' },
               { text: 'Налаштування дрону', link: '/getting-started/drone' },
               { text: 'Налаштування VRX', link: '/getting-started/groundstation' },
               { text: 'Збірка Radxa GS', link: '/getting-started/groundstation-build' },
@@ -196,6 +239,7 @@ export default defineConfig({
                 text: 'Наземна станція',
                 items: [
                   { text: 'GS Firmware APFPV (Radxa)', link: '/software/apfpv-gs' },
+                  { text: 'PixelPilot (Android)', link: '/software/pixelpilot' },
                 ]
               },
               {
@@ -215,6 +259,7 @@ export default defineConfig({
               { text: 'Розширені налаштування', link: '/configuration/advanced' },
             ]
           },
+          { text: 'FAQ', link: '/faq' },
           { text: 'Корисні посилання', link: '/links' },
         ],
         sidebar: {
@@ -223,6 +268,7 @@ export default defineConfig({
               text: 'Початок роботи',
               items: [
                 { text: 'Швидкий старт', link: '/getting-started/' },
+                { text: 'Порівняння FPV-систем', link: '/getting-started/comparison' },
                 { text: 'Налаштування дрону', link: '/getting-started/drone' },
                 { text: 'Налаштування VRX', link: '/getting-started/groundstation' },
                 { text: 'Збірка Radxa GS своїми руками', link: '/getting-started/groundstation-build' },
@@ -307,6 +353,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'GS Firmware APFPV (Radxa)', link: '/software/apfpv-gs' },
+                { text: 'PixelPilot (Android)', link: '/software/pixelpilot' },
               ]
             },
             {
@@ -379,6 +426,7 @@ export default defineConfig({
             text: 'Getting Started',
             items: [
               { text: 'Quick Start', link: '/en/getting-started/' },
+              { text: 'FPV System Comparison', link: '/en/getting-started/comparison' },
               { text: 'Drone Setup', link: '/en/getting-started/drone' },
               { text: 'VRX Setup', link: '/en/getting-started/groundstation' },
               { text: 'Radxa GS Build', link: '/en/getting-started/groundstation-build' },
@@ -408,6 +456,7 @@ export default defineConfig({
                 text: 'Ground Station',
                 items: [
                   { text: 'GS Firmware APFPV (Radxa)', link: '/en/software/apfpv-gs' },
+                  { text: 'PixelPilot (Android)', link: '/en/software/pixelpilot' },
                 ]
               },
               {
@@ -427,6 +476,7 @@ export default defineConfig({
               { text: 'Advanced Settings', link: '/en/configuration/advanced' },
             ]
           },
+          { text: 'FAQ', link: '/en/faq' },
           { text: 'Links', link: '/en/links' },
         ],
         sidebar: {
@@ -435,6 +485,7 @@ export default defineConfig({
               text: 'Getting Started',
               items: [
                 { text: 'Quick Start', link: '/en/getting-started/' },
+                { text: 'FPV System Comparison', link: '/en/getting-started/comparison' },
                 { text: 'Drone Setup', link: '/en/getting-started/drone' },
                 { text: 'VRX Setup', link: '/en/getting-started/groundstation' },
                 { text: 'DIY Radxa GS Build', link: '/en/getting-started/groundstation-build' },
@@ -519,6 +570,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'GS Firmware APFPV (Radxa)', link: '/en/software/apfpv-gs' },
+                { text: 'PixelPilot (Android)', link: '/en/software/pixelpilot' },
               ]
             },
             {
@@ -775,6 +827,16 @@ export default defineConfig({
       crumbs.push({ '@type': 'ListItem', position: pos, name: title })
       graph.push({ '@type': 'BreadcrumbList', itemListElement: crumbs })
 
+      // datePublished: explicit frontmatter `date:` (updates posts) wins,
+      // otherwise the date the file was first committed.
+      const fmDate = (pageData.frontmatter as any).date
+      const firstCommit = FIRST_COMMIT[rel]
+      const datePublished = fmDate
+        ? new Date(fmDate).toISOString()
+        : firstCommit
+          ? new Date(firstCommit).toISOString()
+          : undefined
+
       graph.push({
         '@type': 'TechArticle',
         headline: title,
@@ -782,6 +844,7 @@ export default defineConfig({
         inLanguage,
         url: canonical,
         image: img,
+        datePublished,
         dateModified: pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : undefined,
         author: { '@id': `${SITE}/#org` },
         publisher: { '@id': `${SITE}/#org` },
