@@ -75,6 +75,13 @@ function logicalPath(rel: string): string {
   return p
 }
 
+// Does a source .md exist for a docs-relative logical path?
+// '' or a trailing slash means a section index ('getting-started/' → getting-started/index.md).
+function mdExists(rel: string): boolean {
+  if (rel === '' || rel.endsWith('/')) return existsSync(resolve(DOCS_DIR, rel, 'index.md'))
+  return existsSync(resolve(DOCS_DIR, `${rel}.md`)) || existsSync(resolve(DOCS_DIR, rel, 'index.md'))
+}
+
 function ogImageFor(rel: string): string {
   if (/^(en\/)?getting-started/.test(rel)) return `${SITE}/og-started.png`
   if (/^(en\/)?hardware/.test(rel)) return `${SITE}/og-hardware.png`
@@ -98,7 +105,9 @@ const REDIRECTS: Record<string, string> = {
   '/firmware/drone-build/': '/software/drone-build',
   '/firmware/firmware-build/': '/software/firmware-build',
   '/firmware/map/': '/software/map',
-  '/firmware/overview/': '/software/overview',
+  '/firmware/overview/': '/software/openipc-4g',
+  // overview.md was a near-identical duplicate of openipc-4g, removed 2026-07
+  '/software/overview/': '/software/openipc-4g',
   '/firmware/uart-flashing/': '/configuration/uart-flash',
   '/firmware/update-settings/': '/software/update-settings',
   '/firmware/upgrading-firmware/': '/configuration/upgrading-firmware',
@@ -183,15 +192,19 @@ export default defineConfig({
 
   sitemap: {
     hostname: 'https://openfpv.com.ua',
-    // Attach hreflang alternates to every sitemap entry (i18n SEO best practice)
+    // Attach hreflang alternates to every sitemap entry (i18n SEO best practice).
+    // Only emit an alternate when that translation actually exists on disk —
+    // otherwise the sitemap advertises hreflang URLs that 404 (Google flags this).
     transformItems(items) {
       return items.map((item) => {
         const lp = item.url.replace(/^en\//, '').replace(/^en$/, '')
-        item.links = [
-          { lang: 'uk', url: `${SITE}/${lp}` },
-          { lang: 'en', url: `${SITE}/en/${lp}` },
-          { lang: 'x-default', url: `${SITE}/${lp}` },
-        ]
+        const ukExists = mdExists(lp)
+        const enExists = mdExists(lp === '' ? 'en' : `en/${lp}`)
+        const links: { lang: string; url: string }[] = []
+        if (ukExists) links.push({ lang: 'uk', url: `${SITE}/${lp}` })
+        if (enExists) links.push({ lang: 'en', url: `${SITE}/en/${lp}` })
+        links.push({ lang: 'x-default', url: ukExists ? `${SITE}/${lp}` : `${SITE}/en/${lp}` })
+        item.links = links
         return item
       })
     }
