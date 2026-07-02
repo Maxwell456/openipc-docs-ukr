@@ -1750,3 +1750,93 @@ html {
 @media (max-width: 640px) {
   .doc-nav { grid-template-columns: 1fr; }
 }
+
+/* ===== Updates list (homepage LatestUpdates.vue + /updates UpdatesList.vue) =====
+   Той самий картковий язик, що й doc-nav: поверхня bg-soft, радіус 14,
+   подвійна тінь; рядок = чип дати + заголовок + шеврон. */
+.hv2-updates {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  background: var(--vp-c-bg-soft);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 6px 16px -10px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.hv2-update {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  text-decoration: none !important;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.hv2-update + .hv2-update {
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.hv2-update:hover {
+  background: color-mix(in srgb, var(--vp-c-bg-mute) 90%, var(--vp-c-brand-1) 10%);
+}
+
+.hv2-update-date {
+  flex-shrink: 0;
+  font-size: 0.74rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  border-radius: 7px;
+  padding: 3px 8px;
+}
+
+.hv2-update-title {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.hv2-update:hover .hv2-update-title { color: var(--vp-c-brand-1); }
+
+.hv2-update-arrow {
+  flex-shrink: 0;
+  color: var(--vp-c-text-3);
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.hv2-update:hover .hv2-update-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--vp-c-brand-1);
+}
+
+/* Рядки притиснуті до країв контейнера з overflow:hidden — обводка фокуса
+   всередину, інакше її зріже скруглення. */
+.hv2-update:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: -2px;
+}
+
+@media (max-width: 640px) {
+  .hv2-update-title { white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hv2-update,
+  .hv2-update-arrow {
+    transition: none;
+  }
+
+  .hv2-update:hover .hv2-update-arrow {
+    transform: none;
+  }
+}

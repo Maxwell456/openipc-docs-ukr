@@ -1,5 +1,6 @@
 ---
 title: Waybeam — велике оновлення документації та нові можливості
+sidebarTitle: Waybeam (оновлення)
 date: 2026-06-12
 description: Оновлення Waybeam — перейменування з venc, H.265-only кодек, resilience-пресети проти втрат пакетів, нова Kalman-стабілізація замість GyroGlide, snapshot-канал та нові HTTP-ендпоінти.
 tags:

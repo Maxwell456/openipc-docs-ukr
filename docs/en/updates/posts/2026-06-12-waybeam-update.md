@@ -1,5 +1,6 @@
 ---
 title: Waybeam — major documentation update and new features
+sidebarTitle: Waybeam (update)
 date: 2026-06-12
 description: Waybeam update — renamed from venc, H.265-only codec, resilience presets against packet loss, new Kalman stabilization replacing GyroGlide, snapshot channel and new HTTP endpoints.
 tags:

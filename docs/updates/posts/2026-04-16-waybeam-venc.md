@@ -1,5 +1,6 @@
 ﻿---
 title: Waybeam Venc — новий відеоенкодер для FPV
+sidebarTitle: Waybeam Venc
 date: 2026-04-16
 description: waybeam venc — автономний H.265/H.264 відеоенкодер для камер SigmaStar з нативною інтеграцією WFB-ng, HTTP API та вбудованою стабілізацією EIS.
 tags:

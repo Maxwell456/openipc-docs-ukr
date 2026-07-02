@@ -23,3 +23,6 @@ scripts/
 
 # Local change log (personal notes, not for repo)
 CHANGES_LOCAL.md
+
+# Local backups (e.g. pre-redesign homepage), not for repo
+backup/

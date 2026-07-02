@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { execSync } from 'node:child_process'
@@ -36,10 +36,39 @@ const GA4_ID = 'G-WFWC26NZLB'
 
 const SITE = 'https://openfpv.com.ua'
 
-// Homepage redesign draft (docs/home-v2.md):
-//  - `npm run dev`  → draft is served at `/`, current home moves to /home-old
-//  - `npm run build`→ draft is excluded entirely, production home unchanged
-const IS_DEV = process.argv[2] === 'dev'
+// ── Auto-generated "Updates" sidebar ──
+// Scans docs/[en/]updates/posts/*.md, reads title/date from frontmatter,
+// newest first. A new post appears in the sidebar (and, via posts.data.mts,
+// on the homepage and /updates) without touching this config.
+// Optional `sidebarTitle:` frontmatter gives a short sidebar label; the full
+// `title:` stays on the page/<title>/OG (SEO untouched).
+const MONTHS_UK = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня',
+  'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
+const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+function updatesSidebarItems(lang: 'uk' | 'en'): { text: string; link: string }[] {
+  const dir = resolve(DOCS_DIR, lang === 'en' ? 'en/updates/posts' : 'updates/posts')
+  const base = lang === 'en' ? '/en/updates/posts/' : '/updates/posts/'
+  return readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const src = readFileSync(resolve(dir, f), 'utf-8')
+      const fmField = (name: string) =>
+        new RegExp(`^${name}:\\s*(.+)$`, 'm').exec(src)?.[1]?.trim().replace(/^['"]|['"]$/g, '')
+      const title = fmField('sidebarTitle') ?? fmField('title') ?? f
+      const date = /^date:\s*(\d{4}-\d{2}-\d{2})/m.exec(src)?.[1] ?? f.slice(0, 10)
+      return { title, date, link: base + f.replace(/\.md$/, '') }
+    })
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .map(({ title, date, link }) => {
+      const [y, m, d] = date.split('-').map(Number)
+      const text = lang === 'en'
+        ? `${MONTHS_EN[m - 1]} ${d}, ${y} — ${title}`
+        : `${d} ${MONTHS_UK[m - 1]} ${y} — ${title}`
+      return { text, link }
+    })
+}
 
 // Organization node, referenced by @id across all JSON-LD graphs
 const ORG = {
@@ -179,10 +208,6 @@ function writeRedirect(outDir: string, oldPath: string, newPath: string) {
 export default defineConfig({
   base: '/',
   appearance: 'dark',
-
-  // See IS_DEV above: swap the homepage for the redesign draft in dev only
-  rewrites: IS_DEV ? { 'home-v2.md': 'index.md', 'index.md': 'home-old.md' } : {},
-  srcExclude: IS_DEV ? [] : ['home-v2.md'],
 
   // llms.txt + llms-full.txt + a .md copy of every page in dist/ so AI
   // assistants (ChatGPT, Claude, Perplexity) can read the docs directly.
@@ -408,13 +433,7 @@ export default defineConfig({
               text: 'Оновлення та новини',
               items: [
                 { text: 'Всі оновлення', link: '/updates' },
-                { text: '12 червня 2026 — Waybeam (оновлення)', link: '/updates/posts/2026-06-12-waybeam-update' },
-                { text: '16 квітня 2026 — Waybeam Venc', link: '/updates/posts/2026-04-16-waybeam-venc' },
-                { text: '3 вересня 2025 — OpenIPC 4G/LTE', link: '/updates/posts/2025-09-03-openipc4g' },
-                { text: '31 липня 2025 — APALink', link: '/updates/posts/2025-07-31-apalink' },
-                { text: '30 травня 2025 — APFPV', link: '/updates/posts/2025-05-30-apfpv' },
-                { text: '25 квітня 2025 — WebUI', link: '/updates/posts/2025-04-25-webui' },
-                { text: '23 квітня 2025 — Jumbo Frame', link: '/updates/posts/2025-04-23-jumbo' },
+                ...updatesSidebarItems('uk'),
               ]
             }
           ],
@@ -625,13 +644,7 @@ export default defineConfig({
               text: 'Updates & News',
               items: [
                 { text: 'All updates', link: '/en/updates' },
-                { text: 'Jun 12 2026 — Waybeam (update)', link: '/en/updates/posts/2026-06-12-waybeam-update' },
-                { text: 'Apr 16 2026 — Waybeam Venc', link: '/en/updates/posts/2026-04-16-waybeam-venc' },
-                { text: 'Sep 3 2025 — OpenIPC 4G/LTE', link: '/en/updates/posts/2025-09-03-openipc4g' },
-                { text: 'Jul 31 2025 — APALink', link: '/en/updates/posts/2025-07-31-apalink' },
-                { text: 'May 30 2025 — APFPV', link: '/en/updates/posts/2025-05-30-apfpv' },
-                { text: 'Apr 25 2025 — WebUI', link: '/en/updates/posts/2025-04-25-webui' },
-                { text: 'Apr 23 2025 — Jumbo Frame', link: '/en/updates/posts/2025-04-23-jumbo' },
+                ...updatesSidebarItems('en'),
               ]
             }
           ],

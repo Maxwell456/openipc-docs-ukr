@@ -9,6 +9,8 @@ import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
 import WfbCalculator from './WfbCalculator.vue'
 import FpvLinkDiagram from './FpvLinkDiagram.vue'
+import LatestUpdates from './LatestUpdates.vue'
+import UpdatesList from './UpdatesList.vue'
 import '@fontsource-variable/inter'
 import './custom.css'
 
@@ -131,6 +133,8 @@ export default {
     }
     app.component('WfbCalculator', WfbCalculator)
     app.component('FpvLinkDiagram', FpvLinkDiagram)
+    app.component('LatestUpdates', LatestUpdates)
+    app.component('UpdatesList', UpdatesList)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

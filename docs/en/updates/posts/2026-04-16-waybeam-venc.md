@@ -1,5 +1,6 @@
 ---
 title: Waybeam Venc — new FPV video encoder
+sidebarTitle: Waybeam Venc
 date: 2026-04-16
 description: waybeam venc — a standalone H.265/H.264 video encoder for SigmaStar cameras with native WFB-ng integration, HTTP API and built-in EIS stabilisation.
 tags:
