@@ -1,10 +1,18 @@
 <script setup lang="ts">
 // Три останні пости оновлень на головній. Дані — з posts.data.mts
 // (вже відсортовані: новіші зверху), тож тут лише фільтр локалі та зріз.
+// Локаль визначаємо за поточним маршрутом: /en/ → en, інакше uk.
 import { computed } from 'vue'
+import { useRoute } from 'vitepress'
 import { data as posts } from './posts.data'
 
-const latest = computed(() => posts.filter((p) => p.lang === 'uk').slice(0, 3))
+const route = useRoute()
+const lang = computed<'uk' | 'en'>(() =>
+  route.path.startsWith('/en/') ? 'en' : 'uk'
+)
+const latest = computed(() =>
+  posts.filter((p) => p.lang === lang.value).slice(0, 3)
+)
 
 function fmt(iso: string): string {
   const [y, m, d] = iso.split('-')
