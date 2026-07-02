@@ -9,6 +9,8 @@ import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
 import WfbCalculator from './WfbCalculator.vue'
 import FpvLinkDiagram from './FpvLinkDiagram.vue'
+import FiberLinkDiagram from './FiberLinkDiagram.vue'
+import Faq from './Faq.vue'
 import LatestUpdates from './LatestUpdates.vue'
 import UpdatesList from './UpdatesList.vue'
 import '@fontsource-variable/inter'
@@ -133,6 +135,8 @@ export default {
     }
     app.component('WfbCalculator', WfbCalculator)
     app.component('FpvLinkDiagram', FpvLinkDiagram)
+    app.component('FiberLinkDiagram', FiberLinkDiagram)
+    app.component('Faq', Faq)
     app.component('LatestUpdates', LatestUpdates)
     app.component('UpdatesList', UpdatesList)
   },

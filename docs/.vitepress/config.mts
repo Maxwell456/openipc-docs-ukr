@@ -283,6 +283,13 @@ export default defineConfig({
                 ]
               },
               {
+                text: 'Оптоволоконний відеолінк',
+                items: [
+                  { text: 'Архітектура та компоненти', link: '/software/fiber-optic' },
+                  { text: 'Складання (покроково)', link: '/software/fiber-optic-build' },
+                ]
+              },
+              {
                 text: 'Наземна станція',
                 items: [
                   { text: 'GS Firmware APFPV (Radxa)', link: '/software/apfpv-gs' },
@@ -396,6 +403,14 @@ export default defineConfig({
               ]
             },
             {
+              text: 'Оптоволоконний відеолінк',
+              collapsed: false,
+              items: [
+                { text: 'Архітектура та компоненти', link: '/software/fiber-optic' },
+                { text: 'Складання (покроково)', link: '/software/fiber-optic-build' },
+              ]
+            },
+            {
               text: 'Прошивки наземної станції',
               collapsed: false,
               items: [
@@ -491,6 +506,13 @@ export default defineConfig({
                   { text: 'APFPV', link: '/en/software/apfpv' },
                   { text: 'WFB-NG', link: '/en/software/wfb-ng' },
                   { text: 'OpenIPC 4G/LTE (QuadroFleet)', link: '/en/software/openipc-4g' },
+                ]
+              },
+              {
+                text: 'Fiber-Optic Video Link',
+                items: [
+                  { text: 'Architecture & Components', link: '/en/software/fiber-optic' },
+                  { text: 'Build (step-by-step)', link: '/en/software/fiber-optic-build' },
                 ]
               },
               {
@@ -604,6 +626,14 @@ export default defineConfig({
                     { text: 'Map Navigation', link: '/en/software/map' },
                   ]
                 },
+              ]
+            },
+            {
+              text: 'Fiber-Optic Video Link',
+              collapsed: false,
+              items: [
+                { text: 'Architecture & Components', link: '/en/software/fiber-optic' },
+                { text: 'Build (step-by-step)', link: '/en/software/fiber-optic-build' },
               ]
             },
             {

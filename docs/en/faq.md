@@ -32,6 +32,14 @@ faq:
     a: "Yes. EMAX Wyvern Link and OpenIPC Thinker v1 with built-in Wi-Fi (100 mW) weigh next to nothing and give up to ~500 m of range — enough for indoor and park flying."
   - q: "Where can I get help if something does not work?"
     a: "In Ukrainian Telegram communities (e.g. «Є-дрон»), the official OpenIPC Telegram chat and on the OpenIPC GitHub. Links are collected on the Links page."
+  - q: "Can OpenIPC video be sent over fiber optic?"
+    a: "Yes. Instead of Wi-Fi the camera can be connected to the ground station with optical fiber: the drone unspools a single-mode strand and the camera's native IP stream (Majestic over RTSP) travels down it. This is a community solution, not the standard WFB-NG."
+  - q: "Why is fiber optic better than Wi-Fi (WFB-NG)?"
+    a: "A fiber link cannot be jammed by electronic warfare, barely emits (stealth) and has zero packet loss. The price is a physical tether: the fiber can be cut, and the spool adds weight."
+  - q: "Does fiber add latency to the video?"
+    a: "Practically no. Light travels in glass at ~5 us per kilometre, so even 20 km adds ~100 us — two orders of magnitude below the video encode/decode latency."
+  - q: "Do I need PixelPilot for a fiber-optic link?"
+    a: "No. Over fiber the camera serves an ordinary RTSP stream, so any low-latency player works — mpv, ffplay or GStreamer. PixelPilot targets WFB-NG."
 ---
 
 # Frequently Asked Questions (FAQ)
@@ -105,6 +113,24 @@ It depends on firmware and settings: APFPV — 40–70 ms, WFB-NG — from ~35 m
 ### How do I update the camera firmware?
 
 Over SSH with the [sysupgrade](/en/configuration/upgrading-firmware) command (from the internet or local files) or with the [OpenIPC Configurator](/en/configuration/multiconfigurator). Before updating, have a recovery plan: a rescue SD card or a [UART adapter](/en/configuration/uart-flash).
+
+## Fiber-optic link
+
+### Can OpenIPC video be sent over fiber optic?
+
+Yes. Instead of Wi-Fi the camera can be connected to the ground station with optical fiber: the drone unspools a single-mode strand and the camera's native IP stream (Majestic over RTSP) travels down it. It is an alternative to [WFB-NG](/en/software/wfb-ng) for scenarios where EW resistance matters. Details — in the overview [OpenIPC fiber-optic video link](/en/software/fiber-optic).
+
+### Why is fiber optic better than Wi-Fi (WFB-NG)?
+
+A fiber link **cannot be jammed** by electronic warfare, barely **emits** (stealth) and has **zero packet loss**. The price is a physical tether: the fiber can be cut, and the spool adds weight. Comparison table — [in the article](/en/software/fiber-optic#comparison-with-wfb-ng).
+
+### Does fiber add latency to the video?
+
+Practically no. Light travels in glass at **~5 µs per kilometre**, so even 20 km adds ~100 µs — two orders of magnitude below the video encode/decode latency.
+
+### How do I build a fiber-optic link?
+
+You need an OpenIPC camera with Ethernet, single-mode fiber on a spool, a pair of media converters and mirrored BiDi SFPs. A step-by-step guide with Majestic setup and RTSP decoding — [How to build an OpenIPC fiber-optic video link](/en/software/fiber-optic-build).
 
 ## Troubleshooting
 

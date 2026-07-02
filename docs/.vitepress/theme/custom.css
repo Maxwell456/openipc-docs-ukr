@@ -889,35 +889,43 @@ body:has(.VPContent.is-home) .VPNavBar {
   }
 }
 
-/* Slim pill styling for the local-search button (the ⌘K hint lives in the hero) */
+/* Icon-only search in the navbar — styled to match the neighbouring social
+   icons (GitHub / mail): a bare magnifier, no border or background, same size
+   and colour. The "Пошук" placeholder and ⌘K hint are hidden. */
 .VPNavBarSearch .DocSearch-Button {
-  border-radius: 9px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-soft);
-  height: 34px;
-  padding: 0 10px;
-  margin: 0 6px 0 0;
-  transition: border-color 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  transition: color 0.25s;
 }
 
 .VPNavBarSearch .DocSearch-Button:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-bg);
-  box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
+  color: var(--vp-c-text-1);
+  background: transparent;
+  box-shadow: none;
 }
 
+/* Size the magnifier to match the social-link icons (20px) */
 .VPNavBarSearch .DocSearch-Button .DocSearch-Search-Icon {
-  color: var(--vp-c-brand-1);
+  width: 20px;
+  height: 20px;
+  margin: 0 !important;
+  color: inherit;
+  opacity: 1;
 }
 
-/* Hide the keyboard hint on the compact navbar pill */
-.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys {
-  display: none !important;
-}
-
+/* Hide the keyboard hint and the "Пошук" placeholder — icon only */
+.VPNavBarSearch .DocSearch-Button .DocSearch-Button-Keys,
 .VPNavBarSearch .DocSearch-Button .DocSearch-Button-Placeholder {
-  padding: 0 4px 0 6px;
-  font-size: 13px;
+  display: none !important;
 }
 
 /* ===== Outline ===== */
