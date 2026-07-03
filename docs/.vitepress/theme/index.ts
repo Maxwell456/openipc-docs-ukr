@@ -118,6 +118,36 @@ function initPageFx() {
   })
 }
 
+/* ---- Local-search analytics: send the settled query to GA4 ---- */
+// VitePress local search is client-side (no ?q= in the URL), so GA4's built-in
+// site search never fires. We forward the settled query as a `search` event
+// with a `search_term` param — the GA4 custom dimension `search_term` picks it
+// up. Debounced so we log the query the user settled on, not every keystroke.
+function setupSearchTracking() {
+  let timer: number | undefined
+  let last = ''
+  document.addEventListener(
+    'input',
+    (e) => {
+      const el = e.target as HTMLElement | null
+      if (!(el instanceof HTMLInputElement)) return
+      if (!el.closest('.VPLocalSearchBox')) return
+      const q = el.value.trim()
+      window.clearTimeout(timer)
+      if (q.length < 3) return
+      timer = window.setTimeout(() => {
+        if (q === last) return
+        last = q
+        const gtag = (window as any).gtag
+        if (typeof gtag === 'function') {
+          gtag('event', 'search', { search_term: q, page_path: location.pathname })
+        }
+      }, 900)
+    },
+    true
+  )
+}
+
 export default {
   extends: DefaultTheme,
   enhanceApp({ app, router }) {
@@ -132,6 +162,7 @@ export default {
         if (e.key === 'Escape') closeZoom()
       })
       window.addEventListener('load', initPageFx)
+      setupSearchTracking()
     }
     app.component('WfbCalculator', WfbCalculator)
     app.component('FpvLinkDiagram', FpvLinkDiagram)
