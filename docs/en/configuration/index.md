@@ -1,5 +1,5 @@
 ---
-title: "OpenIPC FPV Configuration — firmware, telemetry, adaptive-link"
+title: "OpenIPC FPV Configuration — firmware & adaptive-link"
 description: "Catalog of OpenIPC FPV configuration guides: updating and flashing cameras (Multiconfigurator, UART, sysupgrade), the VTX menu and telemetry, Adaptive-Link and advanced settings."
 ---
 

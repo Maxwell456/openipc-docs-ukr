@@ -1,5 +1,5 @@
 ---
-title: Radxa Zero 3W — OpenIPC Ground Station (Specs and GPIO Pinout)
+title: Radxa Zero 3W — OpenIPC Ground Station (GPIO Pinout)
 description: Detailed Radxa Zero 3W guide for OpenIPC FPV — RK3566 specs, 40-pin GPIO pinout, why this board is ideal for a ground station (VRX) and how to build one
 ---
 # Radxa Zero 3W

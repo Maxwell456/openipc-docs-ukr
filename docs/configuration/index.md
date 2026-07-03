@@ -1,5 +1,5 @@
 ---
-title: "Конфігурація OpenIPC FPV — прошивка, телеметрія, adaptive-link"
+title: "Конфігурація OpenIPC FPV — прошивка та adaptive-link"
 description: "Каталог гайдів з конфігурації OpenIPC FPV: оновлення та прошивка камер (Multiconfigurator, UART, sysupgrade), меню VTX і телеметрія, Adaptive-Link та розширені налаштування."
 ---
 

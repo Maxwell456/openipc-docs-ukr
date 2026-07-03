@@ -1,5 +1,5 @@
 ---
-title: "OpenIPC Fiber-Optic Video Link for FPV Drones: Principle & Components"
+title: "OpenIPC Fiber-Optic Video Link for FPV Drones"
 description: How to send video from an OpenIPC camera over fiber instead of Wi-Fi — link architecture for a fiber-spool FPV drone, component selection (single-mode fiber, BiDi SFP, media converters), optical budget and latency.
 sidebarTitle: "Fiber optic: architecture"
 faq:

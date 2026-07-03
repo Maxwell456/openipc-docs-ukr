@@ -1,5 +1,5 @@
 ---
-title: OpenIPC vs DJI vs Walksnail vs HDZero — порівняння цифрових FPV-систем
+title: OpenIPC vs DJI vs Walksnail vs HDZero — порівняння FPV
 description: Чесне порівняння цифрових FPV-систем 2026 — OpenIPC, DJI O3/O4, Walksnail Avatar та HDZero. Ціна, затримка, дальність, відкритість — що обрати.
 faq:
   - q: "Яка цифрова FPV-система найдешевша?"

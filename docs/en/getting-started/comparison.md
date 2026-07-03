@@ -1,5 +1,5 @@
 ---
-title: OpenIPC vs DJI vs Walksnail vs HDZero — Digital FPV System Comparison
+title: OpenIPC vs DJI vs Walksnail vs HDZero — FPV Comparison
 description: Honest 2026 comparison of digital FPV systems — OpenIPC, DJI O3/O4, Walksnail Avatar and HDZero. Price, latency, range, openness — which one to pick.
 faq:
   - q: "Which digital FPV system is the cheapest?"

@@ -1,5 +1,5 @@
 ---
-title: "How to Build an OpenIPC Fiber-Optic Video Link: Step-by-Step Guide"
+title: "How to Build an OpenIPC Fiber-Optic Video Link"
 description: Step-by-step build of a fiber-optic video link for an OpenIPC camera — Majestic-over-Ethernet setup, airborne module, fiber spool, ground-side RTSP decoding (mpv/GStreamer) and link verification.
 sidebarTitle: "Fiber optic: build"
 faq:

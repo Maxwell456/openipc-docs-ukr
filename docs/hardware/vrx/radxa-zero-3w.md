@@ -1,5 +1,5 @@
 ---
-title: Radxa Zero 3W — наземна станція OpenIPC (характеристики та розпіновка GPIO)
+title: Radxa Zero 3W — наземна станція OpenIPC (GPIO)
 description: Детальний гайд по Radxa Zero 3W для OpenIPC FPV — характеристики RK3566, розпіновка 40-pin GPIO, чому ця плата ідеальна для наземної станції (VRX) та як її зібрати
 ---
 # Radxa Zero 3W

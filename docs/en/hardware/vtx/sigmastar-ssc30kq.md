@@ -1,5 +1,5 @@
 ---
-title: SSC30KQ + IMX335 Camera — Specs, Video Modes and OpenIPC Flashing
+title: SSC30KQ + IMX335 Camera — Specs & OpenIPC Flashing
 description: Full guide to the OpenIPC camera on SigmaStar SSC30KQ with the Sony IMX335 sensor — video modes, latency, connector pinout and step-by-step flashing for lightweight FPV builds
 ---
 # SSC30KQ + IMX335 Camera
