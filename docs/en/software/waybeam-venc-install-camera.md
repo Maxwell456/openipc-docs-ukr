@@ -9,6 +9,8 @@ This guide describes how to install **Waybeam** on a SigmaStar (Infinity6E / Inf
 
 ::: info What is Waybeam?
 **Waybeam** is a standalone H.265 (HEVC) video encoder that fully replaces Majestic. It provides lower latency, a full HTTP API for real-time tuning, and native WFB-ng integration via a Unix socket. The binary, config (`/etc/waybeam.json`) and init script are named `waybeam`.
+
+This guide is verified against version **v0.24.1** (July 2026).
 :::
 
 ---
@@ -138,7 +140,6 @@ cat > /etc/waybeam.json << 'EOF'
     "bitrate": 8192,
     "gopSize": 1.0,
     "qpDelta": -4,
-    "frameLost": true,
     "sceneThreshold": 0,
     "sceneHoldoff": 2,
     "resilience": "off",
@@ -154,6 +155,12 @@ cat > /etc/waybeam.json << 'EOF'
     "connectedUdp": true,
     "audioPort": 0,
     "sidecarPort": 0
+  },
+  "discovery": {
+    "enabled": true,
+    "serviceType": "_waybeam-venc._tcp",
+    "name": "",
+    "bareAlias": true
   },
   "fpv": { "roiEnabled": true, "roiQp": 0, "roiSteps": 2, "roiCenter": 0.4, "noiseLevel": 0 },
   "audio": {
@@ -199,6 +206,19 @@ Any omitted field uses its compiled-in default. The default `video0.size` is `"a
 There is no `video0.codec` field anymore — Waybeam encodes only H.265 (HEVC). Old configs containing `"codec": "h264"` or `"h265"` load without errors, but the key is ignored.
 :::
 
+::: details For versions before v0.19 — the `video0.frameLost` field
+Older versions had an SDK frame-drop strategy in the `video0` section:
+
+```json
+"video0": {
+  "...": "...",
+  "frameLost": true
+}
+```
+
+In **v0.19** this strategy was removed entirely — the `frameLost` field no longer exists in the config or the API; a **1000 kbps** bitrate floor applies instead. If the key is still in your old config, delete that line.
+:::
+
 ---
 
 ### Step 5: Key configuration parameters
@@ -208,9 +228,9 @@ There is no `video0.codec` field anymore — Waybeam encodes only H.265 (HEVC). 
 | Parameter | Description | Typical values |
 | :--- | :--- | :--- |
 | `rcMode` | Rate-control mode | `"cbr"`, `"vbr"`, `"avbr"`, `"fixqp"` |
-| `fps` | Frame rate | `30`, `60`, `90`, `120` |
+| `fps` | Frame rate (max depends on the sensor mode) | `30`, `60`, `90`, `100`, up to `144` |
 | `size` | Resolution | `"auto"`, `"1920x1080"`, `"1280x720"` |
-| `bitrate` | Bitrate (kbps) | `4096` — `16384` |
+| `bitrate` | Bitrate (kbps), 1000 minimum | `4096` — `16384` |
 | `gopSize` | GOP size in seconds (only effective when `resilience: "off"`) | `0.5` — `4.0` |
 | `qpDelta` | I/P QP delta | `-12` — `12` |
 | `resilience` | Loss-resilience preset (requires a **reboot**) | `"off"`, `"racing"`, `"fpv"`, … |
@@ -228,6 +248,21 @@ The stabilization/zoom modes (`framing`) and resilience presets are documented i
 | `server` | Receiver address | `"unix://wfb_tx"`, `"udp://192.168.1.1:5600"`, `"shm://venc_ring"` |
 | `streamMode` | Stream mode | `"rtp"` or `"compact"` |
 | `maxPayloadSize` | Max RTP packet size | `1400` (default) |
+| `connectedUdp` | Connected UDP socket (`connect()`) | `true` (default); `false` — unconnected, used in the apfpv WiFi mode |
+| `audioPort` | Audio channel | `0` — together with video; `>0` — separate UDP port; `<0` — audio to the recording only, never on air |
+
+<strong>Network discovery (`discovery`)</strong>
+
+The camera announces itself via mDNS — you can open it as `http://waybeam.local` without hunting for the IP:
+
+| Parameter | Description | Default |
+| :--- | :--- | :--- |
+| `enabled` | mDNS announcement on the LAN | `true` |
+| `serviceType` | Service type | `"_waybeam-venc._tcp"` |
+| `name` | Custom name; empty — `waybeam-<suffix>`, where the suffix is the tail of the chip's die ID | `""` |
+| `bareAlias` | Also announce the short `waybeam.local` name (conflicts between cameras are resolved per RFC 6762) | `true` |
+
+The full 12-hex serial (die ID) is readable from `GET /api/v1/config` → `data.device.serial`.
 
 <strong>FPV ROI encoding (`fpv`)</strong>
 
@@ -249,7 +284,7 @@ The stabilization/zoom modes (`framing`) and resilience presets are documented i
 waybeam
 ```
 
-The web panel will be available at `http://<camera-ip>/`
+The web panel will be available at `http://<camera-ip>/` or simply `http://waybeam.local` — the camera announces itself via mDNS (the `discovery` section, enabled by default).
 
 <strong>Check operation</strong>
 
@@ -311,6 +346,7 @@ The script is numbered `S96`, meaning it starts after most system services, but 
 In the config above `audioPort: 0` and `sidecarPort: 0`. This means:
 
 - `audioPort: 0` — audio is sent together with video over the same channel (optimal for WFB-ng)
+- `audioPort < 0` (e.g. `-1`) — record-only mode: audio goes to the SD recording but is never transmitted on air
 - `sidecarPort: 0` — the diagnostics sidecar channel is disabled (no overhead)
 
 The default template has `audioPort: 5601` and `sidecarPort: 5602` — if you need separate audio or per-frame telemetry over UDP, set the corresponding values.
@@ -368,6 +404,8 @@ curl http://localhost/api/v1/modes
 ```
 
 Make sure `sensor.index` and `sensor.mode` are set to `-1` (auto-detect).
+
+**Upgrading from an older version?** In v0.21 (IMX415) and v0.23 (IMX335) the sensor mode lineups were reworked and the **`sensor.mode` indices were renumbered**. If your old config used a specific index, check it against the current `/api/v1/modes` list or set it back to `-1`.
 :::
 
 ::: details H.264 codec doesn't work

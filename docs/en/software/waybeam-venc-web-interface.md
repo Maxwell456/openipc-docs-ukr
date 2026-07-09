@@ -5,7 +5,7 @@ description: "Complete reference for the Waybeam HTTP API — web dashboard, ISP
 
 # Web panel and HTTP API
 
-Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80).
+Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80) or simply `http://waybeam.local` — the camera announces itself via mDNS. The reference is verified against version **v0.24.1** (July 2026).
 
 ---
 
@@ -13,16 +13,17 @@ Waybeam includes a built-in web panel and a full HTTP API for real-time paramete
 
 <strong>Settings tab</strong>
 
-Configuration fields are grouped into **12 sections**:
+Configuration fields are grouped into **13 sections**:
 
 | Section | Description |
 | :--- | :--- |
 | System | Port, overclock, logging |
 | Sensor | Sensor selection (index / mode) |
-| ISP | Exposure, AWB, AE engine |
+| ISP | Exposure, AWB, AE engine (`aeEngine` only takes effect on Star6E; Maruko always runs the vendor's native paced AE+AWB) |
 | Image | Mirror, flip, rotate |
 | Video | Codec, bitrate, FPS, GOP, framing, resilience |
 | Outgoing | Streaming, address, mode |
+| Discovery | mDNS announcement on the network (`waybeam.local`) |
 | Audio | Codec, sample rate, volume |
 | FPV | ROI encoding + 3DNR |
 | IMU | BMI270 gyro (POC) |
@@ -39,8 +40,12 @@ Configuration fields are grouped into **12 sections**:
 - **Save & Restart** — apply changes and restart the pipeline
 - **Restore Defaults** — reload the on-disk configuration
 
-::: info The EIS section was removed
-Earlier versions had a separate `eis` section (gyroscopic GyroGlide stabilization). It was **removed in 0.8.0**. Stabilization now lives in the Video section — the `video0.framing` field (see [below](#framing-stabilization-and-digital-zoom)).
+::: details For versions before v0.8 — the EIS section (GyroGlide)
+Earlier versions had a separate `eis` section (gyroscopic GyroGlide stabilization). It was **removed in v0.8.0**. Stabilization now lives in the Video section — the `video0.framing` field (see [below](#framing-stabilization-and-digital-zoom)).
+:::
+
+::: tip Custom dashboard
+In current builds (July 2026) the built-in web interface can be replaced by dropping your own files into `/usr/share/www` — they take priority over the bundled dashboard.
 :::
 
 <strong>API Reference tab</strong>
@@ -84,13 +89,15 @@ curl http://<ip>/api/v1/version
 {
   "ok": true,
   "data": {
-    "app_version": "0.16.0",
+    "app_version": "0.24.1",
     "backend": "star6e",
-    "contract_version": "0.2.0",
-    "config_schema_version": "0.2.0"
+    "contract_version": "0.11.0",
+    "config_schema_version": "0.11.0"
   }
 }
 ```
+
+The `contract_version` / `config_schema_version` values grow with releases (for example, v0.19 bumped the contract to 0.11.0 by removing `video0.frameLost`).
 
 ---
 
@@ -114,6 +121,10 @@ Sensor mode introspection (pad + resolution) — the current selection and every
 ```bash
 curl http://<ip>/api/v1/modes
 ```
+
+::: warning sensor.mode indices renumbered (v0.21 / v0.23)
+The mode lineups on Maruko were reworked: the IMX415 gained non-binned 16:9 modes at 1485 Mbps (up to `1920×1080@100`), the IMX335 — a best-per-fps lineup (30/50/60/90/100) plus the ultra-low-latency `1536×864@144` (v0.24). The `sensor.mode` indices were **renumbered** in the process — after upgrading, check old configs against the `/api/v1/modes` list or set `-1`.
+:::
 
 ---
 
@@ -222,6 +233,25 @@ A snapshot of the audio pipeline: whether the library is loaded, capture state, 
 curl http://<ip>/api/v1/transport/status
 curl http://<ip>/api/v1/audio/status
 ```
+
+---
+
+### Discovery (mDNS)
+
+The camera announces itself on the local network as a `_waybeam-venc._tcp.local` service: a unique `waybeam-<suffix>.local` name (the suffix is the tail of the SigmaStar chip die ID) and, by default, the short `waybeam.local`. The `discovery` section fields are exposed via the API and the WebUI (Discovery section):
+
+```bash
+# Announcement state
+curl "http://<ip>/api/v1/get?discovery.enabled"
+
+# A custom name instead of waybeam-<suffix>
+curl "http://<ip>/api/v1/set?discovery.name=my-drone"
+
+# Disable the short waybeam.local name (useful with several cameras on the network)
+curl "http://<ip>/api/v1/set?discovery.bareAlias=false"
+```
+
+The full 12-hex serial (die ID) is at `GET /api/v1/config` → `data.device.serial` (read-only). Short-name conflicts between several cameras are resolved automatically per RFC 6762 (IP tiebreak).
 
 ---
 
@@ -342,7 +372,7 @@ curl "http://<ip>/api/v1/set?video0.zoomX=0.0&video0.zoomY=0.0"
 curl "http://<ip>/api/v1/set?video0.zoomX=0.5&video0.zoomY=0.5"
 ```
 
-**Stabilization** (`stab` / `stab-fill`, Star6E only) uses a Kalman trajectory filter. Fine-tuning (all restart; re-selecting the preset resets them to defaults, so **set `framing` first, then the overrides**):
+**Stabilization** (`stab` / `stab-fill`, Star6E only) uses a Kalman trajectory filter; on Maruko the corresponding WebUI controls are greyed out — the chip lacks the IVE block. Fine-tuning (all restart; re-selecting the preset resets them to defaults, so **set `framing` first, then the overrides**):
 
 | Field | Default | Description |
 | :--- | :--- | :--- |

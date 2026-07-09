@@ -5,7 +5,7 @@ description: "How to configure Waybeam to work with WFB-ng instead of Majestic �
 
 # Integrating Waybeam with WFB-ng
 
-This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency.
+This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency. The guide is verified against version **v0.24.1** (July 2026).
 
 ---
 
@@ -88,6 +88,10 @@ If WFB-ng expects an RTP stream over UDP:
 }
 ```
 
+::: tip The apfpv mode (WiFi without WFB-ng)
+In the apfpv WiFi mode Waybeam boots with unconnected UDP output (`connectedUdp: false`) and clamps the RTP payload to 1400 bytes — less fragmentation on the WiFi link. For the WFB-ng setup keep `connectedUdp: true`.
+:::
+
 <strong>Method 3: Shared Memory (SHM)</strong>
 
 For maximum performance — over a ring buffer in shared memory:
@@ -145,7 +149,6 @@ Recommended parameters for stable FPV streaming over WiFi Broadcast:
     "bitrate": 8192,
     "gopSize": 1.0,
     "qpDelta": -4,
-    "frameLost": true,
     "resilience": "racing"
   }
 }
@@ -159,8 +162,11 @@ Recommended parameters for stable FPV streaming over WiFi Broadcast:
 | `fps: 60` | 60 fps | Balance between smoothness and load |
 | `bitrate: 8192` | 8 Mbps | Optimal for a 20 MHz WFB channel |
 | `gopSize: 1.0` | 1 second | Fast recovery (only effective when `resilience: "off"`) |
-| `frameLost: true` | Enabled | Allows dropping frames under overload |
 | `resilience: "racing"` | Intra-refresh | Stripe recovery without waiting for an IDR (requires a reboot) |
+
+::: details For versions before v0.19 — the `frameLost` field
+Older versions additionally recommended `"frameLost": true` — an SDK strategy that allowed the encoder to drop frames under overload. In **v0.19** it was removed entirely: the field no longer exists, and a **1000 kbps** bitrate floor applies instead. If the key is still in your config, delete it.
+:::
 
 ::: info The codec is always H.265
 Waybeam encodes only H.265 (HEVC) — there is no `video0.codec` field. Make sure the receiver is configured for H.265.
@@ -289,7 +295,7 @@ Update `/etc/waybeam.json`:
 ```
 
 ::: info Audio and the Unix socket
-With `unix://` and `audioPort: 0`, audio is sent together with video over the same channel. With `audioPort > 0`, audio is sent to a separate UDP port `127.0.0.1:<audioPort>`. The `audio.*` fields (except `audio.mute`) are restart-required; `audio.mute` changes live.
+With `unix://` and `audioPort: 0`, audio is sent together with video over the same channel. With `audioPort > 0`, audio is sent to a separate UDP port `127.0.0.1:<audioPort>`. A negative `audioPort` (e.g. `-1`) is record-only mode: audio goes to the SD recording but never on air. The `audio.*` fields (except `audio.mute`) are restart-required; `audio.mute` changes live.
 :::
 
 <strong>3.2 Receiving audio on the ground station</strong>
@@ -383,6 +389,8 @@ HTTP recording control works only on Star6E. On Maruko recording is enabled conf
 
 ::: info
 The MPEG-TS format needs no file finalization. Even on a sudden power loss the recording is playable up to the last written packet. Files rotate at IDR boundaries by time (`maxSeconds`) or size (`maxMB`).
+
+Since **v0.17.1** the second VENC channel is created right away with `record.mode: "dual"` / `"dual-stream"` (not only with `record.enabled: true`), and the SD recording bitrate is fully independent of the live stream.
 :::
 
 ---
