@@ -4,11 +4,7 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
 ---
 
 # Runcam WiFiLink 2
-<img
-  src="https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-v2-main-photo.png"
-  alt="main photo"
-  width="400px"
-/>
+<img src="/images/runcam_wifilink-v2.webp" alt="Runcam WiFiLink v2" width="400" height="400"/>
 
 ### Specifications
 
@@ -28,8 +24,10 @@ description: Guide for connecting, configuring and using the Runcam WiFiLink v2 
 
 ### Board Layout
 
-![Board layout bottom 1](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-2-motherboard-down-dark.png)
-![Board layout bottom 2](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-2-motherboard-up-dark.png)
+<img src="/images/runcam-wifilink-2-motherboard-down-light.webp" class="light-img" alt="Board layout, bottom" width="600" height="600"/>
+<img src="/images/runcam-wifilink-2-motherboard-down-dark.webp" class="dark-img" alt="Board layout, bottom" width="600" height="600"/>
+<img src="/images/runcam-wifilink-2-motherboard-up-light.webp" class="light-img" alt="Board layout, top" width="600" height="600"/>
+<img src="/images/runcam-wifilink-2-motherboard-up-dark.webp" class="dark-img" alt="Board layout, top" width="600" height="600"/>
 
 ### Basic Setup
 

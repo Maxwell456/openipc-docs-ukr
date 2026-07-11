@@ -94,7 +94,7 @@ Ethernet для конфігурації та оновлень
 2. Підключіть JST до Ethernet/UART0 (сторона без радіатора)
 3. Підключіть RJ45 до ПК або маршрутизатора
 
-![Компоненти Thinker](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/aio-thinker/thinker-connectivity.png)
+![Компоненти Thinker](/images/thinker-connectivity.png)
 
 ----
 

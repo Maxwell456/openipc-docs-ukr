@@ -14,7 +14,7 @@ Two versions are available:
 
 >RTL8731BU: 50mW @ 5G, 125mW @ 2.4G
 
-![Thinker kit](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/aio-thinker/thinker-webshop-photo.jpg)
+<img src="/images/thinker-webshop-photo.webp" alt="Thinker kit" width="600" height="418"/>
 
 ### Specifications
 
@@ -83,7 +83,7 @@ Ethernet for configuration and updates
 2. Connect the JST to Ethernet/UART0 (the side without a heatsink)
 3. Connect the RJ45 to a PC or router
 
-![Thinker components](https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/aio-thinker/thinker-connectivity.png)
+![Thinker components](/images/thinker-connectivity.png)
 
 ----
 

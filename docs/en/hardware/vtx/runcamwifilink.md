@@ -4,7 +4,7 @@ description: Guide for connecting, basic setup and use of the Runcam WiFiLink v1
 ---
 
 # Runcam WiFiLink 1
-<img src="https://raw.githubusercontent.com/OpenIPC/docs/refs/heads/main/src/assets/images/runcam-wifilink-v1-main-photo.png" alt="main photo" width="400px"/>
+<img src="/images/runcam_wifilink-v1.webp" alt="Runcam WiFiLink v1" width="400" height="400"/>
 
 ---
 
