@@ -10,7 +10,7 @@ This guide describes how to install **Waybeam** on a SigmaStar (Infinity6E / Inf
 ::: info What is Waybeam?
 **Waybeam** is a standalone H.265 (HEVC) video encoder that fully replaces Majestic. It provides lower latency, a full HTTP API for real-time tuning, and native WFB-ng integration via a Unix socket. The binary, config (`/etc/waybeam.json`) and init script are named `waybeam`.
 
-This guide is verified against version **v0.24.1** (July 2026).
+This guide is verified against version **v0.40.1** (July 2026).
 :::
 
 ---
@@ -180,6 +180,12 @@ cat > /etc/waybeam.json << 'EOF'
     "calFile": "/etc/imu.cal",
     "calSamples": 400
   },
+  "attitude": {
+    "enabled": false,
+    "mountDeg": 0,
+    "invertRoll": false,
+    "invertPitch": false
+  },
   "record": {
     "enabled": false,
     "mode": "mirror",
@@ -236,8 +242,8 @@ In **v0.19** this strategy was removed entirely — the `frameLost` field no lon
 | `resilience` | Loss-resilience preset (requires a **reboot**) | `"off"`, `"racing"`, `"fpv"`, … |
 | `framing` | Stabilization / digital zoom | `"off"`, `"stab"`, `"zoom-2x"`, … |
 
-::: info More on framing and resilience
-The stabilization/zoom modes (`framing`) and resilience presets are documented in detail in [Web panel and HTTP API](/en/software/waybeam-venc-web-interface).
+::: info More on framing, resilience and attitude
+The stabilization/zoom modes (`framing`), resilience presets and the IMU-driven artificial horizon (the `attitude` section, v0.39+) are documented in detail in [Web panel and HTTP API](/en/software/waybeam-venc-web-interface).
 :::
 
 <strong>Streaming (`outgoing`)</strong>
@@ -405,7 +411,7 @@ curl http://localhost/api/v1/modes
 
 Make sure `sensor.index` and `sensor.mode` are set to `-1` (auto-detect).
 
-**Upgrading from an older version?** In v0.21 (IMX415) and v0.23 (IMX335) the sensor mode lineups were reworked and the **`sensor.mode` indices were renumbered**. If your old config used a specific index, check it against the current `/api/v1/modes` list or set it back to `-1`.
+**Upgrading from an older version?** The sensor mode lineups were rebuilt several times: v0.21/v0.23 (Maruko), **v0.25–v0.34** (Star6E, in-tree IMX335/IMX415 drivers). The **`sensor.mode` indices were renumbered** and some modes were hidden — a persisted index outside the new range keeps waybeam from starting (mode-select error at boot). Check your old config against the `/api/v1/modes` list or set it back to `-1`.
 :::
 
 ::: details H.264 codec doesn't work

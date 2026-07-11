@@ -5,7 +5,7 @@ description: "Complete reference for the Waybeam HTTP API — web dashboard, ISP
 
 # Web panel and HTTP API
 
-Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80) or simply `http://waybeam.local` — the camera announces itself via mDNS. The reference is verified against version **v0.24.1** (July 2026).
+Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80) or simply `http://waybeam.local` — the camera announces itself via mDNS. The reference is verified against version **v0.40.1** (July 2026).
 
 ---
 
@@ -13,7 +13,7 @@ Waybeam includes a built-in web panel and a full HTTP API for real-time paramete
 
 <strong>Settings tab</strong>
 
-Configuration fields are grouped into **13 sections**:
+Configuration fields are grouped into **14 sections**:
 
 | Section | Description |
 | :--- | :--- |
@@ -26,7 +26,8 @@ Configuration fields are grouped into **13 sections**:
 | Discovery | mDNS announcement on the network (`waybeam.local`) |
 | Audio | Codec, sample rate, volume |
 | FPV | ROI encoding + 3DNR |
-| IMU | BMI270 gyro (POC) |
+| IMU | BMI270 gyro |
+| Attitude | Artificial horizon: roll/pitch/yaw from the IMU, mount angles, level trims |
 | Recording | SD card recording |
 | Adaptive Encoder Control | Scene detection |
 | Debug | OSD |
@@ -42,6 +43,10 @@ Configuration fields are grouped into **13 sections**:
 
 ::: details For versions before v0.8 — the EIS section (GyroGlide)
 Earlier versions had a separate `eis` section (gyroscopic GyroGlide stabilization). It was **removed in v0.8.0**. Stabilization now lives in the Video section — the `video0.framing` field (see [below](#framing-stabilization-and-digital-zoom)).
+:::
+
+::: details For versions before v0.40 — 13 sections, no Attitude
+The **Attitude** section (live roll/pitch/yaw and the "Capture level trims" button) appeared in the WebUI in **v0.40**. In 0.24–0.39 there were 13 sections, and the BMI270 gyro was listed as a POC with no consumer.
 :::
 
 ::: tip Custom dashboard
@@ -89,15 +94,15 @@ curl http://<ip>/api/v1/version
 {
   "ok": true,
   "data": {
-    "app_version": "0.24.1",
+    "app_version": "0.40.1",
     "backend": "star6e",
-    "contract_version": "0.11.0",
-    "config_schema_version": "0.11.0"
+    "contract_version": "0.12.0",
+    "config_schema_version": "0.12.0"
   }
 }
 ```
 
-The `contract_version` / `config_schema_version` values grow with releases (for example, v0.19 bumped the contract to 0.11.0 by removing `video0.frameLost`).
+The `contract_version` / `config_schema_version` values grow with releases (for example, v0.19 bumped the contract to 0.11.0 by removing `video0.frameLost`, and v0.40 bumped it to 0.12.0 with the attitude API).
 
 ---
 
@@ -122,8 +127,12 @@ Sensor mode introspection (pad + resolution) — the current selection and every
 curl http://<ip>/api/v1/modes
 ```
 
-::: warning sensor.mode indices renumbered (v0.21 / v0.23)
-The mode lineups on Maruko were reworked: the IMX415 gained non-binned 16:9 modes at 1485 Mbps (up to `1920×1080@100`), the IMX335 — a best-per-fps lineup (30/50/60/90/100) plus the ultra-low-latency `1536×864@144` (v0.24). The `sensor.mode` indices were **renumbered** in the process — after upgrading, check old configs against the `/api/v1/modes` list or set `-1`.
+::: warning sensor.mode indices renumbered (v0.21–v0.34)
+The mode lineups were rebuilt on both platforms: Maruko in v0.21/v0.23, Star6E in **v0.25–v0.34** (in-tree IMX335/IMX415 drivers). The Star6E lineups are now: IMX335 — 2560×1920@30/60, 2560×1440@90, 2176×1224@100, 1920×1080@120, `1600×900@144`; IMX415 — 5 visible modes from 4K@~33 down to `1728×816@120`. The `sensor.mode` indices were **renumbered several times** along the way, and there are fewer modes than in the stock driver: a persisted index outside the new range keeps waybeam from starting. After upgrading, check old configs against the `/api/v1/modes` list or set `-1` (auto).
+:::
+
+::: details v0.21/v0.23 renumbering details (Maruko)
+The mode lineups on Maruko were reworked: the IMX415 gained non-binned 16:9 modes at 1485 Mbps (up to `1920×1080@100`), the IMX335 — a best-per-fps lineup (30/50/60/90/100) plus the ultra-low-latency `1536×864@144` (v0.24).
 :::
 
 ---
@@ -233,6 +242,42 @@ A snapshot of the audio pipeline: whether the library is loaded, capture state, 
 curl http://<ip>/api/v1/transport/status
 curl http://<ip>/api/v1/audio/status
 ```
+
+---
+
+### Attitude: artificial horizon from the IMU
+
+Since **v0.39–v0.40** Waybeam estimates the camera orientation (roll/pitch/yaw) from the BMI270 gyro — for an artificial horizon in the ground-station HUD. Requires `imu.enabled=true` and `attitude.enabled=true` (both restart).
+
+<strong>GET /api/v1/attitude</strong> — a live snapshot of the angles (camera frame, mount trims applied):
+
+```bash
+curl http://<ip>/api/v1/attitude
+```
+
+<strong>GET /api/v1/attitude/calibrate_level</strong> — one-command level calibration: hold the camera still and level for ~1.5 s — the service averages the accelerometer, solves the trims exactly (`attitude.trimRollDeg` / `trimPitchDeg`), persists them and restarts the pipeline:
+
+```bash
+curl http://<ip>/api/v1/attitude/calibrate_level
+```
+
+Possible errors: **409** — the IMU is disabled or the camera is moving; **501** — on Maruko (the estimator is not wired to that backend's IMU path yet).
+
+`attitude` section fields (all restart):
+
+| Field | Description |
+| :--- | :--- |
+| `enabled` | Enable the horizon estimator |
+| `mountDeg` | Camera mount angle around the lens axis: 0 / 90 / 180 / 270 |
+| `invertRoll` / `invertPitch` | Sign inversion |
+| `axisFwd` / `axisDown` | Sensor axis remap for boards mounted in a non-standard orientation (any of the 24 axis-aligned ones); defaults `+x` / `+z` |
+| `trimRollDeg` / `trimPitchDeg` | Level trims — written by the calibration |
+
+::: info ATTITUDE in the RTP sidecar
+With the sidecar enabled (`outgoing.sidecarPort`), the per-frame telemetry gains a 12-byte **ATTITUDE** trailer (roll/pitch/yaw in 0.1° steps, status, IMU sample age) — for HUDs. The sidecar itself is **multi-subscriber** since v0.39: up to 4 receivers at once (5 s TTL per slot), so a HUD subscription no longer hijacks the telemetry from the wfb controller. The trailer is Star6E-only. Since v0.40.1 the estimator drops corrupt IMU samples (NaN/Inf) and never publishes a "frozen" horizon.
+:::
+
+In the WebUI, the **Attitude** section shows the angles live (1 Hz poll) and offers a **Capture level trims** button — it calibrates, updates the fields and restarts the pipeline.
 
 ---
 
@@ -352,8 +397,8 @@ curl "http://<ip>/api/v1/dual/set?gop=1.0"
 | `framing` | Effect | Resolution @1080p | Chips |
 | :--- | :--- | :--- | :--- |
 | `off` | Full frame | 1920×1080 | both |
-| `stab` | Stabilization (centered 80% crop) | 1536×864 | Star6E only |
-| `stab-fill` | Stabilization (floating image on a black border) | 1920×1080 | Star6E only |
+| `stab` | Stabilization (centered 80% crop) | 1536×864 | both (Maruko since v0.35) |
+| `stab-fill` | Stabilization (floating image on a black border) | 1920×1080 | both (Maruko since v0.37) |
 | `zoom-1.25x` | Digital zoom 1.25× | 1536×864 | both |
 | `zoom-1.50x` | Digital zoom 1.50× | 1280×720 | both |
 | `zoom-1.75x` | Digital zoom 1.75× | 1088×608 | both |
@@ -372,14 +417,23 @@ curl "http://<ip>/api/v1/set?video0.zoomX=0.0&video0.zoomY=0.0"
 curl "http://<ip>/api/v1/set?video0.zoomX=0.5&video0.zoomY=0.5"
 ```
 
-**Stabilization** (`stab` / `stab-fill`, Star6E only) uses a Kalman trajectory filter; on Maruko the corresponding WebUI controls are greyed out — the chip lacks the IVE block. Fine-tuning (all restart; re-selecting the preset resets them to defaults, so **set `framing` first, then the overrides**):
+**Stabilization** (`stab` / `stab-fill`) uses a Kalman trajectory filter and works on both chips since v0.35/v0.37. Fine-tuning (all restart; re-selecting the preset resets them to defaults, so **set `framing` first, then the overrides**):
 
 | Field | Default | Description |
 | :--- | :--- | :--- |
+| `video0.stabAccuracy` | `auto` | Motion-detector level: `high` / `medium` / `low` (quality ↔ CPU). `auto` = `high` on Star6E, `low` on the single-core Maruko (v0.36) |
 | `video0.stabCropPct` | 80 | Stabilization headroom (lower = bigger dead border, more motion absorbed) |
 | `video0.stabKalmanQ` | 0.03 | Pan response (`0.001..1.0`; higher = follows slow pans sooner) |
 | `video0.stabKalmanR` | 2.0 | **The primary feel knob.** Smoothness (`0.1..50.0`; higher = smoother but laggier) |
 | `video0.pauseStab` | — | **live** pause: glides the window/image back to center (`stab`/`stab-fill` only) |
+
+::: warning Stabilization on Maruko — the CPU cost
+The motion detector is SigmaStar's software NEON library, not a hardware block. On the single-core Maruko that is a noticeable CPU share (in `stab-fill` ≈29% of the core at 50 fps with `stabAccuracy=low`). Also, on Maruko `stab-fill` is incompatible with `record.mode: "dual"` — such a request is rejected.
+:::
+
+::: details For versions before v0.35/v0.37 — stabilization was Star6E-only
+Before v0.35 `stab`, and before v0.37 `stab-fill`, worked only on Star6E: on Maruko the `MI_IVE` detector failed to initialize due to an incompatible vendor library, so the WebUI greyed out the stabilization controls and `/set` rejected the fields. Since v0.35 the Maruko tarball ships a compatible `libmi_ive.so`, and both presets are available on both chips.
+:::
 
 ```bash
 # Enable stabilization (restart)
@@ -390,8 +444,8 @@ curl "http://<ip>/api/v1/set?video0.pauseStab=1"   # freeze (glide to center)
 curl "http://<ip>/api/v1/set?video0.pauseStab=0"   # resume
 ```
 
-::: info The gyro is no longer needed
-The new stabilization works from in-frame motion analysis (Kalman) and **does not use the IMU**. The former BMI270 EIS (`gyroglide`) was removed in 0.8.0.
+::: info Stabilization does not use the gyro
+Stabilization works from in-frame motion analysis (Kalman) and **does not use the IMU**. The former BMI270 EIS (`gyroglide`) was removed in 0.8.0. Since v0.39 the gyro feeds a different feature — the [attitude (horizon) estimator](#attitude-artificial-horizon-from-the-imu).
 :::
 
 ---
@@ -487,7 +541,7 @@ curl "http://<ip>/api/v1/set?fpv.roiQp=-18"
 curl "http://<ip>/api/v1/set?fpv.roiSteps=2"
 ```
 
-<strong>Enable stabilization (Star6E only)</strong>
+<strong>Enable stabilization</strong>
 
 ```bash
 # framing is a restart field; set it first, then fine-tune

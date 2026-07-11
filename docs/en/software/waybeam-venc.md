@@ -10,7 +10,7 @@ description: "Overview of Waybeam — a standalone H.265 (HEVC) video encoder an
 ::: info Repository
 [https://github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc)
 
-This page is verified against version **v0.24.1** (July 2026).
+This page is verified against version **v0.40.1** (July 2026).
 :::
 
 ---
@@ -28,17 +28,18 @@ This page is verified against version **v0.24.1** (July 2026).
 | **3A (AE/AWB)** | Star6E: `isp.aeEngine` (`"sdk"` / `"custom"`). Maruko: always the vendor's native AE+AWB with an `fps/3` pacer — ~24% CPU savings at 1080p100, the `aeEngine` field is ignored |
 | **ROI encoding** | Frame-center priority for FPV |
 | **Loss resilience** | Resilience presets: intra-refresh (rolling GDR) + SVC-T reference pyramid |
-| **Framing** | Digital zoom 1.25×–4× (both chips) + `stab` / `stab-fill` stabilization (Kalman, Star6E only) |
-| **High frame rate** | Up to 100 fps (IMX415 / IMX335, 1080p) and 144 fps in the `1536×864@144` mode (IMX335, Maruko) |
+| **Framing** | Digital zoom 1.25×–4× + `stab` / `stab-fill` stabilization (Kalman) — on both chips since v0.35/v0.37; detector level via `video0.stabAccuracy` |
+| **High frame rate** | IMX335 — up to 144 fps (`1600×900@144` on Star6E, `1536×864@144` on Maruko); IMX415 — up to 120 fps (`1728×816@120`). In-tree sensor drivers |
 | **Audio** | Audio capture, Opus / G.711a / G.711µ / PCM codecs |
 | **Snapshot** | Dedicated MJPEG channel — frame via `/api/v1/snapshot.jpg` |
 | **SD recording** | MPEG-TS (HEVC + audio), power-loss safe |
 | **Gemini mode** | Two VENC channels: streaming + recording independently |
 | **Adaptive recording bitrate** | Auto-lowers the recording bitrate if the SD card can't keep up (10%/s) |
-| **IMU** | BMI270 driver (both chips), disabled by default — a POC for telemetry/sidecar |
+| **IMU** | BMI270 driver (both chips), disabled by default; since v0.39 it feeds the attitude estimator |
+| **Attitude (horizon)** | Live roll/pitch/yaw via `GET /api/v1/attitude`, one-command level calibration, ATTITUDE trailer in the RTP sidecar for HUDs (Star6E) |
 
 ::: details For versions before v0.8 — GyroGlide gyroscopic stabilization (the `eis` section)
-Older versions had gyroscopic **GyroGlide-Lite** stabilization (the `eis` config section). It was **removed in v0.8.0**. Stabilization is now implemented via a Kalman filter in the `video0.framing` field (`stab` / `stab-fill`, Star6E only) and does not require an IMU. The BMI270 driver remains, but as a POC consumer for telemetry, not for EIS.
+Older versions had gyroscopic **GyroGlide-Lite** stabilization (the `eis` config section). It was **removed in v0.8.0**. Stabilization is now implemented via a Kalman filter in the `video0.framing` field (`stab` / `stab-fill`) and does not require an IMU. The BMI270 driver remains: since v0.39 it feeds the attitude (horizon) estimator for telemetry/HUD, not stabilization.
 :::
 
 ---
@@ -55,12 +56,16 @@ Waybeam encodes only H.265 (HEVC) on both chips. There is no `video0.codec` fiel
 :::
 
 ::: warning Star6E-only features
-- `stab` / `stab-fill` stabilization (Maruko lacks the IVE block, so the corresponding WebUI controls are greyed out)
 - Scene-change IDR (`video0.sceneThreshold` / `sceneHoldoff`)
 - `hevc` recording format (Maruko is `ts` only)
 - HTTP-driven recording (`/api/v1/record/start|stop`); on Maruko recording is config-only
+- The ATTITUDE sidecar trailer and level calibration (on Maruko `/api/v1/attitude/calibrate_level` returns `501`)
 
 Check per-field backend support via `/api/v1/capabilities`.
+:::
+
+::: details For versions before v0.35/v0.37 — stabilization was Star6E-only
+Previously `stab` / `stab-fill` stabilization worked only on Star6E, and the corresponding WebUI controls on Maruko were greyed out (the `MI_IVE` detector was believed not to work on that chip). **v0.35** brought `stab` and **v0.37** brought `stab-fill` to Maruko — at feature parity with Star6E; the culprit was an incompatible vendor library, which the tarball now ships. Maruko caveats: the motion detector is software (NEON) and costs a noticeable share of the single core (quality/cost level via `video0.stabAccuracy`, v0.36), and `stab-fill` is incompatible with `record.mode: "dual"`.
 :::
 
 ---
@@ -74,7 +79,7 @@ Check per-field backend support via `/api/v1/capabilities`.
 | **WFB integration** | Native via Unix socket / SHM / UDP | Via UDP |
 | **SD recording** | Gemini mode (streaming + recording) | Limited |
 | **Loss resilience** | Resilience presets (intra-refresh + SVC-T) | Basic |
-| **Stabilization / zoom** | Kalman stabilization (Star6E) + digital zoom | None |
+| **Stabilization / zoom** | Kalman stabilization (both chips) + digital zoom | None |
 | **ISP tuning** | 62 parameters in real time | Basic |
 | **License** | MIT (open source) | Closed |
 

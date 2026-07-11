@@ -5,7 +5,7 @@ description: "How to configure Waybeam to work with WFB-ng instead of Majestic �
 
 # Integrating Waybeam with WFB-ng
 
-This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency. The guide is verified against version **v0.24.1** (July 2026).
+This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency. The guide is verified against version **v0.40.1** (July 2026).
 
 ---
 
@@ -350,6 +350,8 @@ curl "http://localhost/api/v1/set?outgoing.sidecarPort=6666"
 
 The sidecar sends per-frame telemetry: encode/send timing, one-way latency, jitter, and — when scene detection is active — `frame_type`, `complexity`, `scene_change`, `idr_inserted`, `frames_since_idr`.
 
+Since **v0.39** the sidecar is multi-subscriber — up to 4 receivers at once (5 s TTL per slot), so an adaptive-link controller and a HUD can listen to the telemetry in parallel without hijacking each other's feed. With the `attitude` section enabled, every frame gains an **ATTITUDE** trailer (roll/pitch/yaw for an artificial horizon in the HUD) — Star6E only; see the [API reference](/en/software/waybeam-venc-web-interface#attitude-artificial-horizon-from-the-imu).
+
 ---
 
 ### Part 5: SD card recording
@@ -424,7 +426,7 @@ curl http://192.168.1.10/request/idr
 | **Loss resilience** | Resilience presets (intra-refresh + SVC-T) | Basic |
 | **Recording** | Gemini mode (stream + record) | Basic |
 | **ISP tuning** | 62 parameters + export/import | Limited |
-| **Stabilization / zoom** | Kalman stabilization (Star6E) + digital zoom | None |
+| **Stabilization / zoom** | Kalman stabilization (both chips) + digital zoom | None |
 | **Web panel** | Built-in with full control | — |
 | **Source** | Open (MIT) | Closed |
 
