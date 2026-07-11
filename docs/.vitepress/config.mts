@@ -90,6 +90,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'updates': { name: 'Оновлення', landing: '/updates' },
     'links': { name: 'Корисні посилання', landing: '/links' },
     'faq': { name: 'FAQ', landing: '/faq' },
+    'support': { name: 'Підтримати проєкт', landing: '/support' },
   },
   en: {
     'getting-started': { name: 'Getting Started', landing: '/en/getting-started/' },
@@ -99,6 +100,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'updates': { name: 'Updates', landing: '/en/updates' },
     'links': { name: 'Links', landing: '/en/links' },
     'faq': { name: 'FAQ', landing: '/en/faq' },
+    'support': { name: 'Support the project', landing: '/en/support' },
   },
 }
 
@@ -462,6 +464,7 @@ export default defineConfig({
         lightModeSwitchTitle: 'Світла тема',
         darkModeSwitchTitle: 'Темна тема',
         footer: {
+          message: '<a href="/support">Підтримати проєкт</a>',
           copyright: '© 2024–2026 OpenFPV Ukraine'
         },
         editLink: {
@@ -683,6 +686,7 @@ export default defineConfig({
         docFooter: { prev: 'Previous', next: 'Next' },
         lastUpdated: { text: 'Last updated', formatOptions: { dateStyle: 'long', forceLocale: true } },
         footer: {
+          message: '<a href="/en/support">Support the project</a>',
           copyright: '© 2024–2026 OpenFPV Ukraine'
         },
         editLink: {

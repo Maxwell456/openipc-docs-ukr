@@ -5,6 +5,7 @@ import LangSwitcher from './LangSwitcher.vue'
 import BackToTop from './BackToTop.vue'
 import ReportError from './ReportError.vue'
 import Helpful from './Helpful.vue'
+import SupportNote from './SupportNote.vue'
 import HeroSearch from './HeroSearch.vue'
 import CloseMenu from './CloseMenu.vue'
 import WfbCalculator from './WfbCalculator.vue'
@@ -13,6 +14,8 @@ import FiberLinkDiagram from './FiberLinkDiagram.vue'
 import Faq from './Faq.vue'
 import LatestUpdates from './LatestUpdates.vue'
 import UpdatesList from './UpdatesList.vue'
+import CryptoCard from './CryptoCard.vue'
+import ShareCard from './ShareCard.vue'
 import '@fontsource-variable/inter'
 import './custom.css'
 
@@ -170,6 +173,8 @@ export default {
     app.component('Faq', Faq)
     app.component('LatestUpdates', LatestUpdates)
     app.component('UpdatesList', UpdatesList)
+    app.component('CryptoCard', CryptoCard)
+    app.component('ShareCard', ShareCard)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {
@@ -178,7 +183,7 @@ export default {
       'nav-screen-content-after': () => [h(LangSwitcher), h(CloseMenu)],
       'home-hero-image': () => h(HeroSearch),
       'layout-bottom': () => h(BackToTop),
-      'doc-after': () => [h(Helpful), h(ReportError)]
+      'doc-after': () => [h(Helpful), h(SupportNote), h(ReportError)]
     })
   }
 }

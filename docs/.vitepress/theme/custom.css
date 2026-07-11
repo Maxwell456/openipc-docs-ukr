@@ -209,6 +209,7 @@ body::after {
 .VPHero .actions {
   display: flex !important;
   flex-wrap: wrap !important;
+  align-items: center !important;
   gap: 10px !important;
   margin-top: 8px !important;
   padding-top: 8px !important;
@@ -246,6 +247,53 @@ body::after {
   transform: translateY(-2px);
   background: color-mix(in srgb, var(--vp-c-bg-soft) 80%, var(--vp-c-brand-1) 20%) !important;
   box-shadow: 0 10px 24px -10px rgba(61, 106, 255, 0.4);
+}
+
+/* ===== Support button — same size/surface language as the other hero
+   buttons (alt): padding 9/18, radius 10, no border, bg-mute. Only the
+   heart sets it apart: the site's own heart glyph (same path as the
+   support card icon), solid GitHub-Sponsors pink, inlined as a data-URI
+   with the fill baked in so it renders identically everywhere. ===== */
+.VPHero .action .VPButton.sponsor {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: var(--vp-c-bg-mute) !important;
+  color: var(--vp-c-text-1) !important;
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+.VPHero .action .VPButton.sponsor::before {
+  content: "";
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ea4aaa'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.VPHero .action .VPButton.sponsor:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--vp-c-bg-mute) 85%, #ea4aaa 15%) !important;
+  box-shadow: 0 10px 24px -10px rgba(234, 74, 170, 0.4);
+}
+
+/* Gentle heartbeat on the glyph: two quick thumps, then a long rest —
+   alive but not nagging. Disabled for prefers-reduced-motion. */
+.VPHero .action .VPButton.sponsor::before {
+  animation: heart-beat 2.6s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%   { transform: scale(1); }
+  10%  { transform: scale(1.22); }
+  20%  { transform: scale(1); }
+  30%  { transform: scale(1.15); }
+  40%  { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .VPHero .action .VPButton.sponsor::before { animation: none; }
 }
 
 /* ===== Hero search card (homepage) — injected via the home-hero-image
@@ -758,6 +806,108 @@ body:has(.VPContent.is-home) .VPNavBar {
 .home-notice-icon {
   flex-shrink: 0;
   color: var(--vp-c-brand-1);
+}
+
+/* ===== Support CTA card — bottom of every article (SupportNote.vue) and on the
+   homepage (index.md / en/index.md). Brand-tinted so it stands out from the
+   neutral "Was this helpful?" box; heart icon well + solid CTA button. ===== */
+.support-cta {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: rgba(61, 106, 255, 0.08);
+  border: 1px solid var(--vp-c-brand-soft);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 8px 22px -14px rgba(61, 106, 255, 0.5);
+  text-decoration: none !important;
+  color: inherit;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-cta:hover {
+  background: rgba(61, 106, 255, 0.12);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 16px 32px -16px rgba(61, 106, 255, 0.55), 0 4px 10px -6px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.support-cta-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* GitHub Sponsors heart pink — ties the icon to the familiar "sponsor" mark */
+  color: #ea4aaa;
+  background: var(--vp-c-bg);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.support-cta:hover .support-cta-icon {
+  background: #ea4aaa;
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.support-cta-body { flex: 1; min-width: 0; }
+
+.support-cta-title {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--vp-c-text-1);
+}
+
+.support-cta-desc {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  color: var(--vp-c-text-2);
+}
+
+.support-cta-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 15px;
+  border-radius: 9px;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-size: 0.87rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.support-cta-btn svg { transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+.support-cta:hover .support-cta-btn { background: var(--vp-c-brand-2); }
+.support-cta:hover .support-cta-btn svg { transform: translateX(3px); }
+
+.support-cta:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+/* Article-bottom wrapper (SupportNote) — spacing under the "helpful?" box */
+.support-cta-wrap { margin-top: 36px; }
+
+@media (max-width: 640px) {
+  .support-cta { flex-wrap: wrap; gap: 12px; }
+  .support-cta-btn { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .support-cta,
+  .support-cta-icon,
+  .support-cta-btn svg { transition: none; }
+  .support-cta:hover { transform: none; }
+  .support-cta:hover .support-cta-icon { transform: none; }
+  .support-cta:hover .support-cta-btn svg { transform: none; }
 }
 
 /* ===== Premium homepage footer — replaces the default plain VPFooter on
@@ -1755,8 +1905,219 @@ html {
 .doc-nav-item:hover .doc-nav-title { color: var(--vp-c-brand-1); }
 .doc-nav-item:hover .doc-nav-arrow { opacity: 1; transform: translateX(4px); color: var(--vp-c-brand-1); }
 
+/* Full-width card — spans both grid columns (e.g. the last odd card,
+   so the grid closes into a neat rectangle instead of leaving a hole) */
+.doc-nav-item.doc-nav-wide { grid-column: 1 / -1; }
+
 @media (max-width: 640px) {
   .doc-nav { grid-template-columns: 1fr; }
+}
+
+/* Crypto donation card (CryptoCard.vue) — the same doc-nav language,
+   but a <button> that copies the wallet address instead of navigating */
+button.doc-nav-item {
+  appearance: none;
+  border: none;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+}
+
+.crypto-address {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  word-break: break-all;
+  color: var(--vp-c-text-1);
+}
+
+.crypto-hint {
+  margin-top: 2px;
+  font-size: 0.74rem;
+  color: var(--vp-c-text-3);
+}
+
+/* Right-side chip: "copy" at rest, brand on card hover, green when done */
+.crypto-copy {
+  flex-shrink: 0;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.doc-nav-item:hover .crypto-copy {
+  color: #fff;
+  background: var(--vp-c-brand-1);
+}
+
+.crypto-copy.is-copied,
+.doc-nav-item:hover .crypto-copy.is-copied {
+  color: #fff;
+  background: var(--vp-c-green-2);
+}
+
+/* Share card toast (ShareCard.vue) — translucent confirmation pill,
+   centered on screen after the site link is copied to the clipboard */
+.share-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3200;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 12px;
+  background: rgba(10, 14, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #f0f4ff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+.share-toast svg {
+  flex-shrink: 0;
+  color: #4ade80;
+}
+.share-toast-enter-active,
+.share-toast-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.share-toast-enter-from,
+.share-toast-leave-to {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.94);
+}
+
+/* ===== /support — one-screen layout (frontmatter pageClass: page-support).
+   Mobile: compact paddings, natural scroll. Desktop (≥960px): the doc area
+   is exactly one viewport minus the fixed navbar, and the leftover height is
+   split evenly between the blocks via auto margins — the page fills the
+   screen with even air, no scrollbar, no dead space at the bottom. ===== */
+.page-support .VPDoc {
+  padding-top: 28px !important;
+  padding-bottom: 32px !important;
+}
+
+/* Wider content (default 752px) → less wrapping, shorter blocks */
+.page-support .VPDoc:not(.has-sidebar) .content {
+  max-width: 920px !important;
+}
+
+/* Site footer is redundant here (its message links to this very page) */
+.page-support .VPFooter { display: none !important; }
+
+/* Landing-like typography: centered title + lede, homepage-style eyebrow
+   section labels, prominent financial cards, quieter secondary row. */
+
+/* Header anchors (#) have no place on a landing heading — on a centered
+   title the floating link reads as a stray glyph */
+.page-support .vp-doc .header-anchor { display: none; }
+
+.page-support .vp-doc h1 {
+  font-size: 2.05rem;
+  letter-spacing: -0.02em;
+  text-align: center;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Lede, split in two: a one-line subtitle in full text colour, then a
+   smaller muted line — balanced hero instead of a wall of large text */
+.page-support .vp-doc h1 + p {
+  margin: 14px auto 0;
+  max-width: 760px;
+  text-align: center;
+  font-size: 1.18rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+}
+
+.page-support .vp-doc h1 + p + p {
+  margin: 10px auto 0;
+  max-width: 600px;
+  text-align: center;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--vp-c-text-2);
+}
+
+/* Section labels — the same eyebrow language as the homepage (hv2-eyebrow) */
+.page-support .vp-doc h2 {
+  margin: 26px 0 12px 2px;
+  padding-top: 0;
+  border-top: none;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2);
+}
+
+.page-support .doc-nav {
+  margin-top: 0;
+  margin-bottom: 0;
+  gap: 10px;
+}
+
+/* Financial cards — the primary action, slightly larger */
+.page-support .doc-nav:not(.doc-nav-sub) .doc-nav-item { padding: 18px 20px; }
+
+/* Secondary grid (2 cards + the full-width "share" card) — quieter, tighter */
+.page-support .doc-nav-sub .doc-nav-item { padding: 13px 16px; }
+
+/* "Was this page helpful?" — hidden here: a feedback poll adds ~110px and
+   little value on a donate page */
+.page-support .fpv-helpful { display: none !important; }
+
+/* Desktop: stretch the doc chain to exactly one viewport and let auto
+   margins split the leftover height into even gaps — above the title,
+   above each section label, and below the last block. */
+@media (min-width: 960px) {
+  .page-support .VPDoc {
+    display: flex;
+    min-height: calc(100vh - var(--vp-nav-height));
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .page-support .VPDoc .container,
+  .page-support .VPDoc .content,
+  .page-support .VPDoc .content-container,
+  .page-support .VPDoc .main,
+  .page-support .vp-doc,
+  .page-support .vp-doc > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .page-support .VPDoc .container,
+  .page-support .VPDoc .content { margin-left: auto; margin-right: auto; }
+
+  /* VPDoc gives .content 128px bottom padding at ≥960px — that was the dead
+     band under the tip box eating the even distribution */
+  .page-support .VPDoc .content { padding-bottom: 0 !important; }
+
+  .page-support .vp-doc h1 { margin-top: auto; }
+  .page-support .vp-doc h2 { margin-top: auto; }
+  .page-support .vp-doc > div > :last-child { margin-bottom: auto; }
 }
 
 /* ===== Updates list (homepage LatestUpdates.vue + /updates UpdatesList.vue) =====

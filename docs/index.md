@@ -14,6 +14,9 @@ hero:
     - theme: alt
       text: Прошивки
       link: https://github.com/OpenIPC/firmware/releases
+    - theme: sponsor
+      text: Підтримати
+      link: /support
 ---
 
 <!-- ═══ Блок 1: сценарії — точки входу за наміром відвідувача.

@@ -14,6 +14,9 @@ hero:
     - theme: alt
       text: Firmware
       link: https://github.com/OpenIPC/firmware/releases
+    - theme: sponsor
+      text: Support
+      link: /en/support
 ---
 
 <!-- ═══ Блок 1: сценарії — точки входу за наміром відвідувача.
@@ -66,7 +69,7 @@ hero:
     <line x1="12" y1="19" x2="12" y2="13"/>
     <line x1="12" y1="17" x2="12.01" y2="17"/>
   </svg>
-  <span>Community project of the Ukrainian OpenIPC community. Not an official OpenIPC resource.</span>
+  <span>Community project of the Ukrainian OpenIPC community, not an official OpenIPC resource.</span>
 </div>
 
 <footer class="home-footer">
