@@ -35,7 +35,7 @@ async function copy() {
 <template>
   <button
     type="button"
-    class="doc-nav-item doc-nav-wide crypto-card"
+    class="doc-nav-item crypto-card"
     :aria-label="`${copyLabel}: ${address}`"
     @click="copy"
   >

@@ -33,6 +33,14 @@ We write documentation, translate guides and test firmware for free. Your suppor
     </span>
     <svg class="doc-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
   </a>
+  <a class="doc-nav-item" href="https://openfpv.pay.whitepay.com/donation" target="_blank" rel="noopener">
+    <span class="doc-nav-icon"><svg width="20" height="20" viewBox="0 0 34 34" fill="currentColor" aria-hidden="true"><path d="M20.92 17.063c0 2.419-1.653 4.166-3.932 4.166-2.292 0-3.958-1.753-3.958-4.166 0-2.456 1.627-4.166 3.958-4.166 2.273 0 3.931 1.754 3.931 4.166zM34 7.49v19.02A7.493 7.493 0 0 1 26.51 34H7.49A7.493 7.493 0 0 1 0 26.51V7.49A7.493 7.493 0 0 1 7.49 0h19.02A7.493 7.493 0 0 1 34 7.49Zm-10.092 9.655c0-3.956-2.9-6.818-6.902-6.818-3.994 0-6.901 2.836-6.901 6.743v11.694h2.913v-6.73c1.076 1.133 2.628 1.772 4.324 1.772 3.806 0 6.566-2.798 6.566-6.66zm.443-9.3-.132-.107C20.172 4.482 13.84 4.469 9.794 7.717l-.132.108 1.322 1.677.025.031.14-.107c3.343-2.69 8.376-2.679 11.713.026l.14.107 1.348-1.715z"/></svg></span>
+    <span class="doc-nav-body">
+      <span class="doc-nav-title">Whitepay — quick crypto donation</span>
+      <span class="doc-nav-desc">Donate in crypto in a couple of clicks via the Whitepay page: pick a coin and an amount, no sign-up needed.</span>
+    </span>
+    <svg class="doc-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+  </a>
   <CryptoCard
     title="Cryptocurrency — USDT (TRC-20)"
     address="TSzaUKRad5p5d6wPNEqNsHFUU86HzUqGdk"    
