@@ -173,7 +173,7 @@ body::after {
   }
 
   .VPHero .text {
-    font-size: 2.1rem !important;
+    font-size: 1.6rem !important;
     margin-top: 8px;
   }
 
@@ -191,7 +191,7 @@ body::after {
 }
 
 .VPHero .text {
-  font-size: 2.4rem;
+  font-size: 2.15rem;
   line-height: 1.18;
   letter-spacing: -0.02em;
   font-weight: 700;
@@ -1233,7 +1233,7 @@ html {
 /* ===== Tablet improvements (768px – 1024px) ===== */
 @media (min-width: 768px) and (max-width: 1024px) {
   .VPHero .text {
-    font-size: 2rem !important;
+    font-size: 1.85rem !important;
   }
 
   .VPHero .tagline {
@@ -1258,7 +1258,7 @@ html {
   }
 
   .VPHero .text {
-    font-size: 1.75rem !important;
+    font-size: 1.6rem !important;
     line-height: 1.2 !important;
     margin-top: 0 !important;
   }

@@ -89,7 +89,7 @@ hero:
 /* ── Заголовок hero: щільна типографіка + акцент назви брендовим
      синім (синхронно з укр. головною). Скоуплено під .VPHome. ── */
 .VPHome .VPHero .text {
-  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.02em;
