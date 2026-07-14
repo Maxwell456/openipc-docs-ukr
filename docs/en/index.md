@@ -5,7 +5,9 @@ description: OpenIPC — open platform for digital FPV systems. Documentation an
 
 hero:
   name: " "
-  text: Digital FPV Systems Based on OpenIPC
+  # VPHero renders text via v-html: controlled line break (two even
+  # lines, no orphaned "OpenIPC") + brand-colored product name
+  text: Digital FPV Systems<br>Based on <span class="hv2-accent">OpenIPC</span>
   tagline: Open platform that transforms IP cameras into digital FPV systems. Documentation and community support in English.
   actions:
     - theme: brand
@@ -83,6 +85,20 @@ hero:
      Паттерн профессиональных FPV-доков (ExpressLRS): входные карточки +
      новости списком с датами.
      A11y: настоящие h2, :focus-visible, prefers-reduced-motion. ── */
+
+/* ── Заголовок hero: щільна типографіка + акцент назви брендовим
+     синім (синхронно з укр. головною). Скоуплено під .VPHome. ── */
+.VPHome .VPHero .text {
+  font-size: clamp(2rem, 4.6vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-text-1);
+}
+
+.hv2-accent {
+  color: var(--vp-c-brand-1);
+}
 
 .hv2-block {
   margin-top: 32px;
