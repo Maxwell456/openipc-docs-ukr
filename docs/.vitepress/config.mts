@@ -87,6 +87,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'hardware': { name: 'Обладнання', landing: '/hardware/vtx/' },
     'software': { name: 'Програмне забезпечення', landing: '/software/' },
     'configuration': { name: 'Конфігурація', landing: '/configuration/' },
+    'tools': { name: 'Інструменти', landing: '/tools/latency-timer' },
     'updates': { name: 'Оновлення', landing: '/updates' },
     'links': { name: 'Корисні посилання', landing: '/links' },
     'faq': { name: 'FAQ', landing: '/faq' },
@@ -97,6 +98,7 @@ const SECTIONS: Record<'uk' | 'en', Record<string, { name: string; landing: stri
     'hardware': { name: 'Hardware', landing: '/en/hardware/vtx/' },
     'software': { name: 'Software', landing: '/en/software/' },
     'configuration': { name: 'Configuration', landing: '/en/configuration/' },
+    'tools': { name: 'Tools', landing: '/en/tools/latency-timer' },
     'updates': { name: 'Updates', landing: '/en/updates' },
     'links': { name: 'Links', landing: '/en/links' },
     'faq': { name: 'FAQ', landing: '/en/faq' },
@@ -445,6 +447,15 @@ export default defineConfig({
               ]
             }
           ],
+          '/tools/': [
+            {
+              text: 'Інструменти',
+              items: [
+                { text: 'Таймер затримки (glass-to-glass)', link: '/tools/latency-timer' },
+                { text: 'Калькулятор бітрейту WFB-NG', link: '/software/wfb-ng-config' },
+              ]
+            }
+          ],
           '/updates/': [
             {
               text: 'Оновлення та новини',
@@ -669,6 +680,15 @@ export default defineConfig({
                 { text: 'Telemetry & OSD (VTX Menu)', link: '/en/configuration/telemetry' },
                 { text: 'Adaptive-Link', link: '/en/configuration/adaptive-link' },
                 { text: 'Advanced Settings', link: '/en/configuration/advanced' },
+              ]
+            }
+          ],
+          '/en/tools/': [
+            {
+              text: 'Tools',
+              items: [
+                { text: 'Latency Timer (glass-to-glass)', link: '/en/tools/latency-timer' },
+                { text: 'WFB-NG Bitrate Calculator', link: '/en/software/wfb-ng-config' },
               ]
             }
           ],

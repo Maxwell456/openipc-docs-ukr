@@ -16,6 +16,7 @@ import LatestUpdates from './LatestUpdates.vue'
 import UpdatesList from './UpdatesList.vue'
 import CryptoCard from './CryptoCard.vue'
 import ShareCard from './ShareCard.vue'
+import LatencyTimer from './LatencyTimer.vue'
 import '@fontsource-variable/inter'
 import './custom.css'
 
@@ -175,6 +176,7 @@ export default {
     app.component('UpdatesList', UpdatesList)
     app.component('CryptoCard', CryptoCard)
     app.component('ShareCard', ShareCard)
+    app.component('LatencyTimer', LatencyTimer)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

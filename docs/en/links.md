@@ -7,6 +7,11 @@ description: Official OpenIPC resources, communities, Telegram channels, YouTube
 
 Verified resources for working with OpenIPC and digital FPV — official sources, active communities and YouTube channels.
 
+## Tools
+
+- [Video Latency Timer (glass-to-glass)](/en/tools/latency-timer) — measure end-to-end video link latency
+- [WFB-NG Bitrate Calculator](/en/software/wfb-ng-config) — video bitrate from MCS, channel bandwidth and FEC
+
 ## Official OpenIPC Resources
 
 | Resource | Description |
