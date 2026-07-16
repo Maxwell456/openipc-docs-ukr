@@ -1,6 +1,6 @@
 ---
 title: "OpenIPC FPV Configuration — firmware & adaptive-link"
-description: "Catalog of OpenIPC FPV configuration guides: updating and flashing cameras (Multiconfigurator, UART, sysupgrade), the VTX menu and telemetry, Adaptive-Link and advanced settings."
+description: "Catalog of OpenIPC FPV configuration guides: updating and flashing cameras (Companion, UART, sysupgrade), the VTX menu and telemetry, Adaptive-Link and advanced settings."
 ---
 
 # OpenIPC FPV Configuration
@@ -12,7 +12,7 @@ This section collects all the setup and update guides for the **OpenIPC FPV** sy
 ## Flashing & updates
 
 <div class="fpv-cards">
-  <a class="fpv-card" href="/en/configuration/multiconfigurator"><span class="fpv-card-t">Updating via Multiconfigurator</span><span class="fpv-card-d">Update firmware using the OpenIPC graphical configurator</span></a>
+  <a class="fpv-card" href="/en/configuration/companion"><span class="fpv-card-t">Companion (multiconfigurator)</span><span class="fpv-card-d">The official OpenIPC configurator: camera flashing, settings and backups</span></a>
   <a class="fpv-card" href="/en/configuration/upgrading-firmware"><span class="fpv-card-t">Firmware update (sysupgrade)</span><span class="fpv-card-d">Manual update from the terminal with the <code>sysupgrade</code> command</span></a>
   <a class="fpv-card" href="/en/configuration/uart-flash"><span class="fpv-card-t">Flashing via UART</span><span class="fpv-card-d">A universal recovery/flashing guide using FTDI and TFTP</span></a>
 </div>

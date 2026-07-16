@@ -112,7 +112,7 @@ faq:
 
 ### Як оновити прошивку камери?
 
-Через SSH командою [sysupgrade](/configuration/upgrading-firmware) (з інтернету або з локальних файлів) або через [OpenIPC Configurator](/configuration/multiconfigurator). Перед оновленням майте план відновлення: рятувальну SD-карту або [UART-адаптер](/configuration/uart-flash).
+Через SSH командою [sysupgrade](/configuration/upgrading-firmware) (з інтернету або з локальних файлів) або через [OpenIPC Configurator (Companion)](/configuration/companion). Перед оновленням майте план відновлення: рятувальну SD-карту або [UART-адаптер](/configuration/uart-flash).
 
 ## Оптоволоконний зв'язок
 

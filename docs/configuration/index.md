@@ -1,6 +1,6 @@
 ---
 title: "Конфігурація OpenIPC FPV — прошивка та adaptive-link"
-description: "Каталог гайдів з конфігурації OpenIPC FPV: оновлення та прошивка камер (Multiconfigurator, UART, sysupgrade), меню VTX і телеметрія, Adaptive-Link та розширені налаштування."
+description: "Каталог гайдів з конфігурації OpenIPC FPV: оновлення та прошивка камер (Companion, UART, sysupgrade), меню VTX і телеметрія, Adaptive-Link та розширені налаштування."
 ---
 
 # Конфігурація OpenIPC FPV
@@ -12,7 +12,7 @@ description: "Каталог гайдів з конфігурації OpenIPC FP
 ## Прошивка та оновлення
 
 <div class="fpv-cards">
-  <a class="fpv-card" href="/configuration/multiconfigurator"><span class="fpv-card-t">Оновлення через Multiconfigurator</span><span class="fpv-card-d">Оновлення прошивки за допомогою графічного конфігуратора OpenIPC</span></a>
+  <a class="fpv-card" href="/configuration/companion"><span class="fpv-card-t">Companion (мультиконфігуратор)</span><span class="fpv-card-d">Офіційний конфігуратор OpenIPC: прошивка камери, налаштування та резервні копії</span></a>
   <a class="fpv-card" href="/configuration/upgrading-firmware"><span class="fpv-card-t">Оновлення прошивки (sysupgrade)</span><span class="fpv-card-d">Ручне оновлення через термінал командою <code>sysupgrade</code></span></a>
   <a class="fpv-card" href="/configuration/uart-flash"><span class="fpv-card-t">Прошивка через UART</span><span class="fpv-card-d">Універсальний гайд з відновлення/прошивки через FTDI та TFTP</span></a>
 </div>

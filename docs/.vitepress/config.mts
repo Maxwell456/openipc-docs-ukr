@@ -134,6 +134,9 @@ function ogImageFor(rel: string): string {
 const REDIRECTS: Record<string, string> = {
   '/adaptive-link/': '/configuration/adaptive-link',
   '/advanced/': '/configuration/advanced',
+  // multiconfigurator.md merged into companion.md 2026-07 — same app, renamed
+  // upstream (OpenIPC-Config → Companion), so the split page was a duplicate.
+  '/configuration/multiconfigurator/': '/configuration/companion',
   '/drone/': '/getting-started/drone',
   '/firmware/': '/software/',
   '/firmware/apalink/': '/software/apalink',
@@ -311,7 +314,7 @@ export default defineConfig({
           {
             text: 'Конфігурація',
             items: [
-              { text: 'Multiconfigurator', link: '/configuration/multiconfigurator' },
+              { text: 'Companion', link: '/configuration/companion' },
               { text: 'Телеметрія та OSD', link: '/configuration/telemetry' },
               { text: 'Adaptive-Link', link: '/configuration/adaptive-link' },
               { text: 'Розширені налаштування', link: '/configuration/advanced' },
@@ -438,8 +441,8 @@ export default defineConfig({
             {
               text: 'Конфігурація',
               items: [
-                { text: 'Multiconfigurator', link: '/configuration/multiconfigurator' },
-                { text: 'Оновлення прошивки', link: '/configuration/upgrading-firmware' },
+                { text: 'Companion', link: '/configuration/companion' },
+                  { text: 'Оновлення прошивки', link: '/configuration/upgrading-firmware' },
                 { text: 'Прошивка через UART', link: '/configuration/uart-flash' },
                 { text: 'Телеметрія та OSD (VTX Menu)', link: '/configuration/telemetry' },
                 { text: 'Adaptive-Link', link: '/configuration/adaptive-link' },
@@ -547,7 +550,7 @@ export default defineConfig({
           {
             text: 'Configuration',
             items: [
-              { text: 'Multiconfigurator', link: '/en/configuration/multiconfigurator' },
+              { text: 'Companion', link: '/en/configuration/companion' },
               { text: 'Telemetry & OSD', link: '/en/configuration/telemetry' },
               { text: 'Adaptive-Link', link: '/en/configuration/adaptive-link' },
               { text: 'Advanced Settings', link: '/en/configuration/advanced' },
@@ -674,8 +677,8 @@ export default defineConfig({
             {
               text: 'Configuration',
               items: [
-                { text: 'Multiconfigurator', link: '/en/configuration/multiconfigurator' },
-                { text: 'Upgrading Firmware', link: '/en/configuration/upgrading-firmware' },
+                { text: 'Companion', link: '/en/configuration/companion' },
+                  { text: 'Upgrading Firmware', link: '/en/configuration/upgrading-firmware' },
                 { text: 'UART Flashing', link: '/en/configuration/uart-flash' },
                 { text: 'Telemetry & OSD (VTX Menu)', link: '/en/configuration/telemetry' },
                 { text: 'Adaptive-Link', link: '/en/configuration/adaptive-link' },

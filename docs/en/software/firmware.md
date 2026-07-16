@@ -29,7 +29,7 @@ An alternative firmware from a community developer.
 
 ## Updating Firmware
 
-The recommended method is via [Multiconfigurator](/en/configuration/multiconfigurator).
+The recommended method is via [Companion](/en/configuration/companion).
 
 ::: warning
 Back up your current camera settings before updating.

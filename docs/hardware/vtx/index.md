@@ -34,4 +34,4 @@ faq:
 
 ## Прошивки
 
-Всі камери використовують прошивку OpenIPC. Для оновлення — [Multiconfigurator](/configuration/multiconfigurator).
+Всі камери використовують прошивку OpenIPC. Для оновлення — [Companion](/configuration/companion).

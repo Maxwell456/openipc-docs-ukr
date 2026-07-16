@@ -34,4 +34,4 @@ For most users — **Runcam WiFiLink v1/v2** (ready camera+VTX, IMX415). For Tin
 
 ## Firmware
 
-All cameras use OpenIPC firmware. Use [Multiconfigurator](/en/configuration/multiconfigurator) for updates.
+All cameras use OpenIPC firmware. Use [Companion](/en/configuration/companion) for updates.

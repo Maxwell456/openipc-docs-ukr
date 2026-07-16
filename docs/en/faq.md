@@ -112,7 +112,7 @@ It depends on firmware and settings: APFPV — 40–70 ms, WFB-NG — from ~35 m
 
 ### How do I update the camera firmware?
 
-Over SSH with the [sysupgrade](/en/configuration/upgrading-firmware) command (from the internet or local files) or with the [OpenIPC Configurator](/en/configuration/multiconfigurator). Before updating, have a recovery plan: a rescue SD card or a [UART adapter](/en/configuration/uart-flash).
+Over SSH with the [sysupgrade](/en/configuration/upgrading-firmware) command (from the internet or local files) or with the [OpenIPC Configurator (Companion)](/en/configuration/companion). Before updating, have a recovery plan: a rescue SD card or a [UART adapter](/en/configuration/uart-flash).
 
 ## Fiber-optic link
 
