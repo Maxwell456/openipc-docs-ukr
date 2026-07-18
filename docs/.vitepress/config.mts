@@ -287,6 +287,7 @@ export default defineConfig({
                   { text: 'APFPV', link: '/software/apfpv' },
                   { text: 'WFB-NG', link: '/software/wfb-ng' },
                   { text: 'OpenIPC 4G/LTE (QuadroFleet)', link: '/software/openipc-4g' },
+                  { text: 'AI Dual Camera', link: '/software/dual-camera' },
                 ]
               },
               {
@@ -407,6 +408,7 @@ export default defineConfig({
                     { text: 'Карта навігації', link: '/software/map' },
                   ]
                 },
+                { text: 'AI Dual Camera', link: '/software/dual-camera' },
               ]
             },
             {
@@ -523,6 +525,7 @@ export default defineConfig({
                   { text: 'APFPV', link: '/en/software/apfpv' },
                   { text: 'WFB-NG', link: '/en/software/wfb-ng' },
                   { text: 'OpenIPC 4G/LTE (QuadroFleet)', link: '/en/software/openipc-4g' },
+                  { text: 'AI Dual Camera', link: '/en/software/dual-camera' },
                 ]
               },
               {
@@ -643,6 +646,7 @@ export default defineConfig({
                     { text: 'Map Navigation', link: '/en/software/map' },
                   ]
                 },
+                { text: 'AI Dual Camera', link: '/en/software/dual-camera' },
               ]
             },
             {
@@ -973,5 +977,7 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
-  ignoreDeadLinks: false,
+  // Binary downloads (docs/public/downloads/*) are served correctly, but VitePress'
+  // dead-link checker doesn't treat non-page assets like .7z as valid targets — skip that path.
+  ignoreDeadLinks: [/^\/downloads\//],
 })

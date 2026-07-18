@@ -22,6 +22,7 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
   <a class="fpv-card" href="/en/software/apfpv"><span class="fpv-card-t">APFPV — beginner's guide</span><span class="fpv-card-d">Simple FPV video transmission over Wi-Fi, no complex configuration</span></a>
   <a class="fpv-card" href="/en/software/apfpv-greg"><span class="fpv-card-t">Greg's APFPV</span><span class="fpv-card-d">A version of APFPV with adaptive bitrate for FPV/GPS drones and planes</span></a>
   <a class="fpv-card" href="/en/software/apalink"><span class="fpv-card-t">APALink</span><span class="fpv-card-d">Dynamic bitrate switching for APFPV</span></a>
+  <a class="fpv-card" href="/en/software/dual-camera"><span class="fpv-card-t">AI Dual Camera</span><span class="fpv-card-d">Day camera + thermal with in-flight switching and onboard object detection</span></a>
 </div>
 
 ---
