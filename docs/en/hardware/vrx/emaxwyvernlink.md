@@ -1,6 +1,6 @@
 ---
 title: "Emax Wyvern Link VRX"
-description: "Emax Wyvern Link documentation page for the OpenIPC wiki"
+description: "Emax Wyvern Link VRX on the Radxa Zero 3W: board specifications, basic hardware setup, the stock firmware interface and how to get or change gs.key on v1.9.9."
 ---
 # Emax Wyvern Link VRX
 
@@ -236,7 +236,7 @@ Create a new GPIO button layout file /config/scripts/GPIO/Emax.yaml or edit the 
 The GPIO buttons are mapped as follows      
 <img src="/images/emax_vrx_button_GPIO_pins.webp" alt="emax wyvern link vrx" width="600px" />
 
-<img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" width="350px"/>
+<img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" alt="Rock 5B 40-pin power pinout" width="350px"/>
 
 Since the Emax VRX has only 4 buttons, we need to make some choices about mapping their functions to GSMenu. Here is one possible layout with the far-left button as "center" and the 2nd button as "left". This lets you use the GSMenu keyboard and all other GSMenu functions, since right/center behave the same for most menus.
 ```

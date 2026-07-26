@@ -1,6 +1,6 @@
 ---
 title: Useful Links for OpenIPC
-description: Official OpenIPC resources, communities, Telegram channels, YouTube and useful guides for FPV setup.
+description: "Useful links for OpenIPC: official resources, communities and Telegram channels, YouTube, shops, plus the video latency timer and the WFB-NG bitrate calculator."
 ---
 
 # Useful Links

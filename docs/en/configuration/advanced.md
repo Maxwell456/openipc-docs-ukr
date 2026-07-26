@@ -1,6 +1,6 @@
 ---
 title: Advanced Settings for OpenIPC
-description: Detailed guide for Jumbo frame, overheating protection and advanced configuration.
+description: "Advanced OpenIPC settings: Jumbo frame up to 50 Mbit/s, changing MTU to 3994, sensor bin for better image quality and overheating protection. Step by step."
 ---
 
 # Advanced Settings for OpenIPC

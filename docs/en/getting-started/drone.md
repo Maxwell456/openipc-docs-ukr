@@ -1,6 +1,6 @@
 ---
 title: Building an FPV Drone with Runcam WifiLink
-description: Step-by-step guide for connecting and configuring the Runcam WifiLink v1/v2 Air Unit on an FPV drone.
+description: "Building an FPV drone with a Runcam WiFiLink v1/v2 Air Unit: mounting, wiring to the flight controller, plus UART and VTX (MSP+DisplayPort) setup in Betaflight."
 ---
 
 # Drone Assembly and Configuration Guide
@@ -24,4 +24,4 @@ Set MCS 2 → Save.
 10. Telemetry is configured via Betaflight.
 11. To use new features or beta firmware, flash the camera here.<br><br>
 <img src="/images/multiconf2.webp" alt="multiconf2" width="1000" height="678"/>
-12. **Unofficial configurator** by Mariofpv can be downloaded [here](https://github.com/OpenIPC/configurator/releases).
+12. **Unofficial configurator** by Mariofpv can be downloaded [from the releases page](https://github.com/OpenIPC/configurator/releases).

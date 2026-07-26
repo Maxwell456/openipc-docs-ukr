@@ -1,6 +1,6 @@
 ---
 title: SSC338Q + IMX415 Cameras
-description: Technical specifications of an IP camera based on the SigmaStar SSC338Q with a Sony IMX415 sensor
+description: "SigmaStar SSC338Q IP camera with a Sony IMX415 sensor: specifications, RJ45 and 12V pinout, how to flash OpenIPC FPV firmware and upload the files over SCP."
 ---
 
 # SSC338Q + IMX415 Cameras

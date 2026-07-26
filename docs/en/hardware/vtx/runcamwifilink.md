@@ -1,6 +1,6 @@
 ---
 title: Runcam WiFiLink v1 — Specs and Setup
-description: Guide for connecting, basic setup and use of the Runcam WiFiLink v1 camera for a digital FPV system.
+description: "Runcam WiFiLink v1 — camera specifications, board layout, basic setup, getting the gs.key file and connecting to an Android ground station running PixelPilot."
 ---
 
 # Runcam WiFiLink 1

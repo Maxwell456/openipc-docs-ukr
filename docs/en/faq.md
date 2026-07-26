@@ -62,7 +62,7 @@ A minimal kit starts at **~$60–100**: a camera from ~$40 plus an Android smart
 
 ### Why is OpenIPC better than DJI or Walksnail?
 
-Price, openness and flexibility: no power or region locks, any compatible hardware, a ground station built from anything — a phone, a Radxa, a laptop. It trades away simplicity: it is a kit you assemble and configure yourself. Detailed comparison — [here](/en/getting-started/comparison).
+Price, openness and flexibility: no power or region locks, any compatible hardware, a ground station built from anything — a phone, a Radxa, a laptop. It trades away simplicity: it is a kit you assemble and configure yourself. See the [detailed comparison page](/en/getting-started/comparison).
 
 ## Hardware
 
@@ -151,7 +151,7 @@ The default camera address is `192.168.1.10` (login `root`, password `12345`). I
 
 ### How do I flash or recover a Runcam VRX?
 
-Flashing — with the `emmc_flasher` image from an SD card. Recovery after a failed flash — with RKDevTool in loader mode. A step-by-step guide with photos — [here](/en/getting-started/troubleshooting).
+Flashing — with the `emmc_flasher` image from an SD card. Recovery after a failed flash — with RKDevTool in loader mode. See the [step-by-step troubleshooting guide with photos](/en/getting-started/troubleshooting).
 
 ## Community
 

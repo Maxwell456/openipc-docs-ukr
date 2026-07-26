@@ -1,6 +1,6 @@
 ---
 title: OpenIPC Thinker v1 (з WiFi)
-description: OpenIPC Thinker v1 з вбудованим WiFi передавачем 100mW для TinyWhoop.
+description: "OpenIPC Thinker v1 із вбудованим WiFi-передавачем 100 мВт — готове рішення для TinyWhoop без окремої мережевої карти. Характеристики й документація в розробці."
 ---
 
 # OpenIPC Thinker v1 (з WiFi)

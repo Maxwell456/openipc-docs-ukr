@@ -1,6 +1,6 @@
 ﻿---
 title: Збірка FPV дрону з Runcam WifiLink
-description: Покрокова інструкція підключення та налаштування Air Unit Runcam WifiLink v1/v2 для FPV-дрону.
+description: "Збірка FPV-дрона з Runcam WiFiLink v1/v2: розміщення Air Unit, підключення до польотного контролера, налаштування UART і VTX (MSP+DisplayPort) у Betaflight."
 ---
 
 # Збірка та налаштування дрона

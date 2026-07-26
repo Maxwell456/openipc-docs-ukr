@@ -1,6 +1,6 @@
 ﻿---
 title: RTL8812AU Wi-Fi модуль (BL-R8812AF1)
-description: Характеристики та розпіновка Wi-Fi модуля RTL8812AU (BL-R8812AF1) для OpenIPC FPV
+description: "Wi-Fi модуль RTL8812AU (BL-R8812AF1) для OpenIPC FPV: розпіновка, характеристики, підтримка 5/10/20/40 МГц і комплектація WiFiLink-G для наземної станції."
 ---
 
 # Wi-Fi модуль RTL8812AU

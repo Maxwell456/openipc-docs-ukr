@@ -1,6 +1,6 @@
 ﻿---
 title: Інструкція з налаштування VRX Runcam WifiLink
-description: Покрокова інструкція налаштування VRX Runcam WifiLink підключення, WebUI, канали, DVR та моніторинг RSSI
+description: "Налаштування наземної станції VRX Runcam WiFiLink: підключення живлення й HDMI, вхід у WebUI, вибір каналу та роздільної здатності, запис DVR і моніторинг RSSI."
 ---
 
 # Інструкція з налаштування VRX

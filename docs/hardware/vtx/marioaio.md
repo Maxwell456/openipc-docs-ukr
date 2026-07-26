@@ -1,6 +1,6 @@
 ﻿---
 title: Mario AIO
-description: Інструкція з підключення, налаштування та оновлення модуля OpenIPC Mario AIO для FPV.
+description: "OpenIPC Mario AIO — компактний AIO-модуль камери та VTX: характеристики, живлення 2S–6S, виводи UART і вхід у U-Boot, підключення до польотного контролера."
 ---
 
 # OpenIPC Mario AIO

@@ -1,6 +1,6 @@
 ---
 title: Підтримати проєкт OpenFPV
-description: Підтримати документацію OpenFPV — Ko-fi з будь-якої країни, банка monobank з України або криптовалюта.
+description: "Підтримати документацію OpenFPV: Ko-fi з будь-якої країни, банка monobank з України або криптовалюта. Інші способи допомогти проєкту та контакти команди."
 outline: false
 aside: false
 editLink: false

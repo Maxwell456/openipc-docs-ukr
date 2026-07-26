@@ -1,6 +1,6 @@
 ---
 title: Installing Adaptive-Link for OpenIPC
-description: Detailed guide for setting up Adaptive-Link
+description: "Adaptive-Link for OpenIPC automatically adjusts bitrate and TX power to the signal. Install on a Radxa GS or Runcam WiFiLink v1/v2 cameras, plus TX profiles."
 faq:
   - q: "What is Adaptive-Link in OpenIPC?"
     a: "It is a system that automatically adjusts bitrate, transmitter power and MCS/FEC parameters based on signal quality: up close the video is as sharp as possible, at distance quality drops but the link stays stable."
@@ -107,7 +107,7 @@ echo 1200000 > /sys/devices/system/cpu/cpu0/cpufreq/policy0/scaling_max_freq
 
 ## Safe TX Profiles
 
-txprofile files for network cards — [here](https://github.com/OpenIPC/adaptive-link/tree/main/txprofiles) (*filename must always be* `txprofile.conf`)
+txprofile files for network cards — [in the txprofiles folder](https://github.com/OpenIPC/adaptive-link/tree/main/txprofiles) (*filename must always be* `txprofile.conf`)
 
 Example safe TX profile:
 

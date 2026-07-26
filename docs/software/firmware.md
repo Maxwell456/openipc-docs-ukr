@@ -1,6 +1,6 @@
 ---
 title: Прошивки камер OpenFPV
-description: Огляд доступних прошивок для OpenIPC FPV камер. APFPV, APALink, Greg's firmware.
+description: "Огляд прошивок для камер OpenIPC: офіційна збірка OpenIPC, APFPV для простого Wi-Fi, APALink з адаптивним бітрейтом і Greg's Firmware. Як оновити прошивку."
 ---
 
 # Прошивки камер

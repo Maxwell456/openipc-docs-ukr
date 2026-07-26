@@ -1,6 +1,6 @@
 ﻿---
 title: VTX MENU
-description: Меню VTX для конфігурації передавача відеосигналу в системі OpenIPC FPV.
+description: "VTX MENU — інтерактивне OSD/CLI меню OpenIPC: зміна каналу, частоти, потужності та ширини каналу прямо в польоті. Встановлення VTXMenu й приклад majestic.yaml."
 ---
 
 # VTX MENU

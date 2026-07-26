@@ -1,6 +1,6 @@
 ---
 title: Приймачі (VRX) для OpenFPV
-description: Огляд наземних станцій та приймачів для OpenIPC. RunCam RX, Radxa Zero 3W, PixelPilot.
+description: "Наземні станції та приймачі для OpenFPV: порівняння готових рішень RunCam WiFiLink-RX і PixelPilot з DIY-збіркою на Radxa Zero 3W — компоненти та підключення."
 ---
 
 # Приймачі (VRX)

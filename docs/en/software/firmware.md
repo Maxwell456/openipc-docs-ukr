@@ -1,6 +1,6 @@
 ---
 title: Camera Firmware for OpenFPV
-description: Overview of available firmware for OpenIPC FPV cameras. APFPV, APALink, Greg's firmware.
+description: "Firmware overview for OpenIPC cameras: the official OpenIPC build, APFPV for simple Wi-Fi, APALink with adaptive bitrate and Greg's Firmware, plus updating."
 ---
 
 # Camera Firmware

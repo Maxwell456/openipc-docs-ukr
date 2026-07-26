@@ -1,6 +1,6 @@
 ﻿---
 title: Додаткові налаштування OpenIPC
-description: Детальна інструкція з налаштування Adaptive-Link, Jumbo frame.
+description: "Просунуті налаштування OpenIPC: Jumbo frame до 50 Мбіт/с, зміна MTU на 3994, sensor bin для кращої картинки та захист від перегріву. Покрокова інструкція."
 ---
 
 # Додаткові налаштування OpenIPC

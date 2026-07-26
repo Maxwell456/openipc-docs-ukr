@@ -1,6 +1,6 @@
 ---
 title: Support the OpenFPV project
-description: Support the OpenFPV documentation — Ko-fi from anywhere, a monobank jar from Ukraine, or crypto.
+description: "Support the OpenFPV documentation: Ko-fi from anywhere in the world, a monobank jar from Ukraine or crypto. Other ways to help the project and how to reach us."
 outline: false
 aside: false
 editLink: false

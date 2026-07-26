@@ -1,6 +1,6 @@
 ﻿---
 title: "Emax Wyvern Link VRX"
-description: "Сторінка документації Emax Wyvern Link для OpenIPC wiki"
+description: "Emax Wyvern Link VRX на Radxa Zero 3W: специфікації плат, базове налаштування обладнання, інтерфейс стокової прошивки та як отримати чи змінити gs.key у v1.9.9."
 ---
 # Emax Wyvern Link VRX
 
@@ -254,7 +254,7 @@ VRX налаштований зі стандартним gs.key і повине�
 Кнопки GPIO відображаються наступним чином      
 <img src="/images/emax_vrx_button_GPIO_pins.webp" alt="emax wyvern link vrx" width="600px" />
 
-<img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" width="350px"/>
+<img src="https://docs.radxa.com/img//rock5b/rock5bp_40pin_power_3.webp" alt="Розпіновка живлення 40-pin Rock 5B" width="350px"/>
 
 
 Оскільки Emax VRX має лише 4 кнопки, нам потрібно зробити деякий вибір щодо відображення їх функцій для GSMenu. Ось один з можливих варіантів розкладки з крайньою лівою кнопкою як "center" та 2-ю кнопкою як "left". Це дозволяє використовувати клавіатуру GSMenu та всі інші функції GSMenu, оскільки right/center поводяться однаково для більшості меню.

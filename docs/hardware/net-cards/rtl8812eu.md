@@ -1,6 +1,6 @@
 ﻿---
 title: BL-M8812EU2 Wi-Fi Модуль (RTL8812EU)
-description: Розпіновка та технічні характеристики Wi-Fi модуля BL-M8812EU2 (RTL8812EU)
+description: "Wi-Fi модуль BL-M8812EU2 на чипі Realtek RTL8812EU-CG: розпіновка, характеристики, діапазон 5 ГГц, 802.11a/n/ac до 867 Мбіт/с і режими 5/10/20/40 МГц для FPV."
 ---
 
 # Wi-Fi модуль BL-M8812EU2 (RTL8812EU)

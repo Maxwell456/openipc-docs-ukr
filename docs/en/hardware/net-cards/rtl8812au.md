@@ -1,6 +1,6 @@
 ---
 title: BL-M8812EU2 Wi-Fi Module (RTL8812EU)
-description: Pinout and specifications of the BL-M8812EU2 module
+description: "RTL8812AU (BL-R8812AF1) Wi-Fi module for OpenIPC FPV: pinout, specifications, 5/10/20/40 MHz support and the WiFiLink-G kit contents for a ground station build."
 ---
 
 # BL-M8812EU2 Wi-Fi Module (RTL8812EU)

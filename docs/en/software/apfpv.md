@@ -1,6 +1,6 @@
 ---
 title: "APFPV Firmware — Beginner's Guide"
-description: "Simple FPV video transmission over Wi-Fi for beginners. Easy setup, no complex configuration."
+description: "APFPV — the simplest way to stream FPV video over Wi-Fi: the drone becomes an access point and you watch in PixelPilot. Install over SSH and sysupgrade."
 faq:
   - q: "What is APFPV firmware?"
     a: "APFPV (Access Point FPV) is OpenIPC firmware that makes the drone create its own Wi-Fi network. You connect to it from a phone, tablet or computer and watch live video without any special ground equipment."

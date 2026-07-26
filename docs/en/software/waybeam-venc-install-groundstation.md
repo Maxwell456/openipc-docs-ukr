@@ -1,6 +1,6 @@
 ---
 title: "Integrating Waybeam with WFB-ng"
-description: "How to configure Waybeam to work with WFB-ng instead of Majestic — a full guide for the camera and the ground station."
+description: "Integrating Waybeam with WFB-ng instead of Majestic: system architecture, camera (VTX) and ground station setup, audio, adaptive control and SD card recording."
 ---
 
 # Integrating Waybeam with WFB-ng

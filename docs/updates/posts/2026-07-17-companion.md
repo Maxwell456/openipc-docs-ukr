@@ -1,8 +1,8 @@
 ---
-title: Companion v0.9.4 — мультиконфігуратор змінив ім'я, навчився бекапити прошивку і отримав темну тему
+title: Companion v0.9.4 — бекап прошивки і темна тема
 sidebarTitle: Companion v0.9.4
 date: 2026-07-17
-description: Офіційний конфігуратор OpenIPC тепер називається Companion. Головне з v0.8–v0.9.4 — резервне копіювання та відновлення прошивки, темна тема, вкладка Preferences з firmware-focused режимом, виправлений sysupgrade і запуск підписаного застосунку на macOS.
+description: "Офіційний конфігуратор OpenIPC тепер Companion. Нове у v0.8–v0.9.4: бекап і відновлення прошивки, темна тема, вкладка Preferences і підписаний застосунок macOS."
 tags:
   - companion
   - configurator

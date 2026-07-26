@@ -1,7 +1,9 @@
 ---
 title: RTL8731BU / RTL8733BU — Wi-Fi network card
-description: Specifications and pinout of RTL8731BU and RTL8733BU based network cards for FPV systems
+description: "RTL8731BU and RTL8733BU Wi-Fi cards for FPV: tiny chips for tinywhoop builds, BL-M8731BU3 pinout, specifications and why they are not suited for long-range RX."
 ---
+
+# RTL8731BU / RTL8733BU Wi-Fi network cards
 
 ### RTL873xBU
 

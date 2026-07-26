@@ -1,6 +1,6 @@
 ---
 title: General guide to flashing via UART
-description: A universal guide to flashing via UART using FTDI and TFTP
+description: "A universal guide to flashing OpenIPC cameras over UART: wiring an FTDI FT232RL, entering U-Boot, loading uImage and rootfs over TFTP and reviving a brick."
 ---
 # How to recover absolutely any Air Unit on OpenIPC?  
 **What you'll need**

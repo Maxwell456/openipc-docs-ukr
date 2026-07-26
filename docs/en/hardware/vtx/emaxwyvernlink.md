@@ -1,6 +1,6 @@
 ---
 title: EMAX Wyvern Link
-description: EMAX Wyvern Link for OpenFPV — an affordable option for TinyWhoop drones.
+description: "EMAX Wyvern Link — an affordable OpenIPC FPV video transmitter for TinyWhoop drones. Specifications, where to buy it and what to pair it with. Docs in progress."
 ---
 
 # EMAX Wyvern Link

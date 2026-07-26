@@ -1,6 +1,6 @@
 ---
 title: "FPV OpenIPC Thinker Air Unit"
-description: "OpenIPC Thinker: technical specifications and installation"
+description: "OpenIPC Thinker Air Unit — a compact camera and VTX unit: technical and physical specs, supported cameras, mounting, configuration and firmware updates."
 ---
 
 # FPV OpenIPC Thinker Air Unit

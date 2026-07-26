@@ -1,6 +1,6 @@
 ---
 title: OpenIPC Thinker v1 (no WiFi)
-description: OpenIPC Thinker v1 without built-in WiFi. Requires a separate RTL8812EU2 WiFi card.
+description: "OpenIPC Thinker v1 without built-in WiFi — board only, so a separate Wi-Fi card is required. The RTL8812EU2 is the most common and recommended choice for it."
 ---
 
 # OpenIPC Thinker v1 (no WiFi)

@@ -1,6 +1,6 @@
 ﻿---
 title: "FPV OpenIPC Thinker Air Unit"
-description: "OpenIPC Thinker: технічні характеристики та встановлення"
+description: "OpenIPC Thinker Air Unit — компактний блок камери та VTX: технічні й фізичні характеристики, сумісні камери, встановлення на дрон, налаштування та прошивка."
 ---
 
 # FPV OpenIPC Thinker Air Unit

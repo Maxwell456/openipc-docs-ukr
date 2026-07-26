@@ -1,6 +1,6 @@
 ---
 title: Radxa Zero 3W with APPFV OpenIPC v0.0.1
-description: A ready-made image for streaming FPV video from the Radxa Zero 3W using the APPFV firmware from OpenIPC
+description: "A ready-made Radxa Zero 3W image with APFPV OpenIPC v0.0.1: stream FPV video over the built-in AIC8800 Wi-Fi module, auto-connect to the drone and access DVR."
 ---
 
 # Radxa Zero 3W with APPFV OpenIPC v0.0.1

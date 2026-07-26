@@ -1,7 +1,7 @@
 ---
 layout: home
 title: OpenFPV — OpenIPC FPV Documentation
-description: OpenIPC — open platform for digital FPV systems. Documentation and community support in English.
+description: "OpenFPV — OpenIPC documentation in English: the open digital FPV platform. Choosing cameras and VTX, building a ground station, firmware, WFB-NG and link setup."
 
 hero:
   name: " "

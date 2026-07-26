@@ -1,6 +1,6 @@
 ---
 title: RunCam WiFiLink RX — digital HD receiver for FPV
-description: Overview of the specifications, package contents and setup of the RunCam WiFiLink RX receiver for stable FPV video.
+description: "RunCam WiFiLink RX — a digital HD receiver on OpenIPC / Ruby FPV: technical specifications, bundled antennas, package contents and setup for stable FPV video."
 ---
 # RunCam WiFiLink RX (Digital HD Receiver)
 

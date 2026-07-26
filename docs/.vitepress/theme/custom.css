@@ -63,6 +63,16 @@ html {
   --vp-c-text-3: #7070a0;
 }
 
+/* A11y (WCAG AA): the brand blue #3d6aff sits at ~4.26:1 on the dark page
+   background and ~3.4:1 on the tinted language-switcher pill — both under the
+   4.5:1 minimum for text. A lighter blue clears it and stays on-brand. Scoped
+   to text/links only: brand-1 stays the button *background* under white text,
+   where a lighter blue would instead fail (#fff on #6b8dff ≈ 3.05:1). */
+.dark .vp-doc a,
+.dark .nav-lang-btn--active {
+  color: #6b8dff;
+}
+
 /* ===== Noise texture overlay (Stripe-style depth) ===== */
 body::after {
   content: '';

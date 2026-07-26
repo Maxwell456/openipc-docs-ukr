@@ -1,6 +1,6 @@
 ---
 title: "VPN setup for OpenIPC 4G"
-description: "VPN for OpenIPC 4G — a detailed WireGuard setup guide to ensure low latency and secure drone control"
+description: "WireGuard VPN for OpenIPC 4G: installing the VPN server, configuring the operator device and the drone camera, and verifying a secure, low-latency connection."
 ---
 
 # VPN setup for OpenIPC 4G

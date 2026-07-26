@@ -52,13 +52,13 @@
         <div class="wfb-calc__fec">
           <div class="wfb-calc__fec-group">
             <code>fec_k</code>
-            <input type="range" v-model.number="fec_k" min="1" :max="fec_n" step="1" />
+            <input type="range" v-model.number="fec_k" min="1" :max="fec_n" step="1" :aria-label="t.fecKAria" />
             <strong>{{ fec_k }}</strong>
           </div>
           <span class="wfb-calc__fec-sep">/</span>
           <div class="wfb-calc__fec-group">
             <code>fec_n</code>
-            <input type="range" v-model.number="fec_n" :min="fec_k" max="16" step="1" />
+            <input type="range" v-model.number="fec_n" :min="fec_k" max="16" step="1" :aria-label="t.fecNAria" />
             <strong>{{ fec_n }}</strong>
           </div>
         </div>
@@ -108,6 +108,8 @@ const T = {
     fecHint: 'Менше k/n — надійніше, але нижчий бітрейт',
     videoLabel: 'Відеобітрейт',
     ofPhy: 'від PHY',
+    fecKAria: 'FEC — кількість пакетів даних (fec_k)',
+    fecNAria: 'FEC — розмір блоку (fec_n)',
   },
   en: {
     mcsLabel: 'MCS Index (modulation scheme)',
@@ -120,6 +122,8 @@ const T = {
     fecHint: 'Lower k/n = more robust, less bitrate',
     videoLabel: 'Video bitrate',
     ofPhy: 'of PHY',
+    fecKAria: 'FEC data packets (fec_k)',
+    fecNAria: 'FEC block size (fec_n)',
   },
 }
 

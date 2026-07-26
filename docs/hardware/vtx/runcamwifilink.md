@@ -1,6 +1,6 @@
 ﻿---
 title: Runcam WiFiLink v1 — технічні характеристики та налаштування
-description: Інструкція з підключення, базового налаштування та використання камери Runcam WiFiLink v1 для цифрової FPV-системи.
+description: "Runcam WiFiLink v1 — характеристики камери, розташування елементів плати, базове налаштування, отримання gs.key і підключення до Android-станції PixelPilot."
 ---
 
 # Runcam WiFiLink 1

@@ -1,6 +1,6 @@
 ---
 title: Runcam WiFiLink v2 — Specs and Setup
-description: Guide for connecting, configuring and using the Runcam WiFiLink v2 camera for a digital FPV system.
+description: "Runcam WiFiLink v2 — specs of the Sony IMX415 camera, board layout, power wiring, getting the gs.key file and connecting to an Android ground station on Wi-Fi."
 ---
 
 # Runcam WiFiLink 2

@@ -1,6 +1,6 @@
 ---
 title: BL-M8812EU2 Wi-Fi Module (RTL8812EU)
-description: Pinout and specifications of the BL-M8812EU2 module
+description: "BL-M8812EU2 Wi-Fi module on the Realtek RTL8812EU-CG chip: pinout, specifications, 5 GHz band, 802.11a/n/ac up to 867 Mbit/s and 5/10/20/40 MHz modes for FPV."
 ---
 
 # BL-M8812EU2 Wi-Fi Module (RTL8812EU)

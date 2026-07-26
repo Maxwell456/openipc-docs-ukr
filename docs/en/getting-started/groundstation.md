@@ -1,6 +1,6 @@
 ---
 title: VRX Setup Guide
-description: Step-by-step guide for setting up the VRX Runcam WifiLink — connection, WebUI, channels, DVR and RSSI monitoring.
+description: "Setting up a Runcam WiFiLink VRX ground station: power and HDMI wiring, WebUI access, channel and resolution selection, DVR recording and RSSI link monitoring."
 ---
 
 # VRX Setup Guide

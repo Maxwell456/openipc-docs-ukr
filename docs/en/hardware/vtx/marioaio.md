@@ -1,6 +1,6 @@
 ---
 title: Mario AIO
-description: Connection, setup and firmware update guide for the OpenIPC Mario AIO module for FPV.
+description: "OpenIPC Mario AIO — a compact all-in-one camera and VTX module: specs, 2S–6S power, UART pads and U-Boot entry, flight controller wiring and firmware updates."
 ---
 
 # OpenIPC Mario AIO

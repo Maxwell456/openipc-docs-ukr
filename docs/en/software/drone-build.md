@@ -1,6 +1,6 @@
 ---
 title: "OpenIPC 4G firmware for QuadroFleet"
-description: "Step-by-step flashing of drone cameras with the QuadroFleet client and 4G modem setup"
+description: "Building a QuadroFleet drone for OpenIPC 4G/LTE: component list, power system, wiring, video and connectivity, plus testing the module after assembly."
 ---
 
 # OpenIPC 4G firmware for QuadroFleet

@@ -1,6 +1,6 @@
 ﻿---
 title: Runcam WiFiLink v2 — характеристики та налаштування
-description: Інструкція з підключення, налаштування та використання камери Runcam WiFiLink v2 для цифрової FPV-системи.
+description: "Runcam WiFiLink v2 — характеристики камери на Sony IMX415, схема плати, підключення живлення, отримання файлу gs.key і підключення до Android-наземної станції."
 ---
 # Runcam WiFiLink 2
 <img src="/images/runcam_wifilink-v2.webp" alt="Runcam WiFiLink v2" width="400" height="400"/>

@@ -1,6 +1,6 @@
 ﻿---
 title: Камери SSC338Q + IMX415
-description: Технічні характеристики IP-камери на базі SigmaStar SSC338Q з сенсором Sony IMX415
+description: "IP-камера SigmaStar SSC338Q з сенсором Sony IMX415: характеристики, розпіновка RJ45 і живлення 12V, як прошити FPV-прошивкою OpenIPC та залити файли через SCP."
 ---
 # Камери SSC338Q + IMX415
 

@@ -1,6 +1,6 @@
 ---
 title: "Companion — офіційний конфігуратор OpenIPC"
-description: "Повний гайд по OpenIPC Companion: встановлення на Windows, macOS, Linux та Android, підключення до камери й Radxa, вкладки WFB/Camera/Telemetry/Setup, пресети, резервна копія та відновлення прошивки."
+description: "Гайд по OpenIPC Companion: встановлення на Windows, macOS, Linux, Android, підключення до камери чи Radxa, WFB/Camera/Telemetry, пресети та бекап прошивки."
 faq:
   - q: "Що таке OpenIPC Companion?"
     a: "Companion — офіційний кросплатформний конфігуратор камер OpenIPC на Avalonia UI. Підключається до камери або наземної станції Radxa по SSH і дозволяє налаштувати WFB-NG, параметри камери, телеметрію, застосувати пресети та оновити прошивку."

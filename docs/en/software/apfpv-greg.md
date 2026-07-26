@@ -1,6 +1,6 @@
 ---
 title: "Greg's APFPV"
-description: "A special version of APFPV with adaptive bitrate for FPV/GPS drones and planes."
+description: "Greg's APFPV — a version of the APFPV firmware with adaptive bitrate for FPV/GPS drones and planes. Step-by-step install, Wi-Fi access point setup and viewing."
 ---
 
 # Greg's APFPV

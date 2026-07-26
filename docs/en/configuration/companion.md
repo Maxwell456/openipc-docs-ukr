@@ -1,6 +1,6 @@
 ---
 title: "Companion — the official OpenIPC configurator"
-description: "Complete guide to OpenIPC Companion: installing on Windows, macOS, Linux and Android, connecting to a camera or Radxa, the WFB/Camera/Telemetry/Setup tabs, presets, firmware backup and restore."
+description: "OpenIPC Companion guide: install on Windows, macOS, Linux and Android, connect to a camera or Radxa, the WFB/Camera/Telemetry tabs, presets and firmware backup."
 faq:
   - q: "What is OpenIPC Companion?"
     a: "Companion is the official cross-platform configuration tool for OpenIPC cameras, built with Avalonia UI. It connects to a camera or a Radxa ground station over SSH and lets you configure WFB-NG, camera settings, telemetry, apply presets and update firmware."

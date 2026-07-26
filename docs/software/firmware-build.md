@@ -1,6 +1,6 @@
 ﻿---
 title: "Збірка та прошивка OpenIPC Firmware для QuadroFleet 4G"
-description: "Покрокова компіляція та прошивка OpenIPC Firmware для камер дронів QuadroFleet з 4G модемом"
+description: "Компіляція та прошивка OpenIPC Firmware з клієнтом QuadroFleet Masina для камер SSC30KQ і SSC338Q: прошивка через TFTP або CH341A і налаштування 4G модему EC25."
 ---
 
 # Збірка та прошивка OpenIPC Firmware (QuadroFleet 4G)

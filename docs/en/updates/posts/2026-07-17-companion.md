@@ -1,8 +1,8 @@
 ---
-title: Companion v0.9.4 — the multiconfigurator changed its name, learned to back up firmware and got a dark theme
+title: Companion v0.9.4 — firmware backup & dark theme
 sidebarTitle: Companion v0.9.4
 date: 2026-07-17
-description: The official OpenIPC configurator is now called Companion. The highlights of v0.8–v0.9.4 — firmware backup and restore, a dark theme, the Preferences tab with firmware-focused mode, a fixed sysupgrade path and a working signed app on macOS.
+description: "OpenIPC’s official configurator is now Companion. New in v0.8–v0.9.4: firmware backup & restore, a dark theme, the Preferences tab and a signed macOS app."
 tags:
   - companion
   - configurator

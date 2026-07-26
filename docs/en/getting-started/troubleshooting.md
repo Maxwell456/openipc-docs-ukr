@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Common problems and solutions for OpenIPC FPV systems.
+description: "Common OpenIPC FPV problems and fixes: no video in PixelPilot, artefacts in the picture, a camera that ignores SSH, gs.key, channel and antenna checks."
 faq:
   - q: "Why is there no video in PixelPilot?"
     a: "Check that the lens cap is removed, that gs.key matches on the camera and ground station, and that channel and bandwidth are correct (e.g. 161 / 20 MHz). Then restart PixelPilot and reboot the camera."

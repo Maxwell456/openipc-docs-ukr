@@ -1,6 +1,6 @@
 ---
 title: Updates & News
-description: All OpenIPC FPV updates grouped by year.
+description: "All OpenFPV documentation updates and OpenIPC ecosystem news grouped by year: new firmware, guides, hardware and changes in WFB-ng and APFPV. Stay up to date."
 ---
 
 # 📰 OpenIPC FPV Updates & News

@@ -190,8 +190,14 @@ const REDIRECTS: Record<string, string> = {
 }
 
 // Write a redirect stub (canonical + meta-refresh + JS) at <outDir>/<oldPath>/index.html
+// The stub is noindex, but Bing Webmaster Tools still audits it — hence the h1
+// and the meta description, which keep it out of the "missing h1 / thin meta
+// description" reports.
 function writeRedirect(outDir: string, oldPath: string, newPath: string) {
   const target = SITE + newPath
+  const desc =
+    'This page has moved. You are being redirected to its current location in the ' +
+    'OpenFPV documentation for OpenIPC digital FPV — cameras, VTX and ground stations.'
   const html = `<!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -199,11 +205,12 @@ function writeRedirect(outDir: string, oldPath: string, newPath: string) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="canonical" href="${target}">
 <meta name="robots" content="noindex, follow">
+<meta name="description" content="${desc}">
 <meta http-equiv="refresh" content="0; url=${target}">
 <title>Redirecting…</title>
 <script>location.replace(${JSON.stringify(target)})</script>
 </head>
-<body>Redirecting to <a href="${target}">${target}</a>…</body>
+<body><h1>Page moved</h1><p>Redirecting to <a href="${target}">${target}</a>…</p></body>
 </html>
 `
   const rel = oldPath.replace(/^\//, '').replace(/\/$/, '')

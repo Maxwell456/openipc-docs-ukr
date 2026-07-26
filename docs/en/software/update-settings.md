@@ -1,6 +1,6 @@
 ---
 title: "Updating OpenIPC settings with the QuadroFleet firmware"
-description: "Step-by-step QuadroFleet update"
+description: "Updating OpenIPC settings with the QuadroFleet firmware: step-by-step camera configuration, video stream parameters and launching the control application."
 ---
 
 # Updating OpenIPC settings with the QuadroFleet firmware

@@ -1,6 +1,6 @@
 ---
 title: Building a Radxa Zero 3W ground station for FPV
-description: A guide to building a VRX station based on the Radxa Zero 3W — choosing components, power, connecting Wi‑Fi cards
+description: "Building a Radxa Zero 3W ground station for FPV: choosing components, power, connecting RTL8812EU2 Wi-Fi cards, antennas and the case — a step-by-step guide."
 ---
 
 #  Ground station: how to build a Radxa yourself

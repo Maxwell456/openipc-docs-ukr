@@ -1,6 +1,6 @@
 ---
 title: OpenIPC Thinker v1 (with WiFi)
-description: OpenIPC Thinker v1 with built-in 100 mW WiFi transmitter for TinyWhoop.
+description: "OpenIPC Thinker v1 with a built-in 100 mW WiFi transmitter — a ready-to-fly option for TinyWhoop with no separate network card. Specs and docs in progress."
 ---
 
 # OpenIPC Thinker v1 (with WiFi)

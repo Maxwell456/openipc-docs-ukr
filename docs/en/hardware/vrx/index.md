@@ -1,6 +1,6 @@
 ---
 title: Receivers (VRX) for OpenFPV
-description: Overview of ground stations and receivers for OpenFPV. RunCam RX, Radxa Zero 3W, PixelPilot.
+description: "Ground stations and receivers for OpenFPV: comparing ready-made RunCam WiFiLink-RX and PixelPilot options with a DIY Radxa Zero 3W build — parts and wiring."
 ---
 
 # Receivers (VRX)

@@ -1,6 +1,6 @@
 ---
 title: "OpenIPC 4G firmware for QuadroFleet"
-description: "Step-by-step flashing of drone cameras with the QuadroFleet client and 4G modem setup"
+description: "Compiling and flashing OpenIPC firmware with the QuadroFleet Masina client for SSC30KQ and SSC338Q: TFTP or CH341A flashing and Quectel EC25 modem setup."
 ---
 
 # OpenIPC 4G firmware for QuadroFleet

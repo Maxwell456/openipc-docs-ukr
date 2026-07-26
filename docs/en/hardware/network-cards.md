@@ -1,6 +1,6 @@
 ---
 title: Network Cards for OpenFPV
-description: RTL8812EU, RTL8812AU, RTL8812BU — selection and setup of WiFi cards for FPV ground stations.
+description: "Comparing RTL8812AU, RTL8812EU2 and RTL8812BU Wi-Fi cards for an OpenFPV ground station: what to pick, how to connect them to a Radxa Zero 3W, driver setup."
 faq:
   - q: "Which Wi-Fi card should I choose for an OpenIPC ground station?"
     a: "RTL8812AU is the most common choice for DIY ground stations: compact, powered from 3.3V, and connects directly to a Radxa Zero 3W without a USB hub."

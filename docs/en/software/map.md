@@ -1,6 +1,6 @@
 ---
 title: "Map navigation - OpenIPC 4G/LTE"
-description: "Guide to using the interactive map in the QuadroFleet system"
+description: "The interactive map in the QuadroFleet system (OpenIPC 4G/LTE): launching the map window, information widgets, working with waypoints and syncing with the OSD."
 ---
 
 # Map navigation - OpenIPC 4G/LTE

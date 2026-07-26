@@ -1,6 +1,6 @@
 ﻿---
 title: OpenIPC Bonnet — плата розширення для FPV
-description: Розширювальна апаратна плата для Radxa Zero 3W та FPV-систем на базі OpenIPC
+description: "OpenIPC Bonnet — плата розширення для Radxa Zero 3W: живлення 2S–6S, USB-хаб, два модулі RTL8812AU, вихід DisplayPort, кнопки GPIO та налаштування RubyFPV."
 ---
 
 # OpenIPC Bonnet — розширювальна плата для FPV та наземних станцій

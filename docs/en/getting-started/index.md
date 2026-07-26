@@ -1,6 +1,6 @@
 ---
 title: Quick Start with OpenIPC FPV
-description: What to buy for OpenIPC FPV, how to quickly set up camera, VRX and ground station for first flights.
+description: "Quick start with OpenIPC FPV: what to buy — cameras, VTX and ground stations — how to set it up with minimal effort and fly, and where to go next as a DIYer."
 faq:
   - q: "What hardware do I need to start with OpenIPC FPV?"
     a: "You need an OpenIPC-compatible camera/VTX (e.g. Runcam WiFiLink v1/v2 or EMAX Wyvern Link) and a VRX ground station. The easiest entry point is a Runcam WiFiLink v1/v2 paired with a smartphone running PixelPilot."

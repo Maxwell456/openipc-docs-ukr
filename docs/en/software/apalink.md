@@ -1,6 +1,6 @@
 ---
 title: APALink — dynamic bitrate switching for APFPV
-description: Step-by-step installation and configuration of APALink for the APFPV system.
+description: "APALink — dynamic bitrate switching for the APFPV firmware: installation, ap_alink.conf settings, fallback logic and recommended values for a stable video link."
 ---
 
 # APALink — dynamic bitrate switching for APFPV

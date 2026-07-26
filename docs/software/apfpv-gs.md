@@ -1,6 +1,6 @@
 ﻿---
 title: Radxa Zero 3W з APPFV OpenIPC v0.0.1
-description: Готовий образ для трансляції FPV відео з Radxa Zero 3W через прошивку APPFV від OpenIPC
+description: "Готовий образ Radxa Zero 3W з APFPV OpenIPC v0.0.1: трансляція FPV-відео через вбудований Wi-Fi модуль AIC8800, автопідключення до дрона й доступ до DVR."
 ---
 
 # Radxa Zero 3W з APPFV OpenIPC v0.0.1
