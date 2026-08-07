@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, shallowRef, computed, markRaw, onMounted, onBeforeUnmount } from 'vue'
 import { useData, useRouter, withBase } from 'vitepress'
-import MiniSearch from 'minisearch'
+import type MiniSearch from 'minisearch'
 
 const { lang, localeIndex } = useData()
 const router = useRouter()
@@ -57,28 +57,50 @@ const focused = ref(false)
 const root = ref<HTMLElement | null>(null)
 const input = ref<HTMLInputElement | null>(null)
 
-onMounted(async () => {
-  try {
-    // @ts-ignore - virtual module provided by VitePress
-    const mod = await import('@localSearchIndex')
-    const json = (await mod.default[localeIndex.value]?.())?.default
-    if (!json) return
-    index.value = markRaw(
-      MiniSearch.loadJSON<Result>(json, {
-        fields: ['title', 'titles', 'text'],
-        storeFields: ['title', 'titles'],
-        searchOptions: {
-          fuzzy: 0.2,
-          prefix: true,
-          boost: { title: 4, text: 2, titles: 1 },
-          boostDocument: (id: any) =>
-            typeof id === 'string' && id.includes('/updates/') ? 0.2 : 1,
-        },
-      })
-    )
-  } catch {
-    /* search index unavailable — chips still work */
+// The MiniSearch runtime plus the prebuilt index is ~120 KB — by far the
+// heaviest thing the home page can pull in. Awaiting it in onMounted put it on
+// the critical path of the first paint, so it now waits for the browser to go
+// idle; focusing the field fetches it right away for anyone quicker than that.
+let indexRequest: Promise<void> | null = null
+function loadIndex() {
+  if (indexRequest) return indexRequest
+  indexRequest = (async () => {
+    try {
+      const { default: MiniSearchImpl } = await import('minisearch')
+      // @ts-ignore - virtual module provided by VitePress
+      const mod = await import('@localSearchIndex')
+      const json = (await mod.default[localeIndex.value]?.())?.default
+      if (!json) return
+      index.value = markRaw(
+        MiniSearchImpl.loadJSON<Result>(json, {
+          fields: ['title', 'titles', 'text'],
+          storeFields: ['title', 'titles'],
+          searchOptions: {
+            fuzzy: 0.2,
+            prefix: true,
+            boost: { title: 4, text: 2, titles: 1 },
+            boostDocument: (id: any) =>
+              typeof id === 'string' && id.includes('/updates/') ? 0.2 : 1,
+          },
+        })
+      )
+    } catch {
+      /* search index unavailable — chips still work */
+    }
+  })()
+  return indexRequest
+}
+
+onMounted(() => {
+  // After load, then on idle: parsing the index is a ~200 ms main-thread task,
+  // which has no business running while the page is still painting.
+  const prefetch = () => {
+    const idle = (window as any).requestIdleCallback
+    if (typeof idle === 'function') idle(() => loadIndex(), { timeout: 3000 })
+    else window.setTimeout(loadIndex, 1500)
   }
+  if (document.readyState === 'complete') prefetch()
+  else window.addEventListener('load', prefetch, { once: true })
   document.addEventListener('click', onDocClick)
   document.addEventListener('keydown', onGlobalKeydown)
   placeholderTimer = window.setInterval(() => {
@@ -144,7 +166,7 @@ function onEnter() {
             placeholder=""
             :aria-label="t.aria"
             v-model="query"
-            @focus="open = true; focused = true"
+            @focus="open = true; focused = true; loadIndex()"
             @blur="focused = false"
             @keydown.enter="onEnter"
             @keydown.esc="($event.target as HTMLInputElement).blur(); query = ''"

@@ -1,4 +1,8 @@
-import DefaultTheme from 'vitepress/theme'
+// theme-without-fonts, not theme: the default entry bundles its own static
+// Inter and makes VitePress preload inter-roman-latin.woff2 (~66 KB) on every
+// page, while custom.css renders everything in the variable Inter imported
+// below — so that file was fetched at high priority and never used.
+import DefaultTheme from 'vitepress/theme-without-fonts'
 import { h } from 'vue'
 import NotFound from './NotFound.vue'
 import LangSwitcher from './LangSwitcher.vue'

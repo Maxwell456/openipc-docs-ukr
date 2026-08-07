@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <!-- WiFi arcs - white for dark backgrounds -->
-  <circle cx="100" cy="140" r="14" fill="white"/>
-  <path d="M63 103 Q100 72 137 103" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
-  <path d="M40 80 Q100 38 160 80" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
-  <path d="M18 57 Q100 5 182 57" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+<!-- Vector twin of logo-dark.png (334x250, white): same geometry as
+     logo-light.svg, white ink for dark backgrounds. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 334 250" fill="none">
+  <g stroke="#fff" stroke-linecap="round" fill="none">
+    <path d="M26.9 84.8A187.1 187.1 0 0 1 298.1 84.8" stroke-width="29.9"/>
+    <path d="M69 128.8A126.3 126.3 0 0 1 256 128.8" stroke-width="29.9"/>
+  </g>
+  <path fill="#fff" fill-rule="evenodd" d="M93.8 171.8A80.5 80.5 0 0 1 231.2 171.8L162.5 240.5ZM134.7 171.7A50.4 50.4 0 0 1 190.3 171.7L162.5 199.5Z"/>
 </svg>

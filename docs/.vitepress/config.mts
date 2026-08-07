@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 import { writeFileSync, mkdirSync, existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -76,6 +76,8 @@ const ORG = {
   '@id': `${SITE}/#org`,
   name: 'OpenFPV Ukraine',
   url: SITE,
+  // Stays a PNG on purpose: Google only accepts raster formats for the
+  // Organization logo. The nav bar uses the SVG twin of this file.
   logo: `${SITE}/logo-light.png`,
   sameAs: ['https://github.com/Maxwell456/openipc-docs-ukr'],
 }
@@ -217,6 +219,33 @@ function writeRedirect(outDir: string, oldPath: string, newPath: string) {
   const file = resolve(outDir, rel, 'index.html')
   mkdirSync(dirname(file), { recursive: true })
   writeFileSync(file, html)
+}
+
+// vp-icons.css is the ~900-byte sheet VitePress generates for the social-link
+// icons. As its own <link> it is render-blocking, so it costs a full round-trip
+// (~0.5 s on a throttled mobile connection) to deliver under a kilobyte —
+// inline it into every page instead. VitePress writes the file just before
+// buildEnd() runs, so its contents are available here.
+function inlineIconsCss(outDir: string): number {
+  const cssFile = resolve(outDir, 'vp-icons.css')
+  if (!existsSync(cssFile)) return 0
+  const style = `<style>${readFileSync(cssFile, 'utf-8').trim()}</style>`
+  const linkRE = /<link rel="preload stylesheet" href="[^"]*vp-icons\.css" as="style">/
+  let patched = 0
+
+  const walk = (dir: string) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const p = resolve(dir, entry.name)
+      if (entry.isDirectory()) { walk(p); continue }
+      if (!entry.name.endsWith('.html')) continue
+      const html = readFileSync(p, 'utf-8')
+      if (!linkRE.test(html)) continue
+      writeFileSync(p, html.replace(linkRE, style))
+      patched++
+    }
+  }
+  walk(outDir)
+  return patched
 }
 
 export default defineConfig({
@@ -732,9 +761,11 @@ export default defineConfig({
   },
 
   themeConfig: {
+    // Both variants ship in the markup (CSS hides one), so this is two
+    // downloads on every page — 0.6 KB of SVG instead of 58 KB of PNG.
     logo: {
-      light: '/logo-light.png',
-      dark: '/logo-dark.png',
+      light: '/logo-light.svg',
+      dark: '/logo-dark.svg',
       alt: 'OpenFPV'
     },
     siteTitle: 'OpenFPV',
@@ -849,6 +880,22 @@ export default defineConfig({
     // og:type, og:url, canonical, hreflang, og:locale and JSON-LD are emitted
     // per-page in transformPageData() below.
   ],
+
+  // Preload the two Inter subsets the site actually renders. Without this the
+  // browser only discovers them after parsing style.css, which on mobile
+  // delayed the Ukrainian hero text (cyrillic) by a full round-trip.
+  transformHead({ assets }) {
+    const find = (re: RegExp) => assets.find((file) => re.test(file))
+    return [
+      find(/inter-latin-wght-normal\.\w+\.woff2$/),
+      find(/inter-cyrillic-wght-normal\.\w+\.woff2$/),
+    ]
+      .filter((href): href is string => !!href)
+      .map((href): HeadConfig => [
+        'link',
+        { rel: 'preload', href, as: 'font', type: 'font/woff2', crossorigin: '' },
+      ])
+  },
 
   transformPageData(pageData) {
     const rel = pageData.relativePath
@@ -978,6 +1025,7 @@ export default defineConfig({
       writeRedirect(outDir, oldPath, newPath)
       writeRedirect(outDir, '/en' + oldPath, '/en' + newPath)
     }
+    siteConfig.logger.info(`inlined vp-icons.css into ${inlineIconsCss(outDir)} pages`)
   },
 
   markdown: { lineNumbers: true },
