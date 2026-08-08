@@ -770,6 +770,17 @@ export default defineConfig({
     },
     siteTitle: 'OpenFPV',
     socialLinks: [
+      {
+        icon: {
+          // viewBox is cropped to the glyph's own bounds (x 3.64–20.96,
+          // y 4.54–19.36) padded back out to a square, so the plane renders
+          // at the same optical size as the GitHub and mail icons beside it.
+          // A plain 0 0 24 24 box leaves it visibly smaller than both.
+          svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="1.8 1.45 21 21"><path fill="currentColor" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.27 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>'
+        },
+        link: 'https://t.me/openfpv',
+        ariaLabel: 'Telegram'
+      },
       { icon: 'github', link: 'https://github.com/Maxwell456/openipc-docs-ukr' },
       {
         icon: {
