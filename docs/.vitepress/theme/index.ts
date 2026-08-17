@@ -21,6 +21,7 @@ import UpdatesList from './UpdatesList.vue'
 import CryptoCard from './CryptoCard.vue'
 import ShareCard from './ShareCard.vue'
 import LatencyTimer from './LatencyTimer.vue'
+import BuyButton from './BuyButton.vue'
 import '@fontsource-variable/inter'
 import './custom.css'
 
@@ -181,6 +182,7 @@ export default {
     app.component('CryptoCard', CryptoCard)
     app.component('ShareCard', ShareCard)
     app.component('LatencyTimer', LatencyTimer)
+    app.component('BuyButton', BuyButton)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

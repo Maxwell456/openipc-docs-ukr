@@ -24,16 +24,18 @@ faq:
 
 Найпоширеніший вибір для DIY наземних станцій.
 
-- [Купити на AliExpress](https://vi.aliexpress.com/item/1005006845799671.html)
 - Підключається напряму до Radxa Zero 3W (без хаба)
 - Сумісний з Radxa Zero 3W Hat
+
+<BuyButton href="https://s.click.aliexpress.com/e/_c3Dacn19" />
 
 ## RTL8812EU2
 
 Більш потужний варіант, потребує USB-хаб та 5V живлення.
 
-- [Купити на AliExpress](https://vi.aliexpress.com/item/1005006869601109.html)
 - Використовується у RunCam WiFiLink-RX
+
+<BuyButton href="https://s.click.aliexpress.com/e/_c3QGtjOR" />
 
 ## Встановлення драйверів
 

@@ -27,6 +27,8 @@ description: "Wi-Fi модуль RTL8812AU (BL-R8812AF1) для OpenIPC FPV: р�
 
 ![BL-M8812EU2](/images/af.webp) ![BL-M8812EU2](/images/af2.webp)
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3Dacn19" />
+
 ----
 
 Розпіновка

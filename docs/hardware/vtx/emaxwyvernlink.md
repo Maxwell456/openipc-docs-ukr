@@ -7,6 +7,8 @@ description: "EMAX Wyvern Link — доступний FPV-відеопереда
 
 Доступний на AliExpress FPV відеопередавач, оптимальний для **TinyWhoop** дронів.
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3nDRpL1" />
+
 ::: tip
 Підходить для дронів класу 1S–2S, де важлива мала вага.
 :::

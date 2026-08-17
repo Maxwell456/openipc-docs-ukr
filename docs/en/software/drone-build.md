@@ -51,23 +51,23 @@ Specification
       <td rowspan="3"><strong>Video system</strong></td>
       <td>SSC30KQ Camera + 1.7mm Lens (OpenIPC)</td>
       <td>27</td>
-      <td><a href="https://de.aliexpress.com/item/1005006835439125.html">AliExpress</a></td>
+      <td><a href="https://s.click.aliexpress.com/e/_c4VHN61Z" target="_blank" rel="nofollow sponsored noopener">AliExpress</a></td>
     </tr>
     <tr>
       <td>Quectel EC25 4G Modem</td>
       <td>40</td>
-      <td><a href="https://de.aliexpress.com/item/1005002330780040.html">AliExpress</a></td>
+      <td><a href="https://www.aliexpress.com/item/1005002330780040.html">AliExpress</a></td>
     </tr>
     <tr>
       <td>4G FPC-Antenna Signal Booster</td>
       <td>2</td>
-      <td><a href="https://de.aliexpress.com/item/1005004592746304.html">AliExpress</a></td>
+      <td><a href="https://www.aliexpress.com/item/1005004592746304.html">AliExpress</a></td>
     </tr>
     <tr>
       <td rowspan="2"><strong>Power system</strong></td>
       <td>DC-DC 12V-5V 3A Buck Converter</td>
       <td>2</td>
-      <td><a href="https://de.aliexpress.com/item/1005002163078645.html">AliExpress</a></td>
+      <td><a href="https://www.aliexpress.com/item/1005002163078645.html">AliExpress</a></td>
     </tr>
     <tr>
       <td>3S/6S LiPo Battery Pack (3000–6000mAh)</td>

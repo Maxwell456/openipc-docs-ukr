@@ -7,6 +7,8 @@ description: "SigmaStar SSC338Q IP camera with a Sony IMX415 sensor: specificati
 
 <img src="/images/ssc338q.webp" alt="main image" width="400" height="294"/>
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3jGst59" />
+
 ### SSC338Q + IMX415 camera specifications
 
 | Parameter                 | Value                                         |

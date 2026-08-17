@@ -7,6 +7,8 @@ description: "EMAX Wyvern Link — an affordable OpenIPC FPV video transmitter f
 
 An FPV video transmitter available on AliExpress, ideal for **TinyWhoop** drones.
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3nDRpL1" />
+
 ::: tip
 Suitable for 1S–2S class drones where low weight is critical.
 :::

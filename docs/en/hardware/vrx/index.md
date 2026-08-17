@@ -45,8 +45,8 @@ A full-featured ground station built yourself.
 | Component | Link | Note |
 |-----------|------|------|
 | Radxa Zero 3W | [allnetchina.cn](https://shop.allnetchina.cn/collections/rock-3/products/copy-of-radxa-zero-3w?variant=48051150717244) | 2 GB, no eMMC, with header |
-| RTL8812AU (×2) | [AliExpress](https://vi.aliexpress.com/item/1005006845799671.html) | 3.3V, up to 40 MHz |
-| RTL8812EU2 (×2) | [AliExpress](https://vi.aliexpress.com/item/1005006869601109.html) | 5V, more powerful |
+| RTL8812AU (×2) | [AliExpress](https://s.click.aliexpress.com/e/_c3Dacn19) | 3.3V, up to 40 MHz |
+| RTL8812EU2 (×2) | [AliExpress](https://s.click.aliexpress.com/e/_c3QGtjOR) | 5V, more powerful |
 | USB HAT/hub | [AliExpress](https://www.aliexpress.com/item/1005007935543635.html) | For RTL8812EU2 |
 | microSD ≥ 64 GB | Samsung Evo Plus | Image ~1.5 GB |
 | 25×25 mm fans | [AliExpress](https://www.aliexpress.com/item/1005006523861888.html) | For cooling |

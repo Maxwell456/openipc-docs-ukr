@@ -2219,3 +2219,56 @@ button.doc-nav-item {
     transform: none;
   }
 }
+
+/* ===== Кнопка "Купити зараз" — CTA на сторінках заліза. Суцільна плашка
+   бренду з іконкою кошика; та сама мова, що й .support-cta-btn (радіус,
+   вага, тайминги), але самостійний елемент усередині статті. ===== */
+.buy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 4px 0 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: var(--vp-c-brand-1);
+  color: #fff !important;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 8px 22px -14px rgba(61, 106, 255, 0.5);
+  transition: background 0.2s ease, box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.buy-btn:hover {
+  background: var(--vp-c-brand-2);
+  box-shadow: 0 16px 32px -16px rgba(61, 106, 255, 0.55), 0 4px 10px -6px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.buy-btn:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
+}
+
+.buy-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.buy-btn:hover svg { transform: scale(1.08); }
+
+@media (max-width: 640px) {
+  .buy-btn {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .buy-btn,
+  .buy-btn svg { transition: none; }
+  .buy-btn:hover { transform: none; }
+  .buy-btn:hover svg { transform: none; }
+}

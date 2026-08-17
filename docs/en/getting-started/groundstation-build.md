@@ -15,8 +15,8 @@ Components for a Radxa Zero 3W ground station
 
 - **[Radxa Zero 3W](https://shop.allnetchina.cn/collections/rock-3/products/copy-of-radxa-zero-3w?variant=48051150717244)** (2 GB, no eMMC, with header)
 - **Wi‑Fi cards (2 pcs.)**
-  - [RTL8812AU](https://vi.aliexpress.com/item/1005006845799671.html): compact, cheap, run on 3.3 V, up to 40 MHz
-  - [RTL8812EU2](https://vi.aliexpress.com/item/1005006869601109.html): more powerful, require a USB hub and 5 V power
+  - [RTL8812AU](https://s.click.aliexpress.com/e/_c3Dacn19): compact, cheap, run on 3.3 V, up to 40 MHz
+  - [RTL8812EU2](https://s.click.aliexpress.com/e/_c3QGtjOR): more powerful, require a USB hub and 5 V power
 - **BEC (step-down converters)**: 5 V and 3.3 V regulated
 - **[USB hub](https://www.aliexpress.com/item/1005007935543635.html)**: to connect multiple cards
 - **Micro-USB → USB‑C cable**: for the HAT
@@ -80,7 +80,8 @@ Here's how **Ostap** did it:
     <img src="/images/vrx_radxa2.webp" alt="Option 2 — front view" width="400" />
     <img src="/images/vrx_radxa2-2.webp" alt="Option 2 — side view" width="400" />
   </div>
-The 3D model of the enclosure can be found  - [here](https://www.thingiverse.com/thing:6680584/files)
+
+The 3D model of the enclosure is on [Thingiverse](https://www.thingiverse.com/thing:6680584/files).
 
 ***Connecting the Wi-Fi cards***
 

@@ -21,6 +21,8 @@ This page lists the best-known Wi-Fi adapters based on this chip.
 
 ![BL-M8812EU2](/images/af.webp) ![BL-M8812EU2](/images/af2.webp)
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3Dacn19" />
+
 ----
 
 Pinout

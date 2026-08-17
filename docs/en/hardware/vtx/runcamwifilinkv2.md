@@ -6,6 +6,8 @@ description: "Runcam WiFiLink v2 — specs of the Sony IMX415 camera, board layo
 # Runcam WiFiLink 2
 <img src="/images/runcam_wifilink-v2.webp" alt="Runcam WiFiLink v2" width="400" height="400"/>
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c4rBNwLl" />
+
 ### Specifications
 
 - Image Sensor: Sony IMX415

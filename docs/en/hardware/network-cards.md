@@ -24,16 +24,18 @@ faq:
 
 The most common choice for DIY ground stations.
 
-- [Buy on AliExpress](https://vi.aliexpress.com/item/1005006845799671.html)
 - Connects directly to Radxa Zero 3W (no hub needed)
 - Compatible with the Radxa Zero 3W HAT
+
+<BuyButton href="https://s.click.aliexpress.com/e/_c3Dacn19" />
 
 ## RTL8812EU2
 
 More powerful option, requires a USB hub and 5V power.
 
-- [Buy on AliExpress](https://vi.aliexpress.com/item/1005006869601109.html)
 - Used in the RunCam WiFiLink-RX
+
+<BuyButton href="https://s.click.aliexpress.com/e/_c3QGtjOR" />
 
 ## Driver Installation
 

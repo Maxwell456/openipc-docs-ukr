@@ -6,6 +6,8 @@ description: Full guide to the OpenIPC camera on SigmaStar SSC30KQ with the Sony
 
 <img src="/images/ssc30kq.jpg" alt="OpenIPC FPV camera on SigmaStar SSC30KQ" width="420" height="356"/>
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c4VHN61Z" />
+
 **SSC30KQ** is a budget single-core SoC from SigmaStar — essentially a cut-down [SSC338Q](/en/hardware/vtx/sigmastar-ssc338q) (1 core instead of 2). Paired with the 5 MP **Sony IMX335** sensor, it became one of the most popular options for **light and cheap OpenIPC FPV cameras**: a ready-made module (e.g. Anjoy MCL12 / L12B) costs around **$11**.
 
 Thanks to its low power draw and small weight, the SSC30KQ is a great fit for **compact drones, whoops and 4G/LTE builds** ([QuadroFleet](/en/software/openipc-4g)). The bigger [SSC338Q](/en/hardware/vtx/sigmastar-ssc338q) handles 4K and peak performance, while the SSC30KQ is all about **minimum cost and weight**.

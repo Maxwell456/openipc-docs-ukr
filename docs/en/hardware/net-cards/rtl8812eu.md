@@ -9,6 +9,8 @@ description: "BL-M8812EU2 Wi-Fi module on the Realtek RTL8812EU-CG chip: pinout,
 
 **BL-M8812EU2** is a high-performance single-band Wi-Fi module based on the **Realtek RTL8812EU-CG** chip, designed to operate in the **5 GHz** band. It supports the **IEEE 802.11a/n/ac** standards and provides data rates up to **867 Mbit/s**. The module supports several channel-width modes: **5 MHz**, **10 MHz**, **20 MHz** and **40 MHz** (reception). Thanks to its integrated power amplifier and narrowband modes, it is ideal for long-range wireless video transmission — in particular for **FPV drones** and **IP-camera systems**.
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3QGtjOR" />
+
 ::: info INFO
 **If you get no image after enabling 40 MHz mode, please read this [article](/en/hardware/net-cards/rtl8812eu) to solve your problem.**
 :::

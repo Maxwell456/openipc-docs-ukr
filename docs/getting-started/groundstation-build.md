@@ -15,16 +15,16 @@ description: "Збірка наземної станції на Radxa Zero 3W д
 
 - **[Radxa Zero 3W](https://shop.allnetchina.cn/collections/rock-3/products/copy-of-radxa-zero-3w?variant=48051150717244)** (2 GB, без eMMC, з header)
 - **Wi‑Fi карти (2 шт.)**
-  - [RTL8812AU](https://vi.aliexpress.com/item/1005006845799671.html?spm=a2g0o.detail.pcDetailTopMoreOtherSeller.4.39a5JzpRJzpRR6&gps-id=pcDetailTopMoreOtherSeller&scm=1007.40000.327270.0&scm_id=1007.40000.327270.0&scm-url=1007.40000.327270.0&pvid=c35349de-3fbe-430e-901e-1a4e47fbe353&_t=gps-id%3ApcDetailTopMoreOtherSeller%2Cscm-url%3A1007.40000.327270.0%2Cpvid%3Ac35349de-3fbe-430e-901e-1a4e47fbe353%2Ctpp_buckets%3A668%232846%238115%232000&pdp_npi=4%40dis%21USD%2110.26%216.98%21%21%2110.26%216.98%21%40210385a817302099432804513e8da5%2112000038495776113%21rec%21UA%21135267971%21XZ&utparam-url=scene%3ApcDetailTopMoreOtherSeller%7Cquery_from%3A&gatewayAdapt=glo2vnm): компактні, дешеві, працюють на 3.3 V, до 40 MHz
-  - [RTL8812EU2](https://vi.aliexpress.com/item/1005006869601109.html?spm=a2g0o.order_list.order_list_main.162.400d1802RMwysw&gatewayAdapt=glo2vnm): потужніші, потребують USB‑hub та 5 V живлення
+  - [RTL8812AU](https://s.click.aliexpress.com/e/_c3Dacn19): компактні, дешеві, працюють на 3.3 V, до 40 MHz
+  - [RTL8812EU2](https://s.click.aliexpress.com/e/_c3QGtjOR): потужніші, потребують USB‑hub та 5 V живлення
 - **BEC (понижуючі перетворювачі)**: 5 V і 3.3 V регульовані
-- **[USB hub](https://www.aliexpress.com/item/1005007935543635.html?spm=a2g0o.order_list.order_list_main.51.57101802yWFN0z)**: для підключення кількох карт
+- **[USB hub](https://www.aliexpress.com/item/1005007935543635.html)**: для підключення кількох карт
 - **Micro-USB → USB‑C кабель**: для HAT
 - **[microSD карта](https://www.itbox.ua/ua/product/Karta_pam_yati_Samsung_Misro-SDXC_memory_card_64GB_C10_UHS-I_R130MB_s_Evo_Plus_SD_MB-MC64KA_EU-p1000286/)**: ≥ 64 GB (образ ~1.5 GB + DVR ~1 GB/10 хв)
-- **[HDMI‑mini HDMI кабель](https://www.aliexpress.com/item/1005005941468774.html?spm=a2g0o.order_list.order_list_main.23.400d1802RMwysw)** або micro‑HDMI→HDMI адаптер
+- **[HDMI‑mini HDMI кабель](https://www.aliexpress.com/item/1005005941468774.html)** або micro‑HDMI→HDMI адаптер
 - **3D‑друк корпусу** (PETG)
-- **[Вентилятори 25×25 мм](https://www.aliexpress.com/item/1005006523861888.html?spm=a2g0o.order_list.order_list_main.5.73271802wmRLX6)**
-- **[Кнопки/кінцевики](https://gfashop.com.ua/ua/p2137785051-mikropereklyuchatel-kontsevoj-kw10.html?source=merchant_center&gad_source=1&gbraid=0AAAAAocjCkCAn_4-BLOcSztkOgFpdc2ei&gclid=Cj0KCQjw_JzABhC2ARIsAPe3ynrcIj_3JLcHAqjhgLDiVNFJhSfRCweJMoTWnR3XIouE41VMSRKMJRgaAlJaEALw_wcB)** для запису та AP‑режиму
+- **[Вентилятори 25×25 мм](https://www.aliexpress.com/item/1005006523861888.html)**
+- **[Кнопки/кінцевики](https://gfashop.com.ua/ua/p2137785051-mikropereklyuchatel-kontsevoj-kw10.html)** для запису та AP‑режиму
 - **XT60 (мама) конектор** для живлення
 - **Антени 4 шт.** (2 спрямовані + 2 патчі, LHCP або RHCP)
 - **RP‑SMA подовжувачі/перехідники**
@@ -81,7 +81,8 @@ description: "Збірка наземної станції на Radxa Zero 3W д
     <img src="/images/vrx_radxa2.webp" alt="Варіант 2 — вид спереду" width="400" />
     <img src="/images/vrx_radxa2-2.webp" alt="Варіант 2 — вид сбоку" width="400" />
   </div>
-3D-модель корпусу можно знайти ось  - [тут](https://www.thingiverse.com/thing:6680584/files)
+
+3D-модель корпусу можна завантажити на [Thingiverse](https://www.thingiverse.com/thing:6680584/files).
 
 ***Підключення Wi-Fi карт***
 

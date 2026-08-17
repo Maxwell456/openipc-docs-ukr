@@ -6,6 +6,8 @@ description: "IP-камера SigmaStar SSC338Q з сенсором Sony IMX415:
 
 <img src="/images/ssc338q.webp" alt="головна картинка" width="400" height="294"/>
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c3jGst59" />
+
 ### Характеристики камери SSC338Q + IMX415
 
 

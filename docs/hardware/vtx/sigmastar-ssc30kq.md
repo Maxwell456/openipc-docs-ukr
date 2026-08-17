@@ -6,6 +6,8 @@ description: Повний гайд по OpenIPC-камері на SigmaStar SSC3
 
 <img src="/images/ssc30kq.jpg" alt="OpenIPC FPV камера на SigmaStar SSC30KQ" width="420" height="356"/>
 
+<BuyButton href="https://s.click.aliexpress.com/e/_c4VHN61Z" />
+
 **SSC30KQ** — це бюджетний одноядерний процесор (SoC) від SigmaStar, по суті спрощена версія [SSC338Q](/hardware/vtx/sigmastar-ssc338q) (1 ядро замість 2). У парі з 5-мегапіксельним сенсором **Sony IMX335** він став одним із найпопулярніших варіантів для **легких та дешевих OpenIPC FPV-камер**: готовий модуль (наприклад, Anjoy MCL12 / L12B) коштує приблизно **11 $**.
 
 Завдяки низькому енергоспоживанню та невеликій вазі SSC30KQ добре підходить для **компактних дронів, "whoop"-ів та збірок 4G/LTE** ([QuadroFleet](/software/openipc-4g)). За якість 4K та максимальну продуктивність відповідає старший [SSC338Q](/hardware/vtx/sigmastar-ssc338q), а SSC30KQ — це про **мінімальну ціну та вагу**.
