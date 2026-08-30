@@ -24,6 +24,7 @@ Verified resources for working with OpenIPC and digital FPV — official sources
 
 - [Є-дрон](https://t.me/e_drones) — FPV and drone-building community
 - [swarm.army](https://t.me/swarmalerts) — swarm.army news and alerts
+- [Ukrainian FPV Forum](https://fpvua.org/) - a Ukrainian community for discussing FPV and drone building
 
 ## YouTube Channels (Ukrainian)
 

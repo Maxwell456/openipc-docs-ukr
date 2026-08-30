@@ -24,6 +24,7 @@ description: "Корисні посилання для OpenIPC: офіційні
 
 - [Є-дрон](https://t.me/e_drones) — спільнота з FPV та дронобудування
 - [swarm.army](https://t.me/swarmalerts) — новини та сповіщення swarm.army
+- [Український FPV форум](https://fpvua.org/) - українська спільнота для обговорення FPV та дронобудування
 
 ## YouTube-канали українською
 
