@@ -41,7 +41,7 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 ## Waybeam — video encoder
 
-**Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar cameras that replaces Majestic and integrates natively with WFB-NG.
+**Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar and HiSilicon CV610 cameras that replaces Majestic and integrates natively with WFB-NG.
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/en/software/waybeam-venc"><span class="fpv-card-t">Waybeam overview</span><span class="fpv-card-d">Features, supported chips and comparison with Majestic</span></a>

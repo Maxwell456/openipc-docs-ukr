@@ -63,4 +63,4 @@ tags:
 - [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replace Majestic, configure ground station
 - [**Web panel & HTTP API**](/en/software/waybeam-venc-web-interface) — control via browser and command line
 
-> **Repository:** [github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc) — MIT licence, open source.
+> **Repository:** [github.com/OpenIPC/waybeam](https://github.com/OpenIPC/waybeam) — MIT licence, open source.

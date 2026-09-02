@@ -27,7 +27,7 @@ tags:
 - бінарник — `/usr/bin/waybeam`
 - релізи поставляються тарболами `waybeam-star6e.tar.gz` / `waybeam-maruko.tar.gz` (бінарник + шаблон конфігу + бібліотеки)
 
-Стара назва `venc` лишилася тільки в адресі репозиторію `waybeam_venc`.
+Стара назва `venc` лишалася тільки в адресі репозиторію `waybeam_venc` — у серпні 2026 репозиторій перейменували на [OpenIPC/waybeam](https://github.com/OpenIPC/waybeam), тож від старої назви не лишилось нічого (стара адреса редіректить).
 
 ---
 
@@ -74,4 +74,4 @@ tags:
 - [**Інтеграція з WFB-ng**](/software/waybeam-venc-install-groundstation) — заміна Majestic, наземна станція
 - [**Веб-панель та HTTP API**](/software/waybeam-venc-web-interface) — framing, resilience, всі ендпоінти
 
-> **Репозиторій:** [github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc) — ліцензія MIT, відкритий код.
+> **Репозиторій:** [github.com/OpenIPC/waybeam](https://github.com/OpenIPC/waybeam) — ліцензія MIT, відкритий код.

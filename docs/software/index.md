@@ -1,6 +1,6 @@
 ---
 title: "Програмне забезпечення OpenFPV — прошивки та відеолінк"
-description: "Каталог програмного забезпечення для OpenIPC FPV: прошивки камер (APFPV, Greg's, APALink), цифровий відеолінк WFB-NG, відеоенкодер Waybeam і платформа 4G/LTE QuadroFleet."
+description: "Каталог програмного забезпечення для OpenIPC FPV: прошивки камер (APFPV, Greg's, APALink), цифровий відеолінк WFB-NG, відеоенкодер Waybeam (SigmaStar + HiSilicon CV610) і платформа 4G/LTE QuadroFleet."
 ---
 
 # Програмне забезпечення OpenFPV
@@ -41,7 +41,7 @@ description: "Каталог програмного забезпечення д�
 
 ## Waybeam — відеоенкодер
 
-**Waybeam** — автономний H.265 (HEVC) відеоенкодер і RTP-стрімер для камер SigmaStar, що замінює Majestic та нативно інтегрується з WFB-NG.
+**Waybeam** — автономний H.265 (HEVC) відеоенкодер і RTP-стрімер для камер SigmaStar та HiSilicon CV610, що замінює Majestic та нативно інтегрується з WFB-NG.
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/software/waybeam-venc"><span class="fpv-card-t">Огляд Waybeam</span><span class="fpv-card-d">Можливості, підтримувані чіпи та порівняння з Majestic</span></a>
