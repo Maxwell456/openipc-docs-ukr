@@ -5,7 +5,7 @@ description: "Integrating Waybeam with WFB-ng instead of Majestic: system archit
 
 # Integrating Waybeam with WFB-ng
 
-This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency. The guide is verified against version **v0.40.1** (July 2026).
+This guide describes how to fully replace **Majestic** with **Waybeam** alongside **WFB-ng** (WiFi Broadcast) for FPV streaming with minimal latency. The guide is verified against version **v0.73.3** (late August 2026).
 
 ---
 
@@ -112,6 +112,45 @@ For maximum performance — over a ring buffer in shared memory:
 
 ::: warning SHM and audio
 `shm://` works only in RTP mode and cannot carry audio over the main channel. If you need audio with `shm://`, set `audioPort > 0` (e.g. `5601`) and audio will go to a separate UDP port.
+:::
+
+<strong>Method 4: Frame-SHM — whole frames over shared memory</strong> <Badge type="tip" text="v0.42+" />
+
+The newest transport, built for waybeam-link. It carries **whole encoded frames** over POSIX shared memory, bypassing RTP packetization entirely: the consumer applies its own framing and FEC at **frame** boundaries, not packet boundaries.
+
+```json
+{
+  "outgoing": {
+    "enabled": true,
+    "server": "frame-shm://venc_wfb",
+    "streamMode": "rtp",
+    "maxPayloadSize": 1400,
+    "connectedUdp": true,
+    "audioPort": 5601,
+    "sidecarPort": 5602
+  }
+}
+```
+
+Why this matters over the air: every frame in the ring carries metadata the transport can build **asymmetric FEC** from:
+
+| Flag / field | Meaning |
+| :--- | :--- |
+| `GDR` (0x02) | the frame contains a rolling intra-refresh stripe |
+| `ENHANCE` (0x04) | a droppable top-layer SVC-T frame — losing it costs exactly one frame |
+| `SALVAGED` (0x08) | reserved for the receiver to set (v0.68.1) |
+| `gdr_pos` / `gdr_len` | position in the intra-refresh cycle and its length — apply stronger FEC exactly where the cycle completes |
+
+The ring is SPSC lock-free, 8 slots × 384 KiB (~3 MiB). One slot is one access unit, even when it holds several slices. Consumers read the geometry from the ring header, so there is nothing to tune by hand.
+
+::: danger The ring header is version 2 — rebuild the ground side
+In **v0.69.0** the frame-shm ring header went to **version 2**: offset 88 changed meaning (it carried `throttle_permille`, where `1000` was healthy; it now carries `low_water_slots`, where `<= 1` is healthy — the polarity is inverted). `sizeof` stays 192 and nothing before offset 88 moves, but this is a **deliberate hard version break**: every consumer validates `version` and **refuses to attach** on a mismatch rather than silently misreading the field.
+
+A v2 producer **will not serve a v1 consumer**. `waybeam-link`, `waybeam-hub` and `radeon-vrx` must be rebuilt alongside the camera.
+:::
+
+::: warning Live retargeting does not work for SHM
+`apply_server` rejects SHM outputs: switching `outgoing.server` to `frame-shm://` (or back) requires a restart. The same applies to `shm://`.
 :::
 
 ---
@@ -352,6 +391,20 @@ The sidecar sends per-frame telemetry: encode/send timing, one-way latency, jitt
 
 Since **v0.39** the sidecar is multi-subscriber — up to 4 receivers at once (5 s TTL per slot), so an adaptive-link controller and a HUD can listen to the telemetry in parallel without hijacking each other's feed. With the `attitude` section enabled, every frame gains an **ATTITUDE** trailer (roll/pitch/yaw for an artificial horizon in the HUD) — Star6E only; see the [API reference](/en/software/waybeam-venc-web-interface#attitude-artificial-horizon-from-the-imu).
 
+::: info The DETECT trailer — object boxes in the telemetry <Badge type="tip" text="v0.48+" />
+If the [NPU detector](/en/software/waybeam-venc-web-interface#npu-object-detection) is running on the camera, the sidecar appends one more trailer — **DETECT** (flag `0x10`, always last): a 16-byte header (`model_id`, `schema_ver`, count, `detect_seq`, payload length, age in ms) plus a TLV body with normalized-u16 BOX records.
+
+The trailer is attached to **every** frame while a subscriber is present — precisely so the boxes survive RF loss. The sidecar send path was rebuilt around a 512-byte datagram buffer with flag-ordered variable trailers.
+
+`model_id` is **operator config** (`detect.modelId`), not something derived: the plugin loads whatever `.img` `detect.modelPath` names, and without an explicit id a one-class SAR-person model announced itself as VisDrone-10 and labelled every box "pedestrian".
+:::
+
+::: tip The sidecar no longer pays for telemetry in IDRs
+Every `video0.bitrate` or `qpDelta` write from an adaptive-link controller used to request an IDR. Since **v0.69.0** they do not (Star6E and Maruko). The practical effect on the ground side is twofold: a bitrate write no longer consumes the shared 100 ms IDR gate — so a genuine `RECOVERY_REQUEST` arriving inside that window is no longer swallowed — and `/api/v1/idr/stats` no longer counts IDRs that never happened.
+
+A resync point now has to be asked for **explicitly**: `/request/idr` (channel 0) or `/api/v1/dual/idr` (channel 1).
+:::
+
 ---
 
 ### Part 5: SD card recording
@@ -359,7 +412,7 @@ Since **v0.39** the sidecar is multi-subscriber — up to 4 receivers at once (5
 Waybeam supports simultaneous streaming and recording:
 
 ```bash
-# Enable recording via the API (Star6E)
+# Enable recording via the API
 curl "http://localhost/api/v1/record/start"
 
 # Check status
@@ -369,8 +422,14 @@ curl "http://localhost/api/v1/record/status"
 curl "http://localhost/api/v1/record/stop"
 ```
 
-::: warning Recording on Maruko
-HTTP recording control works only on Star6E. On Maruko recording is enabled config-only (`record.enabled=true` + `record.mode=...`), and `/api/v1/record/start|stop` returns `501 not_implemented`.
+::: tip HTTP recording control works on all three chips <Badge type="tip" text="corrected" />
+The claim "HTTP recording control is Star6E-only, Maruko returns `501`" was **stale** — Maruko has polled the same start/stop flags ever since it registered the capability. Contract **0.22.0** fixes it. CV610 gained recording in **v0.70.0**, in `record.mode: "mirror"`.
+
+Since **v0.70.0** the writer runs on **its own thread**: every backend used to call the recorder straight from the encode loop, where a `write()` to the SD card stalled live video. The same work fixed rotation by `maxSeconds`/`maxMB` on a GDR craft — it was inert, because a GDR stream has no natural IDRs, and rotation now asks for its own IRAP.
+:::
+
+::: warning Gemini (`dual`) — not on CV610
+`record.mode: "dual"` / `"dual-stream"` need a second VENC channel, which CV610 does not have: the request is refused with a warning rather than silently recording channel 0. `/api/v1/dual/set` is Star6E-only too (Maruko returns `501`: the `MI_VENC_*ChnAttr` write path binds to `i6_venc_chn`, while Maruko's library expects `i6c_venc_chn` with a different layout).
 :::
 
 **Gemini mode** — stream to WFB-ng at a low bitrate while recording to SD at high quality:

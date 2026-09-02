@@ -63,4 +63,4 @@ tags:
 - [**Інтеграція з WFB-ng**](/software/waybeam-venc-install-groundstation) — замінити Majestic, налаштувати наземну станцію
 - [**Веб-панель та HTTP API**](/software/waybeam-venc-web-interface) — керування через браузер і командний рядок
 
-> **Репозиторій:** [github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc) — ліцензія MIT, відкритий код.
+> **Репозиторій:** [github.com/OpenIPC/waybeam](https://github.com/OpenIPC/waybeam) — ліцензія MIT, відкритий код.

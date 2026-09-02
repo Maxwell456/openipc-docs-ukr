@@ -5,7 +5,7 @@ description: "Complete reference for the Waybeam HTTP API — web dashboard, ISP
 
 # Web panel and HTTP API
 
-Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80) or simply `http://waybeam.local` — the camera announces itself via mDNS. The reference is verified against version **v0.40.1** (July 2026).
+Waybeam includes a built-in web panel and a full HTTP API for real-time parameter control. The web panel is available at `http://<camera-ip>/` (default port — 80) or simply `http://waybeam.local` — the camera announces itself via mDNS. The reference is verified against version **v0.73.3** (late August 2026), API contract **0.22.0**.
 
 ---
 
@@ -13,24 +13,25 @@ Waybeam includes a built-in web panel and a full HTTP API for real-time paramete
 
 <strong>Settings tab</strong>
 
-Configuration fields are grouped into **14 sections**:
+Configuration fields are grouped into **13 built-in sections**:
 
 | Section | Description |
 | :--- | :--- |
 | System | Port, overclock, logging |
 | Sensor | Sensor selection (index / mode) |
-| ISP | Exposure, AWB, AE engine (`aeEngine` only takes effect on Star6E; Maruko always runs the vendor's native paced AE+AWB) |
+| ISP | Exposure (gain/shutter ceilings and floors), AWB, AE engine |
 | Image | Mirror, flip, rotate |
-| Video | Codec, bitrate, FPS, GOP, framing, resilience |
+| Video | Bitrate, FPS, GOP, QP bounds, `sliceCount`, framing, resilience |
 | Outgoing | Streaming, address, mode |
 | Discovery | mDNS announcement on the network (`waybeam.local`) |
 | Audio | Codec, sample rate, volume |
 | FPV | ROI encoding + 3DNR |
 | IMU | BMI270 gyro |
 | Attitude | Artificial horizon: roll/pitch/yaw from the IMU, mount angles, level trims |
+| Detection | NPU object detector: plugin, model, thresholds, OSD boxes |
 | Recording | SD card recording |
-| Adaptive Encoder Control | Scene detection |
-| Debug | OSD |
+
+On top of those 13, the dashboard renders groups that come **straight from `/api/v1/capabilities`**, with no line of `dashboard.html` behind them: **Snapshot** (`snapshot.enabled`, `quality`, `width`, `height`) and **QR** (`qr.tapEnabled`, `tapWidth`, `tapHeight`, `windowMs`) — tooltips included. That is why each chip shows exactly the controls its backend actually services.
 
 **Interface elements:**
 
@@ -49,8 +50,16 @@ Earlier versions had a separate `eis` section (gyroscopic GyroGlide stabilizatio
 The **Attitude** section (live roll/pitch/yaw and the "Capture level trims" button) appeared in the WebUI in **v0.40**. In 0.24–0.39 there were 13 sections, and the BMI270 gyro was listed as a POC with no consumer.
 :::
 
+::: details For versions before v0.48/v0.60 — no Detection, Snapshot or QR sections
+- **Detection** arrived in **v0.48.0** along with the NPU detector itself.
+- **Snapshot** is a card added in **v0.60.0**, when QR capture moved from PGM to the MJPEG channel.
+- **QR** is the luma-tap group (`qr.*`), added in **v0.64.0**.
+- **v0.49.0** briefly introduced a **Frame size caps** group (`video0.maxIBytes` / `maxPBytes`) — it disappeared in v0.72.0 together with the fields themselves.
+- **Adaptive Encoder Control** and **Debug** are no longer rendered as separate sections: the scene-detection fields live under Video, and `debug.showOsd` sits among the system fields.
+:::
+
 ::: tip Custom dashboard
-In current builds (July 2026) the built-in web interface can be replaced by dropping your own files into `/usr/share/www` — they take priority over the bundled dashboard.
+The built-in web interface can be replaced by dropping your own files into `/usr/share/www` — they take priority over the bundled dashboard.
 :::
 
 <strong>API Reference tab</strong>
@@ -64,6 +73,12 @@ Direct access to 62 SigmaStar ISP parameters:
 - **Parameters** — collapsible sections with parameter chips
 - **Multi-fields** — built-in editor for complex parameters (colortrans, OBC, demosaic, etc.)
 - **Export / Import** — save and restore ISP profiles as JSON
+
+::: info IQ on CV610 — a different shape <Badge type="tip" text="v0.65.5+" />
+CV610 also serves `/api/v1/iq` and `/api/v1/iq/set`, but in **its own response shape** and with its own set: **11 ISP groups, 59 fields** — saturation, color_tone, noise reduction, sharpen, gamma, exposure and more. Writing a field selects the half of the block it lives in. The DRC and dehaze groups are registered but **bypassed**.
+
+`/api/v1/iq/import` answers `501` on CV610 (advertised in capabilities as `routes.iq_import: false`). Since v0.65.5 the dashboard's IQ tab is driven by the capability feed rather than a hardcoded condition, so it is no longer hidden on CV610.
+:::
 
 ---
 
@@ -94,15 +109,34 @@ curl http://<ip>/api/v1/version
 {
   "ok": true,
   "data": {
-    "app_version": "0.40.1",
+    "app_version": "0.73.3",
     "backend": "star6e",
-    "contract_version": "0.12.0",
-    "config_schema_version": "0.12.0"
+    "contract_version": "0.22.0",
+    "config_schema_version": "0.22.0"
   }
 }
 ```
 
-The `contract_version` / `config_schema_version` values grow with releases (for example, v0.19 bumped the contract to 0.11.0 by removing `video0.frameLost`, and v0.40 bumped it to 0.12.0 with the attitude API).
+`backend` now has three possible values: `star6e`, `maruko` and **`cv610`**.
+
+The `contract_version` / `config_schema_version` values grow with releases. The landmarks worth keying scripts off:
+
+| Contract | What changed |
+| :--- | :--- |
+| `0.11.0` | `video0.frameLost` removed |
+| `0.12.0` | attitude API |
+| `0.13.0` | new endpoint `/api/v1/live/set` |
+| `0.14.0` / `0.15.0` | detector live model swap; detector reached Maruko (SCL port 3) |
+| `0.16.0` | **breaking** — `/api/v1/snapshot.pgm` removed (now `404`) |
+| `0.18.x` | the CV610 series: control surface, sensor-mode selection, `video0.size`, IQ, QP bounds, resilience and slices |
+| `0.19.0` | **breaking** — `outgoing.shmThrottle` and the ring-full recovery IDR removed; frame-shm ring header → v2 |
+| `0.20.0` | snapshot and recording reached CV610 |
+| `0.21.0` | **breaking** — `video0.maxIBytes` / `maxPBytes` removed |
+| `0.22.0` | current: QP bounds on Maruko, `video0.intraRefreshQp` on CV610 |
+
+::: warning `0.18.7` was never a servable contract version
+It was staged during review and folded into `0.19.0`. No device reports `contract_version: 0.18.7` — do not match against it in client code.
+:::
 
 ---
 
@@ -185,7 +219,24 @@ Multi-set is supported only for live fields. If any restart field is present, th
 
 ::: danger HTTP 409 — validation error
 If a value is invalid (e.g. a non-existent AWB mode or a field that does not exist), the API returns **HTTP 409 Conflict** instead of 200.
+
+Since **v0.64.0** an unknown `video0.resilience` preset lands here too. It previously returned **200**, persisted the bad name to `/etc/waybeam.json`, and left the derived fields (`intra_refresh_*` / `ref_*`) holding the **previous** preset's expansion — so `/api/v1/config` disagreed with the running encoder until the next start, where the disk loader falls back to `"off"` and the operator lands on a preset they never asked for.
 :::
+
+<strong>GET /api/v1/live/set?field_name=value</strong> <Badge type="tip" text="v0.50+" />
+
+The same as `/set`, but **without writing to flash**: the value is applied to the running configuration only.
+
+```bash
+curl "http://<ip>/api/v1/live/set?video0.bitrate=4096"
+```
+
+Built for high-cadence automated writers — waybeam-link's adaptive bitrate, frame-cap and fps actuation. Persisting at controller cadence is bad twice over: it wears the flash, and the camera reboots into the last adaptive transient.
+
+- **Live fields only.** A restart-class field answers `400` ("restart-class field requires persistence; use /api/v1/set") — a pipeline reinit reloads from disk and would silently discard the value.
+- Response shapes are **byte-identical** to `/set`. Single- and multi-set are both supported.
+- A later persisting `/set` or `/defaults` snapshots the **whole** running config, volatile changes included (one config struct, by design).
+- Builds without the endpoint answer `404`: clients probe once and fall back to `/set`. That is exactly what waybeam-link does.
 
 <strong>GET /api/v1/restart</strong>
 
@@ -219,12 +270,34 @@ Per-channel IDR rate-limit counters: how many requests were honored vs. coalesce
 
 <strong>GET /api/v1/awb</strong>
 
-Current AWB (auto white balance) state from the ISP.
+Current AWB (auto white balance) state from the ISP. Works on CV610 too since **v0.68.2**.
+
+<strong>GET /api/v1/ae</strong>
+
+Auto-exposure state, including `runtime.active_precrop` (both SigmaStar backends).
+
+<strong>GET /api/v1/intra/status</strong> and <strong>GET /api/v1/resilience/status</strong>
+
+Live state of intra-refresh (rolling GDR) and the selected resilience preset — what is actually programmed into the encoder, not what the config says. Both had been served for several releases but only entered the contract in **0.18.6**; with the CV610 branch (0.18.5) they report live device state.
+
+<strong>GET /api/v1/fps/config</strong> and <strong>GET /api/v1/fps/live</strong>
+
+The configured and the actually delivered frame rate.
 
 ```bash
 curl http://<ip>/api/v1/idr/stats
 curl http://<ip>/api/v1/awb
+curl http://<ip>/api/v1/resilience/status
+curl http://<ip>/api/v1/fps/live
 ```
+
+::: info Rate-control writes no longer request an IDR <Badge type="warning" text="v0.69+" />
+`video0.bitrate` and `video0.qpDelta` no longer **request an IDR** after applying (Star6E and Maruko; CV610 never did). Measured on an SSC338Q on 23 August: ten live writes spaced 300 ms, counted as IRAP access units in the encoder's own bitstream — `qpDelta` fell from 11 IDRs to 1.
+
+The bitrate path is unchanged **on the wire**, because `MI_VENC_SetChnAttr` emits an IDR by itself and `MI_VENC_RcParam_t` carries no bitrate field, leaving no rate-only actuator to switch to. What the fix does buy there: a bitrate write no longer consumes the shared 100 ms IDR gate (a genuine recovery request arriving inside that window used to be swallowed), and `/api/v1/idr/stats` no longer counts an IDR per bitrate write that the write did not cause.
+
+Bootstrap IDRs (output enable, destination change, live fps rebind, recorder start) **bypass the gate unconditionally** — a receiver that has never seen a parameter set has nothing to start from. They are still counted in `/api/v1/idr/stats` and they re-arm the window.
+:::
 
 ---
 
@@ -232,11 +305,25 @@ curl http://<ip>/api/v1/awb
 
 <strong>GET /api/v1/transport/status</strong>
 
-State of the active video transport (UDP / Unix / SHM): buffer fill percentage, backpressure flag, lifetime drop counters.
+State of the active video transport. The field set **differs across the three transport kinds**:
+
+| Transport | Fields |
+| :--- | :--- |
+| `frame-shm://` | ring fields + `ringLowWaterSlots`, `otherDrops` |
+| `shm://` | packet-ring fields |
+| UDP / Unix | socket subset + `transportDrops` / `packetsSent` |
+
+`badAuDrops` appears on every transport — except CV610, whose stream path has no packet-table validation.
+
+::: warning Fields changed in v0.69.0 <Badge type="danger" text="BREAKING" />
+`throttlePermille` and `effectiveBitrateKbps` were **removed** along with the clamp mechanism itself. The `frame-shm` branch gained `ringLowWaterSlots` instead — and **the polarity is inverted**: a **low** number is healthy here (`<= 1`), where `1000` was healthy for the clamp. Read the bitrate straight from `/api/v1/config` → `video0.bitrate`: there is no longer a scaled "effective" rate, because nothing scales it.
+
+`otherDrops` was also added — frames the producer discarded for a reason **other** than a full ring (an oversize or malformed access unit). Only `full_drops` was ever published, so a consumer was structurally blind to those: the frame simply vanished. The two are deliberately separate because they demand opposite responses from a rate controller.
+:::
 
 <strong>GET /api/v1/audio/status</strong>
 
-A snapshot of the audio pipeline: whether the library is loaded, capture state, codec, sample rate, channels, Opus initialization.
+A snapshot of the audio pipeline: whether the library is loaded, capture state, codec, sample rate, channels, Opus initialization. Implemented on CV610 since **v0.65.1** (it answered `501` before, while audio was in fact working).
 
 ```bash
 curl http://<ip>/api/v1/transport/status
@@ -314,7 +401,51 @@ The response is `Content-Type: image/jpeg`. Possible errors: `503 snapshot_disab
 
 ::: info Snapshot settings
 `snapshot.quality` is **live** (instant, no reinit). The `snapshot.channel`, `snapshot.width`, `snapshot.height` fields are restart (baked at `MI_VENC_CreateChn`). `width=0`/`height=0` means "match the main stream".
+
+Since **v0.70.0** `/api/v1/snapshot.jpg` works on **CV610** too — it was the one route that backend was still missing.
 :::
+
+::: details For versions before v0.60 — the `/api/v1/snapshot.pgm` endpoint <Badge type="danger" text="REMOVED" />
+There used to be a grayscale PGM snapshot at `/api/v1/snapshot.pgm`, used by the QR decoder. **v0.60.0 removed it — it now answers `404`**, and this was not housekeeping: its per-request VPE/SCL tap **could wedge the SoC**. Device-verified: `DisablePort … mhal not return buffer` → an `EnsureInputPortFifoEmpty` storm.
+
+QR scanning now consumes the ordinary `GET /api/v1/snapshot.jpg`, and `qr_decode` reads JPEG natively (built with `-O3` — 1.66× faster end-to-end). The error codes `bad_crop`, `bad_max_dim`, `snapshot_gray_busy` and `snapshot_gray_unsupported` went with it.
+:::
+
+---
+
+### NPU object detection <Badge type="tip" text="v0.48+ · Star6E, Maruko" />
+
+Waybeam runs an object detector on the camera's **idle IPU/NPU**. The architecture is pluggable: the model lives in a separate `.so`, so a new model is a config change, not a waybeam rebuild. The result goes out as a **DETECT trailer in the RTP sidecar** (flag `0x10`, on every frame) and as boxes on the debug OSD.
+
+Live fields — enable, hot model swap without dropping the stream, thresholds:
+
+```bash
+curl "http://<ip>/api/v1/set?detect.enabled=true"
+curl "http://<ip>/api/v1/set?detect.modelPath=/opt/models/sar_person.img"
+```
+
+::: warning `detect` and `framing=stab` are mutually exclusive
+Both claim the same tap (VPE port1 on Star6E, SCL port3 on Maruko). There is no detection on CV610.
+:::
+
+→ **[Full reference: NPU object detection](/en/software/waybeam-detection)** — every `detect` field, the trailer format, tap geometry, `modelId`, history and limitations.
+
+---
+
+### On-board QR scanning <Badge type="tip" text="v0.60+ · Star6E" />
+
+The camera decodes a QR marker out of its own frame through an **overlay-free** luma tap. Endpoints: `GET /api/v1/qr/scan[?ms=N]` (a window that closes itself once a code is found), `/qr/stop`, `/qr/status`, `/qr/tap.pgm`.
+
+```bash
+curl "http://<ip>/api/v1/qr/scan?ms=10000"
+curl "http://<ip>/api/v1/qr/status"    # payload in data.decode.payload
+```
+
+::: danger Pairing itself is NOT implemented yet
+Waybeam ships only the transport layer: it returns 16 characters and stops — it **does not interpret, authorize, persist or execute** that payload. The `P`/`C` prefixes reserve types for future pairing and command logic, but that logic is deliberately kept outside the waybeam binary.
+:::
+
+→ **[Full reference: on-board QR scanning](/en/software/waybeam-qr)** — the marker format, the pixels-per-module budget, generation, all API responses and port1 priorities.
 
 ---
 
@@ -347,13 +478,34 @@ curl "http://<ip>/api/v1/record/status"
     "frames": 1500,
     "bytes": 12345678,
     "segments": 1,
+    "elapsed_ms": 25000,
+    "droppedFrames": 0,
+    "writerPeakDepth": 1,
     "stop_reason": "none"
   }
 }
 ```
 
-::: warning Recording on Maruko
-HTTP recording control (`start`/`stop`) works only on Star6E. On Maruko recording is **config-only** (`record.enabled=true` + `record.mode=...` in `/etc/waybeam.json`), and `/api/v1/record/start|stop` returns `501 not_implemented`.
+<strong>GET /api/v1/recordings</strong> — list the files in `record.dir`; <strong>/recordings/download</strong> and <strong>/recordings/delete</strong> fetch and remove them. Both SigmaStar backends serve these regardless of which one wrote the file.
+
+::: tip Recording works on all three chips <Badge type="tip" text="corrected" />
+Both this documentation and the contract itself used to state that HTTP recording control is Star6E-only and that Maruko returns `501`. That was a **stale claim**: Maruko has polled the same start/stop flags ever since it registered `record_http_control_supported(true)`. Contract **0.22.0** corrects the row.
+
+**CV610** gained recording in **v0.70.0** — in `record.mode: "mirror"`, format `ts` with Opus muxed in. `dual` / `dual-stream` need a second VENC channel there, so the request is refused with a warning rather than silently recording channel 0.
+:::
+
+::: warning Recording no longer stalls the live stream <Badge type="tip" text="v0.70+" />
+Before v0.70 **every backend called the recorder straight from the encode loop**: a `write()` to the SD card stalled the live video path. The writer now runs on **its own thread** on all three backends (thread count 8 → 9 while recording), and `writerPeakDepth` in the status reports the queue depth during rotation.
+
+The same work fixed rotation by `record.maxSeconds` / `maxMB` being **inert on a GDR craft**: rotation needs a stream entry point, and a GDR stream has no natural IDRs — rotation now asks for its own IRAP.
+
+Then a run of fixes in 0.73.1–0.73.3: `/record/status` no longer races the writer thread (it is a coherent snapshot now), a mid-run `record/stop` can no longer stall live video, and `record.mode=dual` on Maruko no longer smashes its own thread stack or forces a keyframe into the **live** stream.
+:::
+
+::: info What `droppedFrames` actually counts <Badge type="tip" text="contract 0.20.1" />
+It counts **every recording frame that did not reach the file**, not only the ones the queue refused: an access unit with an incomplete `packetInfo` table, or one over the queue's byte cap, never reached the queue at all, and counting only the queue's refusals let those pass silently.
+
+`droppedFrames` and `writerPeakDepth` are **per-recording, not per-process**. Previously the SigmaStar writer outlived any one recording and both counters accumulated for the life of the daemon: a clean recording reported the previous one's drops, and one shed frame poisoned every recording that followed.
 :::
 
 ---
@@ -405,6 +557,10 @@ curl "http://<ip>/api/v1/dual/set?gop=1.0"
 | `zoom-2x` | Digital zoom 2× | 960×528 | both |
 | `zoom-3x` | Digital zoom 3× | 640×352 | both |
 | `zoom-4x` | Digital zoom 4× | 480×256 | both |
+
+::: info "both" means the SigmaStar chips
+On **CV610** there is no `video0.framing` field at all — neither stabilization nor digital zoom. Check `/api/v1/capabilities`.
+:::
 
 **Digital zoom** shrinks both the crop window and the output resolution — no upscale, no extra link load. Panning inside the zoom is live, via `video0.zoomX` / `video0.zoomY` (∈ [0,1], center 0.5/0.5):
 
@@ -470,15 +626,75 @@ Writing `video0.resilience` persists the value to `/etc/waybeam.json` and return
 | `rally` | fast (150 ms) | base=1, enhance=1 | 2.0 s | no — "green smear" |
 | `range` | balanced (500 ms) | base=1, enhance=4 | 2.0 s | no — "green smear" |
 | `fpv` | robust (1000 ms) | base=1, enhance=4 | 2.0 s | no — "green smear" |
+| **`ltr`** / `ltr:<N>` | **off (forced)** | enhance=N (1 by default) | **your `gopSize`** | no — "green smear" |
+
+<strong>The `ltr` preset</strong> <Badge type="tip" text="v0.64+" />
+
+The most resilient reference structure this SoC can express: `InRnRnRn…` — **half the frames non-referenced**, so half of all frame losses cost exactly one frame instead of cascading to the next IDR. Unlike `rally` (same 1:1 ratio), `ltr` **preserves your `gopSize`** and forces intra-refresh off — so it can be paired with a long GOP and asymmetric transport FEC: heavy protection on the IDR, light on the rest.
+
+The semantics of `MI_VENC_ParamRef_t.u32Enhance` had to be established **by measurement** (the SDK documents nothing): it is a **period** — exactly one frame in every `enhance + 1` is emitted non-referenced. Measured: `enhance=1` → 50.0% droppable, `4` → 17.6%, `299` → 0.3%. So **smaller is more resilient**: bare `ltr` uses 1, and `ltr:<N>` is strictly less resilient as N grows.
+
+Measured cost at pinned QP 30 on a moving scene: **under 1%** bitrate delta vs `off` (5.62/5.64 vs 5.65/5.68 Mbps, alternating runs).
+
+::: info What else the measurement established
+P-frames **always** predict from the previous frame, never from the IDR (frame size is flat across the GOP under motion), and `bEnablePred` is a **no-op** for non-reference marking: `rally` (`pred=true`) and `ltr:1` (`pred=false`) yield identical patterns. The full SigmaStar SDK exposes no long-term-reference, SmartP or GOP-mode API, so an IDR-anchored ("virtual IDR") structure is not achievable on Infinity6E.
+:::
 
 ```bash
 # FPV with an OSD overlay — fast stripe recovery, no SVC-T
 curl "http://<ip>/api/v1/set?video0.resilience=racing"
+
+# Maximum resilience with a long GOP + asymmetric FEC
+curl "http://<ip>/api/v1/set?video0.resilience=ltr"
+
 # then reboot the camera to apply
 ```
 
 ::: warning OSD and SVC-T
-Presets with `refPred` (`rally`, `range`, `fpv`) can leave a persistent "green smear" over a static OSD until the next IDR. For flights with an OSD overlay use OSD-safe presets (`racing`, `endurance`, `patrol`). Budget +20–30% bitrate for presets with intra-refresh.
+Presets with `refPred` (`rally`, `range`, `fpv`, `ltr`) can leave a persistent "green smear" over a static OSD until the next IDR — `ltr` maximises that condition the hardest. For flights with an OSD overlay use OSD-safe presets (`racing`, `endurance`, `patrol`). Budget +20–30% bitrate for presets with intra-refresh.
+:::
+
+---
+
+### Multi-slice H.265 (`video0.sliceCount`) <Badge type="tip" text="v0.66+" />
+
+`video0.sliceCount` (1..32, default `1`, **restart**) splits each picture into several independent slices. The point is spatial concealment: when RF loss goes past the FEC budget, it costs a **frozen region** instead of the whole frame.
+
+| Backend | Since | Details |
+| :--- | :--- | :--- |
+| Star6E | v0.66.0 | `MI_VENC_SetH265SliceSplit` — the symbol was exported by the shipped library all along but never wired. Asks for `ceil(rows/sliceCount)` CTU rows per slice |
+| CV610 | v0.67.0 | 32-pixel LCU-row splitting, early slice output kept disabled |
+| Maruko | v0.67.0 | Binds the device-aware ABI in the window between `CreateChn` and `StartRecvPic` |
+
+Picture geometry sets the delivered ceiling. Device-verified: on CV610 (1080p30/60/100) requests 1, 3, 4, 6, 9, 12 and 17 delivered exact VCL-NAL counts; on Maruko at 720p30, requests 1, 4 and 12 were delivered exactly, while 17 and 32 quantized to the picture maximum of **12**.
+
+If several slices are explicitly requested and the ABI cannot be applied or read back, **startup fails** rather than silently shipping a single-slice stream. `sliceCount=1` stays compatible with older libraries.
+
+Frame-SHM publication is untouched: still **one access unit per slot**, now with N slice NALs inside it.
+
+::: details For version v0.66 — an eight-slice ceiling
+The first implementation (Star6E only) had a `packetInfo[8]` limit and was documented as "sliceCount 4 is the validated envelope". **v0.67.0** established that this was a misreading: `packetInfo[8]` is **per pack**, while every output path already walks all packs in the access unit. The ceiling was lifted, the shared request range is now 1..32, and device geometry sets the real limit.
+:::
+
+---
+
+### Rate control: QP bounds and `qpDelta`
+
+| Field | Mutability | Star6E | Maruko | CV610 |
+| :--- | :--- | :--- | :--- | :--- |
+| `video0.minQp` / `maxQp` | live | ✅ v0.64 | ✅ **v0.73.0** | ✅ v0.65.6 (P bounds + I ceiling; the I floor is not steerable) |
+| `video0.qpDelta` | live | ✅ default **−12** | ✅ default **−12** | ❌ removed in v0.73.0 |
+| `video0.intraRefreshQp` | restart | ❌ | ❌ | ✅ v0.73.0 |
+
+```bash
+curl "http://<ip>/api/v1/set?video0.minQp=22&video0.maxQp=42"
+```
+
+::: warning Default and behaviour changes in v0.73.0
+- **`video0.qpDelta` was silently reverted at startup** (#255): applied from venc's own startup path it **logged success without reaching the encoder** — only a live write actually took effect. Fixed.
+- **The `qpDelta` default is now `-12`** on Star6E and Maruko (was `0`), to bound the cost of an IDR.
+- **`qpDelta` was removed from CV610**: its CBR rate controller stores the value but never acts on it. `video0.intraRefreshQp` — the QP lever for the intra-refresh stripe — replaces it there.
+- On Star6E a `minQp > maxQp` request is now **rejected** instead of being written.
 :::
 
 ---

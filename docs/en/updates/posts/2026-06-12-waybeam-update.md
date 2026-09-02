@@ -27,7 +27,7 @@ The application, binary, config file and init script are now all named **`waybea
 - binary — `/usr/bin/waybeam`
 - releases ship as tarballs `waybeam-star6e.tar.gz` / `waybeam-maruko.tar.gz` (binary + config template + libraries)
 
-The old `venc` name only survives in the repository URL `waybeam_venc`.
+The old `venc` name only survived in the repository URL `waybeam_venc` — in August 2026 the repository was renamed to [OpenIPC/waybeam](https://github.com/OpenIPC/waybeam), so nothing of the old name is left (the old URL redirects).
 
 ---
 
@@ -74,4 +74,4 @@ The BMI270 driver remains, but as a POC consumer for telemetry/sidecar.
 - [**WFB-ng integration**](/en/software/waybeam-venc-install-groundstation) — replacing Majestic, ground station
 - [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — framing, resilience, all endpoints
 
-> **Repository:** [github.com/OpenIPC/waybeam_venc](https://github.com/OpenIPC/waybeam_venc) — MIT license, open source.
+> **Repository:** [github.com/OpenIPC/waybeam](https://github.com/OpenIPC/waybeam) — MIT license, open source.
