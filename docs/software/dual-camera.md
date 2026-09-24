@@ -27,7 +27,7 @@ description: "AI Dual Camera в OpenIPC FPV: денна камера + тепл�
 - **Денна камера** (OpenIPC) віддає потік на порт **`5500`**.
 - **Тепловізор** (через Raspberry Pi, **H.264**) віддає потік на порт **`5600`**.
 - `socat` залежно від перемикача бере потік із `5500` **або** `5600` і передає на локальний **Unix RTP**-сокет → **WFB** → передавання на наземну станцію.
-- Замість Majestic працює стрімер **`venc`** із детекцією об'єктів (її реалізував Milos): вона рахується **покадрово, до кодування**, за моделлю **YOLOv8n (352px)** на драйвері **IPU** (`mi_ipu.ko`).
+- Замість Majestic працює стрімер **`venc`** із детекцією об'єктів: вона рахується **покадрово, до кодування**, за моделлю **YOLOv8n (352px)** на драйвері **IPU** (`mi_ipu.ko`).
 
 <figure style="margin:1.75rem 0;overflow-x:auto">
 <svg viewBox="0 0 680 224" role="img" aria-labelledby="dcflow-t dcflow-d" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;height:auto;display:block;margin:0 auto;font-family:var(--vp-font-family-base,system-ui,sans-serif)">
@@ -192,7 +192,7 @@ Port = 14552
 
 ## Крок 4. Тепловізор на Raspberry Pi
 
-1. Прошийте SD-карту образом **URLLC AIO (OR)** (посилання — у відео / попередньому гайді MarioFPV) і вставте її в **Raspberry Pi Zero 2W**.
+1. Прошийте SD-карту образом **URLLC AIO (OR)** і вставте її в **Raspberry Pi Zero 2W**.
 2. Підключіть **USB-тепловізор** до Raspberry Pi.
 3. Провідний **Ethernet-лінк** (через SPI-адаптер) з'єднує Raspberry Pi з OpenIPC-камерою — тепловий потік (H.264) надходить на порт **`5600`**.
 
