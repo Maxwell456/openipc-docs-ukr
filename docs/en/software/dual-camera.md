@@ -27,7 +27,7 @@ This guide is highly technical and modifies system files on both the camera and 
 - The **day camera** (OpenIPC) sends its stream to port **`5500`**.
 - The **thermal camera** (via Raspberry Pi, **H.264**) sends its stream to port **`5600`**.
 - Depending on the switch, `socat` takes the stream from `5500` **or** `5600` and forwards it to a local **Unix RTP** socket → **WFB** → transmission to the ground station.
-- Instead of Majestic, the **`venc`** streamer runs with object detection (implemented by Milos): it runs **per frame, before encoding**, using the **YOLOv8n (352px)** model on the **IPU** driver (`mi_ipu.ko`).
+- Instead of Majestic, the **`venc`** streamer runs with object detection: it runs **per frame, before encoding**, using the **YOLOv8n (352px)** model on the **IPU** driver (`mi_ipu.ko`).
 
 <figure style="margin:1.75rem 0;overflow-x:auto">
 <svg viewBox="0 0 680 224" role="img" aria-labelledby="dcflow-t2 dcflow-d2" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;height:auto;display:block;margin:0 auto;font-family:var(--vp-font-family-base,system-ui,sans-serif)">
