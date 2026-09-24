@@ -1,143 +1,157 @@
 <div align="center">
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/public/logo-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="docs/public/logo-light.png">
-  <img src="docs/public/logo-light.png" alt="OpenFPV" width="320">
-</picture>
+<a href="https://openfpv.com.ua">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/public/logo-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="docs/public/logo-light.png">
+    <img src="docs/public/logo-light.png" alt="OpenFPV" width="260">
+  </picture>
+</a>
 
-### Open documentation for digital FPV systems based on OpenIPC
+<h3>Open documentation for digital FPV systems built on OpenIPC</h3>
 
-Bilingual Ukrainian / English knowledge base — hardware, firmware, configuration and guides for the OpenIPC digital FPV ecosystem.
+<p>From choosing hardware to a working low-latency video link in the air,<br>in Ukrainian and English.</p>
 
-[![Live site](https://img.shields.io/badge/live-openfpv.com.ua-3d6aff?style=flat-square)](https://openfpv.com.ua)
-[![Deploy](https://github.com/Maxwell456/openipc-docs-ukr/actions/workflows/deploy.yml/badge.svg)](https://github.com/Maxwell456/openipc-docs-ukr/actions/workflows/deploy.yml)
-[![Built with VitePress](https://img.shields.io/badge/built%20with-VitePress-646cff?style=flat-square&logo=vite&logoColor=white)](https://vitepress.dev)
-[![Languages](https://img.shields.io/badge/languages-UK%20%2F%20EN-success?style=flat-square)](https://openfpv.com.ua/en/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+<p>
+  <a href="https://openfpv.com.ua"><img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fopenfpv.com.ua&style=flat-square&label=website&up_message=online&up_color=3d6aff"></a>
+  <img alt="Languages: Ukrainian, English" src="https://img.shields.io/badge/languages-UK%20%7C%20EN-3d6aff?style=flat-square">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-3d6aff?style=flat-square"></a>
+</p>
 
-**[openfpv.com.ua](https://openfpv.com.ua)** · **[Documentation](https://openfpv.com.ua/getting-started/)** · **[English version](https://openfpv.com.ua/en/)**
+<p>
+  <a href="https://openfpv.com.ua/getting-started/"><strong>Get started</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://openfpv.com.ua/en/"><strong>English</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://openfpv.com.ua/faq"><strong>FAQ</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/Maxwell456/openipc-docs-ukr/issues/new"><strong>Report an issue</strong></a>
+</p>
 
 </div>
 
----
+<br>
 
 ## About
 
-**OpenFPV** is a community-maintained documentation site for building and running digital FPV systems on the [OpenIPC](https://openipc.org) platform — turning affordable IP cameras into low-latency, long-range digital video links.
+**OpenFPV** is a community documentation site for building digital FPV video links on [OpenIPC](https://github.com/OpenIPC) firmware. It collects in one place what is usually scattered across forums and chats: which cameras and adapters work, how to flash the firmware, what each setting does, and what to check when there is no picture.
 
-It covers the full journey: choosing hardware, flashing firmware, configuring the link, and troubleshooting — for both newcomers and DIY enthusiasts.
+> [!NOTE]
+> OpenFPV is an independent community project and is not affiliated with or endorsed by OpenIPC.
 
-> A community project by Ukrainian OpenIPC users. Not an official OpenIPC resource.
+<br>
+
+## Documentation
+
+<table>
+  <tr>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/rocket.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/getting-started/"><strong>Getting Started</strong></a><br>
+      <sub>Quick start, platform comparison, air unit and ground station builds, troubleshooting</sub>
+    </td>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/cpu.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/hardware/vtx/"><strong>Hardware</strong></a><br>
+      <sub>Cameras (VTX), receivers (VRX) and compatible Wi-Fi adapters</sub>
+    </td>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/code.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/software/"><strong>Software</strong></a><br>
+      <sub>APFPV, APALink, WFB-NG, Waybeam Venc, 4G/LTE, fiber-optic link, PixelPilot</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/sliders.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/configuration/"><strong>Configuration</strong></a><br>
+      <sub>Companion configurator, firmware flashing, telemetry and OSD, Adaptive-Link</sub>
+    </td>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/timer.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/tools/latency-timer"><strong>Tools</strong></a><br>
+      <sub>Interactive utilities, such as the glass-to-glass latency timer</sub>
+    </td>
+    <td width="33%" valign="top">
+      <img src=".github/assets/icons/bell.svg" width="40" height="40" alt=""><br>
+      <a href="https://openfpv.com.ua/updates"><strong>Updates</strong></a><br>
+      <sub>Release notes and project news</sub>
+    </td>
+  </tr>
+</table>
+
+<br>
 
 ## Features
 
-- Fully bilingual — every page exists in both Ukrainian and English
-- Instant full-text search (VitePress local provider, no external service)
-- Modern, responsive dark theme
-- Installable as a PWA with offline support
-- Optimized for search engines and social sharing — JSON-LD, hreflang, OG images and redirect stubs for legacy URLs
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <img src=".github/assets/icons/languages.svg" width="40" height="40" alt=""><br>
+      <strong>Two languages</strong><br>
+      <sub>Every page is available in Ukrainian and English.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <img src=".github/assets/icons/calculator.svg" width="40" height="40" alt=""><br>
+      <strong>Interactive guides</strong><br>
+      <sub>Built-in tools such as a WFB-NG bitrate calculator, a latency timer and link diagrams.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <img src=".github/assets/icons/search.svg" width="40" height="40" alt=""><br>
+      <strong>Fast search</strong><br>
+      <sub>Full-text search across the whole site, right in the browser.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <img src=".github/assets/icons/smartphone.svg" width="40" height="40" alt=""><br>
+      <strong>Works offline</strong><br>
+      <sub>Install the site on your phone and read it in the field without a connection.</sub>
+    </td>
+  </tr>
+</table>
 
-## What's inside
+<br>
 
-| Section | Contents |
-| --- | --- |
-| **Getting Started** | Quick start, drone & ground-station setup, troubleshooting |
-| **Hardware** | Cameras (VTX), receivers (VRX), Wi-Fi network cards |
-| **Software** | Camera firmware (APFPV, APALink, Greg's, WFB-NG), OpenIPC 4G/LTE (QuadroFleet), Waybeam Venc, fiber-optic link, ground-station firmware |
-| **Configuration** | Companion configurator, firmware flashing (sysupgrade, UART), telemetry & OSD, Adaptive-Link, advanced settings |
-| **Tools** | Glass-to-glass latency timer, WFB-NG bitrate calculator |
-| **Updates** | Changelog & news |
+## Running locally
 
-## Tech stack
-
-- [VitePress](https://vitepress.dev) 1.6 — static-site generator (Vue 3 + Vite)
-- Node.js · npm — CI builds on Node 22
-- Deployed to GitHub Pages; a Docker + nginx image is available for self-hosting
-
-## Local development
-
-**Prerequisites:** Node.js 18+ and npm 9+.
+Requires [Node.js](https://nodejs.org) 18 or later.
 
 ```bash
-# 1. Clone
 git clone https://github.com/Maxwell456/openipc-docs-ukr.git
 cd openipc-docs-ukr
-
-# 2. Install dependencies
 npm install
-
-# 3. Start the dev server (hot-reload)
-npm run dev          # http://localhost:5173
+npm run dev
 ```
 
-Build and preview the production site:
+Open <http://localhost:5173>. Ukrainian content is served at `/`, English content at `/en/`.
 
-```bash
-npm run build        # output: docs/.vitepress/dist/
-npm run preview      # http://localhost:4173
-```
-
-| Script | Purpose |
-| --- | --- |
-| `npm run dev` | Dev server with hot-reload |
-| `npm run build` | Production build — **fails on dead internal links** |
-| `npm run preview` | Serve the built site locally |
-
-## Project structure
-
-```
-docs/
-├─ .vitepress/
-│  ├─ config.mts          # Nav, sidebar, i18n, redirects, JSON-LD, SEO
-│  └─ theme/              # Custom theme, styles and Vue components
-├─ public/                # Static assets (favicon, images, PWA, CNAME)
-├─ en/                    # English content (mirrors the Ukrainian tree)
-├─ getting-started/       # Quick start & setup
-├─ hardware/              # VTX / VRX / network cards
-├─ software/              # Firmware guides
-├─ configuration/         # Flashing & tuning
-├─ tools/                 # Interactive tools
-├─ updates/posts/         # News & release posts
-└─ index.md               # Homepage
-
-scripts/                  # Maintenance scripts (e.g. Search Console queries)
-Dockerfile, nginx.conf    # Optional self-hosted deployment
-```
-
-## Deployment
-
-Every push to `main` triggers [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds the site on Node 22 and publishes it to GitHub Pages. The custom domain is set via `docs/public/CNAME`.
-
-To self-host instead, build the bundled image — a multi-stage build that compiles the site and serves it with nginx (clean URLs, asset caching, health check):
-
-```bash
-docker build -t openfpv-docs .
-docker run -p 8080:80 openfpv-docs    # http://localhost:8080
-```
+<br>
 
 ## Contributing
 
-Contributions are welcome — fixes, new guides, translations.
+Contributions are welcome, whether a typo fix, a new guide or a translation.
 
-1. Fork the repository
-2. Create a branch: `git checkout -b fix/short-description`
-3. Make your changes and commit
-4. Open a Pull Request
+1. Fork the repository and create a branch.
+2. Make your changes. Pages live in `docs/` (Ukrainian) and `docs/en/` (English); please update both.
+3. Run `npm run build` to check for broken links.
+4. Open a pull request with a short description of the change.
 
-**Conventions worth knowing:**
+> [!TIP]
+> Found a mistake while reading? Select the text on the page and press **Bug?** to open a pre-filled issue.
 
-- **Keep both locales in sync.** Every page under `docs/` has a counterpart under `docs/en/`. Add or rename a page in one language — do the same in the other.
-- **Run `npm run build` before opening a PR.** The build fails on dead internal links, so it catches most mistakes.
-- **Never delete a live URL.** If a page moves or merges, add the old path to the `REDIRECTS` map in `config.mts` so existing search rankings carry over.
-- **Front-matter matters.** `title` and `description` drive SEO; the optional `faq` block renders FAQ schema.
+<br>
 
-Spotted an error in the docs? Use the **"Report an error"** button on any page, or [open an issue](https://github.com/Maxwell456/openipc-docs-ukr/issues/new).
+## Support
+
+OpenFPV is maintained by volunteers. If the project helped you, see the [support page](https://openfpv.com.ua/support).
 
 ## License
 
-Code and content are released under the [MIT License](LICENSE).
+Released under the [MIT License](LICENSE). OpenIPC, third-party firmware and product names belong to their respective owners.
 
-Third-party trademarks, firmware and product names belong to their respective owners. OpenIPC is a separate open-source project — this site is an independent community resource.
+<br>
 
----
+<div align="center">
+  <sub>Made by the Ukrainian OpenIPC community</sub>
+</div>
