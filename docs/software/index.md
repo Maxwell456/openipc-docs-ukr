@@ -1,6 +1,6 @@
 ---
 title: "Програмне забезпечення OpenFPV — прошивки та відеолінк"
-description: "Каталог програмного забезпечення для OpenIPC FPV: прошивки камер (APFPV, Greg's, APALink), цифровий відеолінк WFB-NG, відеоенкодер Waybeam (SigmaStar + HiSilicon CV610) і платформа 4G/LTE QuadroFleet."
+description: "Каталог програмного забезпечення для OpenIPC FPV: прошивки камер (APFPV, Greg's, APALink), цифровий відеолінк WFB-NG, альтернативи Majestic — відеоенкодер Waybeam (SigmaStar + HiSilicon CV610) і відеолінк Mabur — та платформа 4G/LTE QuadroFleet."
 ---
 
 # Програмне забезпечення OpenFPV
@@ -39,15 +39,19 @@ description: "Каталог програмного забезпечення д�
 
 ---
 
-## Waybeam — відеоенкодер
+## Альтернативи Majestic
 
-**Waybeam** — автономний H.265 (HEVC) відеоенкодер і RTP-стрімер для камер SigmaStar та HiSilicon CV610, що замінює Majestic та нативно інтегрується з WFB-NG.
+Програми, що працюють на камері замість Majestic.
+
+- **Waybeam** — автономний H.265 (HEVC) відеоенкодер і RTP-стрімер для камер SigmaStar та HiSilicon CV610, що нативно інтегрується з WFB-NG.
+- **Mabur** — експериментальний відеолінк для SSC338Q: ядро енкодера Waybeam, FEC і передача в ефір в одному процесі, без RTP і WFB-NG.
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/software/waybeam-venc"><span class="fpv-card-t">Огляд Waybeam</span><span class="fpv-card-d">Можливості, підтримувані чіпи та порівняння з Majestic</span></a>
   <a class="fpv-card" href="/software/waybeam-venc-install-camera"><span class="fpv-card-t">Встановлення на камеру</span><span class="fpv-card-d">Завантаження, конфігурація <code>/etc/waybeam.json</code>, перший запуск</span></a>
   <a class="fpv-card" href="/software/waybeam-venc-install-groundstation"><span class="fpv-card-t">Інтеграція з WFB-ng</span><span class="fpv-card-d">Заміна Majestic у зв'язці з WFB-ng</span></a>
   <a class="fpv-card" href="/software/waybeam-venc-web-interface"><span class="fpv-card-t">Веб-панель та HTTP API</span><span class="fpv-card-d">Керування параметрами в реальному часі, ISP-тюнінг, resilience-пресети</span></a>
+  <a class="fpv-card" href="/software/mabur"><span class="fpv-card-t">Mabur</span><span class="fpv-card-d">Експериментальний лінк без RTP: енкодер Waybeam, FEC і радіо в одному процесі</span></a>
 </div>
 
 ---

@@ -341,9 +341,10 @@ export default defineConfig({
                 ]
               },
               {
-                text: 'Waybeam',
+                text: 'Альтернативи Majestic',
                 items: [
-                  { text: 'Огляд', link: '/software/waybeam-venc' },
+                  { text: 'Waybeam', link: '/software/waybeam-venc' },
+                  { text: 'Mabur', link: '/software/mabur' },
                 ]
               },
             ]
@@ -464,15 +465,22 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Waybeam',
+              text: 'Альтернативи Majestic',
               collapsed: false,
               items: [
-                { text: 'Огляд Waybeam', link: '/software/waybeam-venc' },
-                { text: 'Встановлення на камеру', link: '/software/waybeam-venc-install-camera' },
-                { text: 'Встановлення на GS', link: '/software/waybeam-venc-install-groundstation' },
-                { text: 'Веб-панель та API', link: '/software/waybeam-venc-web-interface' },
-                { text: "Детекція об'єктів (NPU)", link: '/software/waybeam-detection' },
-                { text: 'QR-сканування', link: '/software/waybeam-qr' },
+                {
+                  text: 'Waybeam',
+                  collapsed: true,
+                  items: [
+                    { text: 'Огляд', link: '/software/waybeam-venc' },
+                    { text: 'Встановлення на камеру', link: '/software/waybeam-venc-install-camera' },
+                    { text: 'Встановлення на GS', link: '/software/waybeam-venc-install-groundstation' },
+                    { text: 'Веб-панель та API', link: '/software/waybeam-venc-web-interface' },
+                    { text: "Детекція об'єктів (NPU)", link: '/software/waybeam-detection' },
+                    { text: 'QR-сканування', link: '/software/waybeam-qr' },
+                  ]
+                },
+                { text: 'Mabur', link: '/software/mabur' },
               ]
             },
           ],
@@ -581,9 +589,10 @@ export default defineConfig({
                 ]
               },
               {
-                text: 'Waybeam',
+                text: 'Majestic Alternatives',
                 items: [
-                  { text: 'Overview', link: '/en/software/waybeam-venc' },
+                  { text: 'Waybeam', link: '/en/software/waybeam-venc' },
+                  { text: 'Mabur', link: '/en/software/mabur' },
                 ]
               },
             ]
@@ -704,15 +713,22 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Waybeam',
+              text: 'Majestic Alternatives',
               collapsed: false,
               items: [
-                { text: 'Waybeam Overview', link: '/en/software/waybeam-venc' },
-                { text: 'Install on Camera', link: '/en/software/waybeam-venc-install-camera' },
-                { text: 'Install on GS', link: '/en/software/waybeam-venc-install-groundstation' },
-                { text: 'Web Panel & API', link: '/en/software/waybeam-venc-web-interface' },
-                { text: 'NPU Object Detection', link: '/en/software/waybeam-detection' },
-                { text: 'QR Scanning', link: '/en/software/waybeam-qr' },
+                {
+                  text: 'Waybeam',
+                  collapsed: true,
+                  items: [
+                    { text: 'Overview', link: '/en/software/waybeam-venc' },
+                    { text: 'Install on Camera', link: '/en/software/waybeam-venc-install-camera' },
+                    { text: 'Install on GS', link: '/en/software/waybeam-venc-install-groundstation' },
+                    { text: 'Web Panel & API', link: '/en/software/waybeam-venc-web-interface' },
+                    { text: 'NPU Object Detection', link: '/en/software/waybeam-detection' },
+                    { text: 'QR Scanning', link: '/en/software/waybeam-qr' },
+                  ]
+                },
+                { text: 'Mabur', link: '/en/software/mabur' },
               ]
             },
           ],

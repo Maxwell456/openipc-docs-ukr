@@ -1,6 +1,6 @@
 ---
 title: "OpenFPV Software — firmware, video link, encoder"
-description: "Software catalog for OpenIPC FPV: camera firmware (APFPV, Greg's, APALink), the WFB-NG digital video link, the Waybeam video encoder, and the QuadroFleet 4G/LTE platform."
+description: "Software catalog for OpenIPC FPV: camera firmware (APFPV, Greg's, APALink), the WFB-NG digital video link, Majestic alternatives (the Waybeam video encoder and the Mabur video link), and the QuadroFleet 4G/LTE platform."
 ---
 
 # OpenFPV Software
@@ -39,15 +39,19 @@ The firmware determines how an OpenIPC camera encodes and transmits video. Pick 
 
 ---
 
-## Waybeam — video encoder
+## Majestic alternatives
 
-**Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar and HiSilicon CV610 cameras that replaces Majestic and integrates natively with WFB-NG.
+Software that runs on the camera in place of Majestic.
+
+- **Waybeam** is a standalone H.265 (HEVC) video encoder and RTP streamer for SigmaStar and HiSilicon CV610 cameras that integrates natively with WFB-NG.
+- **Mabur** is an experimental video link for the SSC338Q: the Waybeam encoder core, FEC and on-air transmission in one process, with no RTP and no WFB-NG.
 
 <div class="fpv-cards">
   <a class="fpv-card" href="/en/software/waybeam-venc"><span class="fpv-card-t">Waybeam overview</span><span class="fpv-card-d">Features, supported chips and comparison with Majestic</span></a>
   <a class="fpv-card" href="/en/software/waybeam-venc-install-camera"><span class="fpv-card-t">Install on the camera</span><span class="fpv-card-d">Download, <code>/etc/waybeam.json</code> configuration, first run</span></a>
   <a class="fpv-card" href="/en/software/waybeam-venc-install-groundstation"><span class="fpv-card-t">WFB-ng integration</span><span class="fpv-card-d">Replacing Majestic alongside WFB-ng</span></a>
   <a class="fpv-card" href="/en/software/waybeam-venc-web-interface"><span class="fpv-card-t">Web panel and HTTP API</span><span class="fpv-card-d">Real-time parameter control, ISP tuning, resilience presets</span></a>
+  <a class="fpv-card" href="/en/software/mabur"><span class="fpv-card-t">Mabur</span><span class="fpv-card-d">An experimental RTP-free link: the Waybeam encoder, FEC and radio in one process</span></a>
 </div>
 
 ---
