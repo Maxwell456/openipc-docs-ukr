@@ -186,6 +186,7 @@ Four defensive fixes that change nothing on the normal path but close what an ou
 
 ### Next
 
+- [**Custom YOLO model**](/en/software/waybeam-yolo-training) — training, compiling to `.img` and your own plugin
 - [**Web panel and HTTP API**](/en/software/waybeam-venc-web-interface) — the remaining endpoints
 - [**On-board QR scanning**](/en/software/waybeam-qr) — the other claimant on the same tap
 - [**Install on the camera**](/en/software/waybeam-venc-install-camera) — where the `detect` section lives in the config

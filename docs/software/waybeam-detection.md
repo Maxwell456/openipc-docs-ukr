@@ -186,6 +186,7 @@ curl "http://<ip>/api/v1/set?detect.confThresh=0.20&detect.nmsIou=0.45"
 
 ### Далі
 
+- [**Власна YOLO-модель**](/software/waybeam-yolo-training) — навчання, компіляція в `.img` і власний плагін
 - [**Веб-панель та HTTP API**](/software/waybeam-venc-web-interface) — решта ендпоінтів
 - [**QR-сканування на борту**](/software/waybeam-qr) — другий претендент на той самий тап
 - [**Встановлення на камеру**](/software/waybeam-venc-install-camera) — де живе секція `detect` у конфізі

@@ -477,6 +477,7 @@ export default defineConfig({
                     { text: 'Встановлення на GS', link: '/software/waybeam-venc-install-groundstation' },
                     { text: 'Веб-панель та API', link: '/software/waybeam-venc-web-interface' },
                     { text: "Детекція об'єктів (NPU)", link: '/software/waybeam-detection' },
+                    { text: 'Власна YOLO-модель', link: '/software/waybeam-yolo-training' },
                     { text: 'QR-сканування', link: '/software/waybeam-qr' },
                   ]
                 },
@@ -725,6 +726,7 @@ export default defineConfig({
                     { text: 'Install on GS', link: '/en/software/waybeam-venc-install-groundstation' },
                     { text: 'Web Panel & API', link: '/en/software/waybeam-venc-web-interface' },
                     { text: 'NPU Object Detection', link: '/en/software/waybeam-detection' },
+                    { text: 'Custom YOLO Model', link: '/en/software/waybeam-yolo-training' },
                     { text: 'QR Scanning', link: '/en/software/waybeam-qr' },
                   ]
                 },
